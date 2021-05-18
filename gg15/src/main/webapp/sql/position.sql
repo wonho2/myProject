@@ -66,3 +66,5 @@ CREATE SEQUENCE position_seq;
 CREATE SEQUENCE position_reply_seq;
 CREATE SEQUENCE position_fav_seq;
 CREATE SEQUENCE position_rfav_seq;
+
+/* 커밋 외않됨*/
