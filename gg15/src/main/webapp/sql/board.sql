@@ -27,9 +27,9 @@ constraint board_reply_fk_2 FOREIGN key(mem_num) references member (mem_num)
 
 CREATE TABLE boa_fav(
 bof_num number not null,
-man_num number not null,
+boa_num number not null,
 mem_num number,
 constraint bof_num_pk primary key(bof_num),
-constraint boa_fav_fk_1 FOREIGN key(man_num) references board (boa_num),
+constraint boa_fav_fk_1 FOREIGN key(boa_num) references board (boa_num),
 constraint boa_fav_fk_2 FOREIGN key(mem_num) references member (mem_num)
 );
