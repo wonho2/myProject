@@ -5,7 +5,14 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="positionList" extends="main">
+	<definition name="position_main" template="/WEB-INF/views/position/layout_main.jsp">
+		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="menu_type" value="/WEB-INF/views/position/menu_type.jsp"/>
+		<put-attribute name="menu_sort" value="/WEB-INF/views/position/menu_sort.jsp"/>
+		<put-attribute name="boardList" value="/WEB-INF/views/position/boardList.jsp"/>
+		<put-attribute name="search" value="/WEB-INF/views/position/search.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
 </tiles-definitions>
 
