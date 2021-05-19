@@ -24,7 +24,7 @@
 			<tr>
 				<td>${board.num}</td>
 				<td>${board.type}</td>
-				<td><a href="/position/detail.do?num=${board.num}">${board.title}</a></td>
+				<td><a href="detail.do?num=${board.num}">${board.title}</a></td>
 				<td>${board.writer}</td>
 				<td>${board.date}</td>
 				<td>${board.view}</td>

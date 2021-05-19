@@ -3,8 +3,8 @@
 
 <!-- 포지션게시판 : search 시작 -->
 <select>
-	<option value="pos_title">제목</option>
-	<option value="pos_content">내용</option>
+	<option value="title">제목</option>
+	<option value="content">내용</option>
 	<option value="writer">작성자</option>
 </select>
 

@@ -7,8 +7,8 @@
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${mem_num == positionVO.mem_num}">
 	<div>
-		<input type="button" value="수정" onclick="location.href='/position/modify.do?num=${num}'">
-		<input type="button" value="삭제" onclick="location.href='/position/delete.do?num=${num}'" id="btn_delete">
+		<input type="button" value="수정" onclick="location.href='modify.do?num=${num}'">
+		<input type="button" value="삭제" onclick="location.href='delete.do?num=${num}'" id="btn_delete">
 	</div>
 </c:if>
 
