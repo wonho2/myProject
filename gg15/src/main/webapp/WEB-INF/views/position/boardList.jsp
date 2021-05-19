@@ -23,7 +23,7 @@
 				<td>${board.pos_num}</td>
 				<td>${board.pos_type}</td>
 				<td><a href="/position/detail.do?num=${board.pos_num}">${board.pos_title}</a></td>
-				<td>${board.mem_num}</td>
+				<td>${board.writer}</td>
 				<td>${board.pos_date}</td>
 				<td>${board.pos_view}</td>
 				<td>${board.pos_fav}</td>

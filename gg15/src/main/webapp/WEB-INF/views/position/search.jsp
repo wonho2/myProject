@@ -8,7 +8,7 @@
 	<option value="writer">작성자</option>
 </select>
 
-<input type="text">
+<input type="text" id="pos_searchText">
 
 <!-- 검색내용 출력 코드 작성 -->
 <input type="button" value="검색">
