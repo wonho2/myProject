@@ -5,7 +5,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="position_main" template="/WEB-INF/views/position/layout_main.jsp">
+	<definition name="position_list" template="/WEB-INF/views/position/layout_list.jsp">
 		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
 		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
 		<put-attribute name="menu_type" value="/WEB-INF/views/position/menu_type.jsp"/>
