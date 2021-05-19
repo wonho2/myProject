@@ -20,7 +20,7 @@
 			</li>
 			<li>
 				<label for="uploadfile">파일 업로드</label>
-				<input type="file" name="uploadfile" id="uploadfile" accept="image/gif, image/png, image/jpeg">
+				<input type="file" name="uploadfile" accept="image/gif, image/png, image/jpeg">
 			</li>
 			<li>
 				<label for="content">내용</label>

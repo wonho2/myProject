@@ -16,7 +16,7 @@
 			<input type="file" name="uploadfile" id="uploadfile" accept="image/gif, image/png, image/jpeg">
 			<c:if test="${!empty positionVO.uploadfile}">
 					<br>
-					<span>${positionVO.uploadfile} 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>
+					<span>이미 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>
 			</c:if>
 		</li>
 		<li>
