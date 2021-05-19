@@ -40,7 +40,7 @@ CREATE TABLE position_fav
 (
     pof_num NUMBER NOT NULL, /*추천 고유번호 <primary>*/
     pos_num NUMBER NOT NULL, /*게시물 고유번호 <foreign : position>*/
-    mem_num NUMBER, /*추천한 회원 고유번호 <foreign : member>*/
+    mem_num NUMBER NOT NULL, /*추천한 회원 고유번호 <foreign : member>*/
     CONSTRAINT position_fav_pk PRIMARY KEY(pof_num),
     CONSTRAINT position_fav_fk_boardNum FOREIGN KEY(pos_num) REFERENCES position(pos_num),
     CONSTRAINT position_fav_fk_memNum FOREIGN KEY(mem_num) REFERENCES member(mem_num)
