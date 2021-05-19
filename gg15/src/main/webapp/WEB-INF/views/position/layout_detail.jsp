@@ -16,8 +16,11 @@
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="writeForm">
-		<tiles:insertAttribute name="body"/>
+	<div id="board_detail">
+		<tiles:insertAttribute name="board_detail"/>
+	</div>
+	<div id="board_comment">
+		<tiles:insertAttribute name="board_comment"/>
 	</div>
 	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>

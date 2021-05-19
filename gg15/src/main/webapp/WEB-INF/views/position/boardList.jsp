@@ -22,13 +22,13 @@
 		</tr>
 		<c:forEach var="board" items="${boardList}">
 			<tr>
-				<td>${board.pos_num}</td>
-				<td>${board.pos_type}</td>
-				<td><a href="/position/detail.do?num=${board.pos_num}">${board.pos_title}</a></td>
+				<td>${board.num}</td>
+				<td>${board.type}</td>
+				<td><a href="/position/detail.do?num=${board.num}">${board.title}</a></td>
 				<td>${board.writer}</td>
-				<td>${board.pos_date}</td>
-				<td>${board.pos_view}</td>
-				<td>${board.pos_fav}</td>
+				<td>${board.date}</td>
+				<td>${board.view}</td>
+				<td>${board.fav}</td>
 			</tr>
 		</c:forEach>
 	</table>

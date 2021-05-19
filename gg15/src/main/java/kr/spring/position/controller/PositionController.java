@@ -3,6 +3,7 @@ package kr.spring.position.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -27,5 +28,16 @@ public class PositionController
 	public String position_write()
 	{
 		return "position_write";
+	}
+	
+/*
+ * 게시물 내용보기
+ */
+	@RequestMapping("/position/detail.do")
+	public ModelAndView position_detail(@RequestParam("num") int num)
+	{
+		ModelAndView mav = new ModelAndView();
+		// 게시물 내용 보여주는 코드 작성
+		return mav;
 	}
 }

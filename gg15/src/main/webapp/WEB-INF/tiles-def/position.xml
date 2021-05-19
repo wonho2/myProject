@@ -21,6 +21,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/position/write.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
+	
+	<definition name="position_detail" template="/WEB-INF/views/position/layout_detail.jsp">
+		<put-attribute name="title" value="15 gg - 포지션 게시판 게시물"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="board_detail" value="/WEB-INF/views/position/detail.jsp"/>
+		<put-attribute name="board_comment" value="/WEB-INF/views/position/comment.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
