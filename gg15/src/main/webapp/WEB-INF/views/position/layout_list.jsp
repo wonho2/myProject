@@ -28,7 +28,7 @@
 	<div id="position_main_search">
 		<tiles:insertAttribute name="search"/>
 	</div>
-		<div id="main_footer">
+	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
