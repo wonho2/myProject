@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 포지션게시판 : boardList 시작 -->
+<input type="button" value="글쓰기" onclick="location.href='/position/write.do'">
+
 <c:if test="${count == 0}">
 	게시물이 없습니다.
 </c:if>
