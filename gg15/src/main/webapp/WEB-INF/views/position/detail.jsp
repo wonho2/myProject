@@ -19,7 +19,7 @@
 		[${positionVO.type}] | ${positionVO.date} | ${positionVO.mem_id}
 	</section>
 	<section>
-		${positionVO.view} | <!-- 미구현 : ${조회수} --> | <!-- 미구현 : ${추천수} -->
+		조회수 ${positionVO.view} | 추천수 ${positionVO.fav} | 댓글수 ${positionVO.comment}
 	</section>
 	<hr size="1" noshade="noshade" width="100%">
 	<c:if test="${fn:endsWith(positionVO.uploadfile,'.jpg') ||

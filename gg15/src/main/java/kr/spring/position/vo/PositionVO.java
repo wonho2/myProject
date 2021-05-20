@@ -7,28 +7,24 @@ import javax.validation.constraints.NotEmpty;
 public class PositionVO
 {
 	private int num;
-	private int type;
+	private String type;
 	private int mem_num;
 	private String mem_id;
 	@NotEmpty
 	private String title, content;
 	private byte[] uploadfile;
-	private String filename;
 	private Date date;
-	private int view;
-	
-	// 미구현 : 추천수, 댓글수도 추가해야됨?
-	
+	private int view, fav, comment;
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public int getMem_num() {
@@ -61,12 +57,6 @@ public class PositionVO
 	public void setUploadfile(byte[] uploadfile) {
 		this.uploadfile = uploadfile;
 	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
 	public Date getDate() {
 		return date;
 	}
@@ -78,5 +68,17 @@ public class PositionVO
 	}
 	public void setView(int view) {
 		this.view = view;
+	}
+	public int getFav() {
+		return fav;
+	}
+	public void setFav(int fav) {
+		this.fav = fav;
+	}
+	public int getComment() {
+		return comment;
+	}
+	public void setComment(int comment) {
+		this.comment = comment;
 	}
 }

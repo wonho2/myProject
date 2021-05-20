@@ -40,12 +40,6 @@ public class PositionService
 		return positionDAO.selectBoard(boardNum);
 	}
 	
-	// 해당 글의 조회수 증가
-	public void updateView(int boardNum)
-	{
-		positionDAO.updateView(boardNum);
-	}
-	
 	// 게시물 수정
 	public void updateBoard(PositionVO vo)
 	{
@@ -56,5 +50,35 @@ public class PositionService
 	public void deleteBoard(int boardNum)
 	{
 		positionDAO.deleteBoard(boardNum);
+	}
+	
+	// 해당 글의 조회수 증가
+	public void updateView(int boardNum)
+	{
+		positionDAO.updateView(boardNum);
+	}
+	
+	// 해당 글의 추천수 증가
+	public void updateFavUp(int boardNum)
+	{
+		
+	}
+	
+	// 해당 글의 추천수 감소
+	public void updateFavDown(int boardNum)
+	{
+			
+	}
+	
+	// 해당 글의 댓글수 증가
+	public void updateCommentUp(int boardNum)
+	{
+		
+	}
+	
+	// 해당 글의 댓글수 감소
+	public void updateCommentDown(int boardNum)
+	{
+			
 	}
 }

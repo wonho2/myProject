@@ -20,15 +20,15 @@
 			<th>조회수</th>
 			<th>추천수</th>
 		</tr>
-		<c:forEach var="board" items="${boardList}">
+		<c:forEach var="positionVO" items="${boardList}">
 			<tr>
-				<td>${board.num}</td>
-				<td>${board.type}</td>
-				<td><a href="detail.do?num=${board.num}">${board.title}</a></td>
-				<td>${board.mem_id}</td>
-				<td>${board.date}</td>
-				<td>${board.view}</td>
-				<td>${board.fav}</td>
+				<td>${positionVO.num}</td>
+				<td>${positionVO.type}</td>
+				<td><a href="detail.do?num=${positionVO.num}">${positionVO.title}</a></td>
+				<td>${positionVO.mem_id}</td>
+				<td>${positionVO.date}</td>
+				<td>${positionVO.view}</td>
+				<td>${positionVO.fav}</td>
 			</tr>
 		</c:forEach>
 	</table>

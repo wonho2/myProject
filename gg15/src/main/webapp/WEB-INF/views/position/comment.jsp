@@ -4,25 +4,30 @@
 
 <!-- 포지션게시판 : 게시물 디테일 댓글 시작 -->
 <div>
-	<p>댓글</p>
-	<input type="button" value="인기순" id="btn_popular"> <!-- default 정-->
+	<p>
+		<span>댓글</span>
+		${positionVO.comment} 개
+	</p>
+	<input type="button" value="인기순" id="btn_popular"> <!-- default 정렬-->
 	<input type="button" value="최신순" id="btn_recent">
 </div>
 
-<c:forEach var="comment" items="${commentList}">
+<c:forEach var="postionCommentVO" items="${commentList}">
 	<nav>
 		<input type="button" id="btn_favUp">
-		<!-- 미구현 : ${추천수} -->
+		<div>
+			${postionCommentVO.fav}
+		</div>
 		<input type="button" id="btn_favDown">
 	</nav>
 	<div>
-		${comment.mem_id}
-		${comment.date}
+		${postionCommentVO.mem_id}
+		${postionCommentVO.date}
 	</div>
 	<div>
-		${comment.content}
+		${postionCommentVO.content}
 	</div>
-	<c:if test="${mem_num == comment.mem_num}">
+	<c:if test="${mem_num == postionCommentVO.mem_num}">
 		<div>
 			<input type="button" value="수정" id="btn_modifyComment">
 			<input type="button" value="삭제" id="btn_deleteComment">

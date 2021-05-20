@@ -4,15 +4,15 @@
 CREATE TABLE position
 (
     pos_num NUMBER NOT NULL, /*게시물 고유번호 <primary>*/
-    pos_type NUMBER NOT NULL, /*종류 : 탑(1), 정글(2), 미드(3), 원딜(4), 서폿(5), 공지(0)*/
+    pos_type VARCHAR2(10) NOT NULL, /*종류 : 탑, 정글, 미드, 원딜, 서포터*/
     mem_num NUMBER NOT NULL, /*작성자(회원) 고유번호 <foreign : member>*/
     pos_title VARCHAR2(50) NOT NULL, /*제목*/
     pos_content CLOB NOT NULL, /*내용*/
     pos_uploadfile BLOB, /*업로드 파일*/
-    pos_date DATE NOT NULL, /*작성일*/
+    pos_date DATE DEFAULT SYSDATE NOT NULL, /*작성일*/
     pos_view NUMBER DEFAULT 0 NOT NULL, /*조회수*/
-    /*댓글수 : pos_reply NUMBER DEFAULT 0 NOT NULL AUTO_INCREMENT ?*/
-    /*추천수 : pos_fav NUMBER DEFAULT 0 NOT NULL AUTO_INCREMENT ?*/
+   	pos_comment NUMBER DEFAULT 0 NOT NULL, /*댓글수*/
+    pos_fav NUMBER DEFAULT 0 NOT NULL, /*추천수*/
     CONSTRAINT position_pk PRIMARY KEY(pos_num),
     CONSTRAINT position_fk FOREIGN KEY(mem_num) REFERENCES member(mem_num)
 );
@@ -26,8 +26,8 @@ CREATE TABLE position_comment
     pos_num NUMBER NOT NULL, /*해당 댓글이 소속된 게시물 고유번호 <foreign : position>*/
     mem_num NUMBER NOT NULL, /*댓글 작성자(회원) 고유번호 <foreign : member>*/
     poc_content VARCHAR2(400) NOT NULL, /*내용*/
-    poc_date DATE NOT NULL, /*작성일*/
-    /*추천수 : poc_fav NUMBER DEFAULT 0 NOT NULL AUTO_INCREMENT ?*/
+    poc_date DATE DEFAULT SYSDATE NOT NULL, /*작성일*/
+    poc_fav NUMBER DEFAULT 0 NOT NULL, /*추천수*/
     CONSTRAINT position_reply_pk PRIMARY KEY(poc_num),
     CONSTRAINT position_reply_fk_boardNum FOREIGN KEY(pos_num) REFERENCES position(pos_num),
     CONSTRAINT position_reply_fk_memNum FOREIGN KEY(mem_num) REFERENCES member(mem_num)

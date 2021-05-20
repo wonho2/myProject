@@ -143,4 +143,27 @@ public class PositionController
 		positionService.deleteBoard(num);
 		return "redirect:/position/list.do";
 	}
+	
+/*
+ * 해당 게시물의 추천수 변경
+ */
+	public void updateFav(@RequestParam int num)
+	{
+		// 원버튼
+		// positionService.updateFavUp(num);
+		// positionService.updateFavDown(num);
+	}
+	
+/*
+ * 해당 게시물의 댓글수 증가,감소
+ */
+	public void updateCommentUp(@RequestParam int num)
+	{
+		positionService.updateCommentUp(num);
+	}
+	
+	public void updateCommentDown(@RequestParam int num)
+	{
+		positionService.updateCommentDown(num);
+	}
 }
