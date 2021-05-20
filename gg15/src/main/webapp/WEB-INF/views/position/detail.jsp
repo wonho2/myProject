@@ -16,10 +16,10 @@
 <div>
 	<h1>${positionVO.title}</h1>
 	<section>
-		[${positionVO.type}] | ${positionVO.date} | ${positionVO.writer} 
+		[${positionVO.type}] | ${positionVO.date} | ${positionVO.mem_id}
 	</section>
 	<section>
-		${positionVO.view} | ${positionVO.reply} | ${positionVO.fav}
+		${positionVO.view} | <!-- 미구현 : ${조회수} --> | <!-- 미구현 : ${추천수} -->
 	</section>
 	<hr size="1" noshade="noshade" width="100%">
 	<c:if test="${fn:endsWith(positionVO.uploadfile,'.jpg') ||
@@ -34,7 +34,6 @@
 	</c:if>
 	<div>
 		<input type="button" value="추천" id="btn_fav">
-		<div>${positionVO.fav}</div>
 	</div>
 </div>
 <!-- 포지션게시판 : 게시물 디테일 끝 -->

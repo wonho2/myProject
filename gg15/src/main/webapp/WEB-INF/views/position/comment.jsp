@@ -5,18 +5,18 @@
 <!-- 포지션게시판 : 게시물 디테일 댓글 시작 -->
 <div>
 	<p>댓글</p>
-	<input type="button" value="인기순" id="btn_popular"> <!-- default 정렬 -->
+	<input type="button" value="인기순" id="btn_popular"> <!-- default 정-->
 	<input type="button" value="최신순" id="btn_recent">
 </div>
 
 <c:forEach var="comment" items="${commentList}">
 	<nav>
 		<input type="button" id="btn_favUp">
-		${positionReplyVO.fav}
+		<!-- 미구현 : ${추천수} -->
 		<input type="button" id="btn_favDown">
 	</nav>
 	<div>
-		${comment.writer}
+		${comment.mem_id}
 		${comment.date}
 	</div>
 	<div>

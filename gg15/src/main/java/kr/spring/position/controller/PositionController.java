@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
@@ -121,16 +120,27 @@ public class PositionController
 	public String modifyForm(@RequestParam int num, Model model)
 	{
 		
+		PositionVO positionVO = positionService.selectBoard(num);
+		model.addAttribute("positionVO", positionVO);
 		return "position_modify";
 	}
 	
+	@RequestMapping(value="/position/modify.do", method=RequestMethod.POST)
+	public String modifySubmit(@Valid PositionVO positionVO, BindingResult result, HttpServletRequest request)
+	{
+		// 유효성 오류가 있는 경우
+		if(result.hasErrors()) return "position_modify";
+		
+		positionService.updateBoard(positionVO);
+		return "redirect:/board/list.do";
+	}
 /*
  * 게시물 삭제
  */
 	@RequestMapping("/position/delete.do")
 	public String deleteSubmit(@RequestParam int num)
 	{
-		// 삭제 코드 작성
+		positionService.deleteBoard(num);
 		return "redirect:/position/list.do";
 	}
 }

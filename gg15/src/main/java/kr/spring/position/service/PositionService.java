@@ -39,4 +39,16 @@ public class PositionService
 	{
 		return null;
 	}
+	
+	// 게시물 수정
+	public void updateBoard(PositionVO vo)
+	{
+		
+	}
+	
+	// 게시물 삭제
+	public void deleteBoard(int boardNum)
+	{
+		
+	}
 }
