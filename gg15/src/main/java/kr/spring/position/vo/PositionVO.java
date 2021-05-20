@@ -9,12 +9,12 @@ public class PositionVO
 	private int num;
 	private String type;
 	private int mem_num;
-	private String mem_id;
 	@NotEmpty
 	private String title, content;
 	private byte[] uploadfile;
 	private Date date;
 	private int view, fav, comment;
+	
 	public int getNum() {
 		return num;
 	}
@@ -32,12 +32,6 @@ public class PositionVO
 	}
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
-	}
-	public String getMem_id() {
-		return mem_id;
-	}
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
 	}
 	public String getTitle() {
 		return title;
