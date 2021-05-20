@@ -14,6 +14,16 @@
 	<form:form action="write.do" commandName="positionVO" enctype="multipart/form-data">
 		<ul>
 			<li>
+				<label for="type">포지션</label>
+				<form:select path="type">
+					<form:options value="탑"/>
+					<form:options value="정글"/>
+					<form:options value="미드"/>
+					<form:options value="원딜"/>
+					<form:options value="서포터"/>
+				</form:select>
+			</li>
+			<li>
 				<label for="title">제목</label>
 				<form:input path="title"/>
 				<form:errors path="title"/>
