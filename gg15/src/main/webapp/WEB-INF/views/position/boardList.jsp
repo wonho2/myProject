@@ -25,7 +25,7 @@
 				<td>${positionVO.num}</td>
 				<td>${positionVO.type}</td>
 				<td><a href="detail.do?num=${positionVO.num}">${positionVO.title}</a></td>
-				<td>${positionVO.mem_id}</td>
+				<td><!-- 미구현 : ${작성자 아이디} --></td>
 				<td>${positionVO.date}</td>
 				<td>${positionVO.view}</td>
 				<td>${positionVO.fav}</td>

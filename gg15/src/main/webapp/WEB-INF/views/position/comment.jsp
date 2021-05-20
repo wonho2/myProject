@@ -21,7 +21,7 @@
 		<input type="button" id="btn_favDown">
 	</nav>
 	<div>
-		${postionCommentVO.mem_id}
+		<!-- 미구현 : ${작성자 아이디} -->
 		${postionCommentVO.date}
 	</div>
 	<div>

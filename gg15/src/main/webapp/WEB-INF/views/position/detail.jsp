@@ -16,7 +16,7 @@
 <div>
 	<h1>${positionVO.title}</h1>
 	<section>
-		[${positionVO.type}] | ${positionVO.date} | ${positionVO.mem_id}
+		[${positionVO.type}] | ${positionVO.date} | <!-- 미구현 : ${작성자 아이디} -->
 	</section>
 	<section>
 		조회수 ${positionVO.view} | 추천수 ${positionVO.fav} | 댓글수 ${positionVO.comment}

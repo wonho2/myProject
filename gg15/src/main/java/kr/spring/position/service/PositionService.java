@@ -61,24 +61,24 @@ public class PositionService
 	// 해당 글의 추천수 증가
 	public void updateFavUp(int boardNum)
 	{
-		
+		positionDAO.updateFavUp(boardNum);
 	}
 	
 	// 해당 글의 추천수 감소
 	public void updateFavDown(int boardNum)
 	{
-			
+		positionDAO.updateFavDown(boardNum);
 	}
 	
 	// 해당 글의 댓글수 증가
 	public void updateCommentUp(int boardNum)
 	{
-		
+		positionDAO.updateCommentUp(boardNum);
 	}
 	
 	// 해당 글의 댓글수 감소
 	public void updateCommentDown(int boardNum)
 	{
-			
+		positionDAO.updateCommentDown(boardNum);
 	}
 }
