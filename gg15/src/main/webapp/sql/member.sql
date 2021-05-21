@@ -18,6 +18,8 @@ create table member_detail(
 	references member (mem_num)
 );
 
+create sequence member_seq;
+
 create table point(
 	poi_num number not null,
 	mem_num number not null,
