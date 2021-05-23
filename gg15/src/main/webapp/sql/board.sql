@@ -9,6 +9,7 @@ boa_report NUMBER(1) default 1 NOT NULL ,
 boa_uploadfile VARCHAR2(300),
 boa_content clob NOT NULL,
 boa_date date,
+boa_hit number not null,
 constraint board_pk primary key(boa_num),
 constraint board_fk foreign key(mem_num) references member (mem_num)
 );
