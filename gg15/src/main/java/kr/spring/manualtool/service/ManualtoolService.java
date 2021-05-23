@@ -22,7 +22,7 @@ public class ManualtoolService {
 	}
 	
 	//총 레코드 수
-	public int selectRowCount() {
+	public int selectBoardCount() {
 		return manualtoolDAO.selectBoardCount();
 	}
 	

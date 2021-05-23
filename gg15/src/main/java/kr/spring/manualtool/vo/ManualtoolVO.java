@@ -18,12 +18,6 @@ public class ManualtoolVO {
 	private byte[] uploadfile;
 	private Date date, update;
 	private int fav, comment;
-	
-	//업로드 파일 처리
-		public void setUpload(MultipartFile upload)throws IOException{
-			//MultipartFile -> byte[] 변환
-			setUploadfile(upload.getBytes());
-		}
 
 	public int getNum() {
 		return num;

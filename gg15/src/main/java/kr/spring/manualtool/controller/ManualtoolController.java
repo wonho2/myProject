@@ -70,7 +70,7 @@ public class ManualtoolController {
 	@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
 		
 		//총 레코드 수
-		int count = manualtoolService.selectRowCount();
+		int count = manualtoolService.selectBoardCount();
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
