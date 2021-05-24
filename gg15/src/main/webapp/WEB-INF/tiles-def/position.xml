@@ -15,18 +15,3 @@
 		<put-attribute name="body" value="/WEB-INF/views/position/write.jsp"/>
 	</definition>
 </tiles-definitions>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

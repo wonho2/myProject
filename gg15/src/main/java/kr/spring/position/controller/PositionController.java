@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,6 +29,7 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
+	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 자바빈 초기화
@@ -45,7 +47,8 @@ public class PositionController
 	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
 		// 페이징 처리
-		int count = positionService.selectBoardCount();
+		// int count = positionService.selectBoardCount();
+		int count = 0;
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		List<PositionVO> boardList = null;
 		if(count > 0)
@@ -77,9 +80,14 @@ public class PositionController
 	public String writeSubmit(@Valid PositionVO positionVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
 		// 유효성 오류가 있는 경우
-		if(result.hasErrors()) return writeForm();
+		if(result.hasErrors())
+		{
+			log.debug(result);
+			return "position_write";
+		}
 		// 정보 셋팅
-		Integer mem_num = (Integer)session.getAttribute("mem_num");
+		// Integer mem_num = (Integer)session.getAttribute("user_num"); // 로그인 미구현
+		Integer mem_num = 1; // 임시
 		positionVO.setMem_num(mem_num);
 		// 글쓰기
 		positionService.insertBoard(positionVO);
@@ -97,8 +105,8 @@ public class PositionController
 		positionService.updateView(num);
 		// html 태그 불허
 		PositionVO positionVO = positionService.selectBoard(num);
-		positionVO.setTitle(StringUtil.useNoHtml(positionVO.getTitle()));
-		positionVO.setContent(StringUtil.useBrNoHtml(positionVO.getContent()));
+		positionVO.setPos_title(StringUtil.useNoHtml(positionVO.getPos_title()));
+		positionVO.setPos_content(StringUtil.useBrNoHtml(positionVO.getPos_content()));
 		return new ModelAndView("position_detail", "positionVO", positionVO);
 	}
 	
@@ -109,7 +117,7 @@ public class PositionController
 		PositionVO positionVO = positionService.selectBoard(num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("uploadfile", positionVO.getUploadfile());
+		mav.addObject("uploadfile", positionVO.getPos_uploadfile());
 		return mav;
 	}
 	

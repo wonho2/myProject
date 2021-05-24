@@ -7,8 +7,8 @@
 <form:form action="write.do" commandName="positionVO" enctype="multipart/form-data">
 	<ul>
 		<li>
-			<label for="type">포지션</label>
-			<form:select path="type">
+			<label>포지션</label>
+			<form:select path="pos_type">
 				<form:option value="탑">탑</form:option>
 				<form:option value="정글">정글</form:option>
 				<form:option value="미드">미드</form:option>
@@ -17,18 +17,18 @@
 			</form:select>
 		</li>
 		<li>
-			<label for="title">제목</label>
-			<form:input path="title"/>
-			<form:errors path="title"/>
+			<label>제목</label>
+			<form:input path="pos_title"/>
+			<form:errors path="pos_title"/>
 		</li>
 		<li>
-			<label for="uploadfile">파일 업로드</label>
-			<input type="file" name="uploadfile" accept="image/gif, image/png, image/jpeg">
+			<label>파일 업로드</label>
+			<input type="file" name="pos_uploadfile" accept="image/gif, image/png, image/jpeg">
 		</li>
 		<li>
-			<label for="content">내용</label>
-			<form:textarea path="content"/>
-			<form:errors path="content"/>
+			<label>내용</label>
+			<form:textarea path="pos_content"/>
+			<form:errors path="pos_content"/>
 		</li>
 	</ul>
 		
