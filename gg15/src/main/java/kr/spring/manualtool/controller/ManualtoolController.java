@@ -40,12 +40,12 @@ public class ManualtoolController {
 	}
 	//====게시판 글 등록=======//
 	//등록 폼
-	@RequestMapping(value="/manualtool/write.do",method=RequestMethod.GET)
+	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.GET)
 	public String writeForm() {
 		return "manualtoolWrite";
 	}
 	//전송된 데이터 처리
-	@RequestMapping(value="/manualtool/write.do",method=RequestMethod.POST)
+	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.POST)
 	public String writeSubmit(@Valid ManualtoolVO manualtoolVO,
 			             BindingResult result,
 			             HttpServletRequest request,
@@ -104,11 +104,14 @@ public class ManualtoolController {
 			log.debug("<<manualtool_num>> : " + manualtool_num);
 		}
 		
+		//해당 글의 조회수 증가
+		manualtoolService.updateHit(manualtool_num);
+		
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		//HTML 태그 불허
-		manualtoolVO.setTitle(StringUtil.useNoHtml(manualtoolVO.getTitle()));
+		manualtoolVO.setMan_title(StringUtil.useNoHtml(manualtoolVO.getMan_title()));
 		//HTML 태그 불허 및 줄바꿈 처리
-		manualtoolVO.setContent(StringUtil.useBrNoHtml(manualtoolVO.getContent()));
+		manualtoolVO.setMan_content(StringUtil.useBrNoHtml(manualtoolVO.getMan_content()));
 		
 		return new ModelAndView("manualtoolView", "manualtool", manualtoolVO);
 		
@@ -120,14 +123,14 @@ public class ManualtoolController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("imageFile", manualtoolVO.getUploadfile());
+		mav.addObject("imageFile", manualtoolVO.getMan_uploadfile());
 		
 		return mav;
 	}
 	
 	//=====게시판 글 수정======//
 	//수정 폼
-	@RequestMapping(value="/manualtool/update.do",method=RequestMethod.GET)
+	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.GET)
 	public String formUpdate(@RequestParam int manualtool_num, Model model) {
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		model.addAttribute("manualtoolVO", manualtoolVO);
@@ -135,7 +138,7 @@ public class ManualtoolController {
 		return "manualtoolModify";
 	}
 	//수정 폼에서 전송된 데이터 처리
-	@RequestMapping(value="/manualtool/update.do",method=RequestMethod.POST)
+	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.POST)
 	public String submitUpdate(@Valid ManualtoolVO manualtoolVO,
 			                   BindingResult result,
 			                   HttpServletRequest request) {
