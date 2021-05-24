@@ -12,18 +12,18 @@ import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.position.vo.PositionVO;
 
 public interface ManualtoolDAO {
-	// 글쓰기
+	//글쓰기
 	@Insert("INSERT INTO manualtool (mam_num, mem_num, man_champion, man_season, man_title, man_content, man_uploadfile) "
 			+ "VALUES (manualtool_seq.nextval, #{mam_num}, #{mem_num}, #{man_champion}, #{man_season}, #{man_title}, #{man_content} , #{man_uploadfile})")
 	public void insertBoard(ManualtoolVO vo);
 
-	// 총 레코드 수
+	//총 레코드 수
 	public int selectBoardCount();
 
-	// 글 목록
+	//글 목록
 	public List<ManualtoolVO> selectBoardList(Map<String, Object> map);
 
-	// 글 상세 페이지
+	//글 상세 페이지
 	@Select("SELECT * FROM WHERE man_num = #{boardNum}")
 	public ManualtoolVO selectBoard(int boardNum);
 	
@@ -47,10 +47,10 @@ public interface ManualtoolDAO {
 	@Update("UPDATE manualtool SET man_comment = man_comment-1 WHERE man_num = #{boardNum}")
 	public void updateCommentDown(int boardNum);
 
-	// 글 수정
+	//글 수정
 	public void updateBoard(ManualtoolVO vo);
 
-	// 글 삭제
+	//글 삭제
 	@Delete("DELETE FROM manualtool WHERE man_num=#{man_num}")
 	public void deleteBoard(int boardNum);
 	
