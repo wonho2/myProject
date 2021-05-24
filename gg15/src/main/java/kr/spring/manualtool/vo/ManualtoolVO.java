@@ -9,21 +9,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ManualtoolVO {
 	
-	private int num;
+	private int man_num;
 	private int mem_num;
-	private String champion;
-	private String season;
+	private String man_champion;
+	private String man_season;
 	@NotEmpty
-	private String title, content;
-	private byte[] uploadfile;
-	private Date date, update;
-	private int fav, comment;
-
-	public int getNum() {
-		return num;
+	private String man_title, man_content;
+	private byte[] man_uploadfile;
+	private Date man_date, man_update;
+	private int man_hit, man_fav, man_comment;
+	
+	public int getMan_num() {
+		return man_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setMan_num(int man_num) {
+		this.man_num = man_num;
 	}
 	public int getMem_num() {
 		return mem_num;
@@ -31,59 +31,67 @@ public class ManualtoolVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public String getChampion() {
-		return champion;
+	public String getMan_champion() {
+		return man_champion;
 	}
-	public void setChampion(String champion) {
-		this.champion = champion;
+	public void setMan_champion(String man_champion) {
+		this.man_champion = man_champion;
 	}
-	public String getSeason() {
-		return season;
+	public String getMan_season() {
+		return man_season;
 	}
-	public void setSeason(String season) {
-		this.season = season;
+	public void setMan_season(String man_season) {
+		this.man_season = man_season;
 	}
-	public String getTitle() {
-		return title;
+	public String getMan_title() {
+		return man_title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setMan_title(String man_title) {
+		this.man_title = man_title;
 	}
-	public String getContent() {
-		return content;
+	public String getMan_content() {
+		return man_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setMan_content(String man_content) {
+		this.man_content = man_content;
 	}
-	public byte[] getUploadfile() {
-		return uploadfile;
+	public byte[] getMan_uploadfile() {
+		return man_uploadfile;
 	}
-	public void setUploadfile(byte[] uploadfile) {
-		this.uploadfile = uploadfile;
+	public void setMan_uploadfile(byte[] man_uploadfile) {
+		this.man_uploadfile = man_uploadfile;
 	}
-	public Date getDate() {
-		return date;
+	public Date getMan_date() {
+		return man_date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setMan_date(Date man_date) {
+		this.man_date = man_date;
 	}
-	public Date getUpdate() {
-		return update;
+	public Date getMan_update() {
+		return man_update;
 	}
-	public void setUpdate(Date update) {
-		this.update = update;
+	public void setMan_update(Date man_update) {
+		this.man_update = man_update;
+		
 	}
-	public int getFav() {
-		return fav;
+	public int getMan_hit() {
+		return man_hit;
 	}
-	public void setFav(int fav) {
-		this.fav = fav;
+	public void setMan_hit(int man_hit) {
+		this.man_hit = man_hit;
 	}
-	public int getComment() {
-		return comment;
+	public int getMan_fav() {
+		return man_fav;
 	}
-	public void setComment(int comment) {
-		this.comment = comment;
+	public void setMan_fav(int man_fav) {
+		this.man_fav = man_fav;
 	}
+	public int getMan_comment() {
+		return man_comment;
+	}
+	public void setMan_comment(int man_comment) {
+		this.man_comment = man_comment;
+	}
+
 	
 }

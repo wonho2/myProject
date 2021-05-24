@@ -104,11 +104,14 @@ public class ManualtoolController {
 			log.debug("<<manualtool_num>> : " + manualtool_num);
 		}
 		
+		//해당 글의 조회수 증가
+		manualtoolService.updateHit(manualtool_num);
+		
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		//HTML 태그 불허
-		manualtoolVO.setTitle(StringUtil.useNoHtml(manualtoolVO.getTitle()));
+		manualtoolVO.setMan_title(StringUtil.useNoHtml(manualtoolVO.getMan_title()));
 		//HTML 태그 불허 및 줄바꿈 처리
-		manualtoolVO.setContent(StringUtil.useBrNoHtml(manualtoolVO.getContent()));
+		manualtoolVO.setMan_content(StringUtil.useBrNoHtml(manualtoolVO.getMan_content()));
 		
 		return new ModelAndView("manualtoolView", "manualtool", manualtoolVO);
 		
@@ -120,7 +123,7 @@ public class ManualtoolController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("imageFile", manualtoolVO.getUploadfile());
+		mav.addObject("imageFile", manualtoolVO.getMan_uploadfile());
 		
 		return mav;
 	}
