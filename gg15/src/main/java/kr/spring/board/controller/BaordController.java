@@ -78,7 +78,7 @@ public class BaordController {
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
 	public String Form()
 	{
-		return "WriteForm";
+		return "boardWrite";
 	}
 	//글쓰기 처리
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
