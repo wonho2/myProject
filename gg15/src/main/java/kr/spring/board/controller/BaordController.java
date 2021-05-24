@@ -33,7 +33,7 @@ public class BaordController {
 	private BoardService boardService;
 	
 	//자바빈 초기화
-	@ModelAttribute("boardVO")
+	@ModelAttribute
 	public BoardVO initCommand() {
 		return new BoardVO();
 	}	
@@ -45,23 +45,28 @@ public class BaordController {
 		
 		//총 레코드 수
 		//int count = boardService.selectRowCount();
-		if(log.isDebugEnabled()) {
-			log.debug("<<pageNum>> : " + currentPage);
-			//log.debug("<<count>> : " + count);
-		}
+		//if(log.isDebugEnabled()) {
+		//	log.debug("<<count>> : " + count);
+		//	log.debug("<<pageNum>> : " + currentPage);
+		//}
 		
 		//페이징 처리
-		/*PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
-		List<BoardVO> list = null;
-		if(count > 0) {
-			Map<String,Object> map = new HashMap<String,Object>();
-			map.put("start", page.getStartCount());
-			map.put("end", page.getEndCount());
-			list = boardService.selectList(map);
-		}*/
+		//PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		
+		//목록호출
+		//List<BoardVO> list = null;
+		//if(count > 0) {
+		//	Map<String,Object> map = new HashMap<String,Object>();
+		//	map.put("start", page.getStartCount());
+		//	map.put("end", page.getEndCount());
+			
+		//	list = boardService.selectList(map);
+		//}
 		
 		ModelAndView mav = new ModelAndView();
+		//뷰 이름 설정
 		mav.setViewName("boardList");
+		//데이터 저장
 		//mav.addObject("count", count);
 		//mav.addObject("list",list);
 		//mav.addObject("pagingHtml",page.getPagingHtml());
@@ -73,9 +78,9 @@ public class BaordController {
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
 	public String Form()
 	{
-		return "boardWrite";
+		return "WriteForm";
 	}
-	//전송된 데이터 처리
+	//글쓰기 처리
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
 	public String Submit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
@@ -88,6 +93,7 @@ public class BaordController {
 		boardVO.setMem_num(mem_num);
 		// 글쓰기
 		boardService.insertBoard(boardVO);
+		
 		return "redirect:/board/list.do";
 	}
 
