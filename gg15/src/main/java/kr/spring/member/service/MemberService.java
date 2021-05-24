@@ -23,5 +23,9 @@ public class MemberService {
 	public MemberVO selectCheckMember(String id) {
 		return memberMapper.selectCheckMember(id);
 	}
-	
+	/*//포인트 
+	public void updatePoint(Integer mem_num) {
+		memberMapper.updatePoint(mem_num);
+	}*/
+
 }

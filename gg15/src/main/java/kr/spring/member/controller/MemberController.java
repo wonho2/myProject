@@ -132,7 +132,9 @@ public class MemberController {
 				session.setAttribute("user_num", member.getMem_num());
 				//회원 아이디 저장
 				session.setAttribute("user_id", member.getMem_id());
-				
+				/*
+				memberService.updatePoint(memberVO.getMem_num());
+				session.setAttribute("user_point", memberVO.getPoi_point());*/
 				return "redirect:/main/main.do";
 
 			}else {//인증 실패
@@ -145,6 +147,8 @@ public class MemberController {
 			return formLogin();
 		}
 	}
+	
+	
 	//======회원 로그아웃=======//
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session) {

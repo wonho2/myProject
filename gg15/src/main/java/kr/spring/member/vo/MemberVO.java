@@ -23,7 +23,7 @@ public class MemberVO {
 	@Email
 	@NotEmpty
 	private String mem_email;
-	private int mem_point;
+	private int poi_point;
 	private Date reg_date;
 	private Date modify_date;
 
@@ -97,6 +97,14 @@ public class MemberVO {
 
 	public void setMem_email(String mem_email) {
 		this.mem_email = mem_email;
+	}
+
+	public int getPoi_point() {
+		return poi_point;
+	}
+
+	public void setPoi_point(int poi_point) {
+		this.poi_point = poi_point;
 	}
 
 	public Date getReg_date() {
