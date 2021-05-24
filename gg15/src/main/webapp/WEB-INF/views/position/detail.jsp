@@ -16,7 +16,7 @@
 <div>
 	<h1>${positionVO.pos_title}</h1>
 	<section>
-		[${positionVO.pos_type}] | ${positionVO.pos_date} | 미구현 : 작성자 아이디
+		[${positionVO.pos_type}] | ${positionVO.pos_date} | ${positionVO.mem_nick}
 	</section>
 	<section>
 		조회수 ${positionVO.pos_view} | 추천수 ${positionVO.pos_fav} | 댓글수 ${positionVO.pos_comment}

@@ -25,7 +25,6 @@ public interface PositionDAO
 	public void insertBoard(PositionVO vo);
 	
 	// 게시물 상세 페이지
-	@Select("SELECT * FROM position WHERE pos_num = #{boardNum}")
 	public PositionVO selectBoard(int boardNum);
 	
 	// 게시물 수정
