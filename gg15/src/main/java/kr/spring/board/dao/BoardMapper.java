@@ -12,7 +12,8 @@ import kr.spring.board.vo.BoardVO;
 
 public interface BoardMapper {
 	//글쓰기
-	@Insert("INSERT INTO board (board_num,title,content,uploadfile,filename,ip,mem_num) VALUES (sprboard_seq.nextval,#{title},#{content},#{uploadfile},#{filename},#{ip},#{mem_num})")
+	@Insert("INSERT INTO board (boa_num,boa_cate,boa_title,boa_uploadfile,boa_content,boa_mode,mem_num) "
+		+ "VALUES (board_seq.nextval,#{boa_cate},#{title},#{upload},#{content},#{bod_mode},#{mem_num})")
 	public void insertBoard(BoardVO board);
 
 	//총 레코드 수

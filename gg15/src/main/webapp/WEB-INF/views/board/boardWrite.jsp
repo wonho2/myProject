@@ -9,7 +9,7 @@
 		<ul>
 			<!-- 게시판 선택 -->
 			<li>
-			<select name="list">
+			<select name="table">
 			<optgroup label="게시판 선택">
 				<option value="MANUALTOOL">공략 게시판블</option>
 				<option value="POSITION">포지션 게시판</option>
