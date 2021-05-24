@@ -40,7 +40,7 @@
 	<li>
 		<a href="${pageContext.request.contextPath}/news/list.do">뉴스게시판</a>
 	</li>
-</ul> 
+</ul>   
 
 
 
