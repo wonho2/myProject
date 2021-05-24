@@ -86,8 +86,7 @@ public class PositionController
 			return "position_write";
 		}
 		// 정보 셋팅
-		// Integer mem_num = (Integer)session.getAttribute("user_num"); // 로그인 미구현
-		Integer mem_num = 1; // 임시
+		Integer mem_num = (Integer)session.getAttribute("user_num"); // 로그인 미구현
 		positionVO.setMem_num(mem_num);
 		// 글쓰기
 		positionService.insertBoard(positionVO);
