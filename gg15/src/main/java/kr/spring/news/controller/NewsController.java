@@ -23,7 +23,7 @@ import kr.spring.news.service.NewsService;
 import kr.spring.news.vo.NewsVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
-
+    
 @Controller
 public class NewsController {
 	private Logger log = Logger.getLogger(this.getClass());
