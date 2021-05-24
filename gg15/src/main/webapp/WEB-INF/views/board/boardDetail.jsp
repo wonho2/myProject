@@ -9,7 +9,7 @@
 	<div>
 		<input type="button" value="수정" onclick="location.href='boardModify.do?num=${boardVO.boas_num}'">
 		<input type="button" value="삭제" onclick="location.href='boardDelete.do?num=${boardVO.boa_num}'" id="btn_delete">
-	</div>
+	</div>  
 </c:if>
 
 <!-- 게시물 상세 -->
