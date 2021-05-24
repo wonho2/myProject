@@ -71,7 +71,7 @@ public class BaordController {
 		//mav.addObject("list",list);
 		//mav.addObject("pagingHtml",page.getPagingHtml());
 		
-		return mav;
+		return mav;  
 	}
 		
 	//자유게시판 게시글 쓰기
