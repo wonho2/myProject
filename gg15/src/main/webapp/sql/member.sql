@@ -16,7 +16,7 @@ create table member(
 create table member_detail(
 	mem_num number not null,/*회원 식별번호*/
 	mem_name varchar2(15) not null, /*이름*/
-	mem_pw varchar2(15) not null, /*비밀번호*/
+	mem_pw varchar2(15) not null, 
 	mem_nick varchar2(15) not null, /*닉네임*/
 	mem_phone varchar2(15) not null, /*전화번호*/
 	mem_email varchar2(50) not null, /*이메일*/
