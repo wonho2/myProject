@@ -25,7 +25,11 @@ public interface ManualtoolDAO {
 
 	// 글 상세 페이지
 	@Select("SELECT * FROM WHERE man_num = #{boardNum}")
-	public ManualtoolVO selectBoard(int board_num);
+	public ManualtoolVO selectBoard(int boardNum);
+	
+	//조회수 증가
+	@Update("UPDATE manualtool SET man_hit = man_hit+1 WHERE man_num = #{boardNum}")
+	public void updateHit(Integer boardNum);
 
 	//추천수 증가
 	@Update("UPDATE manualtool SET man_fav = man_fav+1 WHERE man_num = #{boardNum}")
@@ -48,6 +52,6 @@ public interface ManualtoolDAO {
 
 	// 글 삭제
 	@Delete("DELETE FROM manualtool WHERE man_num=#{man_num}")
-	public void deleteBoard(int board_num);
+	public void deleteBoard(int boardNum);
 	
 }

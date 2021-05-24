@@ -8,6 +8,7 @@ create table manualtool(
     man_title varchar2(60) not null,
     man_content clob not null,
     man_uploadfile blob not null,
+    man_hit number not null,
     man_comment number default 0 not null,
     man_fav number default 0 not null,
     constraint manualtool_fk foreign key(mem_num)
