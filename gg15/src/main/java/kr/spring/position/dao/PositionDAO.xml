@@ -16,11 +16,11 @@
 		              <![CDATA[
 		              REPLACE(REPLACE(p.pos_title,'<','&lt;'),'>','&gt;') pos_title,
 		              ]]>
-		              m.mem_id,
+		              m.mem_nick,
 		              p.pos_date,
 		              p.pos_view,
 		              p.pos_fav 
-		              FROM position p JOIN member m ON p.mem_num = m.mem_num ORDER BY p.pos_num DESC)a)
+		              FROM position p JOIN member_detail m ON p.mem_num = m.mem_num ORDER BY p.pos_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
