@@ -15,6 +15,15 @@
 	</c:if>
 	<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 </div>
+
+<!-- 전예원 : 뷰 테스트 해보느라 메뉴 추가했습니다 -->
+<div>
+	<ul>
+		<li>
+			<a href="${pageContext.request.contextPath}/position/list.do">포지션게시판</a>
+		</li>
+	</ul>
+</div>
 <!-- 상단 끝 -->
 
 

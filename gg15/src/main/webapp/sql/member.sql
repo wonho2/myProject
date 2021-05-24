@@ -25,9 +25,15 @@ create table member_detail(
 	constraint member_detail_fk foreign key (mem_num) 
 	references member (mem_num)
 );
+<<<<<<< HEAD
 /*
  * 회원 포인트
  */
+=======
+
+create sequence member_seq;
+
+>>>>>>> branch 'main' of https://github.com/wonho2/myProject.git
 create table point(
 	poi_num number not null, /*포인트 식별번호*/
 	mem_num number not null, /*회원 식별번호*/

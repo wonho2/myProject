@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/position.css">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 	<div id="position_main_search">
 		<tiles:insertAttribute name="search"/>
 	</div>
-		<div id="main_footer">
+	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
