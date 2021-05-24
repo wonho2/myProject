@@ -72,7 +72,6 @@ public class ManualtoolVO {
 	}
 	public void setMan_update(Date man_update) {
 		this.man_update = man_update;
-		
 	}
 	public int getMan_hit() {
 		return man_hit;
