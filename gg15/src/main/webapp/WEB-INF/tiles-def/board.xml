@@ -7,13 +7,15 @@
 <tiles-definitions>
 	<definition name="boardList" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판"/>
+		<put-attribute name="board_cate" value="/WEB-INF/views/board/board_cate.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp"/>
 	</definition>
 	
-	<definition name="boardWrite" template="/WEB-INF/views/board/boar_write.jsp">
+	<definition name="boardWrite">
 		<put-attribute name="title" value="gg.15 - 자유 게시판 글쓰기"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/boardWrite.jsp"/>
 	</definition>
+	
 </tiles-definitions>
 
 

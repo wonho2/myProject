@@ -7,18 +7,6 @@
 	<form:form action="write.do" commandName="boardVO"
 	               enctype="multipart/form-data">
 		<ul>
-			<!-- 게시판 선택 -->
-			<li>
-			<select name="table">
-			<optgroup label="게시판 선택">
-				<option value="MANUALTOOL">공략 게시판블</option>
-				<option value="POSITION">포지션 게시판</option>
-				<option value="PARTY">파티모집 게시판</option>
-				<option value="BOARD">자유 게시판</option>
-				<option value="NEWS">뉴스 게시판</option>
-			</optgroup>
-			</select>
-			</li>
 			<!-- 말머리 선택 -->
 			<li>
 			<select name="boa_cate">
@@ -37,21 +25,21 @@
 			</li>
 			<!-- 제목 -->
 			<li>
-				<label for="title">제목</label>
-				<form:input path="title"/>
-				<form:errors path="title" cssClass="error-color"/>
+				<label for="boa_title">제목</label>
+				<form:input path="boa_title"/>
+				<form:errors path="boa_title" cssClass="error-color"/>
 			</li>
 			<!-- 첨부파일 -->
 			<li>
-				<label for="upload">첨부파일</label>
-				<input type="file" name="upload" id="upload"
+				<label for="boa_upload">첨부파일</label>
+				<input type="file" name="boa_upload" id="boa_upload"
 				                  accept="image/gif,image/png,image/jpeg,video/mp4,video/avi">
 			</li>
 			<!-- 내용 -->
 			<li>
-				<label for="content">내용</label>
-				<form:textarea path="content"/>
-				<form:errors path="content" cssClass="error-color"/>
+				<label for="boa_content">내용</label>
+				<form:textarea path="boa_content"/>
+				<form:errors path="boa_content" cssClass="error-color"/>
 			</li>
 			<!-- 공개범위 설정 -->
 			<li>
