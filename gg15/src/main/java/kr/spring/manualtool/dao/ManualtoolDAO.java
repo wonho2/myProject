@@ -29,7 +29,7 @@ public interface ManualtoolDAO {
 	
 	//조회수 증가
 	@Update("UPDATE manualtool SET man_hit = man_hit+1 WHERE man_num = #{boardNum}")
-	public void updateHit(Integer boardNum);
+	public void updateHit(int boardNum);
 
 	//추천수 증가
 	@Update("UPDATE manualtool SET man_fav = man_fav+1 WHERE man_num = #{boardNum}")
