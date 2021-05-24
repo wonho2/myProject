@@ -9,13 +9,13 @@
 		<ul>
 			<li>
 				<label for="id">아이디</label>
-				<form:input path="id"/>
-				<form:errors path="id" cssClass="error-color"/>
+				<form:input path="mem_id"/>
+				<form:errors path="mem_id" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="passwd">비밀번호</label>
-				<form:password path="passwd"/>
-				<form:errors path="passwd" cssClass="error-color"/>
+				<form:password path="mem_pw"/>
+				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li>
 		</ul>
 		<div class="align-center">

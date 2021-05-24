@@ -9,35 +9,35 @@
 		<ul>
 			<li>
 				<label for="id">아이디</label>
-				<form:input path="id"/>
+				<form:input path="mem_id"/>
 				<input type="button" id="confirmId" value="ID중복체크">
 				<span id="message_id"></span>
-				<form:errors path="id" cssClass="error-color"/>
+				<form:errors path="mem_id" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="name">이름</label>
-				<form:input path="name"/>
-				<form:errors path="name" cssClass="error-color"/>
+				<form:input path="mem_name"/>
+				<form:errors path="mem_name" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="nick">닉네임</label>
-				<form:input path="nick"/>
-				<form:errors path="nick" cssClass="error-color"/>
+				<form:input path="mem_nick"/>
+				<form:errors path="mem_nick" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="passwd">비밀번호</label>
-				<form:password path="passwd"/>
-				<form:errors path="passwd" cssClass="error-color"/>
+				<form:password path="mem_pw"/>
+				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="phone">전화번호</label>
-				<form:input path="phone"/>
-				<form:errors path="phone" cssClass="error-color"/>
+				<form:input path="mem_phone"/>
+				<form:errors path="mem_phone" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="email">이메일</label>
-				<form:input path="email"/>
-				<form:errors path="email" cssClass="error-color"/>
+				<form:input path="mem_email"/>
+				<form:errors path="mem_email" cssClass="error-color"/>
 			</li>
 		</ul> 
 		<div class="align-center">
