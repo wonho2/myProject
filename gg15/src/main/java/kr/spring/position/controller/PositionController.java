@@ -64,7 +64,7 @@ public class PositionController
 		mav.addObject("count", count);
 		mav.addObject("boardList", boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
-		return mav;
+		return mav;  
 	}
 	
 /*

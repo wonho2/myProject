@@ -16,7 +16,7 @@ public class PositionVO
 	private String pos_title, pos_content;
 	private byte[] pos_uploadfile;
 	private Date pos_date;
-	private int pos_view, pos_fav, pos_comment;
+	private int pos_view, pos_fav, pos_comment;  
 	
 	public int getPos_num() {
 		return pos_num;
