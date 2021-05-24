@@ -5,21 +5,20 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="newsList" extends="main">
+	<definition name="list" extends="main">
+		<put-attribute name="new_title" value="게시판 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/news/list.jsp"/>
+	</definition>
+	<definition name="newsWrite" extends="main">
+		<put-attribute name="new_title" value="글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/news/newsWrite.jsp"/>
+	</definition>
+	<definition name="newsView" extends="main">
+		<put-attribute name="new_title" value="게시판 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/news/newsView.jsp"/>
+	</definition>
+	<definition name="newsModify" extends="main">
+		<put-attribute name="new_title" value="게시판 글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/news/newsModify.jsp"/>
 	</definition>
 </tiles-definitions>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
