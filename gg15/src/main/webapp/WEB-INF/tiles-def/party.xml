@@ -6,13 +6,26 @@
 
 <tiles-definitions>
 	<definition name="partyList" extends="main">
+		<put-attribute name="title" value="15 gg - 파티 게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/party/partyList.jsp"/>
 	</definition>
+	
+	<definition name="partyWrite" extends="main">
+		<put-attribute name="title" value="15 gg - 파티 게시판 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/party/partyWrite.jsp"/>
+	</definition>
+	
+	<definition name="partyDetail" extends="main">
+		<put-attribute name="title" value="15 gg - 파티 게시판 게시물"/>
+		<put-attribute name="body" value="/WEB-INF/views/party/partyLayoutDetail.jsp"/>
+	</definition>
+	
+	<definition name="partyModify" extends="main">
+		<put-attribute name="title" value="15 gg - 포지션 게시판 글쓰기 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/party/partyModify.jsp"/>
+	</definition>
+	
 </tiles-definitions>
-
-
-
-
-
 
 
 

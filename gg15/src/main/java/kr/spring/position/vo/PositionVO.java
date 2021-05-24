@@ -12,12 +12,12 @@ public class PositionVO
 	private int pos_num;
 	private String pos_type;
 	private int mem_num;
+	private String mem_nick;
 	@NotEmpty
 	private String pos_title, pos_content;
 	private byte[] pos_uploadfile;
 	private Date pos_date;
-	private int pos_view, pos_fav, pos_comment;  
-	
+	private int pos_view, pos_fav, pos_comment;
 	public int getPos_num() {
 		return pos_num;
 	}
@@ -36,6 +36,12 @@ public class PositionVO
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+	public String getMem_nick() {
+		return mem_nick;
+	}
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
 	public String getPos_title() {
 		return pos_title;
 	}
@@ -51,6 +57,7 @@ public class PositionVO
 	public byte[] getPos_uploadfile() {
 		return pos_uploadfile;
 	}
+	// 파일 업로드 코드 수정
 	public void setPos_uploadfile(MultipartFile pos_uploadfile) throws IOException{
 		this.pos_uploadfile = pos_uploadfile.getBytes();
 	}
@@ -77,5 +84,5 @@ public class PositionVO
 	}
 	public void setPos_comment(int pos_comment) {
 		this.pos_comment = pos_comment;
-	}
+	}  
 }

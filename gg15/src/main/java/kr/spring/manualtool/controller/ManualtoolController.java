@@ -53,7 +53,7 @@ public class ManualtoolController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
-			return "writeForm";
+			return "manualtoolWrite";
 		}
 		
 		//회원 번호 셋팅
@@ -80,18 +80,18 @@ public class ManualtoolController {
 		//페이징 처리
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		
-		List<ManualtoolVO> manualtoolList = null;
+		List<ManualtoolVO> boardList = null;
 		if(count > 0) {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			manualtoolList = manualtoolService.selectBoardList(map);
+			boardList = manualtoolService.selectBoardList(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("manualtoolList");
 		mav.addObject("count", count);
-		mav.addObject("list", manualtoolList);
+		mav.addObject("boardList", boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		
 		return mav;

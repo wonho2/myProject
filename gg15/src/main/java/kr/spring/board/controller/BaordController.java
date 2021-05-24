@@ -45,56 +45,57 @@ public class BaordController {
 		
 		//총 레코드 수
 		//int count = boardService.selectRowCount();
-		if(log.isDebugEnabled()) {
-			log.debug("<<pageNum>> : " + currentPage);
-			//log.debug("<<count>> : " + count);
-		}
+		//if(log.isDebugEnabled()) {
+		//	log.debug("<<count>> : " + count);
+		//	log.debug("<<pageNum>> : " + currentPage);
+		//}
 		
 		//페이징 처리
-		/*PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
-		List<BoardVO> list = null;
-		if(count > 0) {
-			Map<String,Object> map = new HashMap<String,Object>();
-			map.put("start", page.getStartCount());
-			map.put("end", page.getEndCount());
-			list = boardService.selectList(map);
-		}*/
+		//PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		
+		//목록호출
+		//List<BoardVO> list = null;
+		//if(count > 0) {
+		//	Map<String,Object> map = new HashMap<String,Object>();
+		//	map.put("start", page.getStartCount());
+		//	map.put("end", page.getEndCount());
+			
+		//	list = boardService.selectList(map);
+		//}
 		
 		ModelAndView mav = new ModelAndView();
+		//뷰 이름 설정
 		mav.setViewName("boardList");
+		//데이터 저장
 		//mav.addObject("count", count);
 		//mav.addObject("list",list);
 		//mav.addObject("pagingHtml",page.getPagingHtml());
-		   
-		return mav;
+		
+		return mav;  
 	}
-	
-	
-	//자유게시판 게시글 등록
-		//등록 폼
+		
+	//자유게시판 게시글 쓰기
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
-	public String writeForm()
+	public String Form()
 	{
 		return "boardWrite";
 	}
-	
+	//글쓰기 처리
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
-	public String writeSubmit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
+	public String Submit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
 		// 유효성 오류가 있는 경우
-		if(result.hasErrors()) return writeForm();
+		if(result.hasErrors()) {
+			return "boardWrite";
+		}
 		// 정보 셋팅
-		//Integer mem_num = (Integer)session.getAttribute("mem_num");
-		//boardVO.setMem_num(mem_num);
+		Integer mem_num = (Integer)session.getAttribute("mem_num");
+		boardVO.setMem_num(mem_num);
 		// 글쓰기
 		boardService.insertBoard(boardVO);
+		
 		return "redirect:/board/list.do";
 	}
 
-		
-	
 
-		
-		
-	
 }
