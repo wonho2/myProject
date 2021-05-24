@@ -19,6 +19,12 @@ public class ManualtoolVO {
 	private Date man_date, man_update;
 	private int man_hit, man_fav, man_comment;
 	
+	//업로드 파일 처리
+		public void setMan_uploadfile(MultipartFile man_uploadfile)throws IOException{
+			//MultipartFile -> byte[] 변환
+			setMan_uploadfile(man_uploadfile.getBytes());
+		}
+
 	public int getMan_num() {
 		return man_num;
 	}
