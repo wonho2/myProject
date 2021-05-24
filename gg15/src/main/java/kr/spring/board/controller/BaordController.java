@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
 import kr.spring.manualtool.vo.ManualtoolVO;
+import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -36,9 +37,7 @@ public class BaordController {
 	public BoardVO initCommand() {
 		return new BoardVO();
 	}	
-	
-
-	
+		
 	//자유게시판  목록
 	@RequestMapping("/board/list.do")
 	public ModelAndView process(
@@ -73,29 +72,25 @@ public class BaordController {
 	
 	//자유게시판 게시글 등록
 		//등록 폼
-		@RequestMapping(value="/boarad/Write.do",method=RequestMethod.GET)
-		public String writeForm() {
-			return "boardWrite";
-		}
-		//전송된 데이터 처리
-		@RequestMapping(value="/board/Write.do",method=RequestMethod.POST)
-		public String writeSubmit(@Valid BoardVO BoardVO,
-				             BindingResult result,
-				             HttpServletRequest request,
-				             HttpSession session) {
-			
-			//유효성 체크 결과 오류가 있으면 폼 호출
-			if(result.hasErrors()) {
-				return "writeForm";
-			}
-			
-			//회원 번호 셋팅
-			//BoardVO.setMem_num((Integer)session.getAttribute("mem_num"));
-			//글쓰기
-			boardService.insertBoard(BoardVO);
-			
-			return "redirect:/board/list.do";
-		}
+	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
+	public String writeForm()
+	{
+		return "boardWrite";
+	}
+	
+	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
+	public String writeSubmit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
+	{
+		// 유효성 오류가 있는 경우
+		if(result.hasErrors()) return writeForm();
+		// 정보 셋팅
+		//Integer mem_num = (Integer)session.getAttribute("mem_num");
+		//boardVO.setMem_num(mem_num);
+		// 글쓰기
+		boardService.insertBoard(boardVO);
+		return "redirect:/board/list.do";
+	}
+
 		
 	
 
