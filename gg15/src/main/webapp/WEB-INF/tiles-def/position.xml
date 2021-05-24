@@ -5,36 +5,14 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="position_list" template="/WEB-INF/views/position/layout_list.jsp">
+	<definition name="position_list" extends="main">
 		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="menu_type" value="/WEB-INF/views/position/menu_type.jsp"/>
-		<put-attribute name="menu_sort" value="/WEB-INF/views/position/menu_sort.jsp"/>
-		<put-attribute name="boardList" value="/WEB-INF/views/position/boardList.jsp"/>
-		<put-attribute name="search" value="/WEB-INF/views/position/search.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/position/boardList.jsp"/>
 	</definition>
 	
-	<definition name="position_write" template="/WEB-INF/views/position/layout_write.jsp">
-		<put-attribute name="title" value="15 gg - 포지션 게시판 글쓰기"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+	<definition name="position_write" extends="main">
+		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
 		<put-attribute name="body" value="/WEB-INF/views/position/write.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
-	</definition>
-	
-	<definition name="position_detail" template="/WEB-INF/views/position/layout_detail.jsp">
-		<put-attribute name="title" value="15 gg - 포지션 게시판 게시물"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="board_detail" value="/WEB-INF/views/position/detail.jsp"/>
-		<put-attribute name="board_comment" value="/WEB-INF/views/position/comment.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
-	</definition>
-	
-	<definition name="position_modify" template="/WEB-INF/views/position/layout_write.jsp">
-		<put-attribute name="title" value="15 gg - 포지션 게시판 글쓰기"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/position/modify.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
 </tiles-definitions>
 

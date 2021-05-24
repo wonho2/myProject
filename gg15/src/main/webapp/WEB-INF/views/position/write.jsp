@@ -9,11 +9,11 @@
 		<li>
 			<label for="type">포지션</label>
 			<form:select path="type">
-				<form:options value="탑"/>
-				<form:options value="정글"/>
-				<form:options value="미드"/>
-				<form:options value="원딜"/>
-				<form:options value="서포터"/>
+				<form:option value="탑">탑</form:option>
+				<form:option value="정글">정글</form:option>
+				<form:option value="미드">미드</form:option>
+				<form:option value="원딜">원딜</form:option>
+				<form:option value="서포터">서포터</form:option>
 			</form:select>
 		</li>
 		<li>
