@@ -18,7 +18,7 @@ create table member_detail(
 	mem_name varchar2(15) not null, /*이름*/
 	mem_pw varchar2(15) not null, /*비밀번호*/
 	mem_nick varchar2(15) not null, /*닉네임*/
-	mem_phone varchar2(15) not null, /*전화번호*/
+	mem_phone varchar2(15) not null, /*전화번호 gg*/
 	mem_email varchar2(50) not null, /*이메일*/
 	mem_date date default sysdate not null, /*가입일*/
 	constraint member_detail_pk primary key (mem_num),
