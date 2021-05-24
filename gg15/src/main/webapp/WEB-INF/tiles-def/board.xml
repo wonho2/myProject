@@ -6,6 +6,8 @@
 
 <tiles-definitions>
 	<definition name="boardList" extends="main">
+		<put-attribute name="title" value="Star Hompy 회원제 서비스"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp"/>
 	</definition>
 </tiles-definitions>
 
