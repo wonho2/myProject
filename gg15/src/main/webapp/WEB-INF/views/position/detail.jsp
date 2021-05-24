@@ -5,7 +5,7 @@
 
 <!-- 포지션게시판 : 게시물 디테일 시작 -->
 <!-- 수정, 삭제 버튼 -->
-<c:if test="${mem_num == positionVO.mem_num}">
+<c:if test="${user_num == positionVO.mem_num}">
 	<div>
 		<input type="button" value="수정" onclick="location.href='modify.do?num=${num}'">
 		<input type="button" value="삭제" onclick="location.href='delete.do?num=${num}'" id="btn_delete">
@@ -14,24 +14,20 @@
 
 <!-- 게시물 상세 -->
 <div>
-	<h1>${positionVO.title}</h1>
+	<h1>${positionVO.pos_title}</h1>
 	<section>
-		[${positionVO.type}] | ${positionVO.date} | <!-- 미구현 : ${작성자 아이디} -->
+		[${positionVO.pos_type}] | ${positionVO.pos_date} | 미구현 : 작성자 아이디
 	</section>
 	<section>
-		조회수 ${positionVO.view} | 추천수 ${positionVO.fav} | 댓글수 ${positionVO.comment}
+		조회수 ${positionVO.pos_view} | 추천수 ${positionVO.pos_fav} | 댓글수 ${positionVO.pos_comment}
 	</section>
+	
 	<hr size="1" noshade="noshade" width="100%">
-	<c:if test="${fn:endsWith(positionVO.uploadfile,'.jpg') ||
-					fn:endsWith(positionVO.uploadfile,'.JPG') ||
-					fn:endsWith(positionVO.uploadfile,'.gif') ||
-					fn:endsWith(positionVO.uploadfile,'.GIF') ||
-					fn:endsWith(positionVO.uploadfile,'.png') ||
-					fn:endsWith(positionVO.uploadfile,'.PNG')}">
-		<div>
-			<img src="imageView.do?num=${num}">
-		</div>
-	</c:if>
+	<div>
+		<!-- 미구현 : 업로드 파일 보여주기 -->
+		${positionVO.pos_content}
+	</div>
+	 
 	<div>
 		<input type="button" value="추천" id="btn_fav">
 	</div>
