@@ -50,13 +50,13 @@
 		</ul>
 		<div class="align-center">
 			<!-- 목록 -->
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="button" id="list" value="목록" onclick="location.href='list.do'">
 			<!-- 미리보기 -->
-			<input type="button" value="미리보기" >
+			<input type="button" id="" value="미리보기" >
 			<!-- 임시 저장 -->
-			<input type="button" value="임시저장">
+			<input type="button" id="" value="임시저장">
 			<!-- 저장 -->
-			<input type="submit" value="등록">
+			<input type="submit" id="save" value="등록">
 		</div>
 	</form:form>
 </div>

@@ -24,9 +24,9 @@ public class BoardService {
 	}
 
 	//총 게시물 수
-	public int selectRowCount() {
-		return boardMapper.selectRowCount();
-	}
+	//public int selectRowCount() {
+	//	return boardMapper.selectRowCount();
+	//}
 
 	//글쓰기
 	public void insertBoard(BoardVO board) {
