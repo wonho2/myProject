@@ -36,8 +36,8 @@ public class NewsController {
 	@ModelAttribute("newsVO")
 	public NewsVO initCommand() {
 		return new NewsVO();
-	}
-	//====게시판 글 등록=======//
+	} 
+	//====게시판 글 등록=======// 
 	//등록 폼
 	@RequestMapping(value="/news/newsWrite.do",method=RequestMethod.GET)
 	public String form() {
