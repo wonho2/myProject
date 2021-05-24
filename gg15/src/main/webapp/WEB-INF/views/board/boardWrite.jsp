@@ -49,20 +49,14 @@
 			</li>
 		</ul>
 		<div class="align-center">
+			<!-- 목록 -->
+			<input type="button" value="목록" onclick="location.href='list.do'">
 			<!-- 미리보기 -->
-			<!-- 
-			다음에서 소스 잘라옴
-			<button id="preview-btn" type="button" class="btn_g">미리보기</button>-->
-			<input type="button" value="미리보기" id="preview-btn" class="btn_g" >
+			<input type="button" value="미리보기" >
 			<!-- 임시 저장 -->
-			<!-- 
-			다음에서 소스 잘라옴
-			<button id="draft-save-btn" type="button" class="btn_g btn_save">임시저장</button>  -->
-			<input type="button" value="임시저장" id="draft-save-btn" class="btn_g btn_save">
+			<input type="button" value="임시저장">
 			<!-- 저장 -->
-			<input type="submit" value="전송">
-			<input type="button" value="목록"
-			               onclick="location.href='list.do'">
+			<input type="submit" value="등록">
 		</div>
 	</form:form>
 </div>
