@@ -1,5 +1,5 @@
 create table manualtool(
-	mam_num number not null primary key,
+	man_num number not null primary key,
     mem_num number not null,
     man_champion varchar2(20) not null,
     man_season varchar2(2) not null,
@@ -17,22 +17,22 @@ create table manualtool(
 
 create table manualtool_reply(
     mar_num number not null primary key,
-    mam_num number not null,
+    man_num number not null,
     mem_num number not null,
     mar_content varchar2(400) not null,
     mar_date date not null,
 	constraint manualtool_reply_fk1 foreign key (mem_num)
 	references member (mem_num),
-    constraint manualtool_reply_fk2 foreign key (mam_num)
-    references manualtool (mam_num)
+    constraint manualtool_reply_fk2 foreign key (man_num)
+    references manualtool (man_num)
 );
 
 create table manualtool_fav(
     maf_num number not null primary key,
-    mam_num number not null,
+    man_num number not null,
     mem_num number not null,
     constraint manualtool_fav_fk1 foreign key (mem_num)
 	references member (mem_num),
-    constraint manualtool_fav_fk2 foreign key (mam_num)
-    references manualtool (mam_num)
+    constraint manualtool_fav_fk2 foreign key (man_num)
+    references manualtool (man_num)
 );
