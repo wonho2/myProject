@@ -117,12 +117,11 @@ public class PositionController
 	}
 	
 /*
- * 게시물 수정
+ * 게시물 수정 (완성)
  */
 	@RequestMapping(value="/position/modify.do", method=RequestMethod.GET)
 	public String modifyForm(@RequestParam int num, Model model)
 	{
-		
 		PositionVO positionVO = positionService.selectBoard(num);
 		model.addAttribute("positionVO", positionVO);
 		return "position_modify";
@@ -135,7 +134,7 @@ public class PositionController
 		if(result.hasErrors()) return "position_modify";
 		
 		positionService.updateBoard(positionVO);
-		return "redirect:/board/list.do";
+		return "redirect:/position/list.do";
 	}
 /*
  * 게시물 삭제

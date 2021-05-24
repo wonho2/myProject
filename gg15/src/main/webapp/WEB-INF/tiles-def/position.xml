@@ -19,4 +19,9 @@
 		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
 		<put-attribute name="body" value="/WEB-INF/views/position/detail.jsp"/>
 	</definition>
+	
+	<definition name="position_modify" extends="main">
+		<put-attribute name="title" value="15 gg - 포지션 게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/position/modify.jsp"/>
+	</definition>
 </tiles-definitions>

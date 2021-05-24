@@ -34,4 +34,15 @@
 			FROM position p JOIN member_detail m ON p.mem_num = m.mem_num 
 			WHERE pos_num = #{boardNum}
 	</select>
+	
+<!-- 게시물 수정 -->
+	<update id="updateBoard" parameterType="positionVO">
+		UPDATE position SET	
+			<if test="pos_uploadfile != null">
+				pos_uploadfile = #{pos_uploadfile},
+			</if>
+			pos_title = #{pos_title},
+			pos_content = #{pos_content} 
+			WHERE pos_num = #{pos_num}
+	</update>
 </mapper>

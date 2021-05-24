@@ -83,6 +83,8 @@
 	    <!-- 로그인 여부 체크 -->
 		<interceptor>
 			<mapping path="/position/write.do"/>
+			<mapping path="/position/modify.do"/>
+			<mapping path="/position/delete.do"/>
 			<beans:bean class="kr.spring.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
