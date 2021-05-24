@@ -41,7 +41,7 @@ public class PositionController
 	}
 
 /*
- * 게시물 목록
+ * 게시물 목록 (완성)
  */
 	@RequestMapping("/position/list.do")
 	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
@@ -62,13 +62,12 @@ public class PositionController
 		mav.setViewName("position_list");
 		mav.addObject("count", count);
 		mav.addObject("boardList", boardList);
-		log.debug("boardList : " + boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		return mav;  
 	}
 	
 /*
- * 게시판 글쓰기
+ * 게시판 글쓰기 (완성)
  */
 	@RequestMapping(value="/position/write.do", method=RequestMethod.GET)
 	public String writeForm()
@@ -80,13 +79,9 @@ public class PositionController
 	public String writeSubmit(@Valid PositionVO positionVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
 		// 유효성 오류가 있는 경우
-		if(result.hasErrors())
-		{
-			log.debug(result);
-			return "position_write";
-		}
+		if(result.hasErrors()) return "position_write";
 		// 정보 셋팅
-		Integer mem_num = (Integer)session.getAttribute("user_num"); // 로그인 미구현
+		Integer mem_num = (Integer)session.getAttribute("user_num");
 		positionVO.setMem_num(mem_num);
 		// 글쓰기
 		positionService.insertBoard(positionVO);
@@ -96,7 +91,7 @@ public class PositionController
 /*
  * 게시물 내용보기
  */
-	// 게시물 상세
+	// 게시물 상세 (완성)
 	@RequestMapping("/position/detail.do")
 	public ModelAndView boardDetail(@RequestParam int num)
 	{
@@ -113,6 +108,7 @@ public class PositionController
 	@RequestMapping("/position/imageView.do")
 	public ModelAndView imageView(@RequestParam int num)
 	{
+		log.debug("이미지 출력 호출");
 		PositionVO positionVO = positionService.selectBoard(num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");

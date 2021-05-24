@@ -3,4 +3,50 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.manualtool.dao.ManualtoolDAO">
+
+<!-- 총 레코드 수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM manualtool t
+		JOIN member m
+		ON t.mem_num = m.mem_num
+	</select>
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map"
+	                                   resultType="manualtoolVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.man_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(t.title, '<', '&lt;'), '>', '&gt;') man_title,
+		              ]]>
+		              t.man_hit,
+		              t.man_update,
+		              t.mem_num,
+		              m.mem_id
+		           FROM manualtool t
+		           JOIN member m
+		           ON t.mem_num=m.mem_num
+		           ORDER BY t.man_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	<!-- 글 수정 -->
+	<update id="updateBoard" parameterType="manualtoolVO">
+		UPDATE manualtool SET
+			<if test="filename != ''">
+			man_uploadfile=#{man_uploadfile},
+			</if>	
+			man_title=#{man_title},
+			man_content=#{man_content},
+			man_update=SYSDATE
+		WHERE man_num=#{man_num}
+	</update>
+
 </mapper>

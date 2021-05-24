@@ -26,8 +26,8 @@
 			<tr>
 				<td>${positionVO.pos_num}</td>
 				<td>${positionVO.pos_type}</td>
-				<td>${positionVO.pos_title}</td>
-				<td>미구현 : 작성자 아이디</td>
+				<td><a href="detail.do?num=${positionVO.pos_num}">${positionVO.pos_title}</a></td>
+				<td>${positionVO.mem_nick}</td>
 				<td>${positionVO.pos_date}</td>
 				<td>${positionVO.pos_view}</td>
 				<td>${positionVO.pos_fav}</td>
