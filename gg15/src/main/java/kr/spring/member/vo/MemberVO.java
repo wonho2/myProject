@@ -23,6 +23,7 @@ public class MemberVO {
 	@Email
 	@NotEmpty
 	private String mem_email;
+	private int mem_point;
 	private Date reg_date;
 	private Date modify_date;
 

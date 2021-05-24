@@ -37,8 +37,7 @@ create sequence member_seq;
 create table point(
 	poi_num number not null, /*포인트 식별번호*/
 	mem_num number not null, /*회원 식별번호*/
-	poi_add number(7), /*적립 포인트*/
-	poi_minus number(7), /*차감 포인트*/
+	poi_point number(10) default 0,
 	poi_detail varchar2(90) not null, /*적립/차감 사유(글 작성,충전 등)*/
 	poi_date date default sysdate not null, /*포인트 적립/사용날짜*/
 	constraint poi_num_pk primary key (poi_num),

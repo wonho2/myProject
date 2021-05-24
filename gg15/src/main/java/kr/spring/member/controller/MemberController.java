@@ -132,7 +132,7 @@ public class MemberController {
 				session.setAttribute("user_num", member.getMem_num());
 				//회원 아이디 저장
 				session.setAttribute("user_id", member.getMem_id());
-
+				
 				return "redirect:/main/main.do";
 
 			}else {//인증 실패

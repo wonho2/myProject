@@ -23,4 +23,5 @@ public class MemberService {
 	public MemberVO selectCheckMember(String id) {
 		return memberMapper.selectCheckMember(id);
 	}
+	
 }
