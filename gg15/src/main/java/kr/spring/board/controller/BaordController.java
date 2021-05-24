@@ -33,7 +33,7 @@ public class BaordController {
 	private BoardService boardService;
 	
 	//자바빈 초기화
-	@ModelAttribute
+	@ModelAttribute("boardVO")
 	public BoardVO initCommand() {
 		return new BoardVO();
 	}	
@@ -65,36 +65,31 @@ public class BaordController {
 		//mav.addObject("count", count);
 		//mav.addObject("list",list);
 		//mav.addObject("pagingHtml",page.getPagingHtml());
-		   
+		
 		return mav;
 	}
-	
-	
-	//자유게시판 게시글 등록
-		//등록 폼
+		
+	//자유게시판 게시글 쓰기
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
-	public String writeForm()
+	public String Form()
 	{
 		return "boardWrite";
 	}
-	
+	//전송된 데이터 처리
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
-	public String writeSubmit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
+	public String Submit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
 		// 유효성 오류가 있는 경우
-		if(result.hasErrors()) return writeForm();
+		if(result.hasErrors()) {
+			return "boardWrite";
+		}
 		// 정보 셋팅
-		//Integer mem_num = (Integer)session.getAttribute("mem_num");
-		//boardVO.setMem_num(mem_num);
+		Integer mem_num = (Integer)session.getAttribute("mem_num");
+		boardVO.setMem_num(mem_num);
 		// 글쓰기
 		boardService.insertBoard(boardVO);
 		return "redirect:/board/list.do";
 	}
 
-		
-	
 
-		
-		
-	
 }

@@ -18,14 +18,14 @@ public class BoardService {
 	private BoardMapper boardMapper;
 	
 	
-	//총 게시물 수
-	public int selectRowCount() {
-		return boardMapper.selectRowCount();
-	}
-	
 	//글 목록
 	public List<BoardVO> selectList(Map<String,Object> map){
 		return boardMapper.selectList(map);
+	}
+
+	//총 게시물 수
+	public int selectRowCount() {
+		return boardMapper.selectRowCount();
 	}
 
 	//글쓰기
