@@ -67,7 +67,7 @@ public class ManualtoolService {
 	}
 	
 	//글 삭제
-	public void deleteBoard(Integer manualtool_num) {
+	public void deleteBoard(int manualtool_num) {
 		manualtoolDAO.deleteBoard(manualtool_num);
 	}
 	

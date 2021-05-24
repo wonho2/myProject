@@ -40,12 +40,12 @@ public class ManualtoolController {
 	}
 	//====게시판 글 등록=======//
 	//등록 폼
-	@RequestMapping(value="/manualtool/write.do",method=RequestMethod.GET)
+	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.GET)
 	public String writeForm() {
 		return "manualtoolWrite";
 	}
 	//전송된 데이터 처리
-	@RequestMapping(value="/manualtool/write.do",method=RequestMethod.POST)
+	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.POST)
 	public String writeSubmit(@Valid ManualtoolVO manualtoolVO,
 			             BindingResult result,
 			             HttpServletRequest request,
@@ -130,7 +130,7 @@ public class ManualtoolController {
 	
 	//=====게시판 글 수정======//
 	//수정 폼
-	@RequestMapping(value="/manualtool/update.do",method=RequestMethod.GET)
+	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.GET)
 	public String formUpdate(@RequestParam int manualtool_num, Model model) {
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		model.addAttribute("manualtoolVO", manualtoolVO);
@@ -138,7 +138,7 @@ public class ManualtoolController {
 		return "manualtoolModify";
 	}
 	//수정 폼에서 전송된 데이터 처리
-	@RequestMapping(value="/manualtool/update.do",method=RequestMethod.POST)
+	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.POST)
 	public String submitUpdate(@Valid ManualtoolVO manualtoolVO,
 			                   BindingResult result,
 			                   HttpServletRequest request) {
