@@ -36,27 +36,28 @@ public class ManualtoolService {
 		return manualtoolDAO.selectBoard(manualtool_num);
 	}
 	
+	//조회수 증가
+	public void updateHit(int manualtool_num) {
+		manualtoolDAO.updateHit(manualtool_num);
+	}
+	
 	//추천수 증가
-	public void updateFavUp(int manualtool_num)
-	{
+	public void updateFavUp(int manualtool_num) {
 		manualtoolDAO.updateFavUp(manualtool_num);
 	}
 	
 	//추천수 감소
-	public void updateFavDown(int manualtool_num)
-	{
+	public void updateFavDown(int manualtool_num) {
 		manualtoolDAO.updateFavDown(manualtool_num);
 	}
 	
 	//댓글수 증가
-	public void updateCommentUp(int manualtool_num)
-	{
+	public void updateCommentUp(int manualtool_num) {
 		manualtoolDAO.updateCommentUp(manualtool_num);
 	}
 	
 	//댓글수 감소
-	public void updateCommentDown(int manualtool_num)
-	{
+	public void updateCommentDown(int manualtool_num) {
 		manualtoolDAO.updateCommentDown(manualtool_num);
 	}
 	
@@ -66,7 +67,7 @@ public class ManualtoolService {
 	}
 	
 	//글 삭제
-	public void deleteBoard(Integer manualtool_num) {
+	public void deleteBoard(int manualtool_num) {
 		manualtoolDAO.deleteBoard(manualtool_num);
 	}
 	
