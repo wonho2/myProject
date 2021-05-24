@@ -41,11 +41,11 @@
 	</p>
 	<hr size="1" width="100%">
 	<div class="align-right">
-		<c:if test="${!empty user_num && user_num == news.mem_num}">
+		<%-- <c:if test="${!empty user_num && user_num == news.mem_num}"> --%>
 		<input type="button" value="수정"
 		 onclick="location.href='newsUpdate.do?new_num=${news.new_num}'">
 		<input type="button" value="삭제" id="newsDelete_btn">
-		</c:if>
+	<%-- 	</c:if> --%>
 		<input type="button" value="목록으로"
 		                        onclick="location.href='list.do'">
 	</div>

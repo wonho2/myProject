@@ -7,6 +7,7 @@ new_content clob not null,			--게시글 내용
 new_date date,						--게시글 작성일
 new_hit number,						--조회수
 new_uploadfile blob, 				--업로드 파일
+new_filename varchar2(100),
 constraint news_pk primary key (new_num),
  constraint news_fk foreign key (mem_num) 
                   references member (mem_num)

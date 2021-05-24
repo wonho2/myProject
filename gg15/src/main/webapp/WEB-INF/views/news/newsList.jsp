@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>게시판 목록</h2>
+	<h2>뉴스</h2>
 	<div class="align-right">
-		<c:if test="${!empty user_num}">
-		<input type="button" value="글쓰기" onclick="location.href='newsWrite.do'">
-		</c:if>
+		<%-- <c:if test="${!empty user_num}"> --%>
+		<input type="button" value="작성" onclick="location.href='newsWrite.do'">
+		<%-- </c:if> --%>
 	</div>
 	<c:if test="${count == 0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
@@ -26,7 +26,6 @@
 			<td>${news.new_num}</td>
 			<td><a href="newsDetail.do?new_num=${news.new_num}">${news.title}</a></td>
 			<td>${news.id}</td>
-			<td>${news.modify_date}</td>
 			<td>${news.hit}</td>
 		</tr>
 		</c:forEach>

@@ -43,7 +43,7 @@ public class NewsController {
 	public String form() {
 		return "newsWrite";
 	}
-	//전송된 데이터 처리
+/*	//전송된 데이터 처리
 	@RequestMapping(value="/news/newsWrite.do",method=RequestMethod.POST)
 	public String submit(@Valid NewsVO newsVO,
 			             BindingResult result,
@@ -56,19 +56,19 @@ public class NewsController {
 		}
 		
 		//회원 번호 셋팅
-		newsVO.setMem_num((Integer)session.getAttribute("user_num"));
+		newsVO.setMem_num((Integer)session.getAttribute("mem_num"));
 		//글쓰기
 		newsService.insertNews(newsVO);
 		
 		return "redirect:/news/list.do";
 	}
-	
+	*/
 	//=====게시판 글 목록=====//
 	@RequestMapping("/news/list.do")
 	public ModelAndView process(
 	@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		
-		//총 레코드 수
+	/*	//총 레코드 수
 		int count = newsService.selectRowCount();
 		
 		if(log.isDebugEnabled()) {
@@ -86,18 +86,18 @@ public class NewsController {
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			list = newsService.selectList(map);
-		}
-		
+		}*/
+	
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("list");
-		mav.addObject("count", count);
+		mav.setViewName("newsList");
+	/*	mav.addObject("count", count);
 		mav.addObject("list",list);
 		mav.addObject("pagingHtml",page.getPagingHtml());
-		
+		*/
 		return mav;
 	}
 	
-	//====게시판 글 상세======//
+/*	//====게시판 글 상세======//
 	@RequestMapping("/news/newsDetail.do")
 	public ModelAndView detail(@RequestParam int new_num) {
 		if(log.isDebugEnabled()) {
@@ -161,6 +161,6 @@ public class NewsController {
 		newsService.deleteNews(new_num);
 		
 		return "redirect:/news/list.do";
-	}
+	}*/
 	
 }
