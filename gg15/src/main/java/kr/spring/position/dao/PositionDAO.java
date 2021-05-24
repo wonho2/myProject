@@ -13,7 +13,6 @@ import kr.spring.position.vo.PositionVO;
 public interface PositionDAO
 {
 	// 총 게시물 수
-	@Select("SELECT COUNT(*) FROM position")
 	public int selectBoardCount();
 	
 	// 게시물 목록
@@ -21,7 +20,7 @@ public interface PositionDAO
 	
 	// 글쓰기
 	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile) "
-			+ "VALUES(position_seq.nextval, #{type}, #{mem_num}, #{title}, #{content}, #{uploadfile})")
+			+ "VALUES(position_seq.nextval, #{pos_type}, #{mem_num}, #{pos_title}, #{pos_content}, #{pos_uploadfile})")
 	public void insertBoard(PositionVO vo);
 	
 	// 게시물 상세 페이지
