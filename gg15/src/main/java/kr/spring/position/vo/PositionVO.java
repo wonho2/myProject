@@ -2,6 +2,7 @@ package kr.spring.position.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -77,5 +78,12 @@ public class PositionVO
 	}
 	public void setPos_comment(int pos_comment) {
 		this.pos_comment = pos_comment;
+	}
+	@Override
+	public String toString() {
+		return "PositionVO [pos_num=" + pos_num + ", pos_type=" + pos_type + ", mem_num=" + mem_num + ", pos_title="
+				+ pos_title + ", pos_content=" + pos_content + ", pos_uploadfile=" + Arrays.toString(pos_uploadfile)
+				+ ", pos_date=" + pos_date + ", pos_view=" + pos_view + ", pos_fav=" + pos_fav + ", pos_comment="
+				+ pos_comment + "]";
 	}
 }

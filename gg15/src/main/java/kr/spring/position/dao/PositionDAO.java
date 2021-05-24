@@ -13,6 +13,7 @@ import kr.spring.position.vo.PositionVO;
 public interface PositionDAO
 {
 	// 총 게시물 수
+	@Select("SELECT COUNT(*) FROM position")
 	public int selectBoardCount();
 	
 	// 게시물 목록

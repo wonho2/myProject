@@ -47,8 +47,7 @@ public class PositionController
 	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
 		// 페이징 처리
-		// int count = positionService.selectBoardCount();
-		int count = 0;
+		int count = positionService.selectBoardCount();
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		List<PositionVO> boardList = null;
 		if(count > 0)
@@ -63,6 +62,7 @@ public class PositionController
 		mav.setViewName("position_list");
 		mav.addObject("count", count);
 		mav.addObject("boardList", boardList);
+		log.debug("boardList : " + boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		return mav;  
 	}

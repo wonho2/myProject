@@ -3,4 +3,26 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.position.dao.PositionDAO">
+<!-- 게시물 목록 -->
+	<select id="selectBoardList" parameterType="map" resultType="positionVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              p.pos_num,
+		              p.pos_type,
+		              <![CDATA[
+		              REPLACE(REPLACE(p.pos_title,'<','&lt;'),'>','&gt;') pos_title,
+		              ]]>
+		              m.mem_id,
+		              p.pos_date,
+		              p.pos_view,
+		              p.pos_fav 
+		              FROM position p JOIN member m ON p.mem_num = m.mem_num ORDER BY p.pos_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
 </mapper>

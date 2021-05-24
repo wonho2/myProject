@@ -6,4 +6,37 @@
 <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
 </p>
+
+<c:if test="${count == 0}">
+	게시물이 없습니다.
+</c:if>
+
+<c:if test="${count > 0}">
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>포지션</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+			<th>추천수</th>
+		</tr>
+		<c:forEach var="positionVO" items="${boardList}">
+			<tr>
+				<td>${positionVO.pos_num}</td>
+				<td>${positionVO.pos_type}</td>
+				<td>${positionVO.pos_title}</td>
+				<td>미구현 : 작성자 아이디</td>
+				<td>${positionVO.pos_date}</td>
+				<td>${positionVO.pos_view}</td>
+				<td>${positionVO.pos_fav}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<div>
+		${pagingHtml}
+	</div>
+	
+</c:if>
 <!-- 포지션게시판 : boardList 끝 -->
