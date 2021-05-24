@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.manualtool.dao.ManualtoolDAO;
 import kr.spring.manualtool.vo.ManualtoolVO;
 
-@Service("boardService")
+@Service("manualtoolService")
 public class ManualtoolService {
 	//의존 관계 설정
 	@Resource
