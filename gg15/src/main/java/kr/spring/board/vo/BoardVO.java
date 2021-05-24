@@ -17,9 +17,10 @@ public class BoardVO {
     private String boa_title;//게시글 제목
 	@NotEmpty
     private String boa_content;//게시글 내용
-	private Date boa_date;
-	private byte[] boa_uploadfile;
-	private String boa_filename;
+	private Date boa_date;//게시글 작성일
+	private byte[] boa_uploadfile;//업로드 파일
+	private String boa_filename;//업로드 파일 이름
+	
 	
 	//업로드 파일 처리
 		public void setUpload(MultipartFile boa_upload)throws IOException{

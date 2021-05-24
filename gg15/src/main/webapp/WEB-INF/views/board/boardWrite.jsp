@@ -7,8 +7,9 @@
 	<form:form action="write.do" commandName="boardVO"
 	               enctype="multipart/form-data">
 		<ul>
-			<!-- 말머리 선택 -->
+			<!-- 말머리 선택 --> 
 			<li>
+			<label for="boa_cate">카테고리</label>
 			<select name="boa_cate">
 			<optgroup label="카테고리">
 				<option value="All">전체</option>
@@ -43,7 +44,8 @@
 			</li>
 			<!-- 공개범위 설정 -->
 			<li>
-				<input type="checkbox" name="boa_mode" value="전체공개" checked="checked">
+			    <label for="boa_mode">비밀글 설정</label>
+				<input type="checkbox" name="boa_mode" value="전체공개">비밀글
 			</li>
 		</ul>
 		<div class="align-center">
