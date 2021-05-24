@@ -43,7 +43,7 @@ public class NewsController {
 	public String form() {
 		return "newsWrite";
 	}
-/*	//전송된 데이터 처리
+/*	//전송된 데이터 처리 
 	@RequestMapping(value="/news/newsWrite.do",method=RequestMethod.POST)
 	public String submit(@Valid NewsVO newsVO,
 			             BindingResult result,
