@@ -6,7 +6,8 @@ CREATE TABLE party(
     par_content clob NOT NULL,
     par_date date NOT NULL,
     par_uploadfile BLOB,
-    par_hit NUMBER(8) NOT NULL,
+    par_filename varchar2(300),
+    par_hit NUMBER(8) NOT NULL default 0,
     constraint party_pk primary key (par_num),
     constraint party_fk foreign key (mem_num)
     references member (mem_num)
@@ -25,3 +26,7 @@ CREATE TABLE party_reply(
     constraint party_reply_fk2 foreign key (mem_num)
     references member (mem_num)
 );
+
+
+CREATE SEQUENCE party_seq;
+CREATE SEQUENCE party_reply_seq;
