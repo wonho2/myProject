@@ -13,8 +13,8 @@ import kr.spring.position.vo.PositionVO;
 
 public interface ManualtoolDAO {
 	//글쓰기
-	@Insert("INSERT INTO manualtool (mam_num, mem_num, man_champion, man_season, man_title, man_content, man_uploadfile) "
-			+ "VALUES (manualtool_seq.nextval, #{mam_num}, #{mem_num}, #{man_champion}, #{man_season}, #{man_title}, #{man_content} , #{man_uploadfile})")
+	@Insert("INSERT INTO manualtool (man_num, mem_num, man_champion, man_season, man_title, man_content, man_uploadfile) "
+			+ "VALUES (manualtool_seq.nextval, #{man_num}, #{mem_num}, #{man_champion}, #{man_season}, #{man_title}, #{man_content} , #{man_uploadfile})")
 	public void insertBoard(ManualtoolVO vo);
 
 	//총 레코드 수
