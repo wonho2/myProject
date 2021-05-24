@@ -16,16 +16,16 @@
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="position_main_menu_type">
+	<div>
 		<tiles:insertAttribute name="menu_type"/>
 	</div>
-	<div id="position_main_menu_sort">
+	<div>
 		<tiles:insertAttribute name="menu_sort"/>
 	</div>
-	<div id="position_main_boardList">
+	<div>
 		<tiles:insertAttribute name="boardList"/>
 	</div>
-	<div id="position_main_search">
+	<div class="align-right">
 		<tiles:insertAttribute name="search"/>
 	</div>
 	<div id="main_footer">
