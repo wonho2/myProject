@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.party.vo.PartyVO;
 
@@ -13,6 +14,7 @@ public interface PartyMapper {
 	public List<PartyVO> selectBoardList(Map<String, Object> map);
 	
 	//총 파티 게시물 수
+	@Select("SELECT COUNT(*) FROM party")
 	public int selectBoardCount();
 	
 	//총 파티 게시물 상세 페이지
