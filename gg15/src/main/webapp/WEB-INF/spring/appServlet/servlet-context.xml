@@ -87,6 +87,13 @@
 			<mapping path="/position/delete.do"/>
 			<beans:bean class="kr.spring.interceptor.LoginInterceptor"/>
 		</interceptor>
+		<!-- 게시물을 작성한 회원번호와 로그인한 회원번호가 일치하는지 체크 -->
+		<!-- 포지션 게시판 -->
+		<interceptor>
+			<mapping path="/position/modify.do"/>
+			<mapping path="/position/delete.do"/>
+			<beans:bean class="kr.spring.interceptor.PositionWriterInterceptor"/>
+		</interceptor>
 	</interceptors>
 
 </beans:beans>

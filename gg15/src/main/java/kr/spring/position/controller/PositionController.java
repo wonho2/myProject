@@ -142,6 +142,7 @@ public class PositionController
 	@RequestMapping("/position/delete.do")
 	public String deleteSubmit(@RequestParam int num)
 	{
+		log.debug("삭제 호출");
 		positionService.deleteBoard(num);
 		return "redirect:/position/list.do";
 	}
