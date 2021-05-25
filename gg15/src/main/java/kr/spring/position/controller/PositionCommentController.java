@@ -37,7 +37,7 @@ public class PositionCommentController
  */
 	@RequestMapping("/position/writeComment.do")
 	@ResponseBody
-	public Map<String,String> process(@RequestParam String poc_content, HttpServletRequest request, HttpSession session)
+	public Map<String,String> writeComment(@RequestParam String poc_content, HttpServletRequest request, HttpSession session)
 	{
 		Map<String,String> map = new HashMap<String,String>();
 		PositionCommentVO vo = new PositionCommentVO();
