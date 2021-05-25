@@ -85,11 +85,6 @@ public class BoardController {
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
 	public String Submit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<BoardVO>> : " + boardVO);
-		}
-		
 		// 유효성 오류가 있는 경우
 		if(result.hasErrors()) {
 			return "boardWrite";
