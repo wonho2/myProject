@@ -10,9 +10,11 @@
 		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
 		</c:if>
 	</div>
+	
 	<c:if test="${count == 0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
+	
 	<c:if test="${count > 0}">
 	<table>
 		<tr>

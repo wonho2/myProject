@@ -89,7 +89,7 @@ public class BaordController {
 			return "boardWrite";
 		}
 		// 정보 셋팅
-		Integer mem_num = (Integer)session.getAttribute("mem_num");
+		Integer mem_num = (Integer)session.getAttribute("user_num");
 		boardVO.setMem_num(mem_num);
 		// 글쓰기
 		boardService.insertBoard(boardVO);

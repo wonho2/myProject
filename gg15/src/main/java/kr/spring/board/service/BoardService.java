@@ -29,8 +29,8 @@ public class BoardService {
 	//}
 
 	//글쓰기
-	public void insertBoard(BoardVO board) {
-		boardMapper.insertBoard(board);
+	public void insertBoard(BoardVO vo) {
+		boardMapper.insertBoard(vo);
 	}
 
 
