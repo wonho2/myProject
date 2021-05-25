@@ -9,7 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class NewsVO {
 	private int new_num;
+	
+	
 	@NotEmpty
+	private String mem_nick;
 	private String new_title;
 	private String new_content;
 	private int new_hit;
@@ -27,7 +30,13 @@ public class NewsVO {
 		//파일명 구하기
 		setNew_filename(upload.getOriginalFilename());
 	}
-	
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
 	public String getNew_filename() {
 		return new_filename;
 	}

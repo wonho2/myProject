@@ -37,14 +37,14 @@ public class NewsController {
 	public NewsVO initCommand() {
 		return new NewsVO();
 	} 
-	//====게시판 글 등록=======// 
+	//====게시판 글 작성=======// 
 	//등록 폼
-	@RequestMapping(value="/news/newsWrite.do",method=RequestMethod.GET)
+	@RequestMapping(value="/news/write.do",method=RequestMethod.GET)
 	public String form() {
 		return "newsWrite";
 	} 
-/*	//전송된 데이터 처리 
-	@RequestMapping(value="/news/newsWrite.do",method=RequestMethod.POST)
+	//전송된 데이터 처리 
+	@RequestMapping(value="/news/write.do",method=RequestMethod.POST)
 	public String submit(@Valid NewsVO newsVO,
 			             BindingResult result,
 			             HttpServletRequest request,
@@ -56,48 +56,46 @@ public class NewsController {
 		}
 		
 		//회원 번호 셋팅
-		newsVO.setMem_num((Integer)session.getAttribute("mem_num"));
+		newsVO.setMem_num((Integer)session.getAttribute("user_num"));
 		//글쓰기
 		newsService.insertNews(newsVO);
 		
 		return "redirect:/news/list.do";
 	}
-	*/
+	
 	//=====게시판 글 목록=====//
 	@RequestMapping("/news/list.do")
-	public ModelAndView process(
+	public ModelAndView newsList(
 	@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
-		
-	/*	//총 레코드 수
-		int count = newsService.selectRowCount();
-		
+			//총 레코드 수
+		int count = newsService.selectNewsCount();	
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
 			log.debug("<<count>> : " + count);
 		}
-		
+
 		//페이징 처리
 		PagingUtil page = 
 				new PagingUtil(currentPage,count,10,10,"list.do");
-		
-		List<NewsVO> list = null;
+	
+		List<NewsVO> newsList = null;
 		if(count > 0) {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			list = newsService.selectList(map);
-		}*/
+			newsList = newsService.selectList(map);
+		}
 	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("newsList");
-	/*	mav.addObject("count", count);
-		mav.addObject("list",list);
+		mav.addObject("count", count);
+		mav.addObject("newsList",newsList);
 		mav.addObject("pagingHtml",page.getPagingHtml());
-		*/
+		
 		return mav;
 	}
 	
-/*	//====게시판 글 상세======//
+	//====게시판 글 상세======//
 	@RequestMapping("/news/newsDetail.do")
 	public ModelAndView detail(@RequestParam int new_num) {
 		if(log.isDebugEnabled()) {
@@ -136,7 +134,7 @@ public class NewsController {
 		NewsVO newsVO = newsService.selectNews(new_num);
 		model.addAttribute("NewsVO", newsVO);
 		
-		return "newsModify";
+		return "newsModify"; 
 	}
 	//수정 폼에서 전송된 데이터 처리
 	@RequestMapping(value="/news/newsUpdate.do",method=RequestMethod.POST)
@@ -161,6 +159,6 @@ public class NewsController {
 		newsService.deleteNews(new_num);
 		
 		return "redirect:/news/list.do";
-	}*/
+	}
 	
 }

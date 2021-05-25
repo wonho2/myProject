@@ -7,7 +7,7 @@
 	<div class="align-right">
 		<!-- 테스트용 -->
 		<%-- <c:if test="${!empty user_num}"> --%>
-		<input type="button" value="작성" onclick="location.href='newsWrite.do'">
+		<input type="button" value="작성" onclick="location.href='write.do'">
 		<%-- </c:if> --%>
 	</div>
 	<c:if test="${count == 0}">
@@ -19,15 +19,18 @@
 			<th>번호</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
-			<th>최근수정일</th>
+			<th>작성일</th>
 			<th>조회수</th>
+			<th>추천수</th>
 		</tr>
 		<c:forEach var="news" items="${list}">
 		<tr>
 			<td>${news.new_num}</td>
-			<td><a href="newsDetail.do?new_num=${news.new_num}">${news.title}</a></td>
-			<td>${news.id}</td>
-			<td>${news.hit}</td>
+			<td><a href="detail.do?new_num=${news.new_num}">${news.new_title}</a></td>
+			<td>${news.mem_nick}</td>
+			<td>${news.new_date}</td>
+			<td>${news.new_hit}</td>
+			<td>${news.new_fav}</td>
 		</tr>
 		</c:forEach>
 	</table>

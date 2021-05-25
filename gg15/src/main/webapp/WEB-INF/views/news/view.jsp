@@ -10,7 +10,7 @@
 		newsDelete_btn.onclick=function(){
 			var choice = window.confirm('삭제하시겠습니까?');
 			if(choice){
-				location.replace('newsDelete.do?new_num=${news.new_num}');
+				location.replace('delete.do?new_num=${news.new_num}');
 			}
 		};
 	};
@@ -25,12 +25,12 @@
 		
 	</ul>
 	<hr size="1" width="100%">
-	<c:if test="${fn:endsWith(news.filename,'.jpg') || 
-	              fn:endsWith(news.filename,'.JPG') ||
-	              fn:endsWith(news.filename,'.gif') ||
-	              fn:endsWith(news.filename,'.GIF') ||
-	              fn:endsWith(news.filename,'.png') ||
-	              fn:endsWith(news.filename,'.PNG')}">
+	<c:if test="${fn:endsWith(news.new_filename,'.jpg') || 
+	              fn:endsWith(news.new_filename,'.JPG') ||
+	              fn:endsWith(news.new_filename,'.gif') ||
+	              fn:endsWith(news.new_filename,'.GIF') ||
+	              fn:endsWith(news.new_filename,'.png') ||
+	              fn:endsWith(news.new_filename,'.PNG')}">
 	<div class="align-center">
 		<img src="imageView.do?new_num=${news.new_num}"
 		                           style="max-width:500px">
@@ -43,7 +43,7 @@
 	<div class="align-right">
 		<%-- <c:if test="${!empty user_num && user_num == news.mem_num}"> --%>
 		<input type="button" value="수정"
-		 onclick="location.href='newsUpdate.do?new_num=${news.new_num}'">
+		 onclick="location.href='update.do?new_num=${news.new_num}'">
 		<input type="button" value="삭제" id="newsDelete_btn">
 	<%-- 	</c:if> --%>
 		<input type="button" value="목록으로"

@@ -4,7 +4,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>글쓰기</h2>
-	<form:form action="newsWrite.do" commandName="newsVO"
+	<form:form action="write.do" commandName="newsVO"
 	               enctype="multipart/form-data">
 		<ul>
 			<li>
@@ -24,7 +24,7 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송">
+			<input type="submit" value="작성">
 			<input type="button" value="목록"
 			               onclick="location.href='list.do'">
 		</div>

@@ -23,8 +23,8 @@ public class NewsService {
 	}
 	
 	//총 레코드 수
-	public int selectRowCount() {
-		return newsMapper.selectRowCount();
+	public int selectNewsCount() {
+		return newsMapper.selectNewsCount();
 	}
 	
 	//글 목록
