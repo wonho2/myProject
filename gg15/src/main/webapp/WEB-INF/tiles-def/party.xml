@@ -21,7 +21,7 @@
 	</definition>
 	
 	<definition name="partyModify" extends="main">
-		<put-attribute name="title" value="15 gg - 포지션 게시판 글쓰기 수정"/>
+		<put-attribute name="title" value="15 gg - 파티 게시판 글쓰기 수정"/>
 		<put-attribute name="body" value="/WEB-INF/views/party/partyModify.jsp"/>
 	</definition>
 	
