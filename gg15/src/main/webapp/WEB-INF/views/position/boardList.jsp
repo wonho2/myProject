@@ -26,7 +26,7 @@
 			<tr>
 				<td>${positionVO.pos_num}</td>
 				<td>${positionVO.pos_type}</td>
-				<td><a href="detail.do?num=${positionVO.pos_num}">${positionVO.pos_title}</a></td>
+				<td><a href="detail.do?pos_num=${positionVO.pos_num}">${positionVO.pos_title}</a></td>
 				<td>${positionVO.mem_nick}</td>
 				<td>${positionVO.pos_date}</td>
 				<td>${positionVO.pos_view}</td>

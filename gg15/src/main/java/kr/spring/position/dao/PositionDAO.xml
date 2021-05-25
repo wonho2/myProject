@@ -38,8 +38,9 @@
 <!-- 게시물 수정 -->
 	<update id="updateBoard" parameterType="positionVO">
 		UPDATE position SET	
-			<if test="pos_uploadfile != null">
+			<if test="pos_filename != ''">
 				pos_uploadfile = #{pos_uploadfile},
+				pos_filename = #{pos_filename},
 			</if>
 			pos_title = #{pos_title},
 			pos_content = #{pos_content} 

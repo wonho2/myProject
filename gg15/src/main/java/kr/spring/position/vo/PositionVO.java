@@ -16,8 +16,19 @@ public class PositionVO
 	@NotEmpty
 	private String pos_title, pos_content;
 	private byte[] pos_uploadfile;
+	private String pos_filename;
 	private Date pos_date;
 	private int pos_view, pos_fav, pos_comment;
+	
+	//업로드 파일 처리
+	public void setPos_upload(MultipartFile pos_upload)throws IOException
+	{
+		//MultipartFile -> byte[] 변환
+		setPos_uploadfile(pos_upload.getBytes());
+		//파일명 구하기
+		setPos_filename(pos_upload.getOriginalFilename());
+	}
+	
 	public int getPos_num() {
 		return pos_num;
 	}
@@ -54,12 +65,18 @@ public class PositionVO
 	public void setPos_content(String pos_content) {
 		this.pos_content = pos_content;
 	}
+	
 	public byte[] getPos_uploadfile() {
 		return pos_uploadfile;
 	}
-	// 파일 업로드 코드 수정
-	public void setPos_uploadfile(MultipartFile pos_uploadfile) throws IOException{
-		this.pos_uploadfile = pos_uploadfile.getBytes();
+	public void setPos_uploadfile(byte[] pos_uploadfile) {
+		this.pos_uploadfile = pos_uploadfile;
+	}
+	public String getPos_filename() {
+		return pos_filename;
+	}
+	public void setPos_filename(String pos_filename) {
+		this.pos_filename = pos_filename;
 	}
 	public Date getPos_date() {
 		return pos_date;

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,7 +28,6 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
-	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 자바빈 초기화
@@ -93,12 +91,12 @@ public class PositionController
  */
 	// 게시물 상세 (완성)
 	@RequestMapping("/position/detail.do")
-	public ModelAndView boardDetail(@RequestParam int num)
+	public ModelAndView boardDetail(@RequestParam int pos_num)
 	{
 		// 해당 글의 조회수 증가
-		positionService.updateView(num);
+		positionService.updateView(pos_num);
 		// html 태그 불허
-		PositionVO positionVO = positionService.selectBoard(num);
+		PositionVO positionVO = positionService.selectBoard(pos_num);
 		positionVO.setPos_title(StringUtil.useNoHtml(positionVO.getPos_title()));
 		positionVO.setPos_content(StringUtil.useBrNoHtml(positionVO.getPos_content()));
 		return new ModelAndView("position_detail", "positionVO", positionVO);
@@ -106,13 +104,14 @@ public class PositionController
 	
 	// 이미지 출력
 	@RequestMapping("/position/imageView.do")
-	public ModelAndView imageView(@RequestParam int num)
+	public ModelAndView imageView(@RequestParam int pos_num)
 	{
-		log.debug("이미지 출력 호출");
-		PositionVO positionVO = positionService.selectBoard(num);
+		PositionVO positionVO = positionService.selectBoard(pos_num);
+	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("uploadfile", positionVO.getPos_uploadfile());
+		mav.addObject("pos_uploadfile", positionVO.getPos_uploadfile());
+		mav.addObject("pos_filename", positionVO.getPos_filename());
 		return mav;
 	}
 	
@@ -120,9 +119,9 @@ public class PositionController
  * 게시물 수정 (완성)
  */
 	@RequestMapping(value="/position/modify.do", method=RequestMethod.GET)
-	public String modifyForm(@RequestParam int num, Model model)
+	public String modifyForm(@RequestParam int pos_num, Model model)
 	{
-		PositionVO positionVO = positionService.selectBoard(num);
+		PositionVO positionVO = positionService.selectBoard(pos_num);
 		model.addAttribute("positionVO", positionVO);
 		return "position_modify";
 	}
@@ -137,36 +136,12 @@ public class PositionController
 		return "redirect:/position/list.do";
 	}
 /*
- * 게시물 삭제
+ * 게시물 삭제 (완성)
  */
 	@RequestMapping("/position/delete.do")
-	public String deleteSubmit(@RequestParam int num)
+	public String deleteSubmit(@RequestParam int pos_num)
 	{
-		log.debug("삭제 호출");
-		positionService.deleteBoard(num);
+		positionService.deleteBoard(pos_num);
 		return "redirect:/position/list.do";
-	}
-	
-/*
- * 해당 게시물의 추천수 변경
- */
-	public void updateFav(@RequestParam int num)
-	{
-		// 원버튼
-		// positionService.updateFavUp(num);
-		// positionService.updateFavDown(num);
-	}
-	
-/*
- * 해당 게시물의 댓글수 증가,감소
- */
-	public void updateCommentUp(@RequestParam int num)
-	{
-		positionService.updateCommentUp(num);
-	}
-	
-	public void updateCommentDown(@RequestParam int num)
-	{
-		positionService.updateCommentDown(num);
 	}
 }

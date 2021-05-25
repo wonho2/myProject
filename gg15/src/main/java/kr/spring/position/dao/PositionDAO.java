@@ -20,8 +20,8 @@ public interface PositionDAO
 	public List<PositionVO> selectBoardList(Map<String, Object> map);
 	
 	// 글쓰기
-	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile) "
-			+ "VALUES(position_seq.nextval, #{pos_type}, #{mem_num}, #{pos_title}, #{pos_content}, #{pos_uploadfile})")
+	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile, pos_filename) "
+			+ "VALUES(position_seq.nextval, #{pos_type}, #{mem_num}, #{pos_title}, #{pos_content}, #{pos_uploadfile}, #{pos_filename})")
 	public void insertBoard(PositionVO vo);
 	
 	// 게시물 상세 페이지

@@ -7,8 +7,16 @@
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == positionVO.mem_num}">
 	<div>
-		<input type="button" value="수정" onclick="location.href='modify.do?num=${positionVO.pos_num}'">
+		<input type="button" value="수정" onclick="location.href='modify.do?pos_num=${positionVO.pos_num}'">
 		<input type="button" value="삭제" onclick="pos_delete();">
+		<script type="text/javascript">
+			function pos_delete(){
+				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");
+				if(choice){
+					location.replace('delete.do?pos_num=${positionVO.pos_num}');
+				}
+			}
+		</script>
 	</div>
 </c:if>
 
@@ -23,13 +31,24 @@
 	</section>
 	
 	<hr size="1" noshade="noshade" width="100%">
-	<div>
-		<!-- 미구현 : 업로드 파일 보여주기 -->
+	
+	<c:if test="${fn:endsWith(positionVO.pos_filename,'.jpg') || 
+	              fn:endsWith(positionVO.pos_filename,'.JPG') ||
+	              fn:endsWith(positionVO.pos_filename,'.gif') ||
+	              fn:endsWith(positionVO.pos_filename,'.GIF') ||
+	              fn:endsWith(positionVO.pos_filename,'.png') ||
+	              fn:endsWith(positionVO.pos_filename,'.PNG')}">
+		<div class="align-center">
+			<img src="imageView.do?pos_num=${positionVO.pos_num}">
+		</div>
+	</c:if>
+	<p>
 		${positionVO.pos_content}
-	</div>
+	</p>
 	 
-	<div>
+	 <!-- 추천 버튼 -->
+	<p class="align-center">
 		<input type="button" value="추천" id="btn_fav">
-	</div>
+	</p>
 </div>
 <!-- 포지션게시판 : 게시물 디테일 끝 -->

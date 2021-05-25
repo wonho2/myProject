@@ -15,11 +15,11 @@
 			<form:errors path="pos_title"/>
 		</li>
 		<li>
-			<label>파일 업로드</label>
-			<input type="file" name="pos_uploadfile" id="pos_uploadfile" accept="image/gif, image/png, image/jpeg">
-			<c:if test="${!empty positionVO.pos_uploadfile}">
+			<label for="pos_upload">파일 업로드</label>
+			<input type="file" name="pos_upload" id="pos_upload" accept="image/gif, image/png, image/jpeg">
+			<c:if test="${!empty positionVO.pos_filename}">
 					<br>
-					<span>이미 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>
+					<span>이미 ${positionVO.pos_filename} 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>
 			</c:if>
 		</li>
 		<li>

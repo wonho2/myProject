@@ -9,6 +9,7 @@ CREATE TABLE position
     pos_title VARCHAR2(50) NOT NULL, /*제목*/
     pos_content CLOB NOT NULL, /*내용*/
     pos_uploadfile BLOB, /*업로드 파일*/
+    pos_filename VARCHAR2(300), /*업로드 파일명*/
     pos_date DATE DEFAULT SYSDATE NOT NULL, /*작성일*/
     pos_view NUMBER DEFAULT 0 NOT NULL, /*조회수*/
    	pos_comment NUMBER DEFAULT 0 NOT NULL, /*댓글수*/

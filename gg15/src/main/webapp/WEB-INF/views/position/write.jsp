@@ -22,8 +22,8 @@
 			<form:errors path="pos_title"/>
 		</li>
 		<li>
-			<label>파일 업로드</label>
-			<input type="file" name="pos_uploadfile" accept="image/gif, image/png, image/jpeg">
+			<label for="pos_upload">파일 업로드</label>
+			<input type="file" name="pos_upload" id="pos_upload" accept="image/gif, image/png, image/jpeg">
 		</li>
 		<li>
 			<label>내용</label>
