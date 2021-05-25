@@ -20,9 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
-import kr.spring.manualtool.vo.ManualtoolVO;
-import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class BoardController {	
@@ -98,5 +97,21 @@ public class BoardController {
 		return "redirect:/board/list.do";
 	}
 
+	//====게시판 글 상세======//
+	@RequestMapping("/board/boardDetail.do")
+	public ModelAndView boardDetail(@RequestParam int boa_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<board_num>> : " + boa_num);
+		}
+	
+		BoardVO board = boardService.selectBoard(boa_num);
+		//HTML 태그 불허
+		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
+		//HTML 태그 불허 및 줄바꿈 처리
+		board.setBoa_content(StringUtil.useBrNoHtml(board.getBoa_content()));
+			
+		return new ModelAndView("boardView","board",board);
+			
+		}
 
 }

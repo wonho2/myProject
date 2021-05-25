@@ -27,6 +27,10 @@ public interface BoardMapper {
 	//@Update("UPDATE board SET boa_hit=boa_hit+1 WHERE boa_num=#{boa_num}")
 	//public void updateHit(Integer board_num);
 	
+	//글 상세 페이지
+	@Select("SELECT * FROM board b JOIN member m ON b.mem_num=m.mem_num WHERE b.board_num=#{board_num}")
+	public BoardVO selectBoard(Integer board_num);
+		
 
 }
 
