@@ -10,7 +10,7 @@ boa_uploadfile blob,
 boa_filename VARCHAR2(300),
 boa_content clob NOT NULL,
 boa_date date,
-boa_hit number not null,
+boa_hit number not null default 0,
 constraint board_pk primary key(boa_num),
 constraint board_fk foreign key(mem_num) references member (mem_num)
 );
@@ -35,3 +35,8 @@ constraint bof_num_pk primary key(bof_num),
 constraint boa_fav_fk_1 FOREIGN key(boa_num) references board (boa_num),
 constraint boa_fav_fk_2 FOREIGN key(mem_num) references member (mem_num)
 );
+
+
+create sequence board_seq;
+create sequence board_reply_seq;
+create sequence board_fav_seq;

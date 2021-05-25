@@ -4,7 +4,7 @@
 <!-- 자유 게시판 board write 시작 -->
 <div class="page-main-style">
 	<h2>자유 게시판 글쓰기</h2>
-	<form:form action="write.do" commandName="boardVO"
+	<form:form action="boardWrite.do" commandName="boardVO"
 	               enctype="multipart/form-data">
 		<ul>
 			<!-- 말머리 선택 --> 
@@ -45,7 +45,7 @@
 			<!-- 공개범위 설정 -->
 			<li>
 			    <label for="boa_mode">비밀글 설정</label>
-				<input type="checkbox" name="boa_mode" value="전체공개">비밀글
+				<input type="checkbox" name="boa_mode" value="1">비밀글
 			</li>
 		</ul>
 		<div class="align-center">

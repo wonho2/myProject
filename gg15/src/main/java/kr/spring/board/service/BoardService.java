@@ -33,6 +33,25 @@ public class BoardService {
 		boardMapper.insertBoard(vo);
 	}
 
+	//글 상세 페이지
+	//public BoardVO selectBoard(Integer board_num) {
+	//	return boardMapper.selectBoard(board_num);
+	//}
+				
+	//글 수정
+	//public void updateBoard(BoardVO board) {
+	//	boardMapper.updateBoard(board);
+	//}
+		
+	//글 삭제
+	//public void deleteBoard(Integer board_num) {
+	//	boardMapper.deleteBoard(board_num);
+	//}
+	
+	//조회수 증가
+	//public void updateHit(Integer board_num) {
+	//	boardMapper.updateHit(board_num);
+	//}
 
 		
 	}

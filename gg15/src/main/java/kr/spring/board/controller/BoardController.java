@@ -25,7 +25,7 @@ import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
-public class BaordController {	
+public class BoardController {	
 	private Logger log = Logger.getLogger(this.getClass());
 
 	//의존 관계 설정
@@ -85,6 +85,11 @@ public class BaordController {
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.POST)
 	public String Submit(@Valid BoardVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session)
 	{
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<BoardVO>> : " + boardVO);
+		}
+		
 		// 유효성 오류가 있는 경우
 		if(result.hasErrors()) {
 			return "boardWrite";

@@ -35,31 +35,29 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
-			<th>좋아요</th>
 		</tr>
-		
-		
+				
 	<c:if test="${count == 0}">
 	<div >등록된 게시물이 없습니다.</div>
 	</c:if>
 		
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.board_num}</td>
+			<td>${board.boa_num}</td>
 			
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 시작-->
 			<td>
 			<c:if test="${board.boa_uploadfile == null}">
-			<img src="${pageContext.request.contextPath}/resources/images/icon.png">
+			<img src="${pageContext.request.contextPath}/resources/images/icon.png"
+				 width="50" >
 			</c:if>
 			</td>
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 끝-->
 			
-			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
+			<td><a href="detail.do?board_num=${board.boa_num}">${board.boa_title}</a></td>
 			<td>${member.mem_id}</td>
 			<td>${board.boa_date}</td>
 			<td>${board.boa_hit}</td>
-			<td>${boa_fav.bof_num}</td>
 		</tr>
 		</c:forEach>
 	</table>
