@@ -43,33 +43,34 @@ public class BaordController {
 	public ModelAndView process(
 	@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		
-		//총 레코드 수
-		//int count = boardService.selectRowCount();
-		//if(log.isDebugEnabled()) {
-		//	log.debug("<<count>> : " + count);
-		//	log.debug("<<pageNum>> : " + currentPage);
-		//}
+		//총 게시글 수
+		int count = boardService.selectRowCount();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>> : " + count);
+			log.debug("<<pageNum>> : " + currentPage);
+		}
 		
 		//페이징 처리
-		//PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
 		
 		//목록호출
-		//List<BoardVO> list = null;
-		//if(count > 0) {
-		//	Map<String,Object> map = new HashMap<String,Object>();
-		//	map.put("start", page.getStartCount());
-		//	map.put("end", page.getEndCount());
+		List<BoardVO> list = null;
+		if(count > 0) {
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
 			
-		//	list = boardService.selectList(map);
-		//}
+			list = boardService.selectList(map);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		//뷰 이름 설정
 		mav.setViewName("boardList");
 		//데이터 저장
-		//mav.addObject("count", count);
-		//mav.addObject("list",list);
-		//mav.addObject("pagingHtml",page.getPagingHtml());
+		mav.addObject("count", count);
+		mav.addObject("list",list);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 		
 		return mav;  
 	}

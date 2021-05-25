@@ -11,11 +11,6 @@
 		</c:if>
 	</div>
 	
-	<c:if test="${count == 0}">
-	<div class="align-center">등록된 게시물이 없습니다.</div>
-	</c:if>
-	
-	<c:if test="${count > 0}">
 	<table>
 		<tr>
 			<select name="boa_cate">
@@ -42,6 +37,12 @@
 			<th>조회수</th>
 			<th>좋아요</th>
 		</tr>
+		
+		
+	<c:if test="${count == 0}">
+	<div >등록된 게시물이 없습니다.</div>
+	</c:if>
+		
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.board_num}</td>
@@ -63,6 +64,6 @@
 		</c:forEach>
 	</table>
 	<div class="align-center">${pagingHtml}</div>
-	</c:if>
+
 </div>
 <!-- 자유게시판 boardMain 끝 -->

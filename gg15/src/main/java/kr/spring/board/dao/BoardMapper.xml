@@ -3,6 +3,39 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.board.dao.BoardMapper">
+
+	<!-- 총 레코드 수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM board b
+		JOIN member m
+		ON b.mem_num = m.mem_num
+	</select>
+	
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map"
+	                                   resultType="boardVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.board_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
+		              ]]>
+		              m.mem_nick,
+		              b.boa_date,
+		              b.boa_view,
+		              b.boa_fav 
+		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num ORDER BY b.boa_num DESC)a)
+		            
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
 	
 	
 </mapper>
