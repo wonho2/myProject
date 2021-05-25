@@ -12,6 +12,7 @@
 </c:if>
 
 <c:if test="${count > 0}">
+	<!-- 게시물 목록 -->
 	<table>
 		<tr>
 			<th>번호</th>
@@ -34,9 +35,22 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<!-- 페이징 처리 -->
 	<div>
 		${pagingHtml}
 	</div>
+	
+	<!-- 미구현 : 게시물 검색창 -->
+	<p class="align-right">
+		<select name="pos_searchOption">
+			<option value="pos_title">제목</option>
+			<option value="pos_content">내용</option>
+			<option value="mem_nick">작성자</option>
+		</select>
+		<input type="text" id="pos_search">
+		<input type="button" value="검색">
+	</p>
 	
 </c:if>
 <!-- 포지션게시판 : boardList 끝 -->

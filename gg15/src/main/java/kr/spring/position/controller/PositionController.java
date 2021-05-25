@@ -87,9 +87,9 @@ public class PositionController
 	}
 	
 /*
- * 게시물 내용보기
+ * 게시물 내용보기 (완성)
  */
-	// 게시물 상세 (완성)
+	// 게시물 상세
 	@RequestMapping("/position/detail.do")
 	public ModelAndView boardDetail(@RequestParam int pos_num)
 	{
@@ -110,8 +110,9 @@ public class PositionController
 	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("pos_uploadfile", positionVO.getPos_uploadfile());
-		mav.addObject("pos_filename", positionVO.getPos_filename());
+		// ImageView.java에 있는 이름(imageFile, filename) 똑같이 써야함 무조건!!
+		mav.addObject("imageFile", positionVO.getPos_uploadfile());
+		mav.addObject("filename", positionVO.getPos_filename());
 		return mav;
 	}
 	

@@ -10,6 +10,9 @@
 	</p>
 	<input type="button" value="인기순" id="btn_popular"> <!-- default 정렬-->
 	<input type="button" value="최신순" id="btn_recent">
+	<span class="align-right">
+		<input type="button" value="댓글쓰기" id="btn_writeComment">
+	</span>
 </div>
 
 <c:forEach var="postionCommentVO" items="${commentList}">

@@ -51,4 +51,7 @@
 		<input type="button" value="추천" id="btn_fav">
 	</p>
 </div>
+ 
+<!-- 댓글 -->
+
 <!-- 포지션게시판 : 게시물 디테일 끝 -->
