@@ -12,8 +12,9 @@ CREATE TABLE position
     pos_filename VARCHAR2(300), /*업로드 파일명*/
     pos_date DATE DEFAULT SYSDATE NOT NULL, /*작성일*/
     pos_view NUMBER DEFAULT 0 NOT NULL, /*조회수*/
-   	pos_comment NUMBER DEFAULT 0 NOT NULL, /*댓글수*/
-    pos_fav NUMBER DEFAULT 0 NOT NULL, /*추천수*/
+    /*
+     * 추천수, 댓글수는 position_fav, position_comment 조인
+     */
     FOREIGN KEY (mem_num) REFERENCES member(mem_num)
 );
 
@@ -27,7 +28,9 @@ CREATE TABLE position_comment
     mem_num NUMBER NOT NULL, /*댓글 작성자(회원) 고유번호 <foreign : member>*/
     poc_content VARCHAR2(400) NOT NULL, /*내용*/
     poc_date DATE DEFAULT SYSDATE NOT NULL, /*작성일*/
-    poc_fav NUMBER DEFAULT 0 NOT NULL, /*추천수*/
+    /*
+     * 추천수는 position_cfav 조인
+     */
     FOREIGN KEY (pos_num) REFERENCES position(pos_num),
     FOREIGN KEY (mem_num) REFERENCES member(mem_num)
 );

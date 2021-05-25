@@ -9,6 +9,7 @@
 	<div>
 		<input type="button" value="수정" onclick="location.href='modify.do?pos_num=${positionVO.pos_num}'">
 		<input type="button" value="삭제" onclick="pos_delete();">
+		<!-- 여기에 자바스크립트를 작성하는 이유는 c:if의 조건이 만족하지 않으면, 코드가 보여지지 않게 하기 위해서라고 강사님이 말씀하셨습니다 -->
 		<script type="text/javascript">
 			function pos_delete(){
 				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");
@@ -51,7 +52,12 @@
 		<input type="button" value="추천" id="btn_fav">
 	</p>
 </div>
+
+<hr size="1" noshade="noshade" width="100%">
  
 <!-- 댓글 -->
+<p>
+	<%@ include file="/WEB-INF/views/position/comment.jsp" %>
+</p>
 
 <!-- 포지션게시판 : 게시물 디테일 끝 -->

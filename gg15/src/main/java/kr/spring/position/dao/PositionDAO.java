@@ -38,6 +38,7 @@ public interface PositionDAO
 	@Update("UPDATE position SET pos_view = pos_view+1 WHERE pos_num = #{boardNum}")
 	public void updateView(int boardNum);
 	
+// ------ 이 밑은 다 없애고 외부 테이블이랑 조인하는 식으로 할 것임 ----------------------------------------
 	// 해당 게시물의 추천수 증가
 	@Update("UPDATE position SET pos_fav = pos_fav+1 WHERE pos_num = #{boardNum}")
 	public void updateFavUp(int boardNum);
