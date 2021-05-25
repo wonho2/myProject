@@ -25,7 +25,7 @@ import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
-public class BaordController {	
+public class BoardController {	
 	private Logger log = Logger.getLogger(this.getClass());
 
 	//의존 관계 설정
