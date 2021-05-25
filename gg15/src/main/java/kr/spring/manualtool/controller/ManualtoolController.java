@@ -40,12 +40,12 @@ public class ManualtoolController {
 	}
 	//====게시판 글 등록=======//
 	//등록 폼
-	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.GET)
+	@RequestMapping(value="/manualTool/write.do", method=RequestMethod.GET)
 	public String writeForm() {
 		return "manualtoolWrite";
 	}
 	//전송된 데이터 처리
-	@RequestMapping(value="/manualtool/write.do", method=RequestMethod.POST)
+	@RequestMapping(value="/manualTool/write.do", method=RequestMethod.POST)
 	public String writeSubmit(@Valid ManualtoolVO manualtoolVO,
 			             BindingResult result,
 			             HttpServletRequest request,
@@ -61,24 +61,24 @@ public class ManualtoolController {
 		//글쓰기
 		manualtoolService.insertBoard(manualtoolVO);
 		
-		return "redirect:/manualtool/list.do";
+		return "redirect:/manualTool/list.do";
 	}
 	
 	//=====게시판 글 목록=====//
-	@RequestMapping("/manualtool/list.do")
-	public ModelAndView process(
-	@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
+	@RequestMapping("/manualTool/list.do")
+	public ModelAndView boardList(
+	@RequestParam(value="page", defaultValue="1") int currentPage) {
 		
 		//총 레코드 수
-		int count = manualtoolService.selectBoardCount();
+		//int count = manualtoolService.selectBoardCount();
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
-			log.debug("<<count>> : " + count);
+			//log.debug("<<count>> : " + count);
 		}
 		
 		//페이징 처리
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
+		/*PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		
 		List<ManualtoolVO> boardList = null;
 		if(count > 0) {
@@ -86,19 +86,19 @@ public class ManualtoolController {
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			boardList = manualtoolService.selectBoardList(map);
-		}
+		}*/
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("manualtoolList");
-		mav.addObject("count", count);
-		mav.addObject("boardList", boardList);
-		mav.addObject("pagingHtml", page.getPagingHtml());
+		//mav.addObject("count", count);
+		//mav.addObject("boardList", boardList);
+		//mav.addObject("pagingHtml", page.getPagingHtml());
 		
 		return mav;
 	}
 	
 	//====게시판 글 상세======//
-	@RequestMapping("/manualtool/detail.do")
+	@RequestMapping("/manualTool/detail.do")
 	public ModelAndView detail(@RequestParam int manualtool_num) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<manualtool_num>> : " + manualtool_num);
@@ -130,7 +130,7 @@ public class ManualtoolController {
 	
 	//=====게시판 글 수정======//
 	//수정 폼
-	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.GET)
+	@RequestMapping(value="/manualTool/update.do", method=RequestMethod.GET)
 	public String formUpdate(@RequestParam int manualtool_num, Model model) {
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		model.addAttribute("manualtoolVO", manualtoolVO);
@@ -138,7 +138,7 @@ public class ManualtoolController {
 		return "manualtoolModify";
 	}
 	//수정 폼에서 전송된 데이터 처리
-	@RequestMapping(value="/manualtool/update.do", method=RequestMethod.POST)
+	@RequestMapping(value="/manualTool/update.do", method=RequestMethod.POST)
 	public String submitUpdate(@Valid ManualtoolVO manualtoolVO,
 			                   BindingResult result,
 			                   HttpServletRequest request) {
@@ -150,16 +150,16 @@ public class ManualtoolController {
 		//글 수정
 		manualtoolService.updateBoard(manualtoolVO);
 		
-		return "redirect:/manualtool/list.do";
+		return "redirect:/manualTool/list.do";
 	}
 	
 	//======게시판 글 삭제========//
-	@RequestMapping("/manualtool/delete.do")
+	@RequestMapping("/manualTool/delete.do")
 	public String submitDelete(@RequestParam int manualtool_num) {
 		//글 삭제
 		manualtoolService.deleteBoard(manualtool_num);
 		
-		return "redirect:/manualtool/list.do";
+		return "redirect:/manualTool/list.do";
 	}
 	
 }

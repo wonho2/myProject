@@ -5,7 +5,21 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="manualToolList" extends="main">
+	<definition name="manualtoolList" extends="main">
+		<put-attribute name="title" value="15 gg - 공략 게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/manualtool/manualToolList.jsp"/>
+	</definition>
+	<definition name="manualtoolWrite" extends="main">
+		<put-attribute name="title" value="15 gg - 공략 게시판 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/manualtool/manualtoolWrite.jsp"/>
+	</definition>
+	<definition name="manualtoolView" extends="main">
+		<put-attribute name="title" value="15 gg - 공략 게시판 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/manualtool/manualtoolView.jsp"/>
+	</definition>
+	<definition name="manualtoolModify" extends="main">
+		<put-attribute name="title" value="15 gg - 공략 게시판 글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/manualtool/manualtoolModify.jsp"/>
 	</definition>
 </tiles-definitions>
 
