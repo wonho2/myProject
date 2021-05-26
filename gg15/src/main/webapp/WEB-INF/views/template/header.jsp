@@ -6,7 +6,6 @@
 <div class="align-right">
 	<c:if test="${!empty user_num}">
 		[<span class="user_name">${user_id}</span>]
-		[<span class="user_name">${user_point}</span>]
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 	</c:if>

@@ -24,8 +24,7 @@ public class MemberVO {
 	@NotEmpty
 	private String mem_email;
 	private int poi_point;
-	private Date reg_date;
-	private Date modify_date;
+	private Date mem_date;
 
 	//==========비밀번호 일치 여부 체크===========//
 	public boolean isCheckedPassword(String userPasswd) {
@@ -107,28 +106,15 @@ public class MemberVO {
 		this.poi_point = poi_point;
 	}
 
-	public Date getReg_date() {
-		return reg_date;
+	public Date getMem_date() {
+		return mem_date;
 	}
 
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public void setMem_date(Date mem_date) {
+		this.mem_date = mem_date;
 	}
 
-	public Date getModify_date() {
-		return modify_date;
-	}
-
-	public void setModify_date(Date modify_date) {
-		this.modify_date = modify_date;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_auth=" + mem_auth + ", mem_name="
-				+ mem_name + ", mem_pw=" + mem_pw + ", mem_nick=" + mem_nick + ", mem_phone=" + mem_phone
-				+ ", mem_email=" + mem_email + ", reg_date=" + reg_date + ", modify_date=" + modify_date + "]";
-	}
+	
 
 	
 	
