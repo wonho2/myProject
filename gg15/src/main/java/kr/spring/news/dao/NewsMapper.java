@@ -17,7 +17,7 @@ public interface NewsMapper {
 	public void insertNews(NewsVO news);
 	
 	//총 레코드 수
-	public int selectRowCount();
+	public int selectNewsCount();
 	
 	//글 목록
 	public List<NewsVO> selectList(Map<String,Object> map);
