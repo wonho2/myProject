@@ -17,6 +17,7 @@ public interface NewsMapper {
 	public void insertNews(NewsVO news);
 	
 	//총 레코드 수
+	@Select("SELECT COUNT(*) FROM news")
 	public int selectNewsCount();
 	
 	//글 목록
@@ -29,15 +30,19 @@ public interface NewsMapper {
 	//조회수 증가
 	@Update("UPDATE news SET hit=hit+1 WHERE new_num=#{new_num}")
 	public void updateHit(Integer new_num);
-	
-	//글 수정
+	           
+	//글 수정 
 	public void updateNews(NewsVO news);
-	
+	  
 	//글 삭제
-	@Delete("DELETE FROM news WHERE new_num=#new_num}")
+	@Delete("DELETE FROM news WHERE new_num=#{new_num}")
 	public void deleteNews(Integer new_num);
 	
-	//게시글 추천
+	//게시글 추천수 증가
 	@Update("UPDATE news SET new_fav =new_fav+1 WHERE new_num=#{new_num}")
-	public void updateFav(Integer new_num);
+	public void updateFavUp(Integer new_num);
+	   
+	//게시물 추천수 감소
+	@Update("UPDATE news SET new_fav = new_fav-1 WHERE new_num = #{new_num}")
+	public void updateFavDown(Integer new_num);
 }
