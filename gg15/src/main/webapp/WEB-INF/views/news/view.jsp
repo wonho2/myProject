@@ -13,16 +13,16 @@
 				location.replace('delete.do?new_num=${news.new_num}');
 			}
 		};
-	};
+	};   
 </script>
 <div class="page-main-style">
-	<h2>${news.title}</h2>
-	<ul>
+	<h2>${news.new_title}</h2>
+	<ul>  
 		<li>번호 : ${news.new_num}</li>
-		<li>작성자 : ${news.id}</li>
+		<li>작성자 : ${news.mem_nick}</li>
 		<li>조회수 : ${news.new_hit}</li>
-		<li>작성일 : ${news.reg_date}</li>
-		
+		<li>작성일 : ${news.new_date}</li>
+		    
 	</ul>
 	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(news.new_filename,'.jpg') || 
@@ -37,15 +37,15 @@
 	</div>
 	</c:if>
 	<p>
-		${news.content}
+		${news.new_content}
 	</p>
 	<hr size="1" width="100%">
 	<div class="align-right">
-		<%-- <c:if test="${!empty user_num && user_num == news.mem_num}"> --%>
+	 <c:if test="${!empty user_num && user_num == news.mem_num}"> 
 		<input type="button" value="수정"
 		 onclick="location.href='update.do?new_num=${news.new_num}'">
 		<input type="button" value="삭제" id="newsDelete_btn">
-	<%-- 	</c:if> --%>
+	</c:if> 
 		<input type="button" value="목록으로"
 		                        onclick="location.href='list.do'">
 	</div>

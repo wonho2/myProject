@@ -8,13 +8,13 @@
 	<form:form action="update.do" commandName="newsVO" 
 	                                enctype="multipart/form-data">
 		<form:hidden path="new_num"/>
-		<ul>
+		<ul> 
 			<li>
 				<label for="new_title">제목</label>
 				<form:input path="new_title"/>
 				<form:errors path="new_title" cssClass="error-color"/>
 			</li>
-			<li>
+			<li> 
 				<label for="new_content">내용</label>
 				<form:textarea path="new_content"/>
 				<form:errors path="new_content" cssClass="error-color"/>

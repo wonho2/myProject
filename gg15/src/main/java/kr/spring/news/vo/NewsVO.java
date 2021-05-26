@@ -9,12 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class NewsVO {
 	private int new_num;
-	
-	
-	@NotEmpty
 	private String mem_nick;
-	private String new_title;
-	private String new_content;
 	private int new_hit;
 	private Date new_date;
 	private byte[] new_uploadfile;
@@ -22,6 +17,10 @@ public class NewsVO {
 	private String id;
 	private String new_comment;
 	private String new_filename;
+	
+	@NotEmpty
+	private String new_title;
+	private String new_content;
 	
 	//업로드 파일 처리
 	public void setNew_upload(MultipartFile new_upload)throws IOException{
