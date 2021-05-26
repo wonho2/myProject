@@ -30,7 +30,13 @@ public interface BoardMapper {
 	//글 상세 페이지
 	@Select("SELECT * FROM board b JOIN member m ON b.mem_num=m.mem_num WHERE b.boa_num=#{boa_num}")
 	public BoardVO selectBoard(Integer boardNum);
+	
+	//글 수정
+	public void updateBoard(BoardVO board);
 		
+	//글 삭제
+	@Delete("DELETE FROM sprboard WHERE board_num=#{board_num}")
+	public void deleteBoard(Integer board_num);	
 
 }
 

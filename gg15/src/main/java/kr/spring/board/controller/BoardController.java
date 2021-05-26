@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -96,5 +98,68 @@ public class BoardController {
 		
 		return "redirect:/board/list.do";
 	}
+
+	//====게시판 글 상세======//
+	@RequestMapping("/board/boardDetail.do")
+	public ModelAndView boardDetail(@RequestParam int boa_num) {
+	
+		BoardVO board = boardService.selectBoard(boa_num);
+
+		//HTML 태그 불허
+		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
+		//HTML 태그 불허 및 줄바꿈 처리
+		board.setBoa_content(StringUtil.useBrNoHtml(board.getBoa_content()));
+			
+		return new ModelAndView("boardDetail","board",board);
+			
+		}
+	
+	//이미지 출력
+	@RequestMapping("/board/imageView.do")
+	public ModelAndView viewImage(@RequestParam int board_num) {
+		BoardVO board = boardService.selectBoard(board_num);
+			
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",board.getBoa_uploadfile());
+		mav.addObject("filename", board.getBoa_filename());
+			
+		return mav;
+	}
+		
+	//=====게시판 글 수정======//
+	//수정 폼
+	@RequestMapping(value="/board/boardModify.do", method=RequestMethod.GET)
+	public String formUpdate(@RequestParam int boa_num, Model model) {
+		BoardVO boardVO = boardService.selectBoard(boa_num);
+		model.addAttribute("boardVO", boardVO);
+			
+		return "boardModify";
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/board/boardModify.do", method=RequestMethod.POST)
+	public String submitUpdate(@Valid BoardVO boardVO,
+			                   BindingResult result,
+			                   HttpServletRequest request) {
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "baordModify";
+		}
+			
+		//글 수정
+		boardService.updateBoard(boardVO);
+			
+		return "redirect:/board/list.do";
+	}
+		
+	//======게시판 글 삭제========//
+	@RequestMapping("/board/delete.do")
+	public String submitDelete(@RequestParam int boa_num) {
+		//글 삭제
+		boardService.deleteBoard(boa_num);
+			
+		return "redirect:/board/list.do";
+		}
+		
 
 }

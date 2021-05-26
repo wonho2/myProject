@@ -39,14 +39,14 @@ public class BoardService {
 	}
 				
 	//글 수정
-	//public void updateBoard(BoardVO board) {
-	//	boardMapper.updateBoard(board);
-	//}
+	public void updateBoard(BoardVO board) {
+		boardMapper.updateBoard(board);
+	}
 		
 	//글 삭제
-	//public void deleteBoard(Integer board_num) {
-	//	boardMapper.deleteBoard(board_num);
-	//}
+	public void deleteBoard(Integer board_num) {
+		boardMapper.deleteBoard(board_num);
+	}
 	
 	//조회수 증가
 	//public void updateHit(Integer board_num) {
