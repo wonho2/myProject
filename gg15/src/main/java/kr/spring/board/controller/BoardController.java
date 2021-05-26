@@ -97,33 +97,4 @@ public class BoardController {
 		return "redirect:/board/list.do";
 	}
 
-	//====게시판 글 상세======//
-	@RequestMapping("/board/boardDetail.do")
-	public ModelAndView boardDetail(@RequestParam int boa_num) {
-	
-	
-		BoardVO board = boardService.selectBoard(boa_num);
-		//HTML 태그 불허
-		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
-		//HTML 태그 불허 및 줄바꿈 처리
-		board.setBoa_content(StringUtil.useBrNoHtml(board.getBoa_content()));
-			
-		return new ModelAndView("boardDetail","board",board);
-			
-		}
-	//이미지 출력
-	@RequestMapping("/board/imageView.do")
-	public ModelAndView viewImage(@RequestParam int board_num) {
-		BoardVO board = boardService.selectBoard(board_num);
-			
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("imageView");
-		mav.addObject("imageFile",board.getBoa_uploadfile());
-		mav.addObject("filename", board.getBoa_filename());
-			
-		return mav;
-	}
-		
-	
-
 }
