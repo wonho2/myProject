@@ -12,8 +12,8 @@ import kr.spring.news.vo.NewsVO;
 
 public interface NewsMapper {
 	//글쓰기
-	@Insert("INSERT INTO news (new_num, mem_num, new_title, new_content, new_uploadfile)"
-			+ " VALUES news_seq.nextval, #{mem_num}, #{title}, #{content}, #{uploadfile})")
+	@Insert("INSERT INTO news(new_num, mem_num, new_title, new_content, new_uploadfile, new_filename)"
+			+ " VALUES (news_seq.nextval, #{mem_num}, #{new_title}, #{new_content}, #{new_uploadfile}, #{new_filename})")
 	public void insertNews(NewsVO news);
 	
 	//총 레코드 수
@@ -45,4 +45,6 @@ public interface NewsMapper {
 	//게시물 추천수 감소
 	@Update("UPDATE news SET new_fav = new_fav-1 WHERE new_num = #{new_num}")
 	public void updateFavDown(Integer new_num);
+	
+	
 }

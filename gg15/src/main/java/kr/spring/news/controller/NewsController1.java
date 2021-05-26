@@ -1,5 +1,5 @@
 package kr.spring.news.controller;
-
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +66,7 @@ public class NewsController {
 	//=====게시판 글 목록=====//
 	@RequestMapping("/news/list.do")
 	public ModelAndView newsList(
-	@RequestParam(value="page",defaultValue="1") int currentPage) {
+	@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 			//총 레코드 수
 		int count = newsService.selectNewsCount();	
 		if(log.isDebugEnabled()) {
@@ -96,7 +96,7 @@ public class NewsController {
 	}
 	
 	//====게시판 글 상세======//
-	@RequestMapping("/news/detail.do")
+	@RequestMapping("/news/newsDetail.do")
 	public ModelAndView detail(@RequestParam int new_num) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<new_num>> : " + new_num);
@@ -129,16 +129,15 @@ public class NewsController {
 	
 	//=====게시판 글 수정======//
 	//수정 폼
-	@RequestMapping(value="/news/update.do",method=RequestMethod.GET)
+	@RequestMapping(value="/news/newsUpdate.do",method=RequestMethod.GET)
 	public String formUpdate(@RequestParam int new_num,Model model) {
 		NewsVO newsVO = newsService.selectNews(new_num);
 		model.addAttribute("NewsVO", newsVO);
 		
-		return "newsModify";
+		return "newsModify"; 
 	}
 	//수정 폼에서 전송된 데이터 처리
-	@RequestMapping(value="/news/u"
-			+ "pdate.do",method=RequestMethod.POST)
+	@RequestMapping(value="/news/newsUpdate.do",method=RequestMethod.POST)
 	public String submitUpdate(@Valid NewsVO newsVO,
 			                   BindingResult result,
 			                   HttpServletRequest request) {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.news.dao.NewsMapper">
+<!-- 게시물 목록 -->
+	<select id="selecList" parameterType="map" resultType="newsVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              n.new_num,
+		           
+		              <![CDATA[
+		              REPLACE(REPLACE(n.new_title,'<','&lt;'),'>','&gt;') new_title,
+		              ]]>
+		              m.mem_nick,
+		              n.new_date,
+		              n.new_hit,
+		              n.new_fav 
+		              FROM news n JOIN member_detail m ON n.mem_num = m.mem_num ORDER BY n.new_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	
+<!-- 게시물 상세 페이지 -->
+	<select id="selectNews" parameterType="Integer" resultType="newsVO">
+		SELECT 
+			n.*,
+			m.mem_nick  
+			FROM news n JOIN member_detail m ON n.new_num = m.mem_num 
+			WHERE new_num = #{new_num}
+	</select>
+	
+<!-- 게시물 수정 -->
+	<update id="updateNews" parameterType="newsVO">
+		UPDATE news SET	
+			<if test="new_filename != ''">
+				new_uploadfile = #{new_uploadfile},
+				new_filename = #{new_filename},
+			</if>
+			new_title = #{new_title},
+			new_content = #{new_content} 
+			WHERE new_num = #{new_num}
+	</update>
+	
+
+	
+</mapper>
