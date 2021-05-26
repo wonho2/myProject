@@ -117,7 +117,7 @@ public class ManualtoolController {
 		
 	}
 	//이미지 출력
-	@RequestMapping("/board/imageView.do")
+	@RequestMapping("/manualTool/imageView.do")
 	public ModelAndView viewImage(@RequestParam int manualtool_num) {
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
 		
