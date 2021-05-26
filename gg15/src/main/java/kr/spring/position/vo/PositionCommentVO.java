@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
 
+import kr.spring.util.DurationFromNow;
+
 public class PositionCommentVO 
 {
 	private int poc_num;
@@ -11,7 +13,7 @@ public class PositionCommentVO
 	private int mem_num;
 	private String mem_nick;
 	private String poc_content;
-	private Date poc_date;
+	private String poc_date;
 	private int poc_fav;
 	
 	public int getPoc_num() {
@@ -44,11 +46,12 @@ public class PositionCommentVO
 	public void setPoc_content(String poc_content) {
 		this.poc_content = poc_content;
 	}
-	public Date getPoc_date() {
+	
+	public String getPoc_date() {
 		return poc_date;
 	}
-	public void setPoc_date(Date poc_date) {
-		this.poc_date = poc_date;
+	public void setPoc_date(String poc_date) {
+		this.poc_date = DurationFromNow.getTimeDiffLabel(poc_date);
 	}
 	public int getPoc_fav() {
 		return poc_fav;

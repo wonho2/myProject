@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
 <!-- 포지션게시판 : 게시물 디테일 시작 -->
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == positionVO.mem_num}">
@@ -52,12 +53,37 @@
 		<input type="button" value="추천" id="btn_fav">
 	</p>
 </div>
-
-<hr size="1" noshade="noshade" width="100%">
- 
-<!-- 댓글 -->
-<p>
-	<%@ include file="/WEB-INF/views/position/comment.jsp" %>
-</p>
-
+<!--  댓글 시작 -->
+<hr size="1" width="100%">
+	<div id="reply_div">
+		<span class="reply-title">댓글 달기</span>
+		<form id="re_form">
+			<input type="hidden" name="pos_num"
+			       value="${positionVO.pos_num}" id="pos_num">
+			<input type="hidden" name="mem_num"
+			       value="${user_num}" id="mem_num">
+			<textarea rows="3" cols="50"
+			  name="poc_content" id="poc_content"
+			  class="rep-content"
+			  <c:if test="${empty user_num}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
+			<c:if test="${!empty user_num}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second" class="align-right">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+	</div>
+<!-- 댓글 끝 -->
 <!-- 포지션게시판 : 게시물 디테일 끝 -->

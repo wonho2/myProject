@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.position.dao.PositionDAO;
+import kr.spring.position.vo.PositionCommentVO;
 import kr.spring.position.vo.PositionVO;
 
 @Service("positionService")
@@ -58,27 +59,27 @@ public class PositionService
 		positionDAO.updateView(boardNum);
 	}
 	
-	// 해당 글의 추천수 증가
-	public void updateFavUp(int boardNum)
-	{
-		positionDAO.updateFavUp(boardNum);
+	//====댓글========//
+	public List<PositionCommentVO> selectListReply(Map<String, Object> map) {
+		return positionDAO.selectListReply(map);
 	}
-	
-	// 해당 글의 추천수 감소
-	public void updateFavDown(int boardNum)
-	{
-		positionDAO.updateFavDown(boardNum);
+
+	public int selectRowCountReply(Map<String, Object> map) {
+		return positionDAO.selectRowCountReply(map);
 	}
-	
-	// 해당 글의 댓글수 증가
-	public void updateCommentUp(int boardNum)
-	{
-		positionDAO.updateCommentUp(boardNum);
+
+	public void insertReply(PositionCommentVO boardReply) {
+		positionDAO.insertReply(boardReply);
 	}
-	
-	// 해당 글의 댓글수 감소
-	public void updateCommentDown(int boardNum)
-	{
-		positionDAO.updateCommentDown(boardNum);
+
+	public void updateReply(PositionCommentVO boardReply) {
+		positionDAO.updateReply(boardReply);
 	}
+
+	public void deleteReply(Integer poc_num) {
+		//(*******주의)댓글 좋아요가 있을 경우
+		//positionDAO.deleteReFavByRe_num(poc_num);
+		positionDAO.deleteReply(poc_num);
+	}
+
 }
