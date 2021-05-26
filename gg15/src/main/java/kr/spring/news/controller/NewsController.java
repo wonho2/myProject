@@ -28,7 +28,7 @@ import kr.spring.util.StringUtil;
 public class NewsController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	//의존 관계 설정 
+	//의존 관계 설정
 	@Resource
 	private NewsService newsService;
 	
