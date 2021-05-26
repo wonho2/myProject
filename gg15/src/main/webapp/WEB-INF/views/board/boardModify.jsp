@@ -4,7 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- 자유게시판 boardModify 시작 -->
-<form:form action="boardModify.do" commandName="boardVO" enctype="multipart/form-data">
+<h2>글 수정</h2>
+<form:form action="update.do" commandName="boardVO" enctype="multipart/form-data">
 
 	<form:hidden path="boa_num"/>
 	
