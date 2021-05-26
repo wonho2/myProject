@@ -22,7 +22,7 @@ public class BoardVO {
 	private String boa_filename;//업로드 파일 이름
 	private int boa_mode;
 	private int boa_hit;
-
+	
 	//업로드 파일 처리
 	public void setBoa_upload(MultipartFile boa_upload)throws IOException{
 		//MultipartFile -> byte[] 변환

@@ -44,14 +44,17 @@
 			
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 시작-->
 			<td>
-			<c:if test="${board.boa_uploadfile == null}">
+			<c:if test="${board.boa_uploadfile}.size>0">
 			<img src="${pageContext.request.contextPath}/resources/images/icon.png"
 				 width="50" >
+			</c:if>
+			<c:if test="${empty board.boa_uploadfile}">
+			X
 			</c:if>
 			</td>
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 끝-->
 			
-			<td><a href="boardDetail.do?board_num=${board.boa_num}">${board.boa_title}</a></td>
+			<td><a href="boardDetail.do?boa_num=${board.boa_num}">${board.boa_title}</a></td>
 			<td>${member.mem_id}</td>
 			<td>${board.boa_date}</td>
 			<td>${board.boa_hit}</td>

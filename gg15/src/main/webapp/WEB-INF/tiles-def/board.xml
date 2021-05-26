@@ -16,6 +16,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/board/boardWrite.jsp"/>
 	</definition>
 	
+	<definition name="boardDetail" extends="main">
+		<put-attribute name="title" value="gg.15 - 자유게시판 글 상세페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/boardDetail.jsp"/>
+	</definition>
+	
+	
 </tiles-definitions>
 
 

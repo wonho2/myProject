@@ -6,36 +6,35 @@
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
 <div>
-	<section>
-		[${boardVO.boa_cate}] 
-	</section>
+	<section>${boardVO.boa_cate}</section>
 		<h1>${boardVO.boa_title}</h1>
 	<section>
-		<a href="/member/memberDetail.do?board_num=${board.board_num}">${boardVO.mem_nick}</a>
+	<!-- 사용자 닉네임처리 해야함 -->
+	<a href="/member/memberDetail.do?board_num=${board.boa_num}">${boardVO.mem_num}</a> 
+	
 	</section>
 	<section>
 		${boardVO.boa_date} 
 		조회수 ${boardVO.boa_view}		
 		추천수 ${boardVO.bof_num} 댓글수 ${boardVO.bor_num}
 	</section>
-	<!-- 이미지 넣기 -->
+	<!-- 이미지 오찌하지... -->
 	<section>
 		${boardVO.boa_content}
 	</section>
-	<hr size="1" noshade="noshade" width="100%">
 	
 	<input type="button" value="신고" id="report">
 	
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == BoardVO.mem_num}">
-	<div>
-		<input type="button" value="수정" onclick="location.href='boardModify.do?num=${boardVO.boas_num}'">
-		<input type="button" value="삭제" onclick="location.href='boardDelete.do?num=${boardVO.boa_num}'" id="btn_delete">
-	</div>  
+	
+		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${boardVO.boa_num}'">
+		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${boardVO.boa_num}'" id="delete">
+	
 </c:if>
 	 
-	<div>
+	
 		<input type="button" value="좋아요" id="like">
-	</div>
+	
 </div>
 <!--  자유게시판 boardList 끝 -->

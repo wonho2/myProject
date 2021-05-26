@@ -34,8 +34,8 @@ public class BoardService {
 	}
 
 	//글 상세 페이지
-	public BoardVO selectBoard(Integer boa_num) {
-		return boardMapper.selectBoard(boa_num);
+	public BoardVO selectBoard(Integer boardNum) {
+		return boardMapper.selectBoard(boardNum);
 	}
 				
 	//글 수정
