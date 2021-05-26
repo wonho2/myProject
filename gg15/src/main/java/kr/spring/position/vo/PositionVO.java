@@ -3,8 +3,6 @@ package kr.spring.position.vo;
 import java.io.IOException;
 import java.sql.Date;
 
-import javax.validation.constraints.NotEmpty;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class PositionVO
@@ -13,7 +11,6 @@ public class PositionVO
 	private String pos_type;
 	private int mem_num;
 	private String mem_nick;
-	@NotEmpty
 	private String pos_title, pos_content;
 	private byte[] pos_uploadfile;
 	private String pos_filename;

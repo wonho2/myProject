@@ -11,7 +11,6 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,10 +73,8 @@ public class PositionController
 	}
 	
 	@RequestMapping(value="/position/write.do", method=RequestMethod.POST)
-	public String writeSubmit(@Valid PositionVO positionVO, BindingResult result, HttpServletRequest request, HttpSession session)
+	public String writeSubmit(@Valid PositionVO positionVO, HttpServletRequest request, HttpSession session)
 	{
-		// 유효성 오류가 있는 경우
-		if(result.hasErrors()) return "position_write";
 		// 정보 셋팅
 		Integer mem_num = (Integer)session.getAttribute("user_num");
 		positionVO.setMem_num(mem_num);
@@ -128,11 +125,8 @@ public class PositionController
 	}
 	
 	@RequestMapping(value="/position/modify.do", method=RequestMethod.POST)
-	public String modifySubmit(@Valid PositionVO positionVO, BindingResult result, HttpServletRequest request)
+	public String modifySubmit(@Valid PositionVO positionVO, HttpServletRequest request)
 	{
-		// 유효성 오류가 있는 경우
-		if(result.hasErrors()) return "position_modify";
-		
 		positionService.updateBoard(positionVO);
 		return "redirect:/position/list.do";
 	}

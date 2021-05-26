@@ -12,7 +12,21 @@
 	// 댓글 목록 불러오기
 	function updateCommentList()
 	{
-		
+		$.ajax({
+			type:"get",
+			url:"updateCommentList.do",
+			dataType:"json",
+			cache:false,
+			timeout:30000,
+			success:function(commentList){
+				$(commentList).each(function(index,item){
+					
+				});
+			},
+			error:function(){
+				
+			}
+		});
 	}
 	// 댓글 쓰기
 	function writeComment()

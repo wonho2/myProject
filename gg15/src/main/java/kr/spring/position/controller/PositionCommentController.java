@@ -1,6 +1,8 @@
 package kr.spring.position.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -30,6 +32,16 @@ public class PositionCommentController
 	public PositionCommentVO initCommand()
 	{
 		return new PositionCommentVO();
+	}
+	
+/*
+ * 해당 게시물 댓글 리스트, 리스트 업데이트
+ */
+	@RequestMapping("/position/updateCommentList.do")
+	public List<PositionCommentVO> updateCommentList()
+	{
+		List<PositionCommentVO> commentList = new ArrayList<PositionCommentVO>();
+		return commentList;
 	}
 		
 /*
