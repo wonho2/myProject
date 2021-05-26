@@ -1,4 +1,4 @@
-package kr.spring.news.controller;
+/*package kr.spring.news.controller;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -161,4 +161,4 @@ public class NewsController {
 		return "redirect:/news/list.do";
 	}
 	
-}
+}*/
