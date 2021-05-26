@@ -5,7 +5,7 @@
 <!-- 공략 게시판 글 수정 시작 -->
 <div class="page-main-style">
 	<h2>글 수정</h2>
-	<form:form action="manualtoolUpdate.do" commandName="manualtoolVO" enctype="multipart/form-data">
+	<form:form action="update.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<form:hidden path="man_num"/>
 		<ul>
 			<li>

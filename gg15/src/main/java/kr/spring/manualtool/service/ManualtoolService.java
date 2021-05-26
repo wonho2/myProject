@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.manualtool.dao.ManualtoolDAO;
 import kr.spring.manualtool.vo.ManualtoolVO;
+import kr.spring.manualtool.vo.ManualtoolCommentVO;
 
 @Service("manualtoolService")
 public class ManualtoolService {
@@ -69,6 +70,27 @@ public class ManualtoolService {
 	//글 삭제
 	public void deleteBoard(int manualtool_num) {
 		manualtoolDAO.deleteBoard(manualtool_num);
+	}
+	
+	//=====댓글=====
+	public List<ManualtoolCommentVO> selectListReply(Map<String, Object> map) {
+		return manualtoolDAO.selectListReply(map);
+	}
+
+	public int selectRowCountReply(Map<String, Object> map) {
+		return manualtoolDAO.selectRowCountReply(map);
+	}
+
+	public void insertReply(ManualtoolCommentVO boardReply) {
+		manualtoolDAO.insertReply(boardReply);
+	}
+
+	public void updateReply(ManualtoolCommentVO boardReply) {
+		manualtoolDAO.updateReply(boardReply);
+	}
+	
+	public void deleteReply(Integer mar_num) {
+		manualtoolDAO.deleteReply(mar_num);
 	}
 	
 }

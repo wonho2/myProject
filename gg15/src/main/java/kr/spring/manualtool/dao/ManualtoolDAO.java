@@ -9,7 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.manualtool.vo.ManualtoolVO;
-import kr.spring.position.vo.PositionVO;
+import kr.spring.manualtool.vo.ManualtoolCommentVO;
+import kr.spring.manualtool.vo.ManualtoolVO;
 
 public interface ManualtoolDAO {
 	//글쓰기
@@ -53,5 +54,17 @@ public interface ManualtoolDAO {
 	//글 삭제
 	@Delete("DELETE FROM manualtool WHERE man_num=#{man_num}")
 	public void deleteBoard(int boardNum);
+	
+	//=====댓글=====
+	public List<ManualtoolCommentVO> selectListReply(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM manualtool_reply WHERE man_num=#{man_num}")
+	public int selectRowCountReply(Map<String, Object> map);
+	@Insert("INSERT INTO manualtool_reply (mar_num, mar_content, man_num, mem_num) VALUES (manualtool_reply_seq.nextval, #{mar_content}, #{man_num}, #{mem_num})")
+	public void insertReply(ManualtoolCommentVO boardReply);
+	@Update("UPDATE manualtool_reply SET mar_content=#{mar_content} WHERE mar_num=#{mar_num}")
+	public void updateReply(ManualtoolCommentVO boardReply);
+	@Delete("DELETE FROM manualtool_reply WHERE mar_num=#{mar_num}")
+	public void deleteReply(Integer mar_num);
+
 	
 }

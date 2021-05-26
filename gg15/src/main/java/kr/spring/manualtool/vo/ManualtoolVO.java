@@ -16,6 +16,7 @@ public class ManualtoolVO {
 	@NotEmpty
 	private String man_title, man_content;
 	private byte[] man_uploadfile;
+	private String man_filename;
 	private Date man_date, man_update;
 	private int man_hit, man_fav, man_comment;
 	
@@ -23,6 +24,8 @@ public class ManualtoolVO {
 		public void setMan_uploadfile(MultipartFile man_uploadfile)throws IOException{
 			//MultipartFile -> byte[] 변환
 			setMan_uploadfile(man_uploadfile.getBytes());
+			//파일명 구하기
+			setMan_filename(man_uploadfile.getOriginalFilename());
 		}
 
 	public int getMan_num() {
@@ -66,6 +69,12 @@ public class ManualtoolVO {
 	}
 	public void setMan_uploadfile(byte[] man_uploadfile) {
 		this.man_uploadfile = man_uploadfile;
+	}
+	public String getMan_filename() {
+		return man_filename;
+	}
+	public void setMan_filename(String man_filename) {
+		this.man_filename = man_filename;
 	}
 	public Date getMan_date() {
 		return man_date;

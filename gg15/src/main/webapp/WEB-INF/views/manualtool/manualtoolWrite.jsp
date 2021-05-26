@@ -3,9 +3,32 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- 공략 게시판 글쓰기 시작 -->
+<!-- js -->
+<script type="text/javascript">
+	window.onload = function() {
+		var man_title = document.getElementById("man_title");
+		var man_content = document.getElementById("man_content");
+		var btn_submit = document.getElementById("btn_submit");
+		//등록 이벤트 처리
+		btn_submit.onclick = function() {
+			if(man_title.value.trim() == '') {
+				alert("제목을 입력하세요");
+				man_title.focus();
+				return false;
+			}
+			else if(man_content.value.trim() == '') {
+				alert("내용을 입력하세요");
+				man_content.focus();
+				return false;
+			}
+			return true;
+		};
+	};
+</script>
+
 <!-- 로그인 확인 -->
 
-	<form:form action="manualtoolWrite.do" commandName="manualtoolVO" enctype="multipart/form-data">
+	<form:form action="write.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<ul>
 			<!-- 
 			<li>
