@@ -26,14 +26,14 @@
 	</select>
 	
 <!-- 게시물 상세 페이지 -->
-	<!-- <select id="selectNews" parameterType="Integer" resultType="newsVO">
+<!-- 	 <select id="selectNews" parameterType="Integer" resultType="newsVO">
 		SELECT 
 			n.*,
 			m.mem_nick  
 			FROM news n JOIN member_detail m ON n.new_num = m.mem_num 
 			WHERE new_num = #{new_num}
-	</select> -->
-	
+	</select> 
+	-->
 <!-- 게시물 수정 -->
 	<update id="updateNews" parameterType="newsVO">
 		UPDATE news SET	
@@ -46,6 +46,6 @@
 			WHERE new_num = #{new_num}
 	</update>
 	
-
+ 
 	
 </mapper>

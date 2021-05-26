@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.news.vo.NewsVO;
 
+
 public interface NewsMapper {
 	//글쓰기
 	@Insert("INSERT INTO news(new_num, mem_num, new_title, new_content, new_uploadfile, new_filename)"
@@ -28,7 +29,7 @@ public interface NewsMapper {
 	public NewsVO selectNews(Integer new_num);
 	
 	//조회수 증가
-	@Update("UPDATE news SET hit=hit+1 WHERE new_num=#{new_num}")
+	@Update("UPDATE news SET new_hit=new_hit+1 WHERE new_num=#{new_num}")
 	public void updateHit(Integer new_num);
 	           
 	//글 수정 

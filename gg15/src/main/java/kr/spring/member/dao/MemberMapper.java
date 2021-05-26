@@ -19,7 +19,7 @@ public interface MemberMapper {
 	//아이디 중복 체크 및 로그인 체크
 	@Select("SELECT m.mem_num,m.mem_id,m.mem_auth,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")
 	public MemberVO selectCheckMember(String id);
-	/*//포인트
-	@Update("UPDATE point SET p.poi_point=p.poi_point+5 FROM member m  JOIN point p ON m.mem_num=p.mem_num WHERE m.mem_num=#{mem_num}")
-	public void updatePoint(Integer mem_num);*/
+	//회원 상세 정보
+	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
+	public MemberVO selectMember(Integer mem_num);
 }	

@@ -5,10 +5,9 @@
 <div class="page-main-style">
 	<h2>뉴스</h2>
 	<div class="align-right">
-		<!-- 테스트용 -->
-		<%-- <c:if test="${!empty user_num}"> --%>
+	 <c:if test="${!empty user_num}"> 
 		<input type="button" value="작성" onclick="location.href='write.do'">
-		<%-- </c:if> --%>
+	</c:if> 
 	</div>
 	<c:if test="${count == 0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
@@ -20,19 +19,17 @@
 			<th width="400">제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
-			<th>조회수</th>
-			<th>추천수</th>
-		</tr>
-		<c:forEach var="news" items="${list}">
+			<th>조회수</th>  
+		</tr> 
+		<c:forEach var="news" items="${newsList}">
 		<tr>
 			<td>${news.new_num}</td>
 			<td><a href="detail.do?new_num=${news.new_num}">${news.new_title}</a></td>
-			<td>${news.mem_nick}</td>
+			 <td>${news.mem_nick}</td>
 			<td>${news.new_date}</td>
 			<td>${news.new_hit}</td>
-			<td>${news.new_fav}</td>
 		</tr>
-		</c:forEach>
+		</c:forEach> 
 	</table>
 	<div class="align-center">${pagingHtml}</div>
 	</c:if>

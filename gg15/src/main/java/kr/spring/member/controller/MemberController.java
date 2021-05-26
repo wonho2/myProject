@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,10 +41,10 @@ public class MemberController {
 	//아이디 중복 체크
 	@RequestMapping("/member/confirmId.do")
 	@ResponseBody
-	public Map<String,String> process(@RequestParam("mem_id") String id){
+	public Map<String,String> process(@RequestParam("id") String id){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<회원 아이디>> : " + id);
+			log.debug("<<id>> : " + id);
 		}
 
 		Map<String,String> map = new HashMap<String,String>();
@@ -132,9 +133,7 @@ public class MemberController {
 				session.setAttribute("user_num", member.getMem_num());
 				//회원 아이디 저장
 				session.setAttribute("user_id", member.getMem_id());
-				/*
-				memberService.updatePoint(memberVO.getMem_num());
-				session.setAttribute("user_point", memberVO.getPoi_point());*/
+
 				return "redirect:/main/main.do";
 
 			}else {//인증 실패
@@ -147,14 +146,25 @@ public class MemberController {
 			return formLogin();
 		}
 	}
-	
-	
+
 	//======회원 로그아웃=======//
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session) {
 		//로그아웃
 		session.invalidate();
-		
+
 		return "redirect:/main/main.do";
+	}
+
+	//=====회원 상세 정보=====//
+	@RequestMapping("/member/myPage.do")
+	public String process(HttpSession session, Model model) {
+		Integer user_num = (Integer)session.getAttribute("user_num");
+
+		MemberVO member = memberService.selectMember(user_num);
+
+		model.addAttribute("member", member);		
+
+		return "memberView";
 	}
 }
