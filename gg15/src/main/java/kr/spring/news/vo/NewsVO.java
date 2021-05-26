@@ -24,11 +24,11 @@ public class NewsVO {
 	private String new_filename;
 	
 	//업로드 파일 처리
-	public void setUpload(MultipartFile upload)throws IOException{
+	public void setNew_upload(MultipartFile new_upload)throws IOException{
 		//MultipartFile -> byte[] 변환
-		setNew_uploadfile(upload.getBytes());
+		setNew_uploadfile(new_upload.getBytes());
 		//파일명 구하기
-		setNew_filename(upload.getOriginalFilename());
+		setNew_filename(new_upload.getOriginalFilename());
 	}
 	public String getMem_nick() {
 		return mem_nick;

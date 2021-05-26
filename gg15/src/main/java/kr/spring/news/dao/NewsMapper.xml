@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.news.dao.NewsMapper">
 <!-- 게시물 목록 -->
-	<select id="selecList" parameterType="map" resultType="newsVO">
+	<select id="selectList" parameterType="map" resultType="newsVO">
 		SELECT
 		   *
 		FROM (SELECT 
@@ -18,8 +18,7 @@
 		              ]]>
 		              m.mem_nick,
 		              n.new_date,
-		              n.new_hit,
-		              n.new_fav 
+		              n.new_hit
 		              FROM news n JOIN member_detail m ON n.mem_num = m.mem_num ORDER BY n.new_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
@@ -27,13 +26,13 @@
 	</select>
 	
 <!-- 게시물 상세 페이지 -->
-	<select id="selectNews" parameterType="Integer" resultType="newsVO">
+	<!-- <select id="selectNews" parameterType="Integer" resultType="newsVO">
 		SELECT 
 			n.*,
 			m.mem_nick  
 			FROM news n JOIN member_detail m ON n.new_num = m.mem_num 
 			WHERE new_num = #{new_num}
-	</select>
+	</select> -->
 	
 <!-- 게시물 수정 -->
 	<update id="updateNews" parameterType="newsVO">
