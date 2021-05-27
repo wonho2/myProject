@@ -18,7 +18,7 @@ CREATE TABLE party_reply(
     par_num NUMBER NOT NULL,
     mem_num NUMBER NOT NULL,
     pop_content VARCHAR2(4000) NOT NULL,
-    pop_date DATE NOT NULL,
+    pop_date DATE NOT NULL default SYSDATE,
     constraint party_reply_pk primary key (pop_num),
     constraint party_reply_fk1 foreign key (par_num)
     references party (par_num),

@@ -41,7 +41,7 @@ public class PartyController {
 	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
 		//페이징 처리
-		int count = partyService.selectBoardCount();
+		int count = partyService.selectPartyCount();
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		List<PartyVO> partyList = null;
 		if(count > 0)
@@ -49,7 +49,7 @@ public class PartyController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			partyList = partyService.selectBoardList(map);
+			partyList = partyService.selectPartyList(map);
 		}
 		//데이터 저장 및 반환
 		ModelAndView mav = new ModelAndView();
@@ -80,7 +80,7 @@ public class PartyController {
 		partyVO.setMem_num(user_num);
 		
 		//글쓰기
-		partyService.insertBoard(partyVO);
+		partyService.insertParty(partyVO);
 		return "redirect:/party/list.do";
 	}
 	
@@ -92,7 +92,7 @@ public class PartyController {
 		//해당 글의 조회수 증가
 		partyService.updateHit(par_num);
 		
-		PartyVO partyVO = partyService.selectBoard(par_num);
+		PartyVO partyVO = partyService.selectParty(par_num);
 		////HTML 태그 불허
 		partyVO.setPar_title(StringUtil.useNoHtml(partyVO.getPar_title()));
 		//HTML 태그 불허 및 줄바꿈 처리
@@ -105,7 +105,7 @@ public class PartyController {
 	@RequestMapping("/party/imageView.do")
 	public ModelAndView imageView(@RequestParam int par_num)
 	{
-		PartyVO partyVO = partyService.selectBoard(par_num);
+		PartyVO partyVO = partyService.selectParty(par_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -118,7 +118,7 @@ public class PartyController {
 	@RequestMapping(value="/party/update.do", method=RequestMethod.GET)
 	public String modifyForm(@RequestParam int par_num, Model model)
 	{
-		PartyVO partyVO = partyService.selectBoard(par_num);
+		PartyVO partyVO = partyService.selectParty(par_num);
 		model.addAttribute("partyVO", partyVO);
 		return "partyModify";
 	}

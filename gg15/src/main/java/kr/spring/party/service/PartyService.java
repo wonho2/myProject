@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.party.dao.PartyMapper;
+import kr.spring.party.vo.PartyReplyVO;
 import kr.spring.party.vo.PartyVO;
 
 @Service("partyService")
@@ -17,23 +18,23 @@ public class PartyService {
 	private PartyMapper partyDAO;
 	
 	//글쓰기
-	public void insertBoard(PartyVO vo) {
-		partyDAO.insertBoard(vo);
+	public void insertParty(PartyVO vo) {
+		partyDAO.insertParty(vo);
 	}
 	
 	//총 파티 게시판 게시글 수
-	public int selectBoardCount() {
-		return partyDAO.selectBoardCount();
+	public int selectPartyCount() {
+		return partyDAO.selectPartyCount();
 	}
 	
 	//파티 게시물 리스트 불러오기
-	public List<PartyVO> selectBoardList(Map<String, Object> map) {
-		return partyDAO.selectBoardList(map);
+	public List<PartyVO> selectPartyList(Map<String, Object> map) {
+		return partyDAO.selectPartyList(map);
     }
 	
 	//파티 게시물 상세 페이지
-	public PartyVO selectBoard(int boardNum) {
-		return partyDAO.selectBoard(boardNum);
+	public PartyVO selectParty(int boardNum) {
+		return partyDAO.selectParty(boardNum);
 	}
 	
 	//파티 해당 게시 글의 조회수 증가
@@ -50,4 +51,27 @@ public class PartyService {
 	public void deleteParty(int boardNum) {
 		partyDAO.deleteParty(boardNum);
 	}
+	
+	//==========댓글 시작================//
+	public List<PartyReplyVO> selectPartyListReply(Map<String, Object> map) {
+		return partyDAO.selectPartyListReply(map);
+	}
+
+	public int selectPartyRowCountReply(Map<String, Object> map) {
+		return partyDAO.selectPartyRowCountReply(map);
+	}
+
+	public void insertPartyReply(PartyReplyVO partyReply) {
+		partyDAO.insertPartyReply(partyReply);
+	}
+
+	public void updatePartyReply(PartyReplyVO partyReply) {
+		partyDAO.updatePartyReply(partyReply);
+	}
+
+	public void deletePartyReply(Integer pop_num) {
+		partyDAO.deletePartyReply(pop_num);
+	}
+
+	//==========댓글 끝=================//
 }	
