@@ -109,10 +109,17 @@ public class BoardController {
 
 	//====게시판 글 상세======//
 	@RequestMapping("/board/boardDetail.do")
-	public ModelAndView boardDetail(@RequestParam int boa_num) {
+	public ModelAndView boardDetail(@RequestParam int boa_num,
+			                       HttpSession session) {
 
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		
 		BoardVO board = boardService.selectBoard(boa_num);
 
+		if(user_num == null && board.getBoa_mode() == 1) {
+			return new ModelAndView("boardModeError");
+		}
+		
 		//HTML 태그 불허
 		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
 		//HTML 태그 불허 및 줄바꿈 처리

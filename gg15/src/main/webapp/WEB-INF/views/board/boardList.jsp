@@ -14,7 +14,7 @@
 	<table>
 		<tr>
 			<select name="boa_cate">
-				<optgroup label="카테고리">
+				<optgroup label="카테고리" >
 					<option value="All">전체</option>
 					<option value="gaming_machine">게이밍 기기</option>
 					<option value="game_talk">게임 이야기</option>
@@ -55,7 +55,7 @@
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 끝-->
 			
 			<td><a href="boardDetail.do?boa_num=${board.boa_num}">${board.boa_title}</a></td>
-			<td>${member.mem_id}</td>
+			<td>${board.mem_nick}</td>
 			<td>${board.boa_date}</td>
 			<td>${board.boa_hit}</td>
 		</tr>

@@ -4,26 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- 자유게시판 boardList 시작 -->
-<script type="text/javascript">
-	window.onload=function(){
-		var btn_delete = document.getElementById('btn_delete');
-		//이벤트 연결
-		btn_delete.onclick = function(){
-			var choice = window.confirm('삭제하시겠습니까?');
-			if(choice){
-				location.replace('delete.do?boa_num=${board.boa_num}');
-			}
-		};
-	};
-</script> 
 <!-- 게시물 상세 -->
-<!-- 비밀글 설정 확인-->
- 
-	<c:if test="${boa_mode=0} || (${boa_mode=1} && ${!empty user_num})">
- 
 <!-- 본문 시작 -->
-
-
 <div>
 	<section>${board.boa_cate}</section>
 		<h1>${board.boa_title}</h1>
@@ -72,6 +54,16 @@
 	
 		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${board.boa_num}'" id="btn_modify">
 		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${board.boa_num}'" id="btn_delete">
+		<script type="text/javascript">
+			var btn_delete = document.getElementById('btn_delete');
+			//이벤트 연결
+			btn_delete.onclick = function(){
+				var choice = window.confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('delete.do?boa_num=${board.boa_num}');
+				}
+			};
+		</script> 
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
 
 </c:if>
@@ -82,15 +74,5 @@
 			
 </div>
 <!-- 본문 끝 -->
-
-</c:if>
-
-
-<!-- 회원전용 글  : 비회원이 접속시-->
-<c:if test="${boa_mode=1} && ${empty user_num}">
-	<!-- errorPage.do 로 이동시키고 싶음-->
-	${location.href='errorPage.do'}
-</c:if>
-
 
 <!--  자유게시판 boardList 끝 -->
