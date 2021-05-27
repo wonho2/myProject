@@ -22,4 +22,16 @@ public interface MemberMapper {
 	//회원 상세 정보
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
+	//회원 정보 수정
+	@Update("UPDATE member_detail SET mem_name=#{mem_name},mem_nick=#{mem_nick},mem_phone=#{mem_phone},mem_email=#{mem_email}WHERE mem_num=#{mem_num}")
+	public void updateMember(MemberVO member);
+	//비밀번호 수정
+	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
+	public void updatePassword(MemberVO member);
+	//관리자 auth값 변경 
+	@Update("UPDATE member SET mem_auth=3 WHERE mem_num=#{mem_num}")
+	public void updateAdAuth(Integer mem_num);
+	//멤버 auth값 변경
+	@Update("UPDATE member SET mem_auth=2 WHERE mem_num=#{mem_num}")
+	public void updateMemAuth(Integer mem_num);
 }	

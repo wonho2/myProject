@@ -133,7 +133,11 @@ public class MemberController {
 				session.setAttribute("user_num", member.getMem_num());
 				//회원 아이디 저장
 				session.setAttribute("user_id", member.getMem_id());
-
+				
+				session.setAttribute("user_auth",member.getMem_auth());
+				
+				memberService.updateMemAuth(member.getMem_num());
+				
 				return "redirect:/main/main.do";
 
 			}else {//인증 실패
@@ -146,6 +150,65 @@ public class MemberController {
 			return formLogin();
 		}
 	}
+	//관리자로그인 폼 호출
+		@RequestMapping(value="/member/adLogin.do",method=RequestMethod.GET)
+		public String formAdLogin() {
+			return "adLogin";
+		}
+	//관리자 
+		@RequestMapping(value="/member/adLogin.do",method=RequestMethod.POST)
+		public String adLogin(@Valid MemberVO memberVO,
+				BindingResult result,
+				HttpSession session) {
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<회원 로그인>> : " + memberVO);
+			}
+
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			//id와 passwd 필드만 체크
+			if(result.hasFieldErrors("mem_id") || 
+					result.hasFieldErrors("mem_pw")) {
+				return formLogin();
+			}
+
+			//로그인 체크(입력한 id와 비밀번호가 DB에 저장된 id와 비밀번호와 일치하는지 여부)
+			try {
+				MemberVO member = memberService.selectCheckMember(
+						memberVO.getMem_id());
+				boolean check = false;
+
+				if(log.isDebugEnabled()) {
+					log.debug("<<회원 아이디>> : " + member.getMem_id());
+				}
+
+				if(member!=null) {
+					//비밀번호 일치 여부 체크
+					check = member.isCheckedPassword(
+							memberVO.getMem_pw());
+				}
+				if(check) {//인증 성공, 로그인 처리
+					//회원번호 저장
+					session.setAttribute("user_num", member.getMem_num());
+					//회원 아이디 저장
+					session.setAttribute("user_id", member.getMem_id());
+					
+					memberService.updateAdAuth(member.getMem_num());
+					
+					session.setAttribute("user_auth",member.getMem_auth());
+
+					return "redirect:/main/main.do";
+
+				}else {//인증 실패
+					throw new AuthCheckException();
+				}
+			}catch(AuthCheckException e) {
+				//에러 메시지 처리
+				result.reject("invalidIdOrPassword");
+				//인증 실패로 로그인 폼 호출
+				return formLogin();
+			}
+		}
 
 	//======회원 로그아웃=======//
 	@RequestMapping("/member/logout.do")
@@ -167,4 +230,82 @@ public class MemberController {
 
 		return "memberView";
 	}
+	//=========회원 정보 수정==========//
+	//수정 폼
+	@RequestMapping(value="/member/update.do",method=RequestMethod.GET)
+	public String formUpdate(HttpSession session, Model model) {
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		
+		MemberVO memberVO = memberService.selectMember(user_num);
+		
+		model.addAttribute("memberVO", memberVO);
+		
+		return "memberModify";
+	}
+	//수정폼에서 전송된 데이터 처리
+	@RequestMapping(value="/member/update.do",method=RequestMethod.POST)
+	public String submitUpdate(@Valid MemberVO memberVO,
+			                   BindingResult result,
+			                   HttpSession session) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<회원 정보 수정>> : " + memberVO);
+		}
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "memberModify";
+		}
+		
+		//회원 번호 구하기
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		memberVO.setMem_num(user_num);
+		
+		//회원 정보 수정
+		memberService.updateMember(memberVO);
+		
+		return "redirect:/member/myPage.do";
+	}	
+	//========비밀번호 수정=========//
+	//비밀번호 수정 폼
+	@RequestMapping(value="/member/changePassword.do",
+			                              method=RequestMethod.GET)
+	public String formChangePassword() {
+		return "memberChangePassword";
+	}
+	
+	//비밀번호 수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/member/changePassword.do",
+			                             method=RequestMethod.POST)
+	public String submitChangePassword(@Valid MemberVO memberVO,
+			                       BindingResult result,
+			                       HttpSession session) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<비밀번호 변경 처리>> : " + memberVO);
+		}
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		//now_passwd와 passwd만 체크
+		if(result.hasFieldErrors("mem_pw") || 
+				              result.hasFieldErrors("mem_nowpw")) {
+			return formChangePassword();
+		}
+		
+		//비밀번호 일치 여부 체크
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		MemberVO member = memberService.selectMember(user_num);
+		//폼에서 전송한 현재 비밀번호와 DB에서 받아온 현재 비밀번호 일치 여부 체크
+		if(!member.getMem_pw().equals(memberVO.getMem_nowpw())) {
+			//인증 실패시
+			result.rejectValue("mem_nowpw", "invalidPassword");
+			return formChangePassword();
+		}
+		
+		//비밀번호 변경 
+		memberVO.setMem_num(user_num);
+		memberService.updatePassword(memberVO);
+		
+		return "redirect:/member/myPage.do";
+	}	
 }
