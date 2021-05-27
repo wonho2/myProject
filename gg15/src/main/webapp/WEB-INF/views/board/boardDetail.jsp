@@ -19,6 +19,10 @@
 </script> 
 
 <!-- 게시물 상세 -->
+
+<!-- 비밀글 설정 확인-->
+<c:if test=" ${boa_mode = 1} || ${boa_mode = 2} && ${!empty user_num}">
+{
 <div>
 	<section>${board.boa_cate}</section>
 		<h1>${board.boa_title}</h1>
@@ -58,10 +62,18 @@
 		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${board.boa_num}'" id="btn_modify">
 		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${board.boa_num}'" id="btn_delete">
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
+
 </c:if>
 	 
-	
+<c:if test="${!empty user_num}">
 		<input type="button" value="좋아요" id="btn_like">
-	
+</c:if>
+			
 </div>
+}
+</c:if>
+
+<c:if test="${boa_mode = 2} && ${empty user_num}">
+	location.href='errorPage.do'
+</c:if>
 <!--  자유게시판 boardList 끝 -->
