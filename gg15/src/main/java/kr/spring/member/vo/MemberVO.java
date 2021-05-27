@@ -16,6 +16,8 @@ public class MemberVO {
 	private String mem_name;
 	@Size(min=4,max=12)
 	private String mem_pw;
+	@Size(min=4,max=12)
+	private String mem_nowpw;
 	@NotEmpty
 	private String mem_nick;
 	@NotEmpty
@@ -72,6 +74,14 @@ public class MemberVO {
 
 	public void setMem_pw(String mem_pw) {
 		this.mem_pw = mem_pw;
+	}
+
+	public String getMem_nowpw() {
+		return mem_nowpw;
+	}
+
+	public void setMem_nowpw(String mem_nowpw) {
+		this.mem_nowpw = mem_nowpw;
 	}
 
 	public String getMem_nick() {

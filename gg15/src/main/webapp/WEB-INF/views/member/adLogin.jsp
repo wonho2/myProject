@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>회원 로그인</h2>
-	<form:form action="login.do" commandName="memberVO">
+	<h2>관리자 로그인</h2>
+	<form:form action="adLogin.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -19,7 +19,7 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<form:button>로그인</form:button>
+			<form:button>관리자로그인</form:button>
 			<input type="button" value="홈으로"
 			onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>

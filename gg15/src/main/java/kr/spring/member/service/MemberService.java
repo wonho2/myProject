@@ -28,4 +28,20 @@ public class MemberService {
 	public MemberVO selectMember(Integer mem_num) {
 		return memberMapper.selectMember(mem_num);
 	}
+	//회원 정보 수정
+	public void updateMember(MemberVO member) {
+		memberMapper.updateMember(member);
+	}
+	//비밀번호 수정
+	public void updatePassword(MemberVO member) {
+		memberMapper.updatePassword(member);
+	}		
+	//관리자 로그인 auth값
+	public void updateAdAuth(Integer mem_num) {
+		memberMapper.updateAdAuth(mem_num);
+	}
+	//멤버 로그인 auth값
+	public void updateMemAuth(Integer mem_num) {
+		memberMapper.updateMemAuth(mem_num);
+	}
 }
