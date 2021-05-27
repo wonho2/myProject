@@ -17,6 +17,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardModify 시작 -->
+<div class="page-main-style">
 <h2>글 수정</h2>
 <form:form action="update.do" commandName="boardVO" enctype="multipart/form-data">
 
@@ -66,14 +67,21 @@
 			</li>
 			<!-- 공개범위 설정 -->
 			<li>
-			    <label for="boa_mode">비밀글 설정</label>
-				<input type="checkbox" name="boa_mode" value="전체공개">비밀글
+				<span style="margin-left:220px;"><b>비밀글 설정</b></span>
+				<input type="checkbox" name="boa_mode" value="1">비밀글
 			</li>
 		</ul>
 		
-	<div>
-		<input type="button" value="목록" onclick="location.href='list.do'">
-		<input type="submit" value="수정">
-	</div>
+		<div class="align-center">
+			<!-- 목록 -->
+			<input type="button" id="list" value="목록" onclick="location.href='list.do'">
+			<!-- 미리보기 -->
+			<input type="button" id="e-show" value="미리보기" >
+			<!-- 임시 저장 -->
+			<input type="button" id="e-save" value="임시저장">
+			<!-- 저장 -->
+			<input type="submit" id="save" value="등록">
+		</div>
 </form:form>
+</div>
 <!-- 자유게시판 boardModify 끝-->

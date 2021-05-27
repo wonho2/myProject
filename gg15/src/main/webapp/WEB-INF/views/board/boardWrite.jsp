@@ -57,10 +57,7 @@
 		            } );
 			    </script>          
 			</li>
-			<!-- 공개범위 설정 -->
-			<li>
-			    
-			</li>
+			
 			<!-- 말머리 선택 --> 
 			<li>
 			<label for="boa_cate">카테고리</label>
@@ -77,6 +74,7 @@
 				<option value="art">팬아트</option>
 			</optgroup>
 			</select>
+			<!-- 공개범위 설정 -->
 			<span style="margin-left:220px;"><b>비밀글 설정</b></span>
 			<input type="checkbox" name="boa_mode" value="1">비밀글
 			</li>
