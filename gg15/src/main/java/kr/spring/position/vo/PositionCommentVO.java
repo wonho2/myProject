@@ -14,7 +14,9 @@ public class PositionCommentVO
 	private String mem_nick;
 	private String poc_content;
 	private String poc_date;
-	private int poc_fav;
+	private int poc_fav; // 댓글의 추천 수
+	private int click_favUp; // 추천을 누른 회원 번호
+	private int click_favDown; // 비추천을 누른 회원 번호
 	
 	public int getPoc_num() {
 		return poc_num;
@@ -46,7 +48,6 @@ public class PositionCommentVO
 	public void setPoc_content(String poc_content) {
 		this.poc_content = poc_content;
 	}
-	
 	public String getPoc_date() {
 		return poc_date;
 	}
@@ -58,5 +59,17 @@ public class PositionCommentVO
 	}
 	public void setPoc_fav(int poc_fav) {
 		this.poc_fav = poc_fav;
+	}
+	public int getClick_favUp() {
+		return click_favUp;
+	}
+	public void setClick_favUp(int click_favUp) {
+		this.click_favUp = click_favUp;
+	}
+	public int getClick_favDown() {
+		return click_favDown;
+	}
+	public void setClick_favDown(int click_favDown) {
+		this.click_favDown = click_favDown;
 	}
 }

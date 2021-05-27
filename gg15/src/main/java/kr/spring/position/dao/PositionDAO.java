@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.position.vo.PositionCommentVO;
+import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionVO;
 
 public interface PositionDAO
@@ -26,32 +27,39 @@ public interface PositionDAO
 	public void insertBoard(PositionVO vo);
 
 	// 게시물 상세 페이지
-	public PositionVO selectBoard(int boardNum);
+	public PositionVO selectBoard(int pos_num);
 
 	// 게시물 수정
 	public void updateBoard(PositionVO vo);
 
 	// 게시물 삭제
-	@Delete("DELETE FROM position WHERE pos_num = #{boardNum}")
-	public void deleteBoard(int boardNum);
+	@Delete("DELETE FROM position WHERE pos_num = #{pos_num}")
+	public void deleteBoard(int pos_num);
 
 	// 해당 게시물의 조회수 증가
-	@Update("UPDATE position SET pos_view = pos_view+1 WHERE pos_num = #{boardNum}")
-	public void updateView(int boardNum);
-
-	//=================댓글================//
-	public List<PositionCommentVO> selectListReply(Map<String,Object> map);
+	@Update("UPDATE position SET pos_view = pos_view+1 WHERE pos_num = #{pos_num}")
+	public void updateView(int pos_num);
+	
+	// 해당 게시물의 댓글 개수
 	@Select("SELECT COUNT(*) FROM position_comment WHERE pos_num=#{pos_num}")
-	public int selectRowCountReply(Map<String,Object> map);
-	@Insert("INSERT INTO position_comment (poc_num,poc_content,pos_num,mem_num) VALUES (position_comment_seq.nextval,#{poc_content},#{pos_num},#{mem_num})")
-	public void insertReply(PositionCommentVO boardReply);
+	public int selectCommentCount(Integer pos_num);
+	
+	// 해당 게시물의 댓글 리스트
+	public List<PositionCommentVO> selectCommentList(Integer pos_num);
+	
+	// 해당 게시물 댓글 쓰기
+	@Insert("INSERT INTO position_comment (poc_num, pos_num, mem_num, poc_content) VALUES (position_comment_seq.nextval, #{pos_num}, #{mem_num}, #{poc_content})")
+	public void insertComment(PositionCommentVO vo);
+	
+	// 해당 게시물 댓글 수정
 	@Update("UPDATE position_comment SET poc_content=#{poc_content} WHERE poc_num=#{poc_num}")
-	public void updateReply(PositionCommentVO boardReply);
+	public void modifyComment(PositionCommentVO vo);
+	
+	// 해당 게시물 댓글 삭제
 	@Delete("DELETE FROM position_comment WHERE poc_num=#{poc_num}")
-	public void deleteReply(Integer poc_num);
+	public void deleteComment(Integer poc_num);
+
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	@Delete("DELETE FROM position_comment WHERE pos_num=#{pos_num}")
-	public void deleteReplyByBoardNum(Integer pos_num);
-
-
+	public void deleteCommentsAll(Integer pos_num);	
 }
