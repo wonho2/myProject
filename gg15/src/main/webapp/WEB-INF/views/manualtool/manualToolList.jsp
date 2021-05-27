@@ -15,28 +15,27 @@
 <c:if test="${count > 0}">
 	<table>
 		<tr>
-			<th>번호</th>
+			<!-- <th>번호</th> -->
 			<th>챔피언</th>
 			<th>시즌</th>
-			<th>제목</th>
+			<th width="400">제목</th>
 			<th>작성자</th>
 			<th>갱신일</th>
 			<th>조회수</th>
-			<th>추천수</th>
+			<!-- <th>추천수</th> -->
 		</tr>
 		<c:forEach var="manualtoolVO" items="${boardList}">
 		<tr>
-			<td>$manualtoolVO.man_num}</td>
-			<!-- <td>$manualtoolVO.man_champion}</td> 
-				챔피언 이름 말고 아이콘(이미지)을 띄워야 되는데 어케,,하죠
-			-->
+			<!-- <td>$manualtoolVO.man_num}</td> -->
+			<!-- 이건 임시고 원래 챔피언 이름 말고 아이콘(이미지)을 띄워야 되는데 어케,,하죠 -->
+			 <td>$manualtoolVO.man_champion}</td> 
 			<td>$manualtoolVO.man_season}</td>
 			<td><a href="Detail.do?num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a></td>
 			<!-- 제목 옆에 작게 댓글 수 띄우기 어케 하지.. 암튼 추가 -->
 			<td>$manualtoolVO.mem_nick}</td>
 			<td>$manualtoolVO.man_update}</td>
 			<td>$manualtoolVO.man_hit}</td>
-			<td>$manualtoolVO.man_fav}</td>
+			<!-- <td>$manualtoolVO.man_fav}</td> -->
 		</tr>
 		</c:forEach>
 	</table>

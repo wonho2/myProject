@@ -12,7 +12,7 @@
 		        a.*,
 		        rownum rnum
 		      FROM(SELECT
-		      		  mt.man_num,
+		      		  <!-- mt.man_num, -->
 		              mt.man_champion,
 		              mt.man_season,
 		              <![CDATA[
