@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 	<definition name="partyList" extends="main">
-		<put-attribute name="title" value="15 gg - 파티 게시판"/>
+		<put-attribute name="title" value="15 gg - 파티 게시판 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/party/partyList.jsp"/>
 	</definition>
 	
@@ -16,8 +16,8 @@
 	</definition>
 	
 	<definition name="partyDetail" extends="main">
-		<put-attribute name="title" value="15 gg - 파티 게시판 게시물"/>
-		<put-attribute name="body" value="/WEB-INF/views/party/partyLayoutDetail.jsp"/>
+		<put-attribute name="title" value="15 gg - 파티 게시판 게시물 상세"/>
+		<put-attribute name="body" value="/WEB-INF/views/party/partyDetail.jsp"/>
 	</definition>
 	
 	<definition name="partyModify" extends="main">

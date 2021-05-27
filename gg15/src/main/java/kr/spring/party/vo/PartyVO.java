@@ -7,6 +7,10 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author swift
+ *
+ */
 public class PartyVO {
 	private int par_num; 
 	private int mem_num;
@@ -19,6 +23,9 @@ public class PartyVO {
 	private String par_filename;
 	private Date par_date;
 	private int par_hit;
+	private int par_fav;
+	private int par_comment;
+	private String mem_nick;
 	
 	//업로드 파일 처리
 		public void setPar_upload(MultipartFile par_upload)throws IOException{
@@ -87,4 +94,30 @@ public class PartyVO {
 	public void setPar_hit(int par_hit) {
 		this.par_hit = par_hit;
 	}
+
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
+
+	public int getPar_fav() {
+		return par_fav;
+	}
+
+	public void setPar_fav(int par_fav) {
+		this.par_fav = par_fav;
+	}
+
+	public int getPar_comment() {
+		return par_comment;
+	}
+
+	public void setPar_comment(int par_comment) {
+		this.par_comment = par_comment;
+	}
+	
+	
 }	

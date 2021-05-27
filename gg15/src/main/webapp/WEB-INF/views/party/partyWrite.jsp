@@ -16,9 +16,9 @@
 			<li>
 				<label for="par_type">파티</label>
 				<form:select path="par_type" name="모집 종류">
-					<option value="랭크 팀원 모집">랭크 팀원 모집</option>
-					<option value="칼바람 팀원 모집">칼바람 팀원 모집</option>
-					<option value="(격전)팀원 모집">격전 팀원 모집</option>
+					<option value="1">랭크 팀원 모집</option>
+					<option value="2">칼바람 팀원 모집</option>
+					<option value="3">격전 팀원 모집</option>
 				</form:select>
 			</li>
 			<li>
@@ -32,7 +32,7 @@
 			</li>
 			<li>
 				<label for="par_content">내용</label>
-				<form:textarea path="par_content"/>
+				<form:textarea path="par_content" cols="50" rows="20" placeholder="여기에 내용을 입력하세요"/>
 				<form:errors path="par_content"/>
 			</li>
 		</ul>

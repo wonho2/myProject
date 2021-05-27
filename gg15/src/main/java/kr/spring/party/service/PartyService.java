@@ -37,17 +37,17 @@ public class PartyService {
 	}
 	
 	//파티 해당 게시 글의 조회수 증가
-	public void updateView(int boardNum) {
+	public void updateHit(int boardNum) {
 		partyDAO.updateHit(boardNum);
 	}
 	
 	//게시물 수정
-	public void updateBoard(PartyVO vo) {
-		partyDAO.updateBoard(vo);
+	public void updateParty(PartyVO vo) {
+		partyDAO.updateParty(vo);
 	}
 	
 	//게시물 삭제
-	/*public void deleteBoard(int boardNum) {
-		partyDAO.deleteBoard(boardNum);
-	}*/
+	public void deleteParty(int boardNum) {
+		partyDAO.deleteParty(boardNum);
+	}
 }	
