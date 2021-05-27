@@ -32,7 +32,7 @@
 			p.*,
 			m.mem_nick  
 			FROM position p JOIN member_detail m ON p.mem_num = m.mem_num 
-			WHERE pos_num = #{boardNum}
+			WHERE pos_num = #{pos_num}
 	</select>
 	
 <!-- 게시물 수정 -->
@@ -47,30 +47,13 @@
 			WHERE pos_num = #{pos_num}
 	</update>
 	
-<!--====== 댓글 ========  -->	
-	<select id="selectListReply" parameterType="map"
- 	                     resultType="positionCommentVO">
- 		SELECT
- 		   *
- 		FROM (SELECT 
- 		        m.*, 
- 		        rownum rnum 
- 		      FROM (SELECT 
-                      *
-                    FROM (SELECT 
-                            poc_num,
- 		                    poc_content,
- 		                    TO_CHAR(poc_date,'YYYY-MM-DD HH24:MI:SS') poc_date,
- 		                    pos_num,
- 		                    mem_num
-                          FROM position_comment where pos_num=#{pos_num}) r 
-                               JOIN member_detail m
-                               USING(mem_num)
-                               ORDER BY r.poc_num DESC)m)
-                              
- 		<![CDATA[
- 		WHERE rnum >= #{start} AND rnum <= #{end}
- 		]]>                                 
+<!-- 게시물 댓글 리스트 -->
+	<select id="selectCommentList" parameterType="Integer" resultType="positionCommentVO">
+ 		SELECT 
+			p.*,
+			m.mem_nick 
+			FROM position_comment p JOIN member_detail m ON p.mem_num = m.mem_num 
+			WHERE pos_num = #{pos_num}
  	</select>
 	
 </mapper>

@@ -19,6 +19,7 @@ public class ManualtoolVO {
 	private String man_filename;
 	private Date man_date, man_update;
 	private int man_hit, man_fav, man_comment;
+	private String mem_nick;
 	
 	//업로드 파일 처리
 		public void setMan_upload(MultipartFile man_upload)throws IOException{
@@ -106,6 +107,11 @@ public class ManualtoolVO {
 	public void setMan_comment(int man_comment) {
 		this.man_comment = man_comment;
 	}
-
+	public String getMem_nick() {
+		return mem_nick;
+	}
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
 	
 }

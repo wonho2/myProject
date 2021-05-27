@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.position.dao.PositionDAO;
 import kr.spring.position.vo.PositionCommentVO;
+import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionVO;
 
 @Service("positionService")
@@ -48,8 +49,11 @@ public class PositionService
 	}
 	
 	// 게시물 삭제
+	// 댓글에 달린 추천 삭제 => 댓글 삭제  => 게시물 추천 삭제
 	public void deleteBoard(int boardNum)
 	{
+		// positionDAO.deleteReFavByBoardNum(boardNum);
+		positionDAO.deleteCommentsAll(boardNum);
 		positionDAO.deleteBoard(boardNum);
 	}
 	
@@ -59,27 +63,35 @@ public class PositionService
 		positionDAO.updateView(boardNum);
 	}
 	
-	//====댓글========//
-	public List<PositionCommentVO> selectListReply(Map<String, Object> map) {
-		return positionDAO.selectListReply(map);
+	// 해당 게시물의 댓글 개수
+	public int selectCommentCount(int pos_num)
+	{
+		return positionDAO.selectCommentCount(pos_num);
+	}
+	
+	// 해당 게시물의 댓글 리스트
+	public List<PositionCommentVO> selectCommentList(int pos_num)
+	{
+		return positionDAO.selectCommentList(pos_num);
+	}
+	
+	// 해당 게시물 댓글 작성
+	public void insertComment(PositionCommentVO vo)
+	{
+		positionDAO.insertComment(vo);
+	}
+	
+	// 해당 게시물 댓글 수정
+	public void modifyComment(PositionCommentVO vo)
+	{
+		positionDAO.modifyComment(vo);
 	}
 
-	public int selectRowCountReply(Map<String, Object> map) {
-		return positionDAO.selectRowCountReply(map);
+	// 해당 게시물 댓글 삭제
+	// 댓글에 달린 추천 삭제 => 댓글 삭제
+	public void deleteComment(Integer poc_num)
+	{
+		// positionDAO.deleteReFavByRe_num(poc_num);
+		positionDAO.deleteComment(poc_num);
 	}
-
-	public void insertReply(PositionCommentVO boardReply) {
-		positionDAO.insertReply(boardReply);
-	}
-
-	public void updateReply(PositionCommentVO boardReply) {
-		positionDAO.updateReply(boardReply);
-	}
-
-	public void deleteReply(Integer poc_num) {
-		//(*******주의)댓글 좋아요가 있을 경우
-		//positionDAO.deleteReFavByRe_num(poc_num);
-		positionDAO.deleteReply(poc_num);
-	}
-
 }

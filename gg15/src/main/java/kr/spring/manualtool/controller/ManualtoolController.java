@@ -1,6 +1,5 @@
 package kr.spring.manualtool.controller;
 
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,17 +111,18 @@ public class ManualtoolController {
 		//HTML 태그 불허 및 줄바꿈 처리
 		manualtoolVO.setMan_content(StringUtil.useBrNoHtml(manualtoolVO.getMan_content()));
 		
-		return new ModelAndView("manualtoolView", "manualtool", manualtoolVO);
+		return new ModelAndView("manualtoolView", "manualtoolVO", manualtoolVO);
 		
 	}
 	//이미지 출력
 	@RequestMapping("/manualTool/imageView.do")
-	public ModelAndView viewImage(@RequestParam int man_num) {
+	public ModelAndView imageView(@RequestParam int man_num) {
 		ManualtoolVO manualtoolVO = manualtoolService.selectManualtool(man_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile", manualtoolVO.getMan_uploadfile());
+		mav.addObject("filename", manualtoolVO.getMan_filename());
 		
 		return mav;
 	}
