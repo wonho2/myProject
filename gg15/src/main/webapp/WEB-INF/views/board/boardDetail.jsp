@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- 자유게시판 boardList 시작 -->
-
 <script type="text/javascript">
 	window.onload=function(){
 		var btn_delete = document.getElementById('btn_delete');
@@ -17,12 +16,14 @@
 		};
 	};
 </script> 
-
 <!-- 게시물 상세 -->
+<!-- 본문 시작 -->
+<div>
 
 <!-- 비밀글 설정 확인-->
-<c:if test=" ${boa_mode = 1} || ${boa_mode = 2} && ${!empty user_num}">
-{
+ 
+	<c:if test="${boa_mode=0} || (${boa_mode=1} && ${!empty user_num})">
+
 <div>
 	<section>${board.boa_cate}</section>
 		<h1>${board.boa_title}</h1>
@@ -33,20 +34,30 @@
 	</section>
 	<section>
 		작성일 ${board.boa_date} 
-		
 	</section>
-	<!-- 이미지 오찌하지... -->
+	
+	<!-- 이미지 오찌하지 ?? -->
 	<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
 	              fn:endsWith(board.boa_filename,'.JPG') ||
 	              fn:endsWith(board.boa_filename,'.gif') ||
 	              fn:endsWith(board.boa_filename,'.GIF') ||
 	              fn:endsWith(board.boa_filename,'.png') ||
-	              fn:endsWith(board.boa_filename,'.PNG')}">
+	              fn:endsWith(board.boa_filename,'.PNG')}"> 
 	<div class="align-center">
 		<img src="imageView.do?board_num=${board.boa_num}"
 		                           style="max-width:500px">
 	</div>
 	</c:if>
+	
+	<!-- 동영상 오찌하지 ?? -->   
+	<c:if test="">
+	
+	<div class="align-center">
+		<img src=""
+		                           style="max-width:500px">
+	</div>
+	</c:if>
+	
 	
 	<section>
 		${board.boa_content}
@@ -70,10 +81,18 @@
 </c:if>
 			
 </div>
-}
+</c:if>
+<!-- 본문 끝 -->
+</div>
+<!-- 
+</c:if>
+-->
+
+<!-- 회원전용 글  : 비회원이 접속시-->
+<c:if test="${boa_mode=1} && ${empty user_num}">
+	<!-- errorPage.do 로 이동시키고 싶음-->
+	${location.href='errorPage.do'}
 </c:if>
 
-<c:if test="${boa_mode = 2} && ${empty user_num}">
-	location.href='errorPage.do'
-</c:if>
+
 <!--  자유게시판 boardList 끝 -->
