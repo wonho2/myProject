@@ -17,12 +17,12 @@
 	};
 </script> 
 <!-- 게시물 상세 -->
-<!-- 본문 시작 -->
-<div>
-
 <!-- 비밀글 설정 확인-->
  
 	<c:if test="${boa_mode=0} || (${boa_mode=1} && ${!empty user_num})">
+ 
+<!-- 본문 시작 -->
+
 
 <div>
 	<section>${board.boa_cate}</section>
@@ -81,12 +81,10 @@
 </c:if>
 			
 </div>
-</c:if>
 <!-- 본문 끝 -->
-</div>
-<!-- 
+
 </c:if>
--->
+
 
 <!-- 회원전용 글  : 비회원이 접속시-->
 <c:if test="${boa_mode=1} && ${empty user_num}">
