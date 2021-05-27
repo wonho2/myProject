@@ -145,7 +145,7 @@ public class BoardController {
 		if(result.hasErrors()) {
 			return "baordModify";
 		}
-			
+			 
 		//글 수정
 		boardService.updateBoard(boardVO);
 			

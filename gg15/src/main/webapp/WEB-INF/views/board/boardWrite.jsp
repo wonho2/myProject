@@ -6,7 +6,7 @@
 	<h2>자유 게시판 글쓰기</h2>
 	<form:form action="boardWrite.do" commandName="boardVO"
 	               enctype="multipart/form-data">
-		<ul>
+		<ul> 
 			<!-- 말머리 선택 --> 
 			<li>
 			<label for="boa_cate">카테고리</label>

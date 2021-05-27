@@ -8,7 +8,7 @@
 <form:form action="update.do" commandName="boardVO" enctype="multipart/form-data">
 
 	<form:hidden path="boa_num"/>
-	
+	 
 			<ul>
 			<!-- 카테고리는 공지 --> 
 			<section>카테고리 : ${board.boa_cate}</section>

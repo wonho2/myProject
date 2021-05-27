@@ -49,7 +49,7 @@
 			boa_content=#{boa_content}
 			boa_mode=#{boa_mode}
 		WHERE boa_num=#{boa_num}
-	</update>
+	</update> 
 	
 </mapper>
 

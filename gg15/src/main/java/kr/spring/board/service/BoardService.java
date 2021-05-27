@@ -42,7 +42,7 @@ public class BoardService {
 	public void updateBoard(BoardVO vo) {
 		boardMapper.updateBoard(vo);
 	}
-		
+		 
 	//글 삭제
 	public void deleteBoard(Integer boa_num) {
 		boardMapper.deleteBoard(boa_num);

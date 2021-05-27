@@ -41,7 +41,7 @@
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.boa_num}</td>
-			
+			 
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 시작-->
 			<td>
 			<c:if test="${board.boa_uploadfile}.size>0">
