@@ -31,7 +31,7 @@
 				챔피언 아이콘(이미지)을 띄워야 되는데 어케,,하죠
 			-->
 			<td>$manualtoolVO.man_season}</td>
-			<td><a href="manualtoolDetail.do?num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a></td>
+			<td><a href="Detail.do?num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a></td>
 			<!-- 제목 옆에 작게 댓글 수 띄우기 어케 하지.. 암튼 추가 -->
 			<td>$manualtoolVO.mem_nick}</td>
 			<td>$manualtoolVO.man_update}</td>

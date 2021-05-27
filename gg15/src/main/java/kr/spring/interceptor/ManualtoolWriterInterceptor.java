@@ -20,15 +20,15 @@ public class ManualtoolWriterInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 							HttpServletResponse response,
 							Object handler) throws Exception {
-		// 해당 게시물 번호 구하기
+		//해당 게시물 번호 구하기
 		int man_num = Integer.parseInt(request.getParameter("man_num"));
 		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(man_num);
 		
-		// 현재 로그인 되어있는 회원 번호 구하기
+		//현재 로그인 되어있는 회원 번호 구하기
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		
-		// 로그인 회원번호와 게시물을 작성한 회원 번호가 일치하지 않은 경우
+		//로그인 회원번호와 게시물을 작성한 회원 번호가 일치하지 않은 경우
 		if(user_num != manualtoolVO.getMem_num())
 		{
 			//포워드 방식으로 View 호출

@@ -85,6 +85,9 @@
 			<mapping path="/position/write.do"/>
 			<mapping path="/position/modify.do"/>
 			<mapping path="/position/delete.do"/>
+			<mapping path="/manualTool/write.do"/>
+			<mapping path="/manualTool/modify.do"/>
+			<mapping path="/manualTool/delete.do"/>
 			<beans:bean class="kr.spring.interceptor.LoginInterceptor"/>
 		</interceptor>
 		<!-- 게시물을 작성한 회원번호와 로그인한 회원번호가 일치하는지 체크 -->
@@ -93,6 +96,12 @@
 			<mapping path="/position/modify.do"/>
 			<mapping path="/position/delete.do"/>
 			<beans:bean class="kr.spring.interceptor.PositionWriterInterceptor"/>
+		</interceptor>
+		<!-- 공략 게시판 -->
+		<interceptor>
+			<mapping path="/manualTool/modify.do"/>
+			<mapping path="/manualTool/delete.do"/>
+			<beans:bean class="kr.spring.interceptor.ManualtoolWriterInterceptor"/>
 		</interceptor>
 	</interceptors>
 

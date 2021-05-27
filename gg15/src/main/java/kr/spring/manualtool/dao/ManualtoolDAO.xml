@@ -4,49 +4,77 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.manualtool.dao.ManualtoolDAO">
 
-<!-- 총 레코드 수 -->
-	<select id="selectRowCount" resultType="integer">
-		SELECT
-		   COUNT(*)
-		FROM manualtool t
-		JOIN member m
-		ON t.mem_num = m.mem_num
-	</select>
-	<!-- 글 목록 -->
-	<select id="selectList" parameterType="map"
-	                                   resultType="manualtoolVO">
+<!-- 글 목록 -->
+	<select id="selectList" parameterType="map" resultType="manualtoolVO">
 		SELECT
 		   *
 		FROM (SELECT 
 		        a.*,
 		        rownum rnum
 		      FROM(SELECT
-		              b.man_num,
+		              mt.man_champion, <!-- 이거 아이콘으로 어케 넣죠 -->
+		              mt.man_season
 		              <![CDATA[
 		              REPLACE(REPLACE(t.title, '<', '&lt;'), '>', '&gt;') man_title,
 		              ]]>
-		              t.man_hit,
-		              t.man_update,
-		              t.mem_num,
-		              m.mem_id
-		           FROM manualtool t
-		           JOIN member m
-		           ON t.mem_num=m.mem_num
-		           ORDER BY t.man_num DESC)a)
+		              mt.mem_nick,
+		              mt.man_update,
+		              mt.man_hit,
+		              mt.man_fav
+		           FROM manualtool mt
+		           JOIN member_detail m
+		           ON mt.mem_num=m.mem_num
+		           ORDER BY mt.man_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
 	</select>
-	<!-- 글 수정 -->
+	
+<!-- 게시물 상세 페이지 -->
+	<select id="selectBoard" parameterType="Integer" resultType="manualtoolVO">
+		SELECT 
+			p.*,
+			m.mem_nick  
+			FROM manualtool mt JOIN member_detail m ON mt.mem_num = m.mem_num 
+			WHERE man_num = #{boardNum}
+	</select>
+	
+	
+<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="manualtoolVO">
-		UPDATE manualtool SET
-			<if test="filename != ''">
-			man_uploadfile=#{man_uploadfile},
-			</if>	
-			man_title=#{man_title},
-			man_content=#{man_content},
-			man_update=SYSDATE
-		WHERE man_num=#{man_num}
+		UPDATE manualtool SET	
+			<if test="man_filename != ''">
+				man_uploadfile = #{man_uploadfile},
+				man_filename = #{man_filename},
+			</if>
+			man_title = #{man_title},
+			man_content = #{man_content} 
+			WHERE man_num = #{man_num}
 	</update>
+	
+<!-- =====댓글===== -->	
+	<select id="selectListReply" parameterType="map" resultType="manualtoolCommentVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT 
+ 		        m.*, 
+ 		        rownum rnum 
+ 		      FROM (SELECT 
+                      *
+                    FROM (SELECT 
+                            mar_num,
+ 		                    mar_content,
+ 		                    TO_CHAR(mar_date,'YYYY-MM-DD HH24:MI:SS') mar_date,
+ 		                    man_num,
+ 		                    mem_num
+                          FROM manualtool_reply where man_num=#{man_num}) r
+                               JOIN member_detail m
+                               USING(mem_num)
+                               ORDER BY r.mar_num DESC)m)
+                              
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
 
 </mapper>

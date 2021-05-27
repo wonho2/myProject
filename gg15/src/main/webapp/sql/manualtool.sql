@@ -36,3 +36,7 @@ create table manualtool_fav(
     constraint manualtool_fav_fk2 foreign key (man_num)
     references manualtool (man_num)
 );
+
+create sequence manualtool_seq;
+create sequence manualtool_reply_seq;
+create sequence manualtool_fav_seq;
