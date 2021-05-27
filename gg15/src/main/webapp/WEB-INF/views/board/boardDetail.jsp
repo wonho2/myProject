@@ -48,13 +48,15 @@
 		${board.boa_content}
 	</section>
 	<ul>
-	<input type="button" value="신고" id="btn_report">
+		<li>
+		<input type="button" value="신고" id="btn_report">
+		</li>
 	</ul>
 <!-- 수정, 삭제 버튼 -->
-<c:if test="${user_num == BoardVO.mem_num}">
+<c:if test="${user_num == board.mem_num}">
 	
-		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${boardVO.boa_num}'" id="btn_modify">
-		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${boardVO.boa_num}'" id="btn_delete">
+		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${board.boa_num}'" id="btn_modify">
+		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${board.boa_num}'" id="btn_delete">
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
 </c:if>
 	 
