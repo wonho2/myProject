@@ -139,7 +139,7 @@ $(document).ready(function()
 				}
 				else if(data.result == "success"){
 					initForm();
-					selectCommentList($("#pos_num").val());
+					selectCommentList($('#pos_num').val());
 				}
 				else{
 					alert("댓글 등록 오류 발생");
