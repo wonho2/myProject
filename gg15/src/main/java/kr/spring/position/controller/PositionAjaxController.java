@@ -25,6 +25,7 @@ public class PositionAjaxController
 {
 	@Resource
 	private PositionService positionService;
+	private Logger log = Logger.getLogger(this.getClass());
 
 /*
  * 댓글 리스트 가져오기
@@ -61,6 +62,7 @@ public class PositionAjaxController
 			map.put("result", "needLogin");
 		}
 		else {
+			positionCommentVO.setMem_num(mem_num);
 			positionService.insertComment(positionCommentVO);
 			map.put("result", "success");
 		}
@@ -94,7 +96,7 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/deleteComment.do")
 	@ResponseBody
-	public Map<String,String> deleteReply(@RequestParam int poc_num, @RequestParam int mem_num, HttpSession session)
+	public Map<String,String> deleteComment(@RequestParam int poc_num, @RequestParam int mem_num, HttpSession session)
 	{
 		Map<String,String> map = new HashMap<String,String>();
 		Integer user_num = (Integer)session.getAttribute("user_num");

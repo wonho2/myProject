@@ -48,6 +48,7 @@ $(document).ready(function()
 	
 /*
  * 댓글 리스트 가져오기
+ * 미구현 부분 : 추천, 비추천 버튼 이미지
  */
 	function selectCommentList(pos_num)
 	{
@@ -107,7 +108,6 @@ $(document).ready(function()
 				});
 			},
 			error:function(){
-				//로딩 이미지 감추기
 				alert("네트워크 오류");
 			}
 		});
@@ -139,7 +139,7 @@ $(document).ready(function()
 				}
 				else if(data.result == "success"){
 					initForm();
-					selectCommentList($("pos_num").val());
+					selectCommentList($("#pos_num").val());
 				}
 				else{
 					alert("댓글 등록 오류 발생");

@@ -1,9 +1,5 @@
 package kr.spring.position.vo;
 
-import java.sql.Date;
-
-import javax.validation.constraints.NotEmpty;
-
 import kr.spring.util.DurationFromNow;
 
 public class PositionCommentVO 
@@ -71,5 +67,12 @@ public class PositionCommentVO
 	}
 	public void setClick_favDown(int click_favDown) {
 		this.click_favDown = click_favDown;
+	}
+	
+	@Override
+	public String toString() {
+		return "PositionCommentVO [poc_num=" + poc_num + ", pos_num=" + pos_num + ", mem_num=" + mem_num + ", mem_nick="
+				+ mem_nick + ", poc_content=" + poc_content + ", poc_date=" + poc_date + ", poc_fav=" + poc_fav
+				+ ", click_favUp=" + click_favUp + ", click_favDown=" + click_favDown + "]";
 	}
 }
