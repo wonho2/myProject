@@ -39,8 +39,8 @@ public class BoardService {
 	}
 				
 	//글 수정
-	public void updateBoard(BoardVO vo) {
-		boardMapper.updateBoard(vo);
+	public void updateBoard(BoardVO boardVO) {
+		boardMapper.updateBoard(boardVO);
 	}
 		 
 	//글 삭제

@@ -32,7 +32,7 @@ public interface BoardMapper {
 	public BoardVO selectBoard(Integer boardNum);
 	 
 	//글 수정
-	public void updateBoard(BoardVO board);
+	public void updateBoard(BoardVO boardVO);
 		
 	//글 삭제
 	@Delete("DELETE FROM board WHERE boa_num=#{boa_num}")
