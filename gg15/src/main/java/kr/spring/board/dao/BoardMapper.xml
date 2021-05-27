@@ -42,13 +42,13 @@
 	<update id="updateBoard" parameterType="boardVO">
 		UPDATE board SET
 			<if test="filename != ''">
-			uploadfile=#{uploadfile},
-			filename=#{filename},
+			boa_uploadfile=#{boa_uploadfile},
+			boa_filename=#{boa_filename},
 			</if>	
-			title=#{title},
-			content=#{content},
-			modify_date=SYSDATE
-		WHERE board_num=#{board_num}
+			boa_title=#{boa_title},
+			boa_content=#{boa_content}
+			boa_mode=#{boa_mode}
+		WHERE boa_num=#{boa_num}
 	</update>
 	
 </mapper>

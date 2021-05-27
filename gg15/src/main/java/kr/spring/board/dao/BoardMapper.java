@@ -19,8 +19,8 @@ public interface BoardMapper {
 	public List<BoardVO> selectList(Map<String,Object> map);	
 
 	//글쓰기
-	@Insert("INSERT INTO board (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num) "
-		+ "VALUES (board_seq.nextval,#{boa_cate},#{boa_title},#{boa_uploadfile},#{boa_filename},#{boa_content},#{boa_mode},#{mem_num})")
+	@Insert("INSERT INTO board (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num,boa_date) "
+		+ "VALUES (board_seq.nextval,#{boa_cate},#{boa_title},#{boa_uploadfile},#{boa_filename},#{boa_content},#{boa_mode},#{mem_num},SYSDATE)")
 	public void insertBoard(BoardVO vo);
 	
 	//조회수 증가
@@ -35,8 +35,8 @@ public interface BoardMapper {
 	public void updateBoard(BoardVO board);
 		
 	//글 삭제
-	@Delete("DELETE FROM sprboard WHERE board_num=#{board_num}")
-	public void deleteBoard(Integer board_num);	
+	@Delete("DELETE FROM board WHERE boa_num=#{boa_num}")
+	public void deleteBoard(Integer boa_num);	
 
 }
 

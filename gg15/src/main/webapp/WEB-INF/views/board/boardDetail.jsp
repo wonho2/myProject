@@ -20,15 +20,15 @@
 
 <!-- 게시물 상세 -->
 <div>
-	<section>${boardVO.boa_cate}</section>
-		<h1>${boardVO.boa_title}</h1>
+	<section>${board.boa_cate}</section>
+		<h1>${board.boa_title}</h1>
 	<section>
 	<!-- 사용자 닉네임처리 해야함 -->
 	<a href="/member/memberDetail.do?board_num=${board.boa_num}">${memberVO.mem_nick}</a> 
 	
 	</section>
 	<section>
-		작성일 ${boardVO.boa_date} 
+		작성일 ${board.boa_date} 
 		
 	</section>
 	<!-- 이미지 오찌하지... -->
@@ -45,7 +45,7 @@
 	</c:if>
 	
 	<section>
-		${boardVO.boa_content}
+		${board.boa_content}
 	</section>
 	<ul>
 	<input type="button" value="신고" id="btn_report">
