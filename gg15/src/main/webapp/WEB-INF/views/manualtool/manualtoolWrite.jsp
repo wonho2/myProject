@@ -26,18 +26,19 @@
 	};
 </script>
 
-<!-- 로그인 확인 -->
-
 	<form:form action="write.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<ul>
-			<!-- 
 			<li>
+				<!-- 아이콘 선택 or 이름 선택으로,,? 이름이 나은가 ㄱㄴㄷ 순으로 정렬해서,, -->
 				<label for="man_champion">챔피언</label>
 				<form:select path="man_champion" name="챔피언 선택">
-					 아이콘 선택 or 이름 선택으로,,? 
+					<option value="가렌">가렌</option>
+					<option value="갈리오">갈리오</option>
+					<option value="갱플랭크">갱플랭크</option>
+					<option value="그라가스">그라가스</option>
+					<option value="그레이브즈">그레이브즈</option>
 				</form:select>
 			</li>
-			 -->
 			 <li>
 				<label for="man_season">시즌</label>
 				<form:select path="man_season" name="시즌 선택">
@@ -51,8 +52,8 @@
 				<form:errors path="man_title"/>
 			</li>
 			<li>
-				<label for="man_uploadfile">파일 업로드</label>
-				<input type="file" name="man_uploadfile" accept="image/gif, image/png, image/jpeg">
+				<label for="man_upload">파일 업로드</label>
+				<input type="file" name="man_upload" id="man_upload" accept="image/gif, image/png, image/jpeg">
 			</li>
 			<li>
 				<label for="man_content">내용</label>
@@ -61,7 +62,7 @@
 			</li>
 		</ul>
 		<div>
-			<input type="submit" value="등록">
+			<input type="submit" value="등록" id="btn_submit">
 		</div>
 	</form:form>
 <!-- 공략 게시판 글쓰기  끝-->  

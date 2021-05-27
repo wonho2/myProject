@@ -3,22 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!-- 공략 게시판 메인화면 시작 -->
 <div class="page-main-style">
-	<h2>공략 게시판</h2>
-	<div class="align-right">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
-	</div>
-	
-	<c:if test="${count == 0}">
-		등록된 게시물이 없습니다.
-	</c:if>
-	
-	<c:if test="${count > 0}">
+<h2>공략 게시판</h2>
+<p class="align-right">
+	<input type="button" value="글쓰기" onclick="location.href='write.do'">
+</p>
+
+<c:if test="${count == 0}">
+	게시물이 없습니다.
+</c:if>
+
+<c:if test="${count > 0}">
 	<table>
 		<tr>
 			<th>번호</th>
 			<th>챔피언</th>
 			<th>시즌</th>
-			<th width="400">제목</th>
+			<th>제목</th>
 			<th>작성자</th>
 			<th>갱신일</th>
 			<th>조회수</th>
@@ -28,7 +28,7 @@
 		<tr>
 			<td>$manualtoolVO.man_num}</td>
 			<!-- <td>$manualtoolVO.man_champion}</td> 
-				챔피언 아이콘(이미지)을 띄워야 되는데 어케,,하죠
+				챔피언 이름 말고 아이콘(이미지)을 띄워야 되는데 어케,,하죠
 			-->
 			<td>$manualtoolVO.man_season}</td>
 			<td><a href="Detail.do?num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a></td>
@@ -41,6 +41,6 @@
 		</c:forEach>
 	</table>
 	<div class="align-center">${pagingHtml}</div>
-	</c:if>
+</c:if>
 </div>
 <!-- 공략 게시판 메인화면 끝 -->

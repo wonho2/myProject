@@ -21,11 +21,11 @@ public class ManualtoolVO {
 	private int man_hit, man_fav, man_comment;
 	
 	//업로드 파일 처리
-		public void setMan_uploadfile(MultipartFile man_uploadfile)throws IOException{
+		public void setMan_upload(MultipartFile man_upload)throws IOException{
 			//MultipartFile -> byte[] 변환
-			setMan_uploadfile(man_uploadfile.getBytes());
+			setMan_uploadfile(man_upload.getBytes());
 			//파일명 구하기
-			setMan_filename(man_uploadfile.getOriginalFilename());
+			setMan_filename(man_upload.getOriginalFilename());
 		}
 
 	public int getMan_num() {

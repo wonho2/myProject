@@ -12,32 +12,33 @@
 		        a.*,
 		        rownum rnum
 		      FROM(SELECT
-		              mt.man_champion, <!-- 이거 아이콘으로 어케 넣죠 -->
-		              mt.man_season
+		      		  mt.man_num,
+		              mt.man_champion,
+		              mt.man_season,
 		              <![CDATA[
-		              REPLACE(REPLACE(t.title, '<', '&lt;'), '>', '&gt;') man_title,
+		              REPLACE(REPLACE(mt.man_title, '<', '&lt;'), '>', '&gt;') man_title,
 		              ]]>
-		              mt.mem_nick,
+		              m.mem_nick,
 		              mt.man_update,
-		              mt.man_hit,
-		              mt.man_fav
+		              mt.man_hit
 		           FROM manualtool mt
 		           JOIN member_detail m
-		           ON mt.mem_num=m.mem_num
+		           ON mt.mem_num = m.mem_num
 		           ORDER BY mt.man_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
 	</select>
+	 
 	
 <!-- 게시물 상세 페이지 -->
-	<select id="selectBoard" parameterType="Integer" resultType="manualtoolVO">
+	<!-- <select id="selectBoard" parameterType="Integer" resultType="manualtoolVO">
 		SELECT 
-			p.*,
+			mt.*,
 			m.mem_nick  
 			FROM manualtool mt JOIN member_detail m ON mt.mem_num = m.mem_num 
 			WHERE man_num = #{boardNum}
-	</select>
+	</select> -->
 	
 	
 <!-- 글 수정 -->
@@ -53,7 +54,7 @@
 	</update>
 	
 <!-- =====댓글===== -->	
-	<select id="selectListReply" parameterType="map" resultType="manualtoolCommentVO">
+	<!-- <select id="selectListReply" parameterType="map" resultType="manualtoolCommentVO">
  		SELECT
  		   *
  		FROM (SELECT 
@@ -76,5 +77,5 @@
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>                                 
  	</select>
-
+ 	-->
 </mapper>

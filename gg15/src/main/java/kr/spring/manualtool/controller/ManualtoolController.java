@@ -57,57 +57,56 @@ public class ManualtoolController {
 		}
 		
 		//회원 번호 셋팅
-		manualtoolVO.setMem_num((Integer)session.getAttribute("mem_num"));
+		manualtoolVO.setMem_num((Integer)session.getAttribute("user_num"));
 		//글쓰기
-		manualtoolService.insertBoard(manualtoolVO);
+		manualtoolService.insertManualtool(manualtoolVO);
 		
 		return "redirect:/manualTool/list.do";
 	}
 	
 	//=====게시판 글 목록=====//
 	@RequestMapping("/manualTool/list.do")
-	public ModelAndView boardList(
-	@RequestParam(value="page", defaultValue="1") int currentPage) {
+	public ModelAndView ManualtoolList(@RequestParam(value="page", defaultValue="1") int currentPage) {
 		
 		//총 레코드 수
-		//int count = manualtoolService.selectBoardCount();
+		int count = manualtoolService.selectManualtoolCount();
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
-			//log.debug("<<count>> : " + count);
+			log.debug("<<count>> : " + count);
 		}
 		
 		//페이징 처리
-		/*PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
+		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
 		
-		List<ManualtoolVO> boardList = null;
+		List<ManualtoolVO> manualtoolList = null;
 		if(count > 0) {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			boardList = manualtoolService.selectBoardList(map);
-		}*/
+			manualtoolList = manualtoolService.selectList(map);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("manualtoolList");
-		//mav.addObject("count", count);
-		//mav.addObject("boardList", boardList);
-		//mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("count", count);
+		mav.addObject("manualtoolList", manualtoolList);
+		mav.addObject("pagingHtml", page.getPagingHtml());
 		
 		return mav;
 	}
 	
 	//====게시판 글 상세======//
 	@RequestMapping("/manualTool/detail.do")
-	public ModelAndView detail(@RequestParam int manualtool_num) {
+	public ModelAndView detail(@RequestParam int man_num) {
 		if(log.isDebugEnabled()) {
-			log.debug("<<manualtool_num>> : " + manualtool_num);
+			log.debug("<<man_num>> : " + man_num);
 		}
 		
 		//해당 글의 조회수 증가
-		manualtoolService.updateHit(manualtool_num);
+		manualtoolService.updateHit(man_num);
 		
-		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
+		ManualtoolVO manualtoolVO = manualtoolService.selectManualtool(man_num);
 		//HTML 태그 불허
 		manualtoolVO.setMan_title(StringUtil.useNoHtml(manualtoolVO.getMan_title()));
 		//HTML 태그 불허 및 줄바꿈 처리
@@ -118,8 +117,8 @@ public class ManualtoolController {
 	}
 	//이미지 출력
 	@RequestMapping("/manualTool/imageView.do")
-	public ModelAndView viewImage(@RequestParam int manualtool_num) {
-		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
+	public ModelAndView viewImage(@RequestParam int man_num) {
+		ManualtoolVO manualtoolVO = manualtoolService.selectManualtool(man_num);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -131,8 +130,8 @@ public class ManualtoolController {
 	//=====게시판 글 수정======//
 	//수정 폼
 	@RequestMapping(value="/manualTool/update.do", method=RequestMethod.GET)
-	public String formUpdate(@RequestParam int manualtool_num, Model model) {
-		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(manualtool_num);
+	public String formUpdate(@RequestParam int man_num, Model model) {
+		ManualtoolVO manualtoolVO = manualtoolService.selectManualtool(man_num);
 		model.addAttribute("manualtoolVO", manualtoolVO);
 		
 		return "manualtoolModify";
@@ -148,16 +147,16 @@ public class ManualtoolController {
 		}
 		
 		//글 수정
-		manualtoolService.updateBoard(manualtoolVO);
+		manualtoolService.updateManualtool(manualtoolVO);
 		
 		return "redirect:/manualTool/list.do";
 	}
 	
 	//======게시판 글 삭제========//
 	@RequestMapping("/manualTool/delete.do")
-	public String submitDelete(@RequestParam int manualtool_num) {
+	public String submitDelete(@RequestParam int man_num) {
 		//글 삭제
-		manualtoolService.deleteBoard(manualtool_num);
+		manualtoolService.deleteManualtool(man_num);
 		
 		return "redirect:/manualTool/list.do";
 	}

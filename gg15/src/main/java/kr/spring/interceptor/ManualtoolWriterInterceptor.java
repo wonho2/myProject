@@ -22,7 +22,7 @@ public class ManualtoolWriterInterceptor extends HandlerInterceptorAdapter {
 							Object handler) throws Exception {
 		//해당 게시물 번호 구하기
 		int man_num = Integer.parseInt(request.getParameter("man_num"));
-		ManualtoolVO manualtoolVO = manualtoolService.selectBoard(man_num);
+		ManualtoolVO manualtoolVO = manualtoolService.selectManualtool(man_num);
 		
 		//현재 로그인 되어있는 회원 번호 구하기
 		HttpSession session = request.getSession();

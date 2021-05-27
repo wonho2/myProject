@@ -18,58 +18,58 @@ public class ManualtoolService {
 	private ManualtoolDAO manualtoolDAO;
 	
 	//글쓰기
-	public void insertBoard(ManualtoolVO vo) {
-		manualtoolDAO.insertBoard(vo);
+	public void insertManualtool(ManualtoolVO vo) {
+		manualtoolDAO.insertManualtool(vo);
 	}
 	
 	//총 레코드 수
-	public int selectBoardCount() {
-		return manualtoolDAO.selectBoardCount();
+	public int selectManualtoolCount() {
+		return manualtoolDAO.selectManualtoolCount();
 	}
 	
 	//글 목록
-	public List<ManualtoolVO> selectBoardList(Map<String, Object> map){
-		return manualtoolDAO.selectBoardList(map);
+	public List<ManualtoolVO> selectList(Map<String, Object> map){
+		return manualtoolDAO.selectList(map);
 	}
 	
 	//글 상세 페이지
-	public ManualtoolVO selectBoard(int manualtool_num) {
-		return manualtoolDAO.selectBoard(manualtool_num);
+	public ManualtoolVO selectManualtool(Integer man_num) {
+		return manualtoolDAO.selectManualtool(man_num);
 	}
 	
 	//조회수 증가
-	public void updateHit(int manualtool_num) {
-		manualtoolDAO.updateHit(manualtool_num);
+	public void updateHit(Integer man_num) {
+		manualtoolDAO.updateHit(man_num);
 	}
 	
 	//추천수 증가
-	public void updateFavUp(int manualtool_num) {
-		manualtoolDAO.updateFavUp(manualtool_num);
+	public void updateFavUp(Integer man_num) {
+		manualtoolDAO.updateFavUp(man_num);
 	}
 	
 	//추천수 감소
-	public void updateFavDown(int manualtool_num) {
-		manualtoolDAO.updateFavDown(manualtool_num);
+	public void updateFavDown(Integer man_num) {
+		manualtoolDAO.updateFavDown(man_num);
 	}
 	
 	//댓글수 증가
-	public void updateCommentUp(int manualtool_num) {
-		manualtoolDAO.updateCommentUp(manualtool_num);
+	public void updateCommentUp(Integer man_num) {
+		manualtoolDAO.updateCommentUp(man_num);
 	}
 	
 	//댓글수 감소
-	public void updateCommentDown(int manualtool_num) {
-		manualtoolDAO.updateCommentDown(manualtool_num);
+	public void updateCommentDown(Integer man_num) {
+		manualtoolDAO.updateCommentDown(man_num);
 	}
 	
 	//글 수정
-	public void updateBoard(ManualtoolVO vo) {
-		manualtoolDAO.updateBoard(vo);
+	public void updateManualtool(ManualtoolVO vo) {
+		manualtoolDAO.updateManualtool(vo);
 	}
 	
 	//글 삭제
-	public void deleteBoard(int manualtool_num) {
-		manualtoolDAO.deleteBoard(manualtool_num);
+	public void deleteManualtool(Integer man_num) {
+		manualtoolDAO.deleteManualtool(man_num);
 	}
 	
 	//=====댓글=====
@@ -81,12 +81,12 @@ public class ManualtoolService {
 		return manualtoolDAO.selectRowCountReply(map);
 	}
 
-	public void insertReply(ManualtoolCommentVO boardReply) {
-		manualtoolDAO.insertReply(boardReply);
+	public void insertReply(ManualtoolCommentVO ManualtoolReply) {
+		manualtoolDAO.insertReply(ManualtoolReply);
 	}
 
-	public void updateReply(ManualtoolCommentVO boardReply) {
-		manualtoolDAO.updateReply(boardReply);
+	public void updateReply(ManualtoolCommentVO ManualtoolReply) {
+		manualtoolDAO.updateReply(ManualtoolReply);
 	}
 	
 	public void deleteReply(Integer mar_num) {
