@@ -118,7 +118,8 @@ public class PartyController {
 	@RequestMapping(value="/party/update.do", method=RequestMethod.GET)
 	public String modifyForm(@RequestParam int par_num, Model model)
 	{
-		PartyVO partyVO = partyService.selectParty(par_num);
+		PartyVO partyVO = partyService.selectParty
+				(par_num);
 		model.addAttribute("partyVO", partyVO);
 		return "partyModify";
 	}
