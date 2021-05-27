@@ -17,6 +17,7 @@
 <div>
 	<form id="form_writeComment">
 		<input type="hidden" name="pos_num" value="${positionVO.pos_num}" id="pos_num">
+		<input type="hidden" name="mem_num" value="${user_num}" id="mem_num">
 		<textarea name="poc_content" id="poc_content" style="resize:none; width:400px; height:100px"></textarea>
 		<input type="submit" value="댓글등록">
 	</form>

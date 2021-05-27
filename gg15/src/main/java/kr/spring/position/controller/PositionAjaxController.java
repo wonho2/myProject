@@ -25,8 +25,6 @@ public class PositionAjaxController
 {
 	@Resource
 	private PositionService positionService;
-	private Logger log = Logger.getLogger(this.getClass());
-
 /*
  * 댓글 리스트 가져오기
  */
@@ -62,7 +60,6 @@ public class PositionAjaxController
 			map.put("result", "needLogin");
 		}
 		else {
-			positionCommentVO.setMem_num(mem_num);
 			positionService.insertComment(positionCommentVO);
 			map.put("result", "success");
 		}

@@ -29,7 +29,12 @@ public class PositionCommentVO
 	public int getMem_num() {
 		return mem_num;
 	}
-	public void setMem_num(int mem_num) {
+	// session.user_num == null 인 경우 형 변환 때문에 코드 수정
+	public void setMem_num(Integer mem_num) {
+		if(mem_num == null) {
+			this.mem_num = -1;
+			return;
+		}
 		this.mem_num = mem_num;
 	}
 	public String getMem_nick() {
