@@ -3,9 +3,9 @@ CREATE TABLE board(
 	mem_num number not null, /*사용자 번호*/
 	boa_title VARCHAR2(30) NOT NULL, /*게시물 제목*/
 	boa_cate VARCHAR2(30) NOT NULL, /*카테고리*/
-	boa_mode NUMBER(1) NOT NULL, /*비밀글 설정  1-일반글 2-비밀글 */
-	boa_status NUMBER(1) default 1 NOT NULL,/*글 차단 설정 1-정상 2-차단*/
-	boa_report NUMBER(1) default 1 NOT NULL ,  /*신고설정 1-미신고 2- 신고*/
+	boa_mode NUMBER(1) NOT NULL, /*비밀글 설정  0-일반글 1-비밀글 */
+	boa_status NUMBER(1) default 1 NOT NULL,/*글 차단 설정 0-정상 1-차단*/
+	boa_report NUMBER(1) default 1 NOT NULL ,  /*신고설정 0-미신고 1- 신고*/
 	boa_uploadfile blob, /*업로드 파일*/
 	boa_filename VARCHAR2(300),/*업로드파일 이름*/
 	boa_content clob NOT NULL, /*게시글 내용*/

@@ -54,4 +54,57 @@
 		WHERE boa_num=#{boa_num}
 	</update>
 	
+	<select id="selectListReply" parameterType="map"
+ 	                     resultType="boardReplyVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT 
+ 		        m.*, 
+ 		        rownum rnum 
+ 		      FROM (SELECT 
+                      *
+                    FROM (SELECT 
+                            bor_num,
+ 		                    bor_content,
+ 		                    TO_CHAR(bor_date,'YYYY-MM-DD HH24:MI:SS') bor_date,
+ 		                    boa_num,
+ 		                    mem_num
+                          FROM board_reply where boa_num=#{boa_num}) r 
+                               JOIN board_detail b
+                               ON r.mem_num = b.mem_num
+                               ORDER BY ner_num DESC)b)
+                              
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
+	
+	
+	<!--====== 댓글 ========  -->	
+	<select id="selectListReply" parameterType="map"
+ 	                     resultType="newsReplyVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT 
+ 		        m.*, 
+ 		        rownum rnum 
+ 		      FROM (SELECT 
+                      *
+                    FROM (SELECT 
+                            bor_num,
+ 		                    bor_content,
+ 		                    TO_CHAR(ner_date,'YYYY-MM-DD HH24:MI:SS') bor_date,
+ 		                    boa_num,
+ 		                    mem_num
+                          FROM board_reply where boa_num=#{boa_num}) r 
+                               JOIN member_detail m
+                               ON r.mem_num = m.mem_num
+                               ORDER BY bor_num DESC)m)
+                              
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
+	
+	
 </mapper>

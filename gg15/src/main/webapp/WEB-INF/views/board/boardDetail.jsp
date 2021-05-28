@@ -75,4 +75,39 @@
 </div>
 <!-- 본문 끝 -->
 
+<!--  댓글 시작 -->
+<hr size="1" width="100%">
+	<div id="reply_div">
+		<span class="reply-title">댓글</span>
+		<form id="re_form">
+			<input type="hidden" name="boa_num"
+			       value="${board.boa_num}" id="boa_num">
+			<input type="hidden" name="mem_num"
+			       value="${user_num}" id="mem_num">
+			<textarea rows="3" cols="50"
+			  name="bor_content" id="bor_content"
+			  class="rep-content"
+			  <c:if test="${empty user_num}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
+			<c:if test="${!empty user_num}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second" class="align-right">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+	</div>
+<!-- 댓글 끝 -->
+
+
 <!--  자유게시판 boardList 끝 -->

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.board.dao.BoardMapper;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.board.vo.board_replyVO;
 
 @Service("boardService")
 public class BoardService {
@@ -45,6 +46,9 @@ public class BoardService {
 		 
 	//글 삭제
 	public void deleteBoard(Integer boa_num) {
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		boardMapper.deleteReplyByBoardNum(boa_num);
+		
 		boardMapper.deleteBoard(boa_num);
 	}
 	
@@ -53,5 +57,29 @@ public class BoardService {
 	//	boardMapper.updateHit(board_num);
 	//}
 
-		
+	//댓글
+		public List<board_replyVO> selectListReply(Map<String, Object> map) {
+			return boardMapper.selectListReply(map);
+		}
+
+		public int selectRowCountReply(Map<String, Object> map) {
+			return boardMapper.selectRowCountReply(map);
+		}
+
+		public void insertReply(board_replyVO board_reply) {
+			boardMapper.insertReply(board_reply);
+		}
+
+		public void updateReply(board_replyVO board_reply) {
+			boardMapper.updateReply(board_reply);
+		}
+
+		public void deleteReply(Integer bor_num) {
+			//(*******주의)댓글 좋아요가 있을 경우
+			//newsMapper.deleteReFavByRe_num(ner_num);
+			boardMapper.deleteReply(bor_num);
+		}	
+	
+	
+	
 	}
