@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>  
+﻿<!-- <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper   
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.board.dao.BoardMapper">
 
-	<!-- 총 게시글 수 -->
+	총 게시글 수
 	<select id="selectRowCount" resultType="integer">
 		SELECT
 		   COUNT(*)
@@ -13,7 +13,7 @@
 		ON b.mem_num = m.mem_num
 	</select>
 	
-	<!-- 글 목록 -->
+	글 목록
 	<select id="selectList" parameterType="map"
 	                                   resultType="boardVO">
 		SELECT
@@ -41,7 +41,7 @@
 	
 	
 	
-	<!-- 글 수정 -->
+	글 수정
 	<update id="updateBoard" parameterType="boardVO">
 		UPDATE board SET
 			<if test="filename != ''">
@@ -80,7 +80,7 @@
  	</select>
 	
 	
-	<!--====== 댓글 ========  -->	
+	====== 댓글 ======== 	
 	<select id="selectListReply" parameterType="map"
  	                     resultType="newsReplyVO">
  		SELECT
@@ -105,6 +105,7 @@
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>                                 
  	</select>
-	
+	 
 	
 </mapper>
+ -->

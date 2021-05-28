@@ -1,4 +1,4 @@
-package kr.spring.board.dao;
+/*package kr.spring.board.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -40,6 +40,7 @@ public interface BoardMapper {
 	@Delete("DELETE FROM board WHERE boa_num=#{boa_num}")
 	public void deleteBoard(Integer boa_num);	
 	
+	
 	//=================댓글================//
 	public List<board_replyVO> selectListReply(Map<String,Object> map);
 	@Select("SELECT COUNT(*) FROM board_reply WHERE boa_num=#{boa_num}")
@@ -60,3 +61,4 @@ public interface BoardMapper {
 }
 
 
+*/

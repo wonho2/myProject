@@ -1,4 +1,4 @@
-package kr.spring.board.service;
+/*package kr.spring.board.service;
 
 import java.util.List;
 import java.util.Map;
@@ -51,7 +51,7 @@ public class BoardService {
 		
 		boardMapper.deleteBoard(boa_num);
 	}
-	
+
 	//조회수 증가
 	//public void updateHit(Integer board_num) {
 	//	boardMapper.updateHit(board_num);
@@ -81,5 +81,4 @@ public class BoardService {
 		}	
 	
 	
-	
-	}
+	}*/

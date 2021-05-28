@@ -1,4 +1,4 @@
-package kr.spring.board.controller;
+/*package kr.spring.board.controller;
 
 import java.io.File;
 import java.util.HashMap;
@@ -206,4 +206,4 @@ public class BoardController {
 		return map;
 	}
 
-}
+}*/

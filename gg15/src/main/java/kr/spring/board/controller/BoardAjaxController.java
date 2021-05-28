@@ -1,4 +1,4 @@
-package kr.spring.board.controller;
+/*package kr.spring.board.controller;
 
 import java.util.Collections;
 
@@ -175,3 +175,4 @@ public class BoardAjaxController{
 		return map;
 	}
 }
+*/
