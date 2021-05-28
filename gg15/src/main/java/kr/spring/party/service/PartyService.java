@@ -49,6 +49,8 @@ public class PartyService {
 	
 	//게시물 삭제
 	public void deleteParty(int boardNum) {
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		partyDAO.deletePartyReplyByBoardNum(boardNum);
 		partyDAO.deleteParty(boardNum);
 	}
 	

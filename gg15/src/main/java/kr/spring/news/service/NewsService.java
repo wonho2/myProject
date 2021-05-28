@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.news.dao.NewsMapper;
 import kr.spring.news.vo.NewsVO;
+import kr.spring.news.vo.NewsReplyVO;
 
 @Service("newsService")
 public class NewsService {
@@ -47,9 +48,35 @@ public class NewsService {
 		newsMapper.updateNews(news);
 	}
 	
-	//글 삭제
-	public void deleteNews(Integer new_num) {
-		newsMapper.deleteNews(new_num);
+	//게시물 삭제
+		public void deleteNews(Integer new_num) {
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		newsMapper.deleteReplyByBoardNum(new_num);
+	    newsMapper.deleteNews(new_num);
+		   } 
+		   
+	
+	//댓글
+	public List<NewsReplyVO> selectListReply(Map<String, Object> map) {
+		return newsMapper.selectListReply(map);
+	}
+
+	public int selectRowCountReply(Map<String, Object> map) {
+		return newsMapper.selectRowCountReply(map);
+	}
+
+	public void insertReply(NewsReplyVO newsReply) {
+		newsMapper.insertReply(newsReply);
+	}
+
+	public void updateReply(NewsReplyVO newsReply) {
+		newsMapper.updateReply(newsReply);
+	}
+
+	public void deleteReply(Integer ner_num) {
+		//(*******주의)댓글 좋아요가 있을 경우
+		//newsMapper.deleteReFavByRe_num(ner_num);
+		newsMapper.deleteReply(ner_num);
 	}
 	
 }

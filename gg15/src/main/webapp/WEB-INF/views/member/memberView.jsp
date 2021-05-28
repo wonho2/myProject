@@ -8,7 +8,7 @@
 		<li>닉네임 : ${member.mem_nick}</li>
 		<li>전화번호 : ${member.mem_phone}</li>
 		<li>이메일 : ${member.mem_email}</li>
-		<li1>가입일 : ${member.mem_date}</li1>
+		<li>가입일 : ${member.mem_date}</li1>
 	</ul>
 	<hr size="1" width="100%">
 	<p class="align-right">

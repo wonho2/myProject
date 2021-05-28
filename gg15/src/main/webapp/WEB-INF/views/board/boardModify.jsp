@@ -2,17 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<style>
+.ck-editor__editable_inline {
+    min-height: 250px;
+}
+</style>
+<!-- include ckeditor js -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
+<script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardModify 시작 -->
+<div class="page-main-style">
 <h2>글 수정</h2>
 <form:form action="update.do" commandName="boardVO" enctype="multipart/form-data">
 
 	<form:hidden path="boa_num"/>
 	 
 			<ul>
-			<!-- 카테고리는 공지 --> 
-			<section>카테고리 : ${board.boa_cate}</section>
-			
 			<!-- 제목 -->
 			<li>
 				<label for="boa_title">제목</label>
@@ -35,17 +46,42 @@
 				<label for="boa_content">내용</label>
 				<form:textarea path="boa_content"/>
 				<form:errors path="boa_content" cssClass="error-color"/>
+			 <script>
+				 function MyCustomUploadAdapterPlugin(editor) {
+					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        return new UploadAdapter(loader);
+					    }
+					}
+				 
+				 ClassicEditor
+		            .create( document.querySelector( '#boa_content' ),{
+		            	extraPlugins: [MyCustomUploadAdapterPlugin]
+		            })
+		            .then( editor => {
+						window.editor = editor;
+					} )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+			    </script>   
 			</li>
 			<!-- 공개범위 설정 -->
 			<li>
-			    <label for="boa_mode">비밀글 설정</label>
-				<input type="checkbox" name="boa_mode" value="전체공개">비밀글
+				<span style="margin-left:220px;"><b>비밀글 설정</b></span>
+				<input type="checkbox" name="boa_mode" value="1">비밀글
 			</li>
 		</ul>
 		
-	<div>
-		<input type="button" value="목록" onclick="location.href='list.do'">
-		<input type="submit" value="수정">
-	</div>
+		<div class="align-center">
+			<!-- 목록 -->
+			<input type="button" id="list" value="목록" onclick="location.href='list.do'">
+			<!-- 미리보기 -->
+			<input type="button" id="e-show" value="미리보기" >
+			<!-- 임시 저장 -->
+			<input type="button" id="e-save" value="임시저장">
+			<!-- 저장 -->
+			<input type="submit" id="save" value="등록">
+		</div>
 </form:form>
+</div>
 <!-- 자유게시판 boardModify 끝-->

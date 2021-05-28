@@ -22,6 +22,7 @@ public class BoardVO {
 	private String boa_filename;//업로드 파일 이름
 	private int boa_mode;
 	private int boa_hit;
+	private String mem_nick;
 	
 	//업로드 파일 처리
 	public void setBoa_upload(MultipartFile boa_upload)throws IOException{
@@ -99,6 +100,15 @@ public class BoardVO {
 
 	public void setBoa_hit(int boa_hit) {
 		this.boa_hit = boa_hit;
+	}
+	
+
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
 	}
 
 	@Override

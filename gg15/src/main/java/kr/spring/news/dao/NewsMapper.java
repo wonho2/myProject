@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.news.vo.NewsVO;
+import kr.spring.news.vo.NewsReplyVO;
 
 
 public interface NewsMapper {
@@ -47,5 +48,19 @@ public interface NewsMapper {
 	@Update("UPDATE news SET new_fav = new_fav-1 WHERE new_num = #{new_num}")
 	public void updateFavDown(Integer new_num);
 	
+	//=================댓글================//
+		public List<NewsReplyVO> selectListReply(Map<String,Object> map);
+		@Select("SELECT COUNT(*) FROM news_reply WHERE new_num=#{new_num}")
+		public int selectRowCountReply(Map<String,Object> map);
+		@Insert("INSERT INTO news_reply (ner_num,ner_content,new_num,mem_num) VALUES (news_reply_seq.nextval,#{ner_content},#{new_num},#{mem_num})")
+		public void insertReply(NewsReplyVO newsReply);
+		@Update("UPDATE news_reply SET ner_content=#{ner_content} WHERE ner_num=#{ner_num}")
+		public void updateReply(NewsReplyVO newsReply);
+		@Delete("DELETE FROM news_reply WHERE ner_num=#{ner_num}")
+		public void deleteReply(Integer ner_num);
+		//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제 
+		@Delete("DELETE FROM news_reply WHERE new_num=#{new_num}")
+		public void deleteReplyByBoardNum(Integer new_num);
+
 	
 }

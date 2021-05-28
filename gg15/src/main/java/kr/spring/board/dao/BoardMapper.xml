@@ -28,12 +28,15 @@
 		              ]]>
 		              m.mem_nick,
 		              b.boa_date,
-		              b.boa_hit
+		              b.boa_hit,
+		              b.boa_filename,
+		              b.boa_mode
 		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num ORDER BY b.boa_num DESC)a)
 		            
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
+    	
 	</select>
 	
 	
@@ -52,10 +55,3 @@
 	</update>
 	
 </mapper>
-
-
-
-
-
-
-

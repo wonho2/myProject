@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import kr.spring.board.vo.BoardVO;
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionVO;
 
