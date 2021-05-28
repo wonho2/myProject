@@ -14,7 +14,7 @@
 </p>
 
 <!-- 댓글 쓰기 -->
-<div>
+<div id="wrapper_writeComment">
 	<form id="form_writeComment">
 		<input type="hidden" name="pos_num" value="${positionVO.pos_num}" id="pos_num">
 		<input type="hidden" name="mem_num" value="${user_num}" id="mem_num">

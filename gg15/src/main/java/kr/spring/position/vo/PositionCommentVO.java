@@ -29,10 +29,9 @@ public class PositionCommentVO
 	public int getMem_num() {
 		return mem_num;
 	}
-	// session.user_num == null 인 경우 형 변환 때문에 코드 수정
+	// session.user_num == null 인 경우
 	public void setMem_num(Integer mem_num) {
 		if(mem_num == null) {
-			this.mem_num = -1;
 			return;
 		}
 		this.mem_num = mem_num;
@@ -46,7 +45,11 @@ public class PositionCommentVO
 	public String getPoc_content() {
 		return poc_content;
 	}
+	// jsp 페이지 ${poc_content} == null 인 경우
 	public void setPoc_content(String poc_content) {
+		if(poc_content == null) {
+			return;
+		}
 		this.poc_content = poc_content;
 	}
 	public String getPoc_date() {
