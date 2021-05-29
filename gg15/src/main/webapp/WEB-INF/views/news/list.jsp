@@ -15,15 +15,18 @@
 	<c:if test="${count > 0}">
 	<table>
 		<tr>
-			<th>번호</th>
-			<th width="400">제목</th>
+			<th>썸네일</th>
+			<th width="400">뉴스</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>  
 		</tr> 
 		<c:forEach var="news" items="${newsList}">
 		<tr>
-			<td>${news.new_num}</td>
+		<td align="center">
+		<img src="imageView.do?new_num=${news.new_num}"
+		                           style="width:75px;height:50px">
+		</td>
 			<td><a href="detail.do?new_num=${news.new_num}">${news.new_title}</a></td>
 			 <td>${news.mem_nick}</td>
 			<td>${news.new_date}</td>

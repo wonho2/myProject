@@ -19,7 +19,6 @@
 <div class="page-main-style">
 	<h2>${news.new_title}</h2>
 	<ul>  
-		<li>번호 : ${news.new_num}</li>
 		<li>작성자 : ${news.mem_nick}</li>
 		<li>조회수 : ${news.new_hit}</li>
 		<li>작성일 : ${news.new_date}</li>
@@ -34,7 +33,7 @@
 	              fn:endsWith(news.new_filename,'.PNG')}">
 	<div class="align-center">
 		<img src="imageView.do?new_num=${news.new_num}"
-		                           style="max-width:500px">
+		                           style="max-width:400px">
 	</div>
 	</c:if>
 	<p>
@@ -47,7 +46,7 @@
 		 onclick="location.href='update.do?new_num=${news.new_num}'">
 		<input type="button" value="삭제" id="newsDelete_btn">
 	</c:if> 
-		<input type="button" value="목록으로"
+		<input type="button" value="목록"
 		                        onclick="location.href='list.do'">
 	</div>
 </div>

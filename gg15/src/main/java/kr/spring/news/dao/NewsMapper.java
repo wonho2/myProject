@@ -26,7 +26,7 @@ public interface NewsMapper {
 	public List<NewsVO> selectList(Map<String,Object> map);
 	
 	//게시글 상세 페이지
-	@Select("SELECT * FROM news n JOIN member m ON n.mem_num=m.mem_num WHERE n.new_num=#{new_num}")
+	@Select("SELECT * FROM news n JOIN member_detail m ON n.mem_num=m.mem_num WHERE n.new_num=#{new_num}")
 	public NewsVO selectNews(Integer new_num);
 	
 	//조회수 증가
