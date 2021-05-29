@@ -14,8 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import kr.spring.board.service.BoardService;
+ 
 import kr.spring.party.service.PartyService;
 import kr.spring.party.vo.PartyReplyVO;
 import kr.spring.util.PagingUtil;
