@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.position.dao.PositionDAO;
+import kr.spring.position.etc.PositionType;
 import kr.spring.position.vo.PositionCommentVO;
-import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionVO;
 
 @Service("positionService")
@@ -21,16 +21,26 @@ public class PositionService
 /*
  * 게시물
  */
-	// 총 게시물 수
-	public int selectBoardCount()
+	// 게시물 수
+	public int selectBoardCount(PositionType type)
 	{
-		return positionDAO.selectBoardCount();
+		switch(type)
+		{
+			case ALL :
+				return positionDAO.selectBoardCountAll();
+		}
+		return -1;
 	}
 	
 	// 게시물 리스트 가져오기
-	public List<PositionVO> selectBoardList(Map<String, Object> map)
+	public List<PositionVO> selectBoardList(Map<String, Object> map, PositionType type)
 	{
-		return positionDAO.selectBoardList(map);
+		switch(type)
+		{
+			case ALL :
+				return positionDAO.selectBoardListAll(map);
+		}
+		return null;
 	}
 	
 	// 글쓰기
@@ -75,10 +85,11 @@ public class PositionService
 		return positionDAO.selectCommentCount(pos_num);
 	}
 	
-	// 댓글 리스트 (최신순)
-	public List<PositionCommentVO> selectCommentList_recent(int pos_num)
+	// 댓글 리스트
+	public List<PositionCommentVO> selectCommentList(int pos_num, int sort_type)
 	{
-		return positionDAO.selectCommentList_recent(pos_num);
+		if(sort_type == 1) return positionDAO.selectCommentList_recent(pos_num);
+		else return null;
 	}
 	
 	//  댓글 작성

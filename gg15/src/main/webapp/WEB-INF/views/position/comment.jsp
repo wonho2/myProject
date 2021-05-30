@@ -5,7 +5,7 @@
 <!-- 자바스크립트 include -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/position_comment.js"></script>
 
-<!-- 헤더 -->
+<!-- 정렬 버튼 -->
 <p>
 	<!-- 미구현 : 정렬 -->
 	<b>댓글</b> <span id="output_commentCount"></span>

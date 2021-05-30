@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.position.vo.PositionCommentVO;
-import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionVO;
 
 public interface PositionDAO
@@ -17,12 +16,12 @@ public interface PositionDAO
 /*
  * 게시물
  */
-	// 총 게시물 수
+	// 게시물 수 (전체)
 	@Select("SELECT COUNT(*) FROM position")
-	public int selectBoardCount();
+	public int selectBoardCountAll();
 
-	// 게시물 목록
-	public List<PositionVO> selectBoardList(Map<String, Object> map);
+	// 게시물 목록 (전체)
+	public List<PositionVO> selectBoardListAll(Map<String, Object> map);
 
 	// 글쓰기
 	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile, pos_filename) "

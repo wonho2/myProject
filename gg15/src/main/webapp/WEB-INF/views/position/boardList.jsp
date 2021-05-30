@@ -3,16 +3,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 포지션게시판 : boardList 시작 -->
+<!-- 게시물 카테고리 -->
+<div>
+	<ul>
+		<li>
+			<a href="boardList.do">전체보기</a> <!-- default -->
+		</li>
+		<li>
+			<a href="boardList_top.do">탑</a>
+		</li>
+		<li>
+			<a href="boardList_jungle.do">정글</a>
+		</li>
+		<li>
+			<a href="boardList_mid.do">미드</a>
+		</li>
+		<li>
+			<a href="boardList_ad.do">원딜</a>
+		</li>
+		<li>
+			<a href="boardList_support.do">서포터</a>
+		</li>
+	</ul>
+</div>
+
+<!-- 글쓰기 버튼 -->
 <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
 </p>
 
-<c:if test="${count == 0}">
+<!-- 게시물 목록 -->
+<c:if test="${boardCount == 0}">
 	게시물이 없습니다.
 </c:if>
-
-<c:if test="${count > 0}">
-	<!-- 게시물 목록 -->
+<c:if test="${boardCount > 0}">
 	<table>
 		<tr>
 			<th>번호</th>
@@ -36,12 +60,12 @@
 		</c:forEach>
 	</table>
 	
-	<!-- 페이징 처리 -->
+<!-- 페이징 처리 -->
 	<div>
 		${pagingHtml}
 	</div>
 	
-	<!-- 미구현 : 게시물 검색창 -->
+<!-- 미구현 : 게시물 검색창 -->
 	<p class="align-right">
 		<select name="pos_searchOption">
 			<option value="pos_title">제목</option>

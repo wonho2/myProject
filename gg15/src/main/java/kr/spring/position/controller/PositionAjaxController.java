@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionCommentVO;
-import kr.spring.position.vo.PositionCommentFavVO;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class PositionAjaxController
@@ -35,15 +31,15 @@ public class PositionAjaxController
 		// 해당 게시물 댓글의 갯수
 		int count = positionService.selectCommentCount(pos_num);
 		// 댓글 목록
-		List<PositionCommentVO> list = Collections.emptyList();
+		List<PositionCommentVO> commentList = Collections.emptyList();
 		if(count > 0)
 		{
-			if(sort_type == 1) list = positionService.selectCommentList_recent(pos_num);
+			if(sort_type == 1) commentList = positionService.selectCommentList(pos_num, sort_type);
 		}
 		// ajax에 전달할 map 객체
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
-		mapJson.put("commentList", list);
+		mapJson.put("commentList", commentList);
 		return mapJson;
 	}
 

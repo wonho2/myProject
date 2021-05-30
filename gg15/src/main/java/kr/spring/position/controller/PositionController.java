@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.position.etc.PositionType;
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionVO;
 import kr.spring.util.PagingUtil;
@@ -38,29 +39,36 @@ public class PositionController
 	}
 
 /*
- * 게시물 목록 (완성)
+ * 게시물 목록
  */
-	@RequestMapping("/position/list.do")
-	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
+// 공통
+	private ModelAndView boardList(int currentPage, PositionType type)
 	{
 		// 페이징 처리
-		int count = positionService.selectBoardCount();
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
+		int boardCount = positionService.selectBoardCount(type);
+		PagingUtil page = new PagingUtil(currentPage, boardCount, 3, 3, "list.do");
 		List<PositionVO> boardList = null;
-		if(count > 0)
+		if(boardCount > 0)
 		{
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			boardList = positionService.selectBoardList(map);
+			boardList = positionService.selectBoardList(map, type); 
 		}
 		// 데이터 저장 및 리턴
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("position_list");
-		mav.addObject("count", count);
+		mav.addObject("boardCount", boardCount);
 		mav.addObject("boardList", boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		return mav;  
+	}
+	
+// 게시물 전체보기
+	@RequestMapping("/position/list.do")
+	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.ALL);
 	}
 	
 /*
