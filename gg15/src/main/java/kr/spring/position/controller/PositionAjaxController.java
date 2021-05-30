@@ -26,18 +26,19 @@ public class PositionAjaxController
 	@Resource
 	private PositionService positionService;
 /*
- * 댓글 리스트 가져오기
+ * 댓글 리스트 가져오기 (게시물 번호, 정렬 타입)
  */
-	@RequestMapping("/position/commentList.do")
+	@RequestMapping("/position/commentList_recent.do")
 	@ResponseBody
-	public Map<String,Object> selectList(@RequestParam int pos_num)
+	public Map<String,Object> selectList_recent(@RequestParam int pos_num, @RequestParam int sort_type)
 	{
 		// 해당 게시물 댓글의 갯수
 		int count = positionService.selectCommentCount(pos_num);
 		// 댓글 목록
 		List<PositionCommentVO> list = Collections.emptyList();
-		if(count > 0) {
-			list = positionService.selectCommentList(pos_num);
+		if(count > 0)
+		{
+			if(sort_type == 1) list = positionService.selectCommentList_recent(pos_num);
 		}
 		// ajax에 전달할 map 객체
 		Map<String,Object> mapJson = new HashMap<String,Object>();
@@ -56,10 +57,12 @@ public class PositionAjaxController
 		// 로그인 상태 여부 체크
 		Map<String,String> map = new HashMap<String,String>();
 		Integer mem_num = (Integer)session.getAttribute("user_num");
-		if(mem_num == null) {
+		if(mem_num == null)
+		{
 			map.put("result", "needLogin");
 		}
-		else {
+		else
+		{
 			positionService.insertComment(positionCommentVO);
 			map.put("result", "success");
 		}
@@ -75,14 +78,17 @@ public class PositionAjaxController
 	{
 		Map<String,String> map = new HashMap<String,String>();
 		Integer mem_num = (Integer)session.getAttribute("user_num");
-		if(mem_num == null) {
+		if(mem_num == null)
+		{
 			map.put("result", "needLogin");
 		}
-		else if(mem_num == positionCommentVO.getMem_num()) {
+		else if(mem_num == positionCommentVO.getMem_num())
+		{
 			positionService.modifyComment(positionCommentVO);
 			map.put("result", "success");
 		}
-		else{
+		else
+		{
 			map.put("result", "notMatchUser");
 		}
 		return map;
@@ -100,12 +106,14 @@ public class PositionAjaxController
 		if(user_num == null)
 		{
 			map.put("result", "needLogin");
-		}else if(user_num == mem_num)
+		}
+		else if(user_num == mem_num)
 		{
 			positionService.deleteComment(poc_num);
 			map.put("result", "success");
-		}else
-		{
+		}
+		else
+		{	
 			map.put("result", "notMatchUser");
 		}		
 

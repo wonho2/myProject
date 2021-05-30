@@ -18,6 +18,9 @@ public class PositionService
 	@Resource
 	private PositionDAO positionDAO;
 	
+/*
+ * 게시물
+ */
 	// 총 게시물 수
 	public int selectBoardCount()
 	{
@@ -62,32 +65,35 @@ public class PositionService
 	{
 		positionDAO.updateView(boardNum);
 	}
-	
-	// 해당 게시물의 댓글 개수
+
+/*
+ * 게시물 댓글
+ */
+	//  댓글 개수
 	public int selectCommentCount(int pos_num)
 	{
 		return positionDAO.selectCommentCount(pos_num);
 	}
 	
-	// 해당 게시물의 댓글 리스트
-	public List<PositionCommentVO> selectCommentList(int pos_num)
+	// 댓글 리스트 (최신순)
+	public List<PositionCommentVO> selectCommentList_recent(int pos_num)
 	{
-		return positionDAO.selectCommentList(pos_num);
+		return positionDAO.selectCommentList_recent(pos_num);
 	}
 	
-	// 해당 게시물 댓글 작성
+	//  댓글 작성
 	public void insertComment(PositionCommentVO vo)
 	{
 		positionDAO.insertComment(vo);
 	}
 	
-	// 해당 게시물 댓글 수정
+	//  댓글 수정
 	public void modifyComment(PositionCommentVO vo)
 	{
 		positionDAO.modifyComment(vo);
 	}
 
-	// 해당 게시물 댓글 삭제
+	// 댓글 삭제
 	// 댓글에 달린 추천 삭제 => 댓글 삭제
 	public void deleteComment(Integer poc_num)
 	{

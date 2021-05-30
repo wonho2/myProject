@@ -14,6 +14,9 @@ import kr.spring.position.vo.PositionVO;
 
 public interface PositionDAO
 {
+/*
+ * 게시물
+ */
 	// 총 게시물 수
 	@Select("SELECT COUNT(*) FROM position")
 	public int selectBoardCount();
@@ -39,15 +42,18 @@ public interface PositionDAO
 	// 해당 게시물의 조회수 증가
 	@Update("UPDATE position SET pos_view = pos_view+1 WHERE pos_num = #{pos_num}")
 	public void updateView(int pos_num);
-	
-	// 해당 게시물의 댓글 개수
+
+/*
+ * 게시물의 댓글
+ */
+	// 댓글 개수
 	@Select("SELECT COUNT(*) FROM position_comment WHERE pos_num=#{pos_num}")
 	public int selectCommentCount(Integer pos_num);
 	
-	// 해당 게시물의 댓글 리스트
-	public List<PositionCommentVO> selectCommentList(Integer pos_num);
+	// 댓글 리스트 (최신순)
+	public List<PositionCommentVO> selectCommentList_recent(Integer pos_num);
 	
-	// 해당 게시물 댓글 쓰기
+	// 댓글 쓰기
 	@Insert("INSERT INTO position_comment (poc_num, pos_num, mem_num, poc_content) VALUES (position_comment_seq.nextval, #{pos_num}, #{mem_num}, #{poc_content})")
 	public void insertComment(PositionCommentVO vo);
 	
