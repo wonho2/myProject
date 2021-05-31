@@ -16,7 +16,7 @@ $(document).ready(function()
 	function defaultCommentListSort()
 	{
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		selectCommentList(new Request().getParameter("positionVO.pos_num"), sort.RECENT, sortUrl.RECENT);
+		selectCommentList(new Request().getParameter("pos_num"), sort.RECENT, sortUrl.RECENT);
 	}
 
 /*
@@ -62,7 +62,7 @@ $(document).ready(function()
 	function selectCommentList(pos_num, sort_type, url)
 	{
 		$.ajax({
-			type:'post',
+			type:'get',
 			data:{pos_num:pos_num, sort_type:sort_type},
 			url:url,
 			dataType:'json',
@@ -90,7 +90,7 @@ $(document).ready(function()
 					output += 		item.poc_content.replace(/</gi,'&lt;').replace(/>/gi,'&gt;')
 					output += 	'</p>';
 					// 로그인된 회원 번호와 댓글 작성자 번호가 같은 경우
-					if(new Request.getParameter("user_num") == item.mem_num){
+					if(new Session.getParameter("user_num") == item.mem_num){
 						output += '<span>';
 						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="수정" id="btn_modifyComment">';
 						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="삭제" id="btn_deleteComment">';
@@ -283,7 +283,7 @@ $(document).ready(function()
 		var mem_num = $(this).attr('data-mem');
 		// 삭제 처리
 		$.ajax({
-			type:'post',
+			type:'get',
 			url:'deleteComment.do',
 			data:{poc_num:poc_num, mem_num:mem_num},
 			dataType:'json',

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.position.vo.PositionCommentVO;
+import kr.spring.position.vo.PositionFavVO;
 import kr.spring.position.vo.PositionVO;
 
 public interface PositionDAO
@@ -60,24 +61,48 @@ public interface PositionDAO
 	// 게시물 목록 (서포터 - 인기순)
 	public List<PositionVO> selectBoardListSupport_pop(Map<String, Object> map);
 
-// 글쓰기
+	// 글쓰기
 	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile, pos_filename) "
 			+ "VALUES(position_seq.nextval, #{pos_type}, #{mem_num}, #{pos_title}, #{pos_content}, #{pos_uploadfile}, #{pos_filename})")
 	public void insertBoard(PositionVO vo);
 
-// 게시물 상세 페이지
+	// 게시물 상세 페이지
 	public PositionVO selectBoard(int pos_num);
 
-// 게시물 수정
+	// 게시물 수정
 	public void updateBoard(PositionVO vo);
 
-// 게시물 삭제
+	// 게시물 삭제
 	@Delete("DELETE FROM position WHERE pos_num = #{pos_num}")
 	public void deleteBoard(int pos_num);
 
-// 해당 게시물의 조회수 증가
+	// 해당 게시물의 조회수 증가
 	@Update("UPDATE position SET pos_view = pos_view+1 WHERE pos_num = #{pos_num}")
 	public void updateView(int pos_num);
+	
+/*
+ * 게시물 추천
+ */
+	// 해당 게시물을 추천했는지 체크
+	@Select("SELECT * FROM position_fav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
+	public PositionFavVO selectClickedFav(int pos_num, int mem_num);
+	
+	// 해당 게시물의 추천 수
+	@Select("SELECT COUNT(*) FROM position_fav WHERE pos_num=#{pos_num}")
+	public int selectFavCount(int pos_num);
+	
+	// 해당 게시물 추천
+	@Insert("INSERT INTO position_fav(pof_num, pos_num, mem_num) "
+			+ "VALUES(position_fav_seq.nextval, #{pos_num}, #{mem_num})")
+	public void insertFav(PositionFavVO vo);
+	
+	// 해당 게시물 추천 취소
+	@Delete("DELETE FROM position_fav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
+	public void deleteFav(PositionFavVO vo);
+	
+	// 해당 게시물의 추천 모두 삭제
+	@Delete("DELETE FROM position_fav WHERE pos_num=#{pos_num}")
+	public void deleteFavAll(int pos_num);
 
 /*
  * 게시물의 댓글

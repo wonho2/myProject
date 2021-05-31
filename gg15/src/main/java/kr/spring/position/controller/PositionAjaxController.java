@@ -15,12 +15,55 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionCommentVO;
+import kr.spring.position.vo.PositionFavVO;
 
 @Controller
 public class PositionAjaxController
 {
 	@Resource
 	private PositionService positionService;
+	
+/*
+ * 게시물 추천
+ */
+	@RequestMapping("/position/clickFav.do")
+	@ResponseBody
+	public Map<String, String> clickFav(@RequestParam int pos_num, HttpSession session)
+	{
+		Integer mem_num = (Integer)session.getAttribute("user_num");
+		boolean clickedFav = false;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		if(mem_num == null)
+		{
+			map.put("result", "needLogin");
+		}
+		else if(clickedFav = positionService.selectClickedFav(pos_num, mem_num))
+		{
+			// vo 객체 생성
+			PositionFavVO vo = new PositionFavVO();
+			vo.setPos_num(pos_num);
+			vo.setMem_num(mem_num);
+			// 이미 해당 게시물의 추천버튼을 누른 경우
+			if(clickedFav)
+			{
+				positionService.deleteFav(vo);
+				map.put("result", "success - favCancel");
+			}
+			// 추천버튼을 누르지 않은 경우
+			else
+			{
+				positionService.insertFav(vo);
+				map.put("result", "success - favUp");
+			}
+			// 변경된 추천 수
+			String favCount = Integer.toString(positionService.selectFavCount(pos_num));
+			map.put("favCount", favCount);
+		}
+
+		return map;
+	}
+	
 /*
  * 댓글 리스트 가져오기 (게시물 번호, 정렬 타입)
  */

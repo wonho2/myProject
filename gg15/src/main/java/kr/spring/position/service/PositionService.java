@@ -11,6 +11,7 @@ import kr.spring.position.dao.PositionDAO;
 import kr.spring.position.etc.PositionSort;
 import kr.spring.position.etc.PositionType;
 import kr.spring.position.vo.PositionCommentVO;
+import kr.spring.position.vo.PositionFavVO;
 import kr.spring.position.vo.PositionVO;
 
 @Service("positionService")
@@ -116,11 +117,12 @@ public class PositionService
 	
 // 게시물 삭제
 // 댓글에 달린 추천 삭제 => 댓글 삭제  => 게시물 추천 삭제
-	public void deleteBoard(int boardNum)
+	public void deleteBoard(int pos_num)
 	{
 		// positionDAO.deleteReFavByBoardNum(boardNum);
-		positionDAO.deleteCommentsAll(boardNum);
-		positionDAO.deleteBoard(boardNum);
+		positionDAO.deleteCommentsAll(pos_num);
+		positionDAO.deleteFavAll(pos_num);
+		positionDAO.deleteBoard(pos_num);
 	}
 	
 // 해당 글의 조회수 증가
@@ -128,7 +130,34 @@ public class PositionService
 	{
 		positionDAO.updateView(boardNum);
 	}
-
+/*
+ * 게시물 추천
+ */
+	// 해당 게시물을 추천했는지 여부 체크
+	public boolean selectClickedFav(int pos_num, int mem_num)
+	{
+		if(positionDAO.selectClickedFav(pos_num, mem_num) == null) return false;
+		else return true;
+	}
+	
+	// 해당 게시물의 추천 수
+	public int selectFavCount(int pos_num)
+	{
+		return positionDAO.selectFavCount(pos_num);
+	}
+	
+	// 해당 게시물 추천
+	public void insertFav(PositionFavVO vo)
+	{
+		positionDAO.insertFav(vo);
+	}
+	
+	// 해당 게시물 추천 취소
+	public void deleteFav(PositionFavVO vo)
+	{
+		positionDAO.deleteFav(vo);
+	}
+	
 /*
  * 게시물 댓글
  */
