@@ -136,6 +136,10 @@ public class MemberController {
 				
 				session.setAttribute("user_auth",member.getMem_auth());
 				
+				session.setAttribute("user_point",member.getPoi_point());
+				
+				memberService.updatePoint(member.getMem_num());
+
 				memberService.updateMemAuth(member.getMem_num());
 				
 				return "redirect:/main/main.do";
@@ -307,5 +311,55 @@ public class MemberController {
 		memberService.updatePassword(memberVO);
 		
 		return "redirect:/member/myPage.do";
+	}	
+	//=====회원 정보 삭제(회원 탈퇴)========//
+	//회원 정보 삭제 폼
+	@RequestMapping(value="/member/delete.do",method=RequestMethod.GET)
+	public String formDelete() {
+		return "memberDelete";
+	}
+	//회원 정보 삭제를 위한 데이터 처리
+	@RequestMapping(value="/member/delete.do",method=RequestMethod.POST)
+	public String submitDelete(@Valid MemberVO memberVO,
+			BindingResult result,
+			HttpSession session) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<회원 탈퇴>> : " + memberVO);
+		}
+
+		//유효성 체크 결과 오류가 있으면 폼을 호출
+		//id와 passwd만 체크
+		if(result.hasFieldErrors("id") || 
+				result.hasFieldErrors("passwd")) {
+			return "memberDelete";
+		}
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		//아이디와 비밀번호 인증
+		try {
+			MemberVO member = memberService.selectMember(user_num);
+			boolean check = false;
+
+			if(member!=null && memberVO.getMem_id().equals(member.getMem_id())) {
+				//비밀번호 일치 여부 체크
+				check = member.isCheckedPassword(memberVO.getMem_pw());
+			}
+			if(check) {
+
+				//인증 성공, 회원 정보 삭제
+				memberService.deleteMember(user_num);
+				//로그아웃
+				session.invalidate();
+
+				return "redirect:/main/main.do";
+			}else {
+				//인증 실패
+				throw new AuthCheckException();
+			}
+
+		}catch(AuthCheckException e) {
+			result.reject("invalidIdOrPassword");
+			return formDelete();
+		}
 	}	
 }

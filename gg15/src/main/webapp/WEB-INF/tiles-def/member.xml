@@ -35,6 +35,11 @@
 		<put-attribute name="body" 
 		          value="/WEB-INF/views/member/memberChangePassword.jsp"/>
 	</definition>	
+	<definition name="memberDelete" extends="main">
+		<put-attribute name="title" value="회원 탈퇴"/>
+		<put-attribute name="body" 
+		          value="/WEB-INF/views/member/memberDelete.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

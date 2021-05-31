@@ -5,7 +5,8 @@
 <h2 class="align-center">GG15</h2>
 <div class="align-right">
 	<c:if test="${!empty user_num && user_auth == 2}">
-		[<span class="user_name">${user_id}</span>]
+		[<span class="user_name">${user_id}님</span>]
+	    [<span>포인트 : ${user_point}</span>]
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 	</c:if>

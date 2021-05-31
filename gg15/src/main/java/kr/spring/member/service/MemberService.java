@@ -15,9 +15,12 @@ public class MemberService {
 	public void insertMember(MemberVO member) {
 		//회원 번호를 생성해서 자바빈에 저장
 		member.setMem_num(memberMapper.selectMem_num());
+		//포인트 번호 생성
+		member.setPoi_num(memberMapper.selectPoi_num());
 		//회원 정보 저장
 		memberMapper.insertMember(member);
 		memberMapper.insertMember_detail(member);
+		memberMapper.insertPoint(member);
 	}
 	//아이디 중복 체크 및 로그인 체크
 	public MemberVO selectCheckMember(String id) {
@@ -43,5 +46,14 @@ public class MemberService {
 	//멤버 로그인 auth값
 	public void updateMemAuth(Integer mem_num) {
 		memberMapper.updateMemAuth(mem_num);
+	}
+	//포인트
+	public void updatePoint(Integer mem_num) {
+		memberMapper.updatePoint(mem_num);
+	}
+	//회원 탈퇴
+	public void deleteMember(Integer mem_num) {
+		memberMapper.deleteMember(mem_num);
+		memberMapper.deleteMember_detail(mem_num);
 	}
 }

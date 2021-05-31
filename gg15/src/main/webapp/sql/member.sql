@@ -31,16 +31,17 @@ create table member_detail(
  */
 =======
 
-create sequence member_seq;
-
 >>>>>>> branch 'main' of https://github.com/wonho2/myProject.git
 create table point(
 	poi_num number not null, /*포인트 식별번호*/
 	mem_num number not null, /*회원 식별번호*/
-	poi_point number(10) default 0,
-	poi_detail varchar2(90) not null, /*적립/차감 사유(글 작성,충전 등)*/
-	poi_date date default sysdate not null, /*포인트 적립/사용날짜*/
+	poi_point number(10) default 0 not null,
+	poi_detail varchar2(90), /*적립/차감 사유(글 작성,충전 등)*/
+	poi_date date default sysdate, /*포인트 적립/사용날짜*/
 	constraint poi_num_pk primary key (poi_num),
 	constraint mem_num_fk foreign key (mem_num)
 	references member (mem_num)
 );
+
+create sequence member_seq;
+create sequence point_seq;

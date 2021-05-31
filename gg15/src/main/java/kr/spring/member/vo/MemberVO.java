@@ -25,6 +25,7 @@ public class MemberVO {
 	@Email
 	@NotEmpty
 	private String mem_email;
+	private int poi_num;
 	private int poi_point;
 	private Date mem_date;
 
@@ -106,6 +107,14 @@ public class MemberVO {
 
 	public void setMem_email(String mem_email) {
 		this.mem_email = mem_email;
+	}
+
+	public int getPoi_num() {
+		return poi_num;
+	}
+
+	public void setPoi_num(int poi_num) {
+		this.poi_num = poi_num;
 	}
 
 	public int getPoi_point() {
