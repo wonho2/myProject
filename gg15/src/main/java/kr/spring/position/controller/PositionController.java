@@ -64,11 +64,46 @@ public class PositionController
 		return mav;  
 	}
 	
-// 게시물 전체보기
+// 게시물 리스트 : 전체보기 (default)
 	@RequestMapping("/position/list.do")
 	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
 		return boardList(currentPage, PositionType.ALL);
+	}
+	
+// 게시물 리스트 : 탑
+	@RequestMapping("/position/list_top.do")
+	public ModelAndView boardList_top(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.TOP);
+	}
+	
+// 게시물 리스트 : 정글
+	@RequestMapping("/position/list_jungle.do")
+	public ModelAndView boardList_jungle(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.JUNGLE);
+	}
+	
+// 게시물 리스트 : 미드
+	@RequestMapping("/position/list_mid.do")
+	public ModelAndView boardList_mid(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.MID);
+	}
+	
+// 게시물 리스트 : 탑
+	@RequestMapping("/position/list_ad.do")
+	public ModelAndView boardList_ad(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.AD);
+	}
+	
+// 게시물 리스트 : 서포터
+	@RequestMapping("/position/list_support.do")
+	public ModelAndView boardList_support(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return boardList(currentPage, PositionType.SUPPORT);
 	}
 	
 /*

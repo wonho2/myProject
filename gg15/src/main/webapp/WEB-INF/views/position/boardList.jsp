@@ -7,22 +7,22 @@
 <div>
 	<ul>
 		<li>
-			<a href="boardList.do">전체보기</a> <!-- default -->
+			<a href="list.do">전체보기</a> <!-- default -->
 		</li>
 		<li>
-			<a href="boardList_top.do">탑</a>
+			<a href="list_top.do">탑</a>
 		</li>
 		<li>
-			<a href="boardList_jungle.do">정글</a>
+			<a href="list_jungle.do">정글</a>
 		</li>
 		<li>
-			<a href="boardList_mid.do">미드</a>
+			<a href="list_mid.do">미드</a>
 		</li>
 		<li>
-			<a href="boardList_ad.do">원딜</a>
+			<a href="list_ad.do">원딜</a>
 		</li>
 		<li>
-			<a href="boardList_support.do">서포터</a>
+			<a href="list_support.do">서포터</a>
 		</li>
 	</ul>
 </div>

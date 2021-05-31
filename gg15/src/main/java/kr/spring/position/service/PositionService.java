@@ -21,26 +21,48 @@ public class PositionService
 /*
  * 게시물
  */
-	// 게시물 수
+// 게시물 수
 	public int selectBoardCount(PositionType type)
 	{
 		switch(type)
 		{
 			case ALL :
 				return positionDAO.selectBoardCountAll();
+			case TOP :
+				return positionDAO.selectBoardCount("탑");
+			case JUNGLE :
+				return positionDAO.selectBoardCount("정글");
+			case MID :
+				return positionDAO.selectBoardCount("미드");
+			case AD :
+				return positionDAO.selectBoardCount("원딜");
+			case SUPPORT :
+				return positionDAO.selectBoardCount("서포터");
+			default :
+				return -1;
 		}
-		return -1;
 	}
 	
-	// 게시물 리스트 가져오기
+// 게시물 리스트 가져오기
 	public List<PositionVO> selectBoardList(Map<String, Object> map, PositionType type)
 	{
 		switch(type)
 		{
 			case ALL :
 				return positionDAO.selectBoardListAll(map);
+			case TOP :
+				return positionDAO.selectBoardListTop(map);
+			case JUNGLE :
+				return positionDAO.selectBoardListJungle(map);
+			case MID :
+				return positionDAO.selectBoardListMid(map);
+			case AD :
+				return positionDAO.selectBoardListAd(map);
+			case SUPPORT :
+				return positionDAO.selectBoardListSupport(map);
+			default :
+				return null;
 		}
-		return null;
 	}
 	
 	// 글쓰기
