@@ -69,20 +69,26 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/commentList_recent.do")
 	@ResponseBody
-	public Map<String,Object> selectList_recent(@RequestParam int pos_num, @RequestParam int sort_type)
+	public Map<String,Object> selectList_recent(@RequestParam int pos_num, @RequestParam int sort_type, HttpSession session)
 	{
 		// 해당 게시물 댓글의 갯수
-		int count = positionService.selectCommentCount(pos_num);
+		int commentCount = positionService.selectCommentCount(pos_num);
 		// 댓글 목록
 		List<PositionCommentVO> commentList = Collections.emptyList();
-		if(count > 0)
+		if(commentCount > 0)
 		{
 			if(sort_type == 1) commentList = positionService.selectCommentList(pos_num, sort_type);
 		}
 		// ajax에 전달할 map 객체
 		Map<String,Object> mapJson = new HashMap<String,Object>();
-		mapJson.put("count", count);
+		mapJson.put("commentCount", commentCount);
 		mapJson.put("commentList", commentList);
+		// 현재 로그인 되어있는 회원 번호
+		Integer mem_num = (Integer)session.getAttribute("user_num");
+		if(mem_num != null)
+		{
+			mapJson.put("mem_num", mem_num);
+		}
 		return mapJson;
 	}
 
@@ -91,7 +97,7 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/writeComment.do")
 	@ResponseBody
-	public Map<String,String> writeComment(PositionCommentVO positionCommentVO, HttpSession session)
+	public Map<String,String> writeComment(@RequestParam int pos_num, @RequestParam String poc_content, HttpSession session)
 	{
 		// 로그인 상태 여부 체크
 		Map<String,String> map = new HashMap<String,String>();
@@ -102,7 +108,11 @@ public class PositionAjaxController
 		}
 		else
 		{
-			positionService.insertComment(positionCommentVO);
+			// vo 생성
+			PositionCommentVO vo = new PositionCommentVO();
+			vo.setPos_num(pos_num);
+			vo.setMem_num(mem_num);
+			positionService.insertComment(vo);
 			map.put("result", "success");
 		}
 		return map;
@@ -113,19 +123,25 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/modifyComment.do")
 	@ResponseBody
-	public Map<String,String> modifyComment(PositionCommentVO positionCommentVO, HttpSession session)
+	public Map<String,String> modifyComment(@RequestParam int poc_num, @RequestParam int mem_num, @RequestParam String poc_content, HttpSession session)
 	{
 		Map<String,String> map = new HashMap<String,String>();
-		Integer mem_num = (Integer)session.getAttribute("user_num");
-		if(mem_num == null)
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		// 로그인이 되어있지 않은 경우
+		if(user_num == null)
 		{
 			map.put("result", "needLogin");
 		}
-		else if(mem_num == positionCommentVO.getMem_num())
+		// 댓글 작성자와 로그인 되어있는 회원이 동일 인물인 경우
+		else if(user_num == mem_num)
 		{
-			positionService.modifyComment(positionCommentVO);
+			PositionCommentVO vo = new PositionCommentVO();
+			vo.setPoc_num(poc_num);
+			vo.setPoc_content(poc_content);
+			positionService.modifyComment(vo);
 			map.put("result", "success");
 		}
+		// 댓글 작성자와 로그인 되어있는 회원이 다른 인물인 경우
 		else
 		{
 			map.put("result", "notMatchUser");

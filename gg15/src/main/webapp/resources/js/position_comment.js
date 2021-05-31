@@ -1,7 +1,10 @@
 $(document).ready(function()
 {
 
-	var count;
+/*
+ * 전역변수, 초기화
+ */
+	var count; // 댓글 수
 	defaultCommentListSort();
 	
 /*
@@ -10,154 +13,16 @@ $(document).ready(function()
 	var sort = Object.freeze({POPULAR:0, RECENT:1});
 	var sortUrl = Object.freeze({POPULAR:'commentList_popular.do', RECENT:'commentList_recent.do'}); 
 	
-/*
- * default로 설정한 댓글 리스트 호출 방법
- */
-	function defaultCommentListSort()
-	{
-		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		selectCommentList(new Request().getParameter("pos_num"), sort.RECENT, sortUrl.RECENT);
-	}
-
-/*
- * 댓글 쓰기 폼 삭제
- */
-	function setEmptyWriteForm()
-	{
-		$("#output_writeComment").empty();
-	}
-	
-/*
- * 기존에 수정하던 댓글 수정 폼 삭제
- */
-	function setRemoveModifyForm()
-	{
-		$('#form_modifyComment').remove();
-	}
-	
-/*
- * 댓글 수 가져오기
- */
-	function selectCommentCount(data)
-	{
-		var count = data.count;
-		var output;
-		if(count == 0)
-		{
-			output = "0개";
-		}
-		else
-		{
-			output = count + "개";
-		}			
-		//문서 객체에 추가
-		$('#output_commentCount').text(output);
-	}
-	
-/*
- * 댓글 리스트 가져오기
- * 미구현 부분 : 추천, 비추천 버튼 이미지
- * 교훈 : 페이징 처리 하자
- */
-	function selectCommentList(pos_num, sort_type, url)
-	{
-		$.ajax({
-			type:'get',
-			data:{pos_num:pos_num, sort_type:sort_type},
-			url:url,
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(data){
-				var list = data.commentList;
-				var output = ''; // '' 안쓰면 undefined 라고 뜸
-				//댓글수 읽어 오기
-				selectCommentCount(data);
-				//댓글 목록 작업
-				$(list).each(function(index,item){
-					// 댓글의 추천 갯수
-					var poc_fav = 0;
-					if(item.poc_fav != 0)
-					{
-						poc_fav = item.poc_fav;
-					}
-					// 댓글 목록 출력
-					output += '<div id="comment">';
-					output += 	'<span>';
-					output += 		item.mem_nick + " | " + item.poc_date;
-					output += 	'</span>';
-					output += 	'<p>';
-					output += 		item.poc_content.replace(/</gi,'&lt;').replace(/>/gi,'&gt;')
-					output += 	'</p>';
-					// 로그인된 회원 번호와 댓글 작성자 번호가 같은 경우
-					if(new Session.getParameter("user_num") == item.mem_num){
-						output += '<span>';
-						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="수정" id="btn_modifyComment">';
-						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="삭제" id="btn_deleteComment">';
-						output += '</span>';
-					}
-					output += '</div>';
-					output += '<hr size="1" noshade="noshade">';
-					/*
-					output += 	'<span>';
-					if($("#mem_num").val() != item.click_favUp){
-						output += '<img src="../resources/images/upArrow.png">';
-					}
-					else{
-						// 추천수 올리기 이미지 (누른 상태)
-					}
-					output += item.poc_fav;
-					if($("#mem_num").val() != item.click_favDown){
-						output += '<img src="../resources/images/downArrow.png">';
-					}
-					else{
-						// 추천수 내리기 이미지 (누른 상태)
-					}
-					output += 	'</span>';
-					*/
-					//문서 객체에 추가
-				});
-				
-				// 기존의 댓글 리스트 html 삭제 (댓글이 많아지면 처리해야 할 게 많아지므로, 다른 방법 찾아보기)
-				$('#output_commentList').empty();
-				// 댓글 리스트 불러와서 html에 표시
-				$('#output_commentList').append(output);
-			},
-			error:function(){
-				alert("네트워크 오류");
-			}
-		});
-	}
-	
-/*
- * 댓글 쓰기
- */
-// 댓글 쓰기 버튼을 클릭하면, 댓글 쓰기 폼 출력
-	$("#btn_writeComment").click(function()
-	{
-		var output = '';
-		output += '<form id="form_writeComment">';
-		output += 	'<input type="hidden" name="pos_num" value="${positionVO.pos_num}" id="pos_num">';
-		output += 	'<input type="hidden" name="mem_num" value="${user_num}" id="mem_num">';
-		output += 	'<textarea name="poc_content" id="poc_content" style="resize:none; width:400px; height:100px"></textarea>';
-		output += '<div>';
-		output += 	'<input type="submit" value="등록">';
-		output += '</div>';
-		output += '</form>'
-		$("#output_writeComment").append(output);
-	});
-	
-// 댓글 쓰기 제출 (동적 요소 : #btn_writecomment.click().#form_writeComment.submit)
+// 댓글 쓰기 제출 (동적 요소 : showWriteForm().#btn_writeComment)
 // 동적 요소일 때 써야하는 함수 : $(document).on(이벤트종류, 속성의 아이디 또는 클래스명, 함수)
-// 오류 부분 : 로그인 리다이렉트 안됌
-	$(document).on("submit", "#form_writeComment", function(event)
+	$(document).on("click", "#btn_writeComment", function()
 	{
-		// form 데이터 직렬화
-		var data = $("#form_writeComment").serialize();
-		// 통신
+		var pos_num = $("#pos_num").val();
+		var poc_content = $("#poc_content").val();
+		
 		$.ajax({
 			type:'post',
-			data:data,
+			data:{pos_num:pos_num, poc_content:poc_content},
 			url:'writeComment.do',
 			dataType:'json',
 			cache:false,
@@ -165,6 +30,7 @@ $(document).ready(function()
 			success:function(data){
 				if(data.result == "needLogin"){
 					alert("로그인이 필요한 서비스입니다.");
+					setEmptyWriteForm();
 					// location.replace('$(pageContext.request.contextPath)/WEB-INF/views/member/login.do');
 				}
 				else if($('#poc_content').val() == ""){
@@ -184,15 +50,12 @@ $(document).ready(function()
 				alert("네트워크 오류 발생");
 			}
 		});
-		// submit 이벤트 제거
-		event.preventDefault();
 	});	
 
 /*
  * 댓글 수정
  */
-// 댓글 수정 클릭 (동적 요소 : #commentList.#comment.#btn_modifyComment)
-// 동적 요소일 때 써야하는 함수 : $(document).on(이벤트종류, 속성의 아이디 또는 클래스명, 함수)
+// 댓글 수정 클릭 (동적 요소 : selectCommentList().#comment.#btn_modifyComment)
 	$(document).on("click", "#btn_modifyComment", function()
 	{
 		var poc_num = $(this).attr('data-num');
@@ -201,32 +64,32 @@ $(document).ready(function()
 		var poc_content = $(this).parent().parent().find('p').html().replace(/<br>/gi,'\n'); //g:지정문자열 모두, i:대소문자 무시
 		// 댓글 수정폼 UI
 		var output = '';
-		output += '<form id="form_modifyComment">';
 		output += 	'<input type="hidden" name="poc_num" id="mpoc_num" value="' + poc_num + '">';
 		output += 	'<input type="hidden" name="mem_num" id="mmem_num" value="' + mem_num + '">';
-		output += 	'<textarea name="poc_content" id="mpoc_content" style="resize:none; width:400px; height:100px">' + poc_content + '</textarea>'
-		output += 	'<div>';
-		output += 		'<input type="submit" value="수정">';
-		output += 		'<input type="button" value="취소" id="btn_modifyCancel">';
-		output += 	'</div>';
-		output += '</form>';
+		output += '<div>';
+		output += 	'<textarea id="mpoc_content" style="resize:none; width:400px; height:100px">' + poc_content + '</textarea>';
+		output += '</div>';
+		output += '<div>';
+		output += 	'<input type="button" value="수정" id="btn_modifyOK">';
+		output += 	'<input type="button" value="취소" id="btn_modifyCancel">';
+		output += '</div>';
 		// 이전에 이미 수정하던 댓글 폼은 삭제
 		setRemoveModifyForm();
 		// 수정 폼을 수정하고자 하는 댓글이 있는 id에 노출
 		$(this).parents("#comment").append(output);
 	});
 	
-// 댓글 수정 처리 (동적 요소 : #form_modifyComment.submit 버튼)
-// 오류 : 로그인 리다이렉트 안됌
-	$(document).on("submit", "#form_modifyComment", function(event)
+// 댓글 수정 처리 (동적 요소 : #btn_modifyOK)
+	$(document).on("click", "#btn_modifyOK", function()
 	{
-		// 수정 form 데이터 직렬화
-		var data = $(this).serialize();
-		// 수정 처리
+		var poc_num = $("#mpoc_num").val();
+		var mem_num = $("#mmem_num").val();
+		var poc_content = $("mpoc_content").val();
+		
 		$.ajax({
 			url:'modifyComment.do',
 			type:'post',
-			data:data,
+			data:{poc_num:poc_num, mem_num:mem_num, poc_content:poc_content},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -245,7 +108,7 @@ $(document).ready(function()
 				{
 					alert("댓글 수정 성공");
 					// $("#form_modifyComment").parent() == 댓글 리스트의 #comment 개별 html 요소
-					$("#form_modifyComment").parent().find("p").html($('#mpoc_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+					$('#mpoc_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;');
 					setRemoveModifyForm();
 				}
 				else if(data.result == "notMatchUser")
@@ -261,11 +124,9 @@ $(document).ready(function()
 				alert("네트워크 오류 발생");
 			}
 		});
-		// submit 이벤트 제거
-		event.preventDefault();
 	});
 	
-// 댓글 수정 취소 (동적 요소 : #form_modifyComment.#btn_modifyCancel)
+// 댓글 수정 취소 (동적 요소 : #btn_modifyCancel)
 	$(document).on("click", "#btn_modifyCancel", function()
 	{
 		setRemoveModifyForm();
@@ -273,15 +134,14 @@ $(document).ready(function()
 	
 /*
  * 댓글 삭제
- * 오류 : 로그인 리다이렉트 안됌
  */	
 // (동적 요소 : #commentList.#comment.#btn_deleteComment)
 	$(document).on("click", "#btn_deleteComment", function()
 	{
-		// 댓글 번호, 작성자 회원 번호 가져오기
+
 		var poc_num = $(this).attr('data-num');
 		var mem_num = $(this).attr('data-mem');
-		// 삭제 처리
+
 		$.ajax({
 			type:'get',
 			url:'deleteComment.do',
@@ -316,3 +176,90 @@ $(document).ready(function()
 		
 	});
 });
+
+/*
+ * default로 설정한 댓글 리스트 호출 방법
+ */
+	function defaultCommentListSort()
+	{
+		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
+		selectCommentList($("#pos_num").val(), sort.RECENT, sortUrl.RECENT);
+	}
+	
+/*
+ * 댓글 쓰기 폼 숨기기
+ */
+	function setEmptyWriteForm()
+	{
+		$("#output_writeComment").empty();
+	}
+	
+/*
+ * 기존에 수정하던 댓글 수정 폼 삭제
+ */
+	function setRemoveModifyForm()
+	{
+		$('#form_modifyComment').remove();
+	}
+	
+/*
+ * 댓글 리스트 가져오기
+ * 미구현 부분 : 추천, 비추천 버튼 이미지
+ * 교훈 : 페이징 처리 하자
+ */
+	function selectCommentList(pos_num, sort_type, url)
+	{
+		$.ajax({
+			type:'get',
+			data:{pos_num:pos_num, sort_type:sort_type},
+			url:url,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				// 댓글 수 출력
+				$(".pos_comment").html(data.commentCount);
+				// 댓글 리스트
+				var list = data.commentList;
+				$(list).each(function(index,item){
+					// 댓글 목록 출력
+					var output = '';
+					output += '<div id="comment">';
+					output += 	'<span>';
+					output += 		item.mem_nick + " | " + item.poc_date;
+					output += 	'</span>';
+					output += 	'<p>';
+					output += 		item.poc_content.replace(/</gi,'&lt;').replace(/>/gi,'&gt;')
+					output += 	'</p>';
+					// 로그인된 회원 번호와 댓글 작성자 번호가 같은 경우 수정,삭제 버튼 추가
+					if(data.mem_num == item.mem_num)
+					{
+						output += '<span>';
+						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="수정" id="btn_modifyComment">';
+						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="삭제" id="btn_deleteComment">';
+						output += '</span>';
+					}
+					output += '</div>';
+					output += '<hr size="1" noshade="noshade">';
+				});			
+			// 기존의 댓글 리스트 html 삭제 (댓글이 많아지면 처리해야 할 게 많아지므로, 다른 방법 찾아보기)
+			$('#output_commentList').empty();
+			// 댓글 리스트 불러와서 html에 표시
+			$('#output_commentList').append(output);
+			},
+			error:function(){
+				alert("네트워크 오류");
+			}
+		});
+	}
+	
+/*
+ * <댓글 쓰기> 버튼 클릭하면, 작성 폼 노출 
+ */
+	function showWriteForm()
+	{
+		var output = '';
+		output += '<textarea id="poc_content" style="resize:none; width:400px; height:100px"></textarea>';
+		output += '<input type="button" id="btn_writeComment" value="등록">'
+		$("#output_writeComment").append(output);
+	}

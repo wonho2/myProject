@@ -116,7 +116,7 @@ public class PositionService
 	}
 	
 // 게시물 삭제
-// 댓글에 달린 추천 삭제 => 댓글 삭제  => 게시물 추천 삭제
+// 댓글에 달린 추천 삭제 => 댓글 삭제  => 게시물 추천 삭제 => 게시물 삭제
 	public void deleteBoard(int pos_num)
 	{
 		// positionDAO.deleteReFavByBoardNum(boardNum);
