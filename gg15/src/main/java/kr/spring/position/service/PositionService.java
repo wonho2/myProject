@@ -133,11 +133,11 @@ public class PositionService
 /*
  * 게시물 추천
  */
-	// 해당 게시물을 추천했는지 여부 체크
+	// 해당 회원이 해당 게시물을 추천했는지 여부 체크
 	public boolean selectClickedFav(int pos_num, int mem_num)
 	{
-		if(positionDAO.selectClickedFav(pos_num, mem_num) == null) return false;
-		else return true;
+		if(positionDAO.selectClickedFav(pos_num, mem_num) == 0) return false;
+		return true;
 	}
 	
 	// 해당 게시물의 추천 수

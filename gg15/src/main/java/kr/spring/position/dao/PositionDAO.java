@@ -84,8 +84,8 @@ public interface PositionDAO
  * 게시물 추천
  */
 	// 해당 게시물을 추천했는지 체크
-	@Select("SELECT * FROM position_fav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
-	public PositionFavVO selectClickedFav(int pos_num, int mem_num);
+	@Select("SELECT COUNT(*) FROM position_fav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
+	public int selectClickedFav(int pos_num, int mem_num);
 	
 	// 해당 게시물의 추천 수
 	@Select("SELECT COUNT(*) FROM position_fav WHERE pos_num=#{pos_num}")
