@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.position.etc.PositionSort;
 import kr.spring.position.etc.PositionType;
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionVO;
@@ -42,7 +43,7 @@ public class PositionController
  * 게시물 목록
  */
 // 공통
-	private ModelAndView boardList(int currentPage, PositionType type)
+	private ModelAndView boardList(int currentPage, PositionType type, PositionSort sortType)
 	{
 		// 페이징 처리
 		int boardCount = positionService.selectBoardCount(type);
@@ -53,7 +54,7 @@ public class PositionController
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			boardList = positionService.selectBoardList(map, type); 
+			boardList = positionService.selectBoardList(map, type, sortType); 
 		}
 		// 데이터 저장 및 리턴
 		ModelAndView mav = new ModelAndView();
@@ -68,42 +69,102 @@ public class PositionController
 	@RequestMapping("/position/list.do")
 	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.ALL);
+		ModelAndView mav = boardList(currentPage, PositionType.ALL, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.ALL);
+		return mav;
+	}
+	
+	@RequestMapping("/position/list_popular.do")
+	public ModelAndView boardList_all_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.ALL, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.ALL);
+		return mav;
 	}
 	
 // 게시물 리스트 : 탑
 	@RequestMapping("/position/list_top.do")
 	public ModelAndView boardList_top(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.TOP);
+		ModelAndView mav = boardList(currentPage, PositionType.TOP, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.TOP);
+		return mav;
+	}
+	
+	@RequestMapping("/position/list_top_popular.do")
+	public ModelAndView boardList_top_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.TOP, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.TOP);
+		return mav;
 	}
 	
 // 게시물 리스트 : 정글
 	@RequestMapping("/position/list_jungle.do")
 	public ModelAndView boardList_jungle(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.JUNGLE);
+		ModelAndView mav = boardList(currentPage, PositionType.JUNGLE, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.JUNGLE);
+		return mav;
+	}
+	
+	@RequestMapping("/position/list_jungle_popular.do")
+	public ModelAndView boardList_jungle_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.JUNGLE, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.JUNGLE);
+		return mav;
 	}
 	
 // 게시물 리스트 : 미드
 	@RequestMapping("/position/list_mid.do")
 	public ModelAndView boardList_mid(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.MID);
+		ModelAndView mav = boardList(currentPage, PositionType.MID, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.MID);
+		return mav;
 	}
 	
-// 게시물 리스트 : 탑
+	@RequestMapping("/position/list_mid_popular.do")
+	public ModelAndView boardList_mid_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.MID, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.MID);
+		return mav;
+	}
+	
+// 게시물 리스트 : 원딜
 	@RequestMapping("/position/list_ad.do")
 	public ModelAndView boardList_ad(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.AD);
+		ModelAndView mav = boardList(currentPage, PositionType.AD, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.AD);
+		return mav;
+	}
+	
+	@RequestMapping("/position/list_ad_popular.do")
+	public ModelAndView boardList_ad_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.AD, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.AD);
+		return mav;
 	}
 	
 // 게시물 리스트 : 서포터
 	@RequestMapping("/position/list_support.do")
 	public ModelAndView boardList_support(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		return boardList(currentPage, PositionType.SUPPORT);
+		ModelAndView mav = boardList(currentPage, PositionType.SUPPORT, PositionSort.RECENT);
+		mav.addObject("pos_type", PositionType.SUPPORT);
+		return mav;
+	}
+	
+	@RequestMapping("/position/list_support_popular.do")
+	public ModelAndView boardList_support_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		ModelAndView mav = boardList(currentPage, PositionType.SUPPORT, PositionSort.POPULAR);
+		mav.addObject("pos_type", PositionType.SUPPORT);
+		return mav;
 	}
 	
 /*

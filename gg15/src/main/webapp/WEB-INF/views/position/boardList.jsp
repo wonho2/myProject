@@ -27,6 +27,60 @@
 	</ul>
 </div>
 
+<!-- 게시물 정렬 방법 -->
+<div>
+	<ul>
+		<c:if test = "${pos_type == 0}">
+			<li>
+				<a href="list.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_popular.do">인기순</a>
+			</li>
+		</c:if>
+		<c:if test = "${pos_type == 1}">
+			<li>
+				<a href="list_top.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_top_popular.do">인기순</a>
+			</li>
+		</c:if>
+		<c:if test = "${pos_type == 2}">
+			<li>
+				<a href="list_jungle.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_jungle_popular.do">인기순</a>
+			</li>
+		</c:if>
+		<c:if test = "${pos_type == 3}">
+			<li>
+				<a href="list_mid.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_mid_popular.do">인기순</a>
+			</li>
+		</c:if>
+		<c:if test = "${pos_type == 4}">
+			<li>
+				<a href="list_ad.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_ad_popular.do">인기순</a>
+			</li>
+		</c:if>
+		<c:if test = "${pos_type == 5}">
+			<li>
+				<a href="list_support.do">최신순</a> <!-- default -->
+			</li>
+			<li>
+				<a href="list_support_popular.do">인기순</a>
+			</li>
+		</c:if>
+	</ul>
+</div>
+
 <!-- 글쓰기 버튼 -->
 <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
