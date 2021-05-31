@@ -8,7 +8,7 @@
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == manualtoolVO.mem_num}">
 	<div>
-		<input type="button" value="수정" onclick="location.href='modify.do?man_num=${manualtoolVO.man_num}'">
+		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		<input type="button" value="삭제" onclick="man_delete();">
 		<!-- 여기에 자바스크립트를 작성하는 이유는 c:if의 조건이 만족하지 않으면, 코드가 보여지지 않게 하기 위해서라고 강사님이 말씀하셨습니다 -->
 		<script type="text/javascript">
@@ -29,7 +29,7 @@
 		[${manualtoolVO.man_champion}] | ${manualtoolVO.man_season} | ${manualtoolVO.man_update} | ${manualtoolVO.mem_nick}
 	</section>
 	<section>
-		조회수 ${manualtoolVO.man_view} | 추천수 ${manualtoolVO.man_fav} | 댓글수 ${manualtoolVO.man_comment}
+		조회수 ${manualtoolVO.man_hit} | 추천수 ${manualtoolVO.man_fav} | 댓글수 ${manualtoolVO.man_comment}
 	</section>
 	
 	<hr size="1" noshade="noshade" width="100%">

@@ -11,7 +11,7 @@
 <c:if test="${count == 0}">
 	게시물이 없습니다.
 </c:if>
-
+  
 <c:if test="${count > 0}">
 	<table>
 		<tr>
