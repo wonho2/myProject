@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,7 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
+	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 상수
@@ -55,6 +57,11 @@ public class PositionController
 // 공통 (게시물 최신순, 인기순 정렬) : (현재 페이지, 정렬 방식, 게시물 포지션 타입)
 	private ModelAndView getBoardList(int currentPage, String sortAttrName, PositionType type)
 	{
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<PostionType>> : " + type.getValue());
+		}
+		
 		// 게시물 개수
 		int boardCount = positionService.selectBoardCount(type);
 		// 페이징 처리 정보 저장
@@ -65,8 +72,9 @@ public class PositionController
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
+			// DAO에 넘길 정렬방식, 포지션타입 저장
 			map.put("sortAttr", sortAttrName);
-			map.put("typeValue", type);
+			map.put("typeValue", type.getValue());
 			boardList = positionService.selectBoardList(map);
 		}
 		// 모델, 뷰 정보 저장

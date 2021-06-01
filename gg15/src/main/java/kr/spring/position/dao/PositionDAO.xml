@@ -23,7 +23,9 @@
 		              p.pos_fav 
 		              FROM position p JOIN member_detail m ON p.mem_num = m.mem_num 
 		              <where>
-		              	<if test="p.pos_type = #{typeValue}"></if>
+		              	<if test="typeValue != '전체보기'">
+		              		p.pos_type = #{typeValue}
+		              	</if>
 		              </where>
 		              ORDER BY #{sortAttr} DESC)a)
     	<![CDATA[
