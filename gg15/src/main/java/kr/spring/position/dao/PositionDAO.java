@@ -25,41 +25,8 @@ public interface PositionDAO
 	@Select("SELECT COUNT(*) FROM position WHERE pos_type= #{pos_type}")
 	public int selectBoardCount(String pos_type);
 
-	// 게시물 목록 (전체 - 최신순)
-	public List<PositionVO> selectBoardListAll(Map<String, Object> map);
-	
-	// 게시물 목록 (전체 - 인기순)
-	public List<PositionVO> selectBoardListAll_pop(Map<String, Object> map);
-	
-	// 게시물 목록 (탑- 최신순)
-	public List<PositionVO> selectBoardListTop(Map<String, Object> map);
-	
-	// 게시물 목록 (탑- 인기순)
-	public List<PositionVO> selectBoardListTop_pop(Map<String, Object> map);
-	
-	// 게시물 목록 (정글 - 최신순)
-	public List<PositionVO> selectBoardListJungle(Map<String, Object> map);
-	
-	// 게시물 목록 (정글 - 인기순)
-	public List<PositionVO> selectBoardListJungle_pop(Map<String, Object> map);
-	
-	// 게시물 목록 (미드 - 최신순)
-	public List<PositionVO> selectBoardListMid(Map<String, Object> map);
-	
-	// 게시물 목록 (미드 - 인기순)
-	public List<PositionVO> selectBoardListMid_pop(Map<String, Object> map);
-	
-	// 게시물 목록 (원딜 - 최신순)
-	public List<PositionVO> selectBoardListAd(Map<String, Object> map);
-	
-	// 게시물 목록 (원딜 - 인기순)
-	public List<PositionVO> selectBoardListAd_pop(Map<String, Object> map);
-	
-	// 게시물 목록 (서포터 - 최신순)
-	public List<PositionVO> selectBoardListSupport(Map<String, Object> map);
-	
-	// 게시물 목록 (서포터 - 인기순)
-	public List<PositionVO> selectBoardListSupport_pop(Map<String, Object> map);
+	// 게시물 목록
+	public List<PositionVO> selectBoardList(Map<String, Object> map);
 
 	// 글쓰기
 	@Insert("INSERT INTO position(pos_num, pos_type, mem_num, pos_title, pos_content, pos_uploadfile, pos_filename) "

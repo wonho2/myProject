@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.position.etc.PositionSort;
 import kr.spring.position.etc.PositionType;
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionVO;
@@ -31,6 +30,17 @@ public class PositionController
 	private PositionService positionService;
 	
 /*
+ * 상수
+ */
+	// 게시물 정렬 상수 (데이터베이스 속성명)
+	private class SortType
+	{
+		private SortType() {}
+		static final String RECENT = "p.pos_date";
+		static final String POPULAR = "p.pos_view"; // 조회수가 높을수록 인기글로 설정
+	}
+	
+/*
  * 자바빈 초기화
  */
 	@ModelAttribute("positionVO")
@@ -38,15 +48,16 @@ public class PositionController
 	{
 		return new PositionVO();
 	}
-
+	
 /*
  * 게시물 목록
  */
-// 공통
-	private ModelAndView boardList(int currentPage, PositionType type, PositionSort sortType)
+// 공통 (게시물 최신순, 인기순 정렬) : (현재 페이지, 정렬 방식, 게시물 포지션 타입)
+	private ModelAndView getBoardList(int currentPage, String sortAttrName, PositionType type)
 	{
-		// 페이징 처리
+		// 게시물 개수
 		int boardCount = positionService.selectBoardCount(type);
+		// 페이징 처리 정보 저장
 		PagingUtil page = new PagingUtil(currentPage, boardCount, 3, 3, "list.do");
 		List<PositionVO> boardList = null;
 		if(boardCount > 0)
@@ -54,117 +65,96 @@ public class PositionController
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			boardList = positionService.selectBoardList(map, type, sortType); 
+			map.put("sortAttr", sortAttrName);
+			map.put("typeValue", type);
+			boardList = positionService.selectBoardList(map);
 		}
-		// 데이터 저장 및 리턴
+		// 모델, 뷰 정보 저장
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("position_list");
 		mav.addObject("boardCount", boardCount);
 		mav.addObject("boardList", boardList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
-		return mav;  
+		mav.addObject("pos_type", type.getValue());
+		return mav;
 	}
 	
 // 게시물 리스트 : 전체보기 (default)
 	@RequestMapping("/position/list.do")
 	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.ALL, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.ALL);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.ALL);
 	}
 	
 	@RequestMapping("/position/list_popular.do")
 	public ModelAndView boardList_all_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.ALL, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.ALL);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.ALL);
 	}
 	
 // 게시물 리스트 : 탑
 	@RequestMapping("/position/list_top.do")
 	public ModelAndView boardList_top(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.TOP, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.TOP);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.TOP);
 	}
 	
 	@RequestMapping("/position/list_top_popular.do")
 	public ModelAndView boardList_top_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.TOP, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.TOP);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.TOP);
 	}
 	
 // 게시물 리스트 : 정글
 	@RequestMapping("/position/list_jungle.do")
 	public ModelAndView boardList_jungle(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.JUNGLE, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.JUNGLE);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.JUNGLE);
 	}
 	
 	@RequestMapping("/position/list_jungle_popular.do")
 	public ModelAndView boardList_jungle_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.JUNGLE, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.JUNGLE);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.JUNGLE);
 	}
 	
 // 게시물 리스트 : 미드
 	@RequestMapping("/position/list_mid.do")
 	public ModelAndView boardList_mid(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.MID, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.MID);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.MID);
 	}
 	
 	@RequestMapping("/position/list_mid_popular.do")
 	public ModelAndView boardList_mid_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.MID, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.MID);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.MID);
 	}
 	
 // 게시물 리스트 : 원딜
 	@RequestMapping("/position/list_ad.do")
 	public ModelAndView boardList_ad(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.AD, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.AD);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.AD);
 	}
 	
 	@RequestMapping("/position/list_ad_popular.do")
 	public ModelAndView boardList_ad_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.AD, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.AD);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.AD);
 	}
 	
 // 게시물 리스트 : 서포터
 	@RequestMapping("/position/list_support.do")
 	public ModelAndView boardList_support(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.SUPPORT, PositionSort.RECENT);
-		mav.addObject("pos_type", PositionType.SUPPORT);
-		return mav;
+		return getBoardList(currentPage, SortType.RECENT, PositionType.SUPPORT);
 	}
 	
 	@RequestMapping("/position/list_support_popular.do")
 	public ModelAndView boardList_support_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
 	{
-		ModelAndView mav = boardList(currentPage, PositionType.SUPPORT, PositionSort.POPULAR);
-		mav.addObject("pos_type", PositionType.SUPPORT);
-		return mav;
+		return getBoardList(currentPage, SortType.POPULAR, PositionType.SUPPORT);
 	}
 	
 /*

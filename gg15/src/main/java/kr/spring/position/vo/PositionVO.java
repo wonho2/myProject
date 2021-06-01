@@ -15,7 +15,7 @@ public class PositionVO
 	private byte[] pos_uploadfile;
 	private String pos_filename;
 	private Date pos_date;
-	private int pos_view, pos_comment;
+	private int pos_view, pos_fav;
 	
 	//업로드 파일 처리
 	public void setPos_upload(MultipartFile pos_upload)throws IOException
@@ -87,10 +87,11 @@ public class PositionVO
 	public void setPos_view(int pos_view) {
 		this.pos_view = pos_view;
 	}
-	public int getPos_comment() {
-		return pos_comment;
+	public int getPos_fav() {
+		return pos_fav;
 	}
-	public void setPos_comment(int pos_comment) {
-		this.pos_comment = pos_comment;
-	}  
+
+	public void setPos_fav(int pos_fav) {
+		this.pos_fav = pos_fav;
+	}
 }
