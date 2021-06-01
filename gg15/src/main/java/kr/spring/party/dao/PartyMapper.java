@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.party.vo.PartyFavVO;
 import kr.spring.party.vo.PartyReplyVO;
 import kr.spring.party.vo.PartyVO;
 
@@ -39,7 +40,7 @@ public interface PartyMapper {
 	//게시글 삭제
 	@Delete("DELETE FROM party WHERE par_num=#{par_num}")
 	public void deleteParty(int par_num);
-	  
+	
 	//============댓글==============//
 	public List<PartyReplyVO> selectPartyListReply(Map<String,Object> map);
 	@Select("SELECT COUNT(*) FROM party_reply WHERE par_num=#{par_num}")
@@ -53,4 +54,16 @@ public interface PartyMapper {
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	@Delete("DELETE FROM party_reply WHERE par_num=#{par_num}")
 	public void deletePartyReplyByBoardNum(Integer par_num);
+	
+	//=========게시글 추천=============//
+	@Select("SELECT * from party_fav where par_num=#{par_num} and mem_num=#{mem_num}")
+	public PartyFavVO selectFav(PartyFavVO fav);
+	@Select("SELECT COUNT(*) from party_fav where par_num=#{par_num}")
+	public int selectFavCount(Integer par_num);
+	@Insert("INSERT INTO party_fav (fav_num,par_num,mem_num) VALUES (party_fav_seq.nextval,#{par_num},#{mem_num})")
+	public void insertFav(PartyFavVO fav);
+	@Delete("DELETE FROM party_fav WHERE fav_num=#{fav_num}")
+	public void deleteFav(Integer fav_num);
+	@Delete("DELETE FROM party_fav WHERE par_num=#{par_num}")
+	public void deleteFavByParNum(Integer par_num);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
  
 import kr.spring.party.service.PartyService;
+import kr.spring.party.vo.PartyFavVO;
 import kr.spring.party.vo.PartyReplyVO;
 import kr.spring.util.PagingUtil;
 
@@ -169,6 +170,85 @@ public class PartyAjaxController {
 			map.put("result", "wrongAccess");
 		}
 
+		return map;
+	}
+	 
+	//===========게시글 추천===============//
+	//추천 읽기
+	@RequestMapping("/party/getFav.do")
+	@ResponseBody
+	public Map<String,Object> getFav(PartyFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<게시판 좋아요>> : " + fav);
+		}
+
+		Map<String,Object> mapJson = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			mapJson.put("result", "success");
+			mapJson.put("status", "noFav");
+			mapJson.put("count", partyService.selectFavCount(fav.getPar_num()));
+		}else {
+			//로그인된 아이디 셋팅
+			fav.setMem_num(user_num);
+
+			PartyFavVO boardFav = partyService.selectFav(fav);
+
+			if(boardFav!=null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesFav");
+				mapJson.put("count", partyService.selectFavCount(fav.getPar_num()));
+			}else {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", partyService.selectFavCount(fav.getPar_num()));
+			}
+		}
+
+		return mapJson;
+	}
+	//추천 등록
+	@RequestMapping("/party/writeFav.do")
+	@ResponseBody
+	public Map<String,Object> writeFav(PartyFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<부모글 좋아용 등록>> : " + fav);
+		}
+
+		Map<String,Object> map = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+			//로그인된 회원번호 셋팅
+			fav.setMem_num(user_num);
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<부모글 좋아용 등록>> : " + fav);
+			}
+			
+			PartyFavVO boardFav = partyService.selectFav(fav);
+
+			if(boardFav!=null) {
+				partyService.deleteFav(boardFav.getFav_num());
+
+				map.put("result", "success");
+				map.put("status", "noFav");
+				map.put("count", partyService.selectFavCount(fav.getPar_num()));
+			}else {
+				partyService.insertFav(fav);
+
+				map.put("result", "success");
+				map.put("status", "yesFav");
+				map.put("count", partyService.selectFavCount(fav.getPar_num()));
+			}
+		}
 		return map;
 	}
 }

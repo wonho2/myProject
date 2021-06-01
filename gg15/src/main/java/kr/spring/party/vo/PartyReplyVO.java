@@ -4,7 +4,7 @@ public class PartyReplyVO {
 	private int pop_num;
 	private int par_num;
 	private int mem_num;
-	private String mem_id;
+	private String mem_nick;
 	private String pop_content;
 	private String pop_date;
 	
@@ -26,11 +26,12 @@ public class PartyReplyVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public String getMem_id() {
-		return mem_id;
+	
+	public String getMem_nick() {
+		return mem_nick;
 	}
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
 	}
 	public String getPop_content() {
 		return pop_content;
@@ -46,8 +47,7 @@ public class PartyReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "PartyReplyVO [pop_num=" + pop_num + ", par_num=" + par_num + ", mem_num=" + mem_num + ", mem_id="
-				+ mem_id + ", pop_content=" + pop_content + ", pop_date=" + pop_date + "]";
+		return "PartyReplyVO [pop_num=" + pop_num + ", par_num=" + par_num + ", mem_num=" + mem_num + ", mem_nick="
+				+ mem_nick + ", pop_content=" + pop_content + ", pop_date=" + pop_date + "]";
 	}
-	
 }

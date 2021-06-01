@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- 포지션게시판 : boardList 시작 -->
+<!-- 파티게시판 : boardList 시작 -->
 <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
 </p>

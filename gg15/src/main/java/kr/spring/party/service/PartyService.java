@@ -5,9 +5,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import kr.spring.party.dao.PartyMapper;
+import kr.spring.party.vo.PartyFavVO;
 import kr.spring.party.vo.PartyReplyVO;
 import kr.spring.party.vo.PartyVO;
 
@@ -48,10 +52,12 @@ public class PartyService {
 	}
 	
 	//게시물 삭제
-	public void deleteParty(int boardNum) {
+	public void deleteParty(int par_num) {
+		//게시글 추천 먼저 삭제
+		partyDAO.deleteFavByParNum(par_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
-		partyDAO.deletePartyReplyByBoardNum(boardNum);
-		partyDAO.deleteParty(boardNum);
+		partyDAO.deletePartyReplyByBoardNum(par_num);
+		partyDAO.deleteParty(par_num);
 	}
 	
 	//==========댓글 시작================//
@@ -76,4 +82,17 @@ public class PartyService {
 	}
 
 	//==========댓글 끝=================//
+	//==========게시글 추천 ==============//
+	public PartyFavVO selectFav(PartyFavVO fav) {
+		return partyDAO.selectFav(fav);
+	}
+	public int selectFavCount(Integer pop_num) {
+		return partyDAO.selectFavCount(pop_num);
+	}
+	public void insertFav(PartyFavVO fav) {
+		partyDAO.insertFav(fav);
+	}
+	public void deleteFav(Integer fav_num) {
+		partyDAO.deleteFav(fav_num);
+	}
 }	
