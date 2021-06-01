@@ -38,7 +38,7 @@ public class PositionController
 	private class SortType
 	{
 		private SortType() {}
-		static final String RECENT = "p.pos_date";
+		static final String RECENT = "p.pos_num";
 		static final String POPULAR = "p.pos_view"; // 조회수가 높을수록 인기글로 설정
 	}
 	
