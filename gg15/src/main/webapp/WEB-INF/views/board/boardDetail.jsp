@@ -31,8 +31,8 @@
 		                           style="max-width:500px">
 	</div>
 	</c:if>
-	<!-- 동영상 오찌하지 ?? -->   
-	<c:if test="${fn:endsWith(board.boa_filename,'.mp4') || 
+	<!-- 동영상 오찌하지 ?? 안하기러 함! 다음 기약 -->   
+<%-- 	<c:if test="${fn:endsWith(board.boa_filename,'.mp4') || 
 	              fn:endsWith(board.boa_filename,'.avi') ||
 	              fn:endsWith(board.boa_filename,'.MOV') ||
 	              fn:endsWith(board.boa_filename,'.H.264') ||
@@ -41,10 +41,10 @@
 	<div class="align-center">
 		<video src="videoView.do?board_num=${board.boa_num}" controls="controls" autoplay="autoplay" muted="muted" >
 		</video>
-		                           
+	                          
 	</div>
 	</c:if>
-	
+		 --%> 
 	
 	<section>
 		${board.boa_content}
@@ -54,11 +54,13 @@
 		<input type="button" value="신고" id="btn_report">
 		</li>
 	</ul>
+	
 	<div> 
 		<img id="output_fav" src="../resources/images/heart01.png">
 		<span id="output_fcount"></span> <span id="output_rcount"></span>
 	</div>
 	<hr size="1" width="100%" noshade="noshade">
+	
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == board.mem_num}">
 	
@@ -77,11 +79,11 @@
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
 
 </c:if>
-	 
+<%-- 	 
 <c:if test="${!empty user_num}">
 		<input type="button" value="좋아요" id="btn_like">
 </c:if>
-			
+	 --%>		
 </div>
 <!-- 본문 끝 -->
 

@@ -18,7 +18,7 @@
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list.do">자유게시판</a></li>
                     	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/news/list.do">유저뉴스</a></li>
                         <c:if test="${!empty user_num && user_auth == 2}">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">${pageContext.request.contextPath}/member/logout.do로그아웃</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">[<span class="user_name">${user_id}</span>]로그아웃</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a></li>
                         </c:if>
                         <c:if test="${empty user_num}">

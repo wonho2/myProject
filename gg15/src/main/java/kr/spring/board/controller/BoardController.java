@@ -126,7 +126,7 @@ public class BoardController {
 		
 		//차단 된 게시글
 		if(board.getBoa_status() == 2) {
-			return new ModelAndView("boardModeError");
+			return new ModelAndView("boardModeError","boa_status",board.getBoa_status());
 		}		
 		
 		//HTML 태그 불허

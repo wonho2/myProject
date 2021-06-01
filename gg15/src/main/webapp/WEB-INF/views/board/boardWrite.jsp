@@ -82,7 +82,7 @@
 			<label for="boa_cate">카테고리</label>
 			<select name="boa_cate">
 			<optgroup label="카테고리">
-			<!-- 	<option value="All">전체</option>      -->
+				<option value="All">전체</option>
 				<option value="gaming_machine">게이밍 기기</option>
 				<option value="game_talk">게임 이야기</option>
 				<option value="Discode">디스코드 홍보</option>
