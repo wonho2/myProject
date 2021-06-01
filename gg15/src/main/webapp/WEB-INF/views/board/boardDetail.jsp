@@ -45,7 +45,6 @@
 	</div>
 	</c:if>
 		 --%> 
-	
 	<p>
 		${board.boa_content}
 	</p>
