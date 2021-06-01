@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.board.service.BoardService;
-import kr.spring.board.vo.board_replyVO;
+import kr.spring.board.vo.BoardFavVO;
+import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -31,10 +32,10 @@ public class BoardAjaxController{
 	private BoardService boardService;
 	
 	//댓글 등록
-	@RequestMapping("/board/writeBoardComment.do")
+	@RequestMapping("/board/writeReply.do")
 	@ResponseBody
-	public Map<String,String> writeBoardComment(
-			board_replyVO board_replyVO,
+	public Map<String,String> writeComment(
+			BoardReplyVO board_replyVO,
 			HttpSession session,
 			HttpServletRequest request){
 
@@ -62,14 +63,12 @@ public class BoardAjaxController{
 	}
 	
 	//댓글 목록
-	@RequestMapping("/board/listBoardComment.do")
+	@RequestMapping("/board/listReply.do")
 	@ResponseBody
 	public Map<String,Object> getListBoardComment(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
-			@RequestParam("boa_num") int boa_num,
-			HttpSession session){
-		//(******주의)댓글 좋아요 처리시만 HttpSession 넣을 것
+			@RequestParam("boa_num") int boa_num){
 		if(log.isDebugEnabled()) {
 			log.debug("<<currentPage>> : " + currentPage);
 			log.debug("<<boa_num>> : " + boa_num);
@@ -86,16 +85,7 @@ public class BoardAjaxController{
 				rowCount,pageCount,null);
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		//(***주의)댓글 좋아요 처리할 경우만
-		map.put("boa_num", boa_num);
-		Integer user_num = 
-				(Integer)session.getAttribute("user_num");
-		if(user_num!=null) {
-			map.put("mem_num", user_num);
-		}else {
-			map.put("mem_num", 0); 
-		}
-		List<board_replyVO> list = null;
+		List<BoardReplyVO> list = null;
 		if(count > 0) {
 			list = boardService.selectBoardComment(map);
 		}else {
@@ -112,7 +102,7 @@ public class BoardAjaxController{
 	}
 	
 	//댓글 삭제
-	@RequestMapping("/board/deleteBoardComment.do")
+	@RequestMapping("/board/deleteReply.do")
 	@ResponseBody
 	public Map<String,String> deleteBoardComment(
 			@RequestParam("bor_num") int bor_num,
@@ -143,10 +133,10 @@ public class BoardAjaxController{
 		return map;
 	}
 	//댓글 수정
-	@RequestMapping("/board/updateBoardComment.do")
+	@RequestMapping("/board/updateReply.do")
 	@ResponseBody
 	public Map<String,String> modifyBoardComment(
-			board_replyVO board_replyVO,
+			BoardReplyVO board_replyVO,
 			HttpSession session,
 			HttpServletRequest request){
 
@@ -172,6 +162,83 @@ public class BoardAjaxController{
 		}else {
 			//로그인 아이디와 작성자 아이디 불일치
 			map.put("result", "wrongAccess");
+		}
+		return map;
+	}
+	//게시물 좋아요
+	@RequestMapping("/board/getFav.do")
+	@ResponseBody
+	public Map<String,Object> getFav(BoardFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<게시판 좋아요>> : " + fav);
+		}
+
+		Map<String,Object> mapJson = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			mapJson.put("result", "success");
+			mapJson.put("status", "noFav");
+			mapJson.put("count", boardService.selectFavCount(fav.getBoa_num()));
+		}else {
+			//로그인된 아이디 셋팅
+			fav.setMem_num(user_num);
+
+			BoardFavVO boardFav = boardService.selectFav(fav);
+
+			if(boardFav!=null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesFav");
+				mapJson.put("count", boardService.selectFavCount(fav.getBoa_num()));
+			}else {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", boardService.selectFavCount(fav.getBoa_num()));
+			}
+		}
+
+		return mapJson;
+	}
+	//부모글 좋아요 등록
+	@RequestMapping("/board/writeFav.do")
+	@ResponseBody
+	public Map<String,Object> writeFav(BoardFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<부모글 좋아용 등록>> : " + fav);
+		}
+
+		Map<String,Object> map = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+			//로그인된 회원번호 셋팅
+			fav.setMem_num(user_num);
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<부모글 좋아용 등록>> : " + fav);
+			}
+			
+			BoardFavVO boardFav = boardService.selectFav(fav);
+
+			if(boardFav!=null) {
+				boardService.deleteFav(boardFav.getBof_num());
+
+				map.put("result", "success");
+				map.put("status", "noFav");
+				map.put("count", boardService.selectFavCount(fav.getBoa_num()));
+			}else {
+				boardService.insertFav(fav);
+
+				map.put("result", "success");
+				map.put("status", "yesFav");
+				map.put("count", boardService.selectFavCount(fav.getBoa_num()));
+			}
 		}
 		return map;
 	}

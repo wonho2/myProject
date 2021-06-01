@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<script src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
 <!-- 본문 시작 -->
@@ -30,13 +31,17 @@
 		                           style="max-width:500px">
 	</div>
 	</c:if>
-	
 	<!-- 동영상 오찌하지 ?? -->   
-	<c:if test="">
+	<c:if test="${fn:endsWith(board.boa_filename,'.mp4') || 
+	              fn:endsWith(board.boa_filename,'.avi') ||
+	              fn:endsWith(board.boa_filename,'.MOV') ||
+	              fn:endsWith(board.boa_filename,'.H.264') ||
+	              fn:endsWith(board.boa_filename,'.WMV')}">
 	
 	<div class="align-center">
-		<img src=""
-		                           style="max-width:500px">
+		<video src="videoView.do?board_num=${board.boa_num}" controls="controls" autoplay="autoplay" muted="muted" >
+		</video>
+		                           
 	</div>
 	</c:if>
 	
@@ -49,6 +54,11 @@
 		<input type="button" value="신고" id="btn_report">
 		</li>
 	</ul>
+	<div>
+		<img id="output_fav" src="../resources/images/heart01.png">
+		<span id="output_fcount"></span> <span id="output_rcount"></span>
+	</div>
+	<hr size="1" width="100%" noshade="noshade">
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == board.mem_num}">
 	

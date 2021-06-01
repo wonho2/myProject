@@ -1,14 +1,12 @@
 package kr.spring.board.vo;
 
-import java.sql.Date;
-
-public class board_replyVO {
+public class BoardReplyVO {
 	
 	private int mem_num;//회원번호
 	private int boa_num;//게시글번호
 	private int bor_num;//댓글번호
 	private String bor_content;//댓글 내용
-	private Date bor_date;//댓글 작성일
+	private String bor_date;//댓글 작성일
 	private String mem_nick;//사용자 아이디
 	
 	public int getMem_num() {
@@ -35,10 +33,11 @@ public class board_replyVO {
 	public void setBor_content(String bor_content) {
 		this.bor_content = bor_content;
 	}
-	public Date getBor_date() {
+	
+	public String getBor_date() {
 		return bor_date;
 	}
-	public void setBor_date(Date bor_date) {
+	public void setBor_date(String bor_date) {
 		this.bor_date = bor_date;
 	}
 	public String getMem_nick() {
@@ -47,6 +46,9 @@ public class board_replyVO {
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
 	}
-	
-
+	@Override
+	public String toString() {
+		return "BoardReplyVO [mem_num=" + mem_num + ", boa_num=" + boa_num + ", bor_num=" + bor_num + ", bor_content="
+				+ bor_content + ", bor_date=" + bor_date + ", mem_nick=" + mem_nick + "]";
+	}
 }

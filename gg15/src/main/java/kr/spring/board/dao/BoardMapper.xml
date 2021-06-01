@@ -30,6 +30,7 @@
 		              b.boa_date,
 		              b.boa_hit,
 		              b.boa_filename,
+		              b.boa_cate,
 		              b.boa_mode
 		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num ORDER BY b.boa_num DESC)a)
 		            
@@ -46,14 +47,14 @@
 			boa_filename=#{boa_filename},
 			</if>	
 			boa_title=#{boa_title},
-			boa_content=#{boa_content}
+			boa_content=#{boa_content},
 			boa_mode=#{boa_mode}
 		WHERE boa_num=#{boa_num}
 	</update>
  	
 	<!-- ====== 댓글 ======== 	 -->
 	<select id="selectBoardComment" parameterType="map"
- 	                     resultType="board_replyVO">
+ 	                     resultType="boardReplyVO">
  		SELECT
  		   *
  		FROM (SELECT 

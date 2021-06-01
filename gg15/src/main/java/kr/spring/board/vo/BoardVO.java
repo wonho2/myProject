@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,9 +12,9 @@ public class BoardVO {
 
 	private int mem_num;//회원번호
 	private int boa_num;//게시글번호
-	@NotEmpty
 	private String boa_cate;//카테고리
 	@NotEmpty
+	@Size(max=10)
 	private String boa_title;//게시글 제목
 	@NotEmpty
 	private String boa_content;//게시글 내용
@@ -22,7 +23,8 @@ public class BoardVO {
 	private String boa_filename;//업로드 파일 이름
 	private int boa_mode; //회원정용 글
 	private int boa_status; // 차단상태
-	private int boa_hit;	//좋아요
+	private int boa_hit;	//조회수
+	private int bof_num;	//좋아요
 	private String mem_nick;
 	
 	//업로드 파일 처리
@@ -111,6 +113,13 @@ public class BoardVO {
 		this.boa_hit = boa_hit;
 	}
 	
+	public int getBof_num() {
+		return bof_num;
+	}
+
+	public void setBof_num(int bof_num) {
+		this.bof_num = bof_num;
+	}
 
 	public String getMem_nick() {
 		return mem_nick;

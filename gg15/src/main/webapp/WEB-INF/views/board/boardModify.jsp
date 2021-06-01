@@ -15,7 +15,6 @@
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 
 <script type="text/javascript">
 	window.onload = function() {
@@ -37,8 +36,7 @@
 <!-- 자유게시판 boardModify 시작 -->
 <div class="page-main-style">
 <h2>글 수정</h2>
-<form:form action="update.do" commandName="boardVO" enctype="multipart/form-data">
-
+<form:form action="boardModify.do" commandName="boardVO" enctype="multipart/form-data">
 	<form:hidden path="boa_num"/>
 	 
 			<ul>

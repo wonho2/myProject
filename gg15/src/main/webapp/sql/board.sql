@@ -21,7 +21,7 @@ CREATE TABLE board_reply(
 	mem_num number not null,/*사용자 번호*/
 	bor_content varchar2(400) not null,/*댓글 내용*/
 	bor_date date default sysdate not null,/*댓글 작성 날짜*/
-	constraint board_reply_pk primary key(boa_num),
+	constraint board_reply_pk primary key(bor_num),
 	constraint board_reply_fk_1 FOREIGN key(boa_num) references board (boa_num),
 	constraint board_reply_fk_2 FOREIGN key(mem_num) references member (mem_num)
 );

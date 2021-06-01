@@ -35,6 +35,7 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
+			<th><a>추천</a></th>
 		</tr>
 				
 		
@@ -44,13 +45,18 @@
 			 
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 시작-->
 			<td>
-			<c:if test="${!empty board.boa_filename}">
-			<img src="${pageContext.request.contextPath}/resources/images/icon.png"
+			<c:choose>
+				<c:when test="${board.boa_cate == 'img/video'}">
+					비디오
+				</c:when>
+				<c:when test="${!empty board.boa_filename}">
+					<img src="${pageContext.request.contextPath}/resources/images/icon.png"
 				 width="50" >
-			</c:if>
-			<c:if test="${empty board.boa_filename}">
-			X
-			</c:if>
+				</c:when>
+				<c:when test="${empty board.boa_filename}">
+					X
+				</c:when>
+			</c:choose>
 			</td>
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 끝-->
 			
@@ -58,6 +64,7 @@
 			<td>${board.mem_nick}</td>
 			<td>${board.boa_date}</td>
 			<td>${board.boa_hit}</td>
+			<td>${board.bof_num}</td>
 		</tr>
 		</c:forEach>
 		<c:if test="${count == 0}">

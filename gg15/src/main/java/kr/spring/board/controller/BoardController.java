@@ -112,6 +112,9 @@ public class BoardController {
 	public ModelAndView boardDetail(@RequestParam int boa_num,
 			                       HttpSession session) {
 
+		//조회수 증가
+		boardService.updateHit(boa_num);
+		
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		
 		BoardVO board = boardService.selectBoard(boa_num);
@@ -195,6 +198,9 @@ public class BoardController {
 
 		return "redirect:/board/list.do";
 	}
+	
+	
+	
 	//CKEditor 이미지 업로드
 	@RequestMapping("/board/imageUploader.do")
 	@ResponseBody

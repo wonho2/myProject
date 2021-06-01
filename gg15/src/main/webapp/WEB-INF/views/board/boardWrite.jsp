@@ -14,7 +14,6 @@
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 
 <script type="text/javascript">
 	window.onload = function() {
