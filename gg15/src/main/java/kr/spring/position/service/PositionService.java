@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.position.dao.PositionDAO;
-import kr.spring.position.etc.PositionSort;
 import kr.spring.position.etc.PositionType;
 import kr.spring.position.vo.PositionCommentVO;
 import kr.spring.position.vo.PositionFavVO;
@@ -46,55 +45,9 @@ public class PositionService
 	}
 	
 // 게시물 리스트 가져오기
-	public List<PositionVO> selectBoardList(Map<String, Object> map, PositionType type, PositionSort sortType)
+	public List<PositionVO> selectBoardList(Map<String, Object> map)
 	{
-		if(sortType == PositionSort.RECENT) return selectBoardListRecent(map, type);
-		else if(sortType == PositionSort.POPULAR) return selectBoardListPopular(map, type);
-		else return null;
-	}
-	
-	// 최신순
-	private List<PositionVO> selectBoardListRecent(Map<String, Object> map, PositionType type)
-	{
-		switch(type)
-		{
-			case ALL :
-				return positionDAO.selectBoardListAll(map);
-			case TOP :
-				return positionDAO.selectBoardListTop(map);
-			case JUNGLE :
-				return positionDAO.selectBoardListJungle(map);
-			case MID :
-				return positionDAO.selectBoardListMid(map);
-			case AD :
-				return positionDAO.selectBoardListAd(map);
-			case SUPPORT :
-				return positionDAO.selectBoardListSupport(map);
-			default :
-				return null;
-		}
-	}
-	
-	// 인기순
-	private List<PositionVO> selectBoardListPopular(Map<String, Object> map, PositionType type)
-	{
-		switch(type)
-		{
-			case ALL :
-				return positionDAO.selectBoardListAll_pop(map);
-			case TOP :
-				return positionDAO.selectBoardListTop_pop(map);
-			case JUNGLE :
-				return positionDAO.selectBoardListJungle_pop(map);
-			case MID :
-				return positionDAO.selectBoardListMid_pop(map);
-			case AD :
-				return positionDAO.selectBoardListAd_pop(map);
-			case SUPPORT :
-				return positionDAO.selectBoardListSupport_pop(map);
-			default :
-				return null;
-		}
+		return positionDAO.selectBoardList(map);
 	}
 	
 // 글쓰기

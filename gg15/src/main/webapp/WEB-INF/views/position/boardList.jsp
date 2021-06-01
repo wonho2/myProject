@@ -30,7 +30,7 @@
 <!-- 게시물 정렬 방법 -->
 <div>
 	<ul>
-		<c:if test = "${pos_type == 0}">
+		<c:if test = '${pos_type == "전체보기"}'>
 			<li>
 				<a href="list.do">최신순</a> <!-- default -->
 			</li>
@@ -38,7 +38,7 @@
 				<a href="list_popular.do">인기순</a>
 			</li>
 		</c:if>
-		<c:if test = "${pos_type == 1}">
+		<c:if test = '${pos_type == "탑"}'>
 			<li>
 				<a href="list_top.do">최신순</a> <!-- default -->
 			</li>
@@ -46,7 +46,7 @@
 				<a href="list_top_popular.do">인기순</a>
 			</li>
 		</c:if>
-		<c:if test = "${pos_type == 2}">
+		<c:if test = '${pos_type == "정글"}'>
 			<li>
 				<a href="list_jungle.do">최신순</a> <!-- default -->
 			</li>
@@ -54,7 +54,7 @@
 				<a href="list_jungle_popular.do">인기순</a>
 			</li>
 		</c:if>
-		<c:if test = "${pos_type == 3}">
+		<c:if test = '${pos_type == "미드"}'>
 			<li>
 				<a href="list_mid.do">최신순</a> <!-- default -->
 			</li>
@@ -62,7 +62,7 @@
 				<a href="list_mid_popular.do">인기순</a>
 			</li>
 		</c:if>
-		<c:if test = "${pos_type == 4}">
+		<c:if test = '${pos_type == "원딜"}'>
 			<li>
 				<a href="list_ad.do">최신순</a> <!-- default -->
 			</li>
@@ -70,7 +70,7 @@
 				<a href="list_ad_popular.do">인기순</a>
 			</li>
 		</c:if>
-		<c:if test = "${pos_type == 5}">
+		<c:if test = '${pos_type == "서포터"}'>
 			<li>
 				<a href="list_support.do">최신순</a> <!-- default -->
 			</li>

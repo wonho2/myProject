@@ -1,4 +1,4 @@
-/*package kr.spring.board.controller;
+package kr.spring.board.controller;
 
 import java.io.File;
 import java.util.HashMap;
@@ -116,9 +116,15 @@ public class BoardController {
 		
 		BoardVO board = boardService.selectBoard(boa_num);
 
+		//회원 전용 게시글
 		if(user_num == null && board.getBoa_mode() == 1) {
 			return new ModelAndView("boardModeError");
 		}
+		
+		//차단 된 게시글
+		if(board.getBoa_status() == 2) {
+			return new ModelAndView("boardModeError");
+		}		
 		
 		//HTML 태그 불허
 		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
@@ -141,7 +147,20 @@ public class BoardController {
 
 		return mav;
 	}
+	//동영상 출력 
+	@RequestMapping("/board/VideoView.do")
+	public ModelAndView viewVideo(@RequestParam int board_num) {
+		BoardVO board = boardService.selectBoard(board_num);
 
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("videoView");
+		mav.addObject("VideoFile",board.getBoa_uploadfile());
+		mav.addObject("filename", board.getBoa_filename());
+
+		return mav;
+	}
+	
+	
 	//=====게시판 글 수정======//
 	//수정 폼
 	@RequestMapping(value="/board/boardModify.do", method=RequestMethod.GET)
@@ -158,7 +177,7 @@ public class BoardController {
 			HttpServletRequest request) {
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
-			return "baordModify";
+			return "boardModify";
 		}
 
 		//글 수정
@@ -167,6 +186,7 @@ public class BoardController {
 		return "redirect:/board/list.do";
 	}
 
+	
 	//======게시판 글 삭제========//
 	@RequestMapping("/board/delete.do")
 	public String submitDelete(@RequestParam int boa_num) {
@@ -205,5 +225,35 @@ public class BoardController {
 
 		return map;
 	}
+	//CKEditor 동영상 업로드
+	@RequestMapping("/board/VideoUploader.do")
+	@ResponseBody
+	public Map<String,Object> uploadvideo(MultipartFile upload, HttpSession session, HttpServletResponse response,
+			HttpServletRequest request) throws Exception {
+		// 업로드할 폴더 경로
+		String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
 
-}*/
+		// 업로드할 파일 이름
+		String org_filename = upload.getOriginalFilename();
+		String str_filename = System.currentTimeMillis() + org_filename;
+
+		System.out.println("원본 파일명 : " + org_filename);
+		System.out.println("저장할 파일명 : " + str_filename);
+
+		String filepath = realFolder + "\\" + str_filename;
+		System.out.println("파일경로 : " + filepath);
+
+		File f = new File(filepath);
+		if (!f.exists()) {
+			f.mkdirs();
+		}
+		upload.transferTo(f);
+
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("uploaded", true);
+		map.put("url", request.getContextPath()+"/resources/image_upload/"+str_filename);
+
+		return map;
+	}
+
+}

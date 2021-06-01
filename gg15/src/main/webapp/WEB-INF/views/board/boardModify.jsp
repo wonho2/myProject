@@ -16,6 +16,24 @@
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		var boa_title = document.getElementById("boa_title");
+		var boa_content = document.getElementById("boa_content");
+		var btn_save = document.getElementById("btn_save");
+		//등록 이벤트 처리
+		btn_save.onclick = function() {
+			if(boa_title.value.trim() == '') {
+				alert("제목을 입력하세요");
+				boa_title.focus();
+				return false;
+			}
+			return true;
+		};
+	};
+</script>
+
 <!-- 자유게시판 boardModify 시작 -->
 <div class="page-main-style">
 <h2>글 수정</h2>
@@ -34,7 +52,9 @@
 			<li>
 				<label for="boa_upload">첨부파일</label>
 				<input type="file" name="boa_upload" id="boa_upload"
-			accept="image/gif,image/png,image/jpeg,video/mp4,video/avi">
+			accept="image/gif,image/png,image/jpeg,
+				    video/mp4,video/avi,video/MOV,video/H.264,video/WMV">
+			
 			<c:if test="${!empty board.boa_filename}">
 					<br>
 					<span>이미 ${board.boa_filename} 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>
@@ -74,13 +94,13 @@
 		
 		<div class="align-center">
 			<!-- 목록 -->
-			<input type="button" id="list" value="목록" onclick="location.href='list.do'">
+			<input type="button" id="btn_list" value="목록" onclick="location.href='list.do'">
 			<!-- 미리보기 -->
-			<input type="button" id="e-show" value="미리보기" >
+			<input type="button" id="btn_e-show" value="미리보기" >
 			<!-- 임시 저장 -->
-			<input type="button" id="e-save" value="임시저장">
+			<input type="button" id="btn_e-save" value="임시저장">
 			<!-- 저장 -->
-			<input type="submit" id="save" value="등록">
+			<input type="submit" id="btn_save" value="등록">
 		</div>
 </form:form>
 </div>

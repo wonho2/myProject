@@ -5,7 +5,7 @@
 <mapper namespace="kr.spring.position.dao.PositionDAO">
 
 <!-- 게시물 목록 -->
-	<select id="selectBoardListAll" parameterType="map" resultType="positionVO">
+	<select id="selectBoardList" parameterType="map" resultType="positionVO">
 		SELECT
 		   *
 		FROM (SELECT 
@@ -21,7 +21,18 @@
 		              p.pos_date,
 		              p.pos_view,
 		              p.pos_fav 
-		              FROM position p JOIN member_detail m ON p.mem_num = m.mem_num ORDER BY p.pos_num DESC)a)
+		              FROM position p JOIN member_detail m ON p.mem_num = m.mem_num 
+		              <where>
+		              	<if test = "typeValue != '전체보기'">
+		              		p.pos_type = #{typeValue}
+		              	</if>
+		              </where>
+		              <if test = "sortAttr == 'p.pos_num'">
+		              	ORDER BY p.pos_num DESC)a)
+		              </if>
+		              <if test = "sortAttr == 'p.pos_view'">
+		              	ORDER BY p.pos_view DESC)a)
+		              </if>
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>

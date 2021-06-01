@@ -20,7 +20,7 @@ import kr.spring.manualtool.vo.ManualtoolCommentVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
-public class ManualtoolReplyController {
+public class ManualtoolAjaxController {
 
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
@@ -59,8 +59,7 @@ public class ManualtoolReplyController {
 	@RequestMapping("/manualTool/listReply.do")
 	@ResponseBody
 	public Map<String, Object> getList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam("man_num") int man_num, HttpSession session) {
-		//(******주의)댓글 좋아요 처리시만 HttpSession 넣을 것
+			@RequestParam("man_num") int man_num) {
 		if (log.isDebugEnabled()) {
 			log.debug("<<currentPage>> : " + currentPage);
 			log.debug("<<man_num>> : " + man_num);
@@ -75,14 +74,6 @@ public class ManualtoolReplyController {
 		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		//(***주의)댓글 좋아요 처리할 경우만
-		map.put("man_num", man_num);
-		Integer user_num = (Integer) session.getAttribute("user_num");
-		if (user_num != null) {
-			map.put("mem_num", user_num);
-		} else {
-			map.put("mem_num", 0);
-		}
 		List<ManualtoolCommentVO> list = null;
 		if (count > 0) {
 			list = manualtoolService.selectListReply(map);
