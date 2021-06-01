@@ -10,7 +10,6 @@
 	<div>
 		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		<input type="button" value="삭제" onclick="man_delete();">
-		<!-- 여기에 자바스크립트를 작성하는 이유는 c:if의 조건이 만족하지 않으면, 코드가 보여지지 않게 하기 위해서라고 강사님이 말씀하셨습니다 -->
 		<script type="text/javascript">
 			function man_delete(){
 				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");

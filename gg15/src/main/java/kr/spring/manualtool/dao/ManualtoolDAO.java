@@ -25,7 +25,7 @@ public interface ManualtoolDAO {
 	public List<ManualtoolVO> selectList(Map<String, Object> map);
 
 	//글 상세 페이지
-	@Select("SELECT * FROM manualtool mt JOIN member m ON mt.mem_num=m.mem_num WHERE mt.man_num=#{man_num}")
+	@Select("SELECT * FROM manualtool mt JOIN member_detail m ON mt.mem_num=m.mem_num WHERE mt.man_num=#{man_num}")
 	public ManualtoolVO selectManualtool(Integer man_num);
 	
 	//조회수 증가
