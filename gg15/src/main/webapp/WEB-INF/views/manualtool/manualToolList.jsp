@@ -16,7 +16,7 @@
 	<table style="text-align:center;">
 		<tr>
 			<!-- <th>번호</th> -->
-			<th width="40">챔피언</th>
+			<th>챔피언</th> <!--  width="40" -->
 			<th>시즌</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
