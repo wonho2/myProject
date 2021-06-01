@@ -26,17 +26,17 @@ constraint news_reply_pk primary key (ner_num),
                   references member (mem_num)
 );
 
-create table news_fav(
-	nef_num number NOT NULL,   -- 추천 고유번호 지정
+create table news_rfav(
+	nerf_num number NOT NULL,   -- 댓글 추천 고유번호 지정
 	mem_num number NOT NULL,    --회원번호
-	new_num number,             --뉴스게시판 글번호
-	constraint news_fav_pk primary key (nef_num),
+	ner_num number,             --뉴스게시판 댓글번호
+	constraint news_fav_pk primary key (nerf_num),
 	constraint news_fav_fk1 foreign key (mem_num) 
 							references member (mem_num),
-	constraint news_fav_fk2 foreign key (new_num)
-    references news (new_num)
+	constraint news_fav_fk2 foreign key (ner_num)
+    references news_reply (ner_num)
 	);
 	
 CREATE SEQUENCE news_seq;
 CREATE SEQUENCE news_reply_seq;
-CREATE SEQUENCE news_fav_seq;
+CREATE SEQUENCE news_rfav_seq;

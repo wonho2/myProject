@@ -14,14 +14,29 @@ public class NewsReplyVO
 	private String mem_nick;
 	private String ner_content;
 	private String ner_date;
-	/*private int ner_rfav;*/
+	private int ner_fav; // 댓글의 추천 수
+	private int click_favUp; // 추천을 누른 회원 번호
+	private int click_favDown; // 비추천을 누른 회원 번호
 	
-/*	public int getNer_rfav() {
-		return ner_rfav;
+	
+	public int getNer_fav() {
+		return ner_fav;
 	}
-	public void setNer_rfav(int ner_rfav) {
-		this.ner_rfav = ner_rfav;
-	}*/
+	public void setNer_fav(int ner_fav) {
+		this.ner_fav = ner_fav;
+	}
+	public int getClick_favUp() {
+		return click_favUp;
+	}
+	public void setClick_favUp(int click_favUp) {
+		this.click_favUp = click_favUp;
+	}
+	public int getClick_favDown() {
+		return click_favDown;
+	}
+	public void setClick_favDown(int click_favDown) {
+		this.click_favDown = click_favDown;
+	}
 	public int getNer_num() {
 		return ner_num;
 	}
@@ -62,7 +77,7 @@ public class NewsReplyVO
 	@Override
 	public String toString() {
 		return "NewsReplyVO [ner_num=" + ner_num + ", new_num=" + new_num + ", mem_num=" + mem_num + ", mem_nick="
-				+ mem_nick + ", ner_content=" + ner_content + ", ner_date=" + ner_date + "]";
+				+ mem_nick + ", ner_content=" + ner_content + ", ner_date=" + ner_date + ", ner_fav=" + ner_fav
+				+ ", click_favUp=" + click_favUp + ", click_favDown=" + click_favDown + "]";
 	}
-
 }
