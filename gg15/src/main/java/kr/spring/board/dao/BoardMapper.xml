@@ -41,7 +41,7 @@
 	<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="boardVO">
 		UPDATE board SET
-			<if test="filename != ''">
+			<if test="boa_filename != ''">
 			boa_uploadfile=#{boa_uploadfile},
 			boa_filename=#{boa_filename},
 			</if>	

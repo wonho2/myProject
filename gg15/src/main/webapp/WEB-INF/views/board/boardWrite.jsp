@@ -15,6 +15,25 @@
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		var boa_title = document.getElementById("boa_title");
+		var boa_content = document.getElementById("boa_content");
+		var btn_save = document.getElementById("btn_save");
+		//등록 이벤트 처리
+		btn_save.onclick = function() {
+			if(boa_title.value.trim() == '') {
+				alert("제목을 입력하세요");
+				boa_title.focus();
+				return false;
+			}
+			return true;
+		};
+	};
+</script>
+
+
 <!-- 자유 게시판 board write 시작 -->
 <div class="page-main-style">
 	<h2>자유 게시판 글쓰기</h2>
@@ -82,13 +101,13 @@
 		</ul>
 		<div class="align-center">
 			<!-- 목록 -->
-			<input type="button" id="list" value="목록" onclick="location.href='list.do'">
+			<input type="button" id="btn_list" value="목록" onclick="location.href='list.do'">
 			<!-- 미리보기 -->
-			<input type="button" id="e-show" value="미리보기" >
+			<input type="button" id="btn_e-show" value="미리보기" >
 			<!-- 임시 저장 -->
-			<input type="button" id="e-save" value="임시저장">
+			<input type="button" id="btn_e-save" value="임시저장">
 			<!-- 저장 -->
-			<input type="submit" id="save" value="등록">
+			<input type="submit" id="btn_save" value="등록">
 		</div>
 	</form:form>
 </div>

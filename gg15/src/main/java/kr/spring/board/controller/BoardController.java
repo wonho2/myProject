@@ -120,6 +120,7 @@ public class BoardController {
 		if(user_num == null && board.getBoa_mode() == 1) {
 			return new ModelAndView("boardModeError");
 		}
+		
 		//차단 된 게시글
 		if(board.getBoa_status() == 2) {
 			return new ModelAndView("boardModeError");
@@ -160,7 +161,6 @@ public class BoardController {
 	}
 	
 	
-
 	//=====게시판 글 수정======//
 	//수정 폼
 	@RequestMapping(value="/board/boardModify.do", method=RequestMethod.GET)
@@ -186,6 +186,7 @@ public class BoardController {
 		return "redirect:/board/list.do";
 	}
 
+	
 	//======게시판 글 삭제========//
 	@RequestMapping("/board/delete.do")
 	public String submitDelete(@RequestParam int boa_num) {
@@ -198,6 +199,36 @@ public class BoardController {
 	@RequestMapping("/board/imageUploader.do")
 	@ResponseBody
 	public Map<String,Object> uploadImage(MultipartFile upload, HttpSession session, HttpServletResponse response,
+			HttpServletRequest request) throws Exception {
+		// 업로드할 폴더 경로
+		String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
+
+		// 업로드할 파일 이름
+		String org_filename = upload.getOriginalFilename();
+		String str_filename = System.currentTimeMillis() + org_filename;
+
+		System.out.println("원본 파일명 : " + org_filename);
+		System.out.println("저장할 파일명 : " + str_filename);
+
+		String filepath = realFolder + "\\" + str_filename;
+		System.out.println("파일경로 : " + filepath);
+
+		File f = new File(filepath);
+		if (!f.exists()) {
+			f.mkdirs();
+		}
+		upload.transferTo(f);
+
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("uploaded", true);
+		map.put("url", request.getContextPath()+"/resources/image_upload/"+str_filename);
+
+		return map;
+	}
+	//CKEditor 동영상 업로드
+	@RequestMapping("/board/VideoUploader.do")
+	@ResponseBody
+	public Map<String,Object> uploadvideo(MultipartFile upload, HttpSession session, HttpServletResponse response,
 			HttpServletRequest request) throws Exception {
 		// 업로드할 폴더 경로
 		String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
