@@ -5,22 +5,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
 <!-- 공략 게시판 디테일 시작 -->
-<!-- 수정, 삭제 버튼 -->
-<c:if test="${user_num == manualtoolVO.mem_num}">
-	<div>
-		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
-		<input type="button" value="삭제" onclick="man_delete();">
-		<script type="text/javascript">
-			function man_delete(){
-				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");
-				if(choice){
-					location.replace('delete.do?man_num=${manualtoolVO.man_num}');
-				}
-			}
-		</script>
-	</div>
-</c:if>
-
 <!-- 게시물 상세 -->
 <div>
 	<h1>${manualtoolVO.man_title}</h1>
@@ -46,7 +30,21 @@
 	<p>
 		${manualtoolVO.man_content}
 	</p>
-	 
+<!-- 수정, 삭제 버튼 -->
+<c:if test="${user_num == manualtoolVO.mem_num}">
+	<div class="align-right">
+		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
+		<input type="button" value="삭제" onclick="man_delete();">
+		<script type="text/javascript">
+			function man_delete(){
+				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");
+				if(choice){
+					location.replace('delete.do?man_num=${manualtoolVO.man_num}');
+				}
+			}
+		</script>
+	</div>
+</c:if>
 	 <!-- 추천 버튼 -->
 	<p class="align-center">
 		<input type="button" value="추천" id="btn_fav">

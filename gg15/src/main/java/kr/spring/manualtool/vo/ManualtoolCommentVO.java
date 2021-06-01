@@ -47,5 +47,10 @@ public class ManualtoolCommentVO {
 	public void setMar_date(String mar_date) {
 		this.mar_date = DurationFromNow.getTimeDiffLabel(mar_date);
 	}
+	@Override
+	public String toString() {
+		return "ManualtoolCommentVO [mar_num=" + mar_num + ", man_num=" + man_num + ", mem_num=" + mem_num + ", mem_nick="
+				+ mem_nick + ", mar_content=" + mar_content + ", mar_date=" + mar_date + "]";
+	}
 
 }
