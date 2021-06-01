@@ -116,9 +116,14 @@ public class BoardController {
 		
 		BoardVO board = boardService.selectBoard(boa_num);
 
+		//회원 전용 게시글
 		if(user_num == null && board.getBoa_mode() == 1) {
 			return new ModelAndView("boardModeError");
 		}
+		//차단 된 게시글
+		if(board.getBoa_status() == 2) {
+			return new ModelAndView("boardModeError");
+		}		
 		
 		//HTML 태그 불허
 		board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
@@ -141,6 +146,20 @@ public class BoardController {
 
 		return mav;
 	}
+	//동영상 출력 
+	@RequestMapping("/board/VideoView.do")
+	public ModelAndView viewVideo(@RequestParam int board_num) {
+		BoardVO board = boardService.selectBoard(board_num);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("videoView");
+		mav.addObject("VideoFile",board.getBoa_uploadfile());
+		mav.addObject("filename", board.getBoa_filename());
+
+		return mav;
+	}
+	
+	
 
 	//=====게시판 글 수정======//
 	//수정 폼

@@ -20,8 +20,9 @@ public class BoardVO {
 	private Date boa_date;//게시글 작성일
 	private byte[] boa_uploadfile;//업로드 파일
 	private String boa_filename;//업로드 파일 이름
-	private int boa_mode;
-	private int boa_hit;
+	private int boa_mode; //회원정용 글
+	private int boa_status; // 차단상태
+	private int boa_hit;	//좋아요
 	private String mem_nick;
 	
 	//업로드 파일 처리
@@ -92,6 +93,14 @@ public class BoardVO {
 
 	public void setBoa_mode(int boa_mode) {
 		this.boa_mode = boa_mode;
+	}
+	
+	public int getBoa_status() {
+		return boa_status;
+	}
+
+	public void setBoa_status(int boa_status) {
+		this.boa_status = boa_status;
 	}
 
 	public int getBoa_hit() {

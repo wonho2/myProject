@@ -14,12 +14,10 @@
 	</c:if>
 	
 	<!-- (신고) 차단된 게시글 -->
-	<%-- 
-	<c:if test="${boa_report=2}">
+	<c:if test="${boa_status == 2}">
 		<h4> BLOCK </h4>
 		<a>차단 조치된 게시글 입니다.</a>
 	<input type="button" id="list" value="목록" onclick="location.href='list.do'">			
 	</c:if>
-    --%>
 </div>
 <!-- 자유게시판 errorPage 끝 -->

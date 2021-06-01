@@ -22,7 +22,7 @@
 	</definition>
 	
 	<definition name="boardModeError" extends="main">
-		<put-attribute name="title" value="gg.15 - 자유게시판  글 상태 페이지"/>
+		<put-attribute name="title" value="gg.15 - 자유게시판  글 상태 "/>
 		<put-attribute name="body" value="/WEB-INF/views/board/errorPage.jsp"/>
 	</definition>
 	
