@@ -40,7 +40,7 @@
 	              fn:endsWith(manualtoolVO.man_filename,'.GIF') ||
 	              fn:endsWith(manualtoolVO.man_filename,'.png') ||
 	              fn:endsWith(manualtoolVO.man_filename,'.PNG')}">
-		<div class="align-center">
+		<div>
 			<img src="imageView.do?man_num=${manualtoolVO.man_num}">
 		</div>
 	</c:if>
