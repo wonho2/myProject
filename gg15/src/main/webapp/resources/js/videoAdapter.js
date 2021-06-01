@@ -6,9 +6,9 @@ window.onload=function(){
 		let url = oembeds[i].getAttribute('url');
 		if(url.includes(youtube)){
 			var output = '';
-			output += '<div style="position: relative; padding-bottom: 100%; height: 0; padding-bottom: 56.2493%;">';
+			output += '<div style="position: relative; padding-bottom: 100%;max-height:400px; padding-bottom:28%;width:700px;margin:0 auto;">';
 			output += '<iframe src="https://www.youtube.com/embed/'+url.substring(youtube.length)+'"';
-			output += 'style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"';
+			output += 'style="position: absolute; width: 100%; height: 400px;max-height: 400px; top: 0; left: 0;"';
 			output += 'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>';
 			output += '</iframe>';
 			output += '</div>';

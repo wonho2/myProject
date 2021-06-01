@@ -7,17 +7,17 @@
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
 <!-- 본문 시작 -->
-<div>
-	<section>${board.boa_cate}</section>
+<div class="page-main-style">
+	<div>${board.boa_cate}</div>
 		<h1>${board.boa_title}</h1>
-	<section>
+	<div>
 	<!-- 사용자 닉네임처리 해야함 -->
 	<a href="/member/memberDetail.do?board_num=${board.boa_num}">${memberVO.mem_nick}</a> 
 	
-	</section>
-	<section>
+	</div>
+	<div>
 		작성일 ${board.boa_date} 
-	</section>
+	</div>
 	
 	<!-- 이미지 오찌하지 ?? -->
 	<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
@@ -46,9 +46,9 @@
 	</c:if>
 		 --%> 
 	
-	<section>
+	<p>
 		${board.boa_content}
-	</section>
+	</p>
 	<ul>
 		<li>
 		<input type="button" value="신고" id="btn_report">
