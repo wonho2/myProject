@@ -36,7 +36,7 @@ public class BoardController {
 	//의존 관계 설정
 	@Resource
 	private BoardService boardService;
-
+ 
 	//자바빈 초기화
 	@ModelAttribute
 	public BoardVO initCommand() {

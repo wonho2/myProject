@@ -88,7 +88,7 @@ public class BoardService {
 	public void updateBoardComment(BoardReplyVO board_reply) {
 		boardMapper.updateBoardComment(board_reply);
 	}
-
+  
 	public void deleteBoardComment(Integer bor_num) {
 		boardMapper.deleteBoardComment(bor_num);
 	}	

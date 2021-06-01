@@ -59,7 +59,7 @@ public interface BoardMapper {
 	//부모글 삭제시 댓글이 존재하s면 부모글 삭제전 댓글 삭제 
 	@Delete("DELETE FROM board_reply WHERE boa_num=#{boa_num}")
 	public void deleteBoardCommentByBoardNum(Integer boa_num);
-
+ 
 	//=================게시글 좋아요=================//
 	@Select("SELECT * from boa_fav where boa_num=#{boa_num} and mem_num=#{mem_num}")
 	public BoardFavVO selectFav(BoardFavVO fav);

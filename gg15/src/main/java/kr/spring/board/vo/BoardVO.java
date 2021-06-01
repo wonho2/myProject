@@ -26,7 +26,7 @@ public class BoardVO {
 	private int boa_hit;	//조회수
 	private int bof_num;	//좋아요
 	private String mem_nick;
-	
+	 
 	//업로드 파일 처리
 	public void setBoa_upload(MultipartFile boa_upload)throws IOException{
 		//MultipartFile -> byte[] 변환

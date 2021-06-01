@@ -327,7 +327,7 @@ $(document).ready(function(){
 					displayFav(data);
 				}else{
 					alert('등록시 오류 발생!');
-				}
+				} 
 			},
 			error:function(){
 				alert('네트워크 오류!');

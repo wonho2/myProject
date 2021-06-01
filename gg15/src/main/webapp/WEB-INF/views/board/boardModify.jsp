@@ -10,7 +10,7 @@
 .ck-editor__editable_inline {
     min-height: 250px;
 }
-</style>
+</style> 
 <!-- include ckeditor js -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>

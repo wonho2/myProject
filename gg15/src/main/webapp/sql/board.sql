@@ -36,7 +36,7 @@ CREATE TABLE boa_fav(
 	constraint boa_fav_fk_2 FOREIGN key(mem_num) references member (mem_num)
 );
 
-
+ 
 create sequence board_seq;
 create sequence board_reply_seq;
 create sequence board_fav_seq;

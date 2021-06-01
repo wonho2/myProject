@@ -10,7 +10,7 @@
 		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
 		</c:if>
 	</div>
-	
+	 
 	<table>
 		<tr>
 			<select name="boa_cate">

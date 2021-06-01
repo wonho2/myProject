@@ -198,7 +198,7 @@ public class BoardAjaxController{
 				mapJson.put("count", boardService.selectFavCount(fav.getBoa_num()));
 			}
 		}
-
+ 
 		return mapJson;
 	}
 	//부모글 좋아요 등록

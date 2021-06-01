@@ -50,5 +50,5 @@ public class BoardReplyVO {
 	public String toString() {
 		return "BoardReplyVO [mem_num=" + mem_num + ", boa_num=" + boa_num + ", bor_num=" + bor_num + ", bor_content="
 				+ bor_content + ", bor_date=" + bor_date + ", mem_nick=" + mem_nick + "]";
-	}
+	} 
 }

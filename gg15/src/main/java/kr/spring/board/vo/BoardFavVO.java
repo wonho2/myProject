@@ -1,5 +1,5 @@
 package kr.spring.board.vo;
-
+ 
 public class BoardFavVO {
 	private int bof_num;
 	private int boa_num;

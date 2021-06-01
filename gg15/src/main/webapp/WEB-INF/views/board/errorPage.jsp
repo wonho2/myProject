@@ -10,7 +10,7 @@
 		<a>회원 전용 게시글 입니다.</a>
 	<input type="button" id="login" value="로그인" onclick="location.href='/member/memberLogin.do'">
 	<input type="button" id="list" value="목록" onclick="location.href='list.do'">	
-	</c:if>
+	</c:if> 
 	<!-- (신고) 차단된 게시글 -->
 	<c:if test="${boa_status eq 2}">
 		<h4> BLOCK </h4>
