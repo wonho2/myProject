@@ -50,8 +50,8 @@
 			<li>
 				<label for="boa_upload">첨부파일</label>
 				<input type="file" name="boa_upload" id="boa_upload"
-			accept="image/gif,image/png,image/jpeg,
-				    video/mp4,video/avi,video/MOV,video/H.264,video/WMV">
+			accept="image/gif,image/png,image/jpeg">
+				   <!--  video/mp4,video/avi,video/MOV,video/H.264,video/WMV"> -->
 			
 			<c:if test="${!empty board.boa_filename}">
 					<br>

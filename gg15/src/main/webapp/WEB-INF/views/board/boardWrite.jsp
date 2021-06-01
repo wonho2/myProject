@@ -49,8 +49,8 @@
 			<li>
 				<label for="boa_upload">첨부파일</label>
 				<input type="file" name="boa_upload" id="boa_upload"
-				                  accept="image/gif,image/png,image/jpeg,
-										  video/mp4,video/avi,video/MOV,video/H.264,video/WMV">
+				                  accept="image/gif,image/png,image/jpeg">
+										  <!-- video/mp4,video/avi,video/MOV,video/H.264,video/WMV"> -->
 			</li>
 			<!-- 내용 -->
 			<li>
@@ -82,7 +82,7 @@
 			<label for="boa_cate">카테고리</label>
 			<select name="boa_cate">
 			<optgroup label="카테고리">
-				<option value="All">전체</option>
+			<!-- 	<option value="All">전체</option>      -->
 				<option value="gaming_machine">게이밍 기기</option>
 				<option value="game_talk">게임 이야기</option>
 				<option value="Discode">디스코드 홍보</option>
