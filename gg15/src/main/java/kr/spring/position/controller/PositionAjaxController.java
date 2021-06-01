@@ -30,14 +30,15 @@ public class PositionAjaxController
 	@ResponseBody
 	public Map<String, String> clickFav(@RequestParam int pos_num, HttpSession session)
 	{
+		Map<String, String> map = new HashMap<String, String>();
 		Integer mem_num = (Integer)session.getAttribute("user_num");
 		boolean clickedFav = false;
-		
-		Map<String, String> map = new HashMap<String, String>();
+		// 회원 로그인이 되어있지 않은 경우
 		if(mem_num == null)
 		{
 			map.put("result", "needLogin");
 		}
+		// 회원 로그인이 되어있는 경우
 		else if(clickedFav = positionService.selectClickedFav(pos_num, mem_num))
 		{
 			// vo 객체 생성
@@ -97,10 +98,10 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/writeComment.do")
 	@ResponseBody
-	public Map<String,String> writeComment(@RequestParam int pos_num, @RequestParam String poc_content, HttpSession session)
+	public Map<String,String> writeComment(PositionCommentVO vo, HttpSession session)
 	{
-		// 로그인 상태 여부 체크
 		Map<String,String> map = new HashMap<String,String>();
+		// 로그인 상태 여부 체크
 		Integer mem_num = (Integer)session.getAttribute("user_num");
 		if(mem_num == null)
 		{
@@ -108,10 +109,6 @@ public class PositionAjaxController
 		}
 		else
 		{
-			// vo 생성
-			PositionCommentVO vo = new PositionCommentVO();
-			vo.setPos_num(pos_num);
-			vo.setMem_num(mem_num);
 			positionService.insertComment(vo);
 			map.put("result", "success");
 		}
@@ -123,7 +120,7 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/modifyComment.do")
 	@ResponseBody
-	public Map<String,String> modifyComment(@RequestParam int poc_num, @RequestParam int mem_num, @RequestParam String poc_content, HttpSession session)
+	public Map<String,String> modifyComment(PositionCommentVO vo, HttpSession session)
 	{
 		Map<String,String> map = new HashMap<String,String>();
 		Integer user_num = (Integer)session.getAttribute("user_num");
@@ -133,11 +130,8 @@ public class PositionAjaxController
 			map.put("result", "needLogin");
 		}
 		// 댓글 작성자와 로그인 되어있는 회원이 동일 인물인 경우
-		else if(user_num == mem_num)
+		else if(user_num == vo.getMem_num())
 		{
-			PositionCommentVO vo = new PositionCommentVO();
-			vo.setPoc_num(poc_num);
-			vo.setPoc_content(poc_content);
 			positionService.modifyComment(vo);
 			map.put("result", "success");
 		}
@@ -158,15 +152,18 @@ public class PositionAjaxController
 	{
 		Map<String,String> map = new HashMap<String,String>();
 		Integer user_num = (Integer)session.getAttribute("user_num");
+		// 로그인이 되어있지 않은 경우
 		if(user_num == null)
 		{
 			map.put("result", "needLogin");
 		}
+		// 댓글 작성자와 현재 로그인한 회원 정보가 일치하는 경우
 		else if(user_num == mem_num)
 		{
 			positionService.deleteComment(poc_num);
 			map.put("result", "success");
 		}
+		// 댓글 작성자와 로그인 되어있는 회원이 다른 경우
 		else
 		{	
 			map.put("result", "notMatchUser");

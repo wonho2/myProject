@@ -26,13 +26,12 @@
 
 <!-- 게시물 상세 -->
 <div>
-	<input type="hidden" id="pos_num" value="${positionVO.pos_num}">
 	<h1>${positionVO.pos_title}</h1>
 	<section>
 		[${positionVO.pos_type}] | ${positionVO.pos_date} | ${positionVO.mem_nick}
 	</section>
 	<section>
-		조회수 ${positionVO.pos_view} | 추천수 <span class="pos_fav"></span> | 댓글수 <span class="pos_comment"></span>
+		조회수 ${positionVO.pos_view} | 추천수 <span class="favCount"></span> | 댓글수 <span class="commentCount"></span>
 	</section>
 	
 	<hr size="1" noshade="noshade" width="100%">
@@ -54,7 +53,7 @@
 <!-- 추천 버튼 -->
 	<div class="align-center">
 		<input type="button" value="추천/비추천(원버튼)" id="btn_fav">
-		<div class="pos_fav"></div>
+		<div class="favCount"></div>
 	</div>
 </div>
 

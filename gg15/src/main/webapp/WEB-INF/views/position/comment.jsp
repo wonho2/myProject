@@ -8,7 +8,7 @@
 <!-- 정렬 버튼 -->
 <p>
 	<!-- 미구현 : 정렬 -->
-	<b>댓글</b> <span class="pos_comment"></span>개
+	<b>댓글</b> <span class="commentCount"></span>개
 	<input type="button" value="인기순"> <!-- default 정렬-->
 	<input type="button" value="최신순">
 </p>

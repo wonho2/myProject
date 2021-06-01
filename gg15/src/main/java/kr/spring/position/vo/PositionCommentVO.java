@@ -26,7 +26,8 @@ public class PositionCommentVO
 	public int getMem_num() {
 		return mem_num;
 	}
-	public void setMem_num(int mem_num) {
+	public void setMem_num(Integer mem_num) {
+		if(mem_num == null) return;
 		this.mem_num = mem_num;
 	}
 	public String getMem_nick() {
@@ -39,6 +40,7 @@ public class PositionCommentVO
 		return poc_content;
 	}
 	public void setPoc_content(String poc_content) {
+		if(poc_content == null) return;
 		this.poc_content = poc_content;
 	}
 	public String getPoc_date() {

@@ -3,15 +3,15 @@ $(document).ready(function()
 /*
  * 데이터 초기화
  */
-	updatePos_fav($("#pos_num").val());
+	updatePos_fav(new Request.getParameter("pos_num"));
 	
 /*
  * 추천 버튼 클릭
  */
 	$("#btn_fav").click(function()
 	{
-		// 게시물 번호, 회원 번호
-		var pos_num = $("#pos_num").val();
+		
+		var pos_num = new Request.getParameter("pos_num");
 		
 		$.ajax({
 			type:'get',
@@ -49,7 +49,7 @@ $(document).ready(function()
 /*
  * 추천수 변경
  */
-function updatePos_fav(pos_fav)
+function updatePos_fav(favCount)
 {
-	$(".pos_fav").html(pos_fav);
+	$(".favCount").html(favCount);
 }

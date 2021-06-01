@@ -13,16 +13,16 @@ $(document).ready(function()
 	var sort = Object.freeze({POPULAR:0, RECENT:1});
 	var sortUrl = Object.freeze({POPULAR:'commentList_popular.do', RECENT:'commentList_recent.do'}); 
 	
-// 댓글 쓰기 제출 (동적 요소 : showWriteForm().#btn_writeComment)
+// 댓글 쓰기 제출 (동적 요소 : #form_writeComment)
 // 동적 요소일 때 써야하는 함수 : $(document).on(이벤트종류, 속성의 아이디 또는 클래스명, 함수)
-	$(document).on("click", "#btn_writeComment", function()
+	$(document).on("submit", "#form_writeComment", function(event)
 	{
-		var pos_num = $("#pos_num").val();
-		var poc_content = $("#poc_content").val();
-		
+		// 데이터 직렬화
+		var data = $(this).serialize();
+		// ajax 통신
 		$.ajax({
 			type:'post',
-			data:{pos_num:pos_num, poc_content:poc_content},
+			data:data,
 			url:'writeComment.do',
 			dataType:'json',
 			cache:false,
@@ -33,7 +33,7 @@ $(document).ready(function()
 					setEmptyWriteForm();
 					// location.replace('$(pageContext.request.contextPath)/WEB-INF/views/member/login.do');
 				}
-				else if($('#poc_content').val() == ""){
+				else if($.trim($("#poc_content").val()) == ""){
 					alert("댓글 내용을 입력하세요");
 					$("#poc_content").focus();
 				}
@@ -64,14 +64,16 @@ $(document).ready(function()
 		var poc_content = $(this).parent().parent().find('p').html().replace(/<br>/gi,'\n'); //g:지정문자열 모두, i:대소문자 무시
 		// 댓글 수정폼 UI
 		var output = '';
-		output += 	'<input type="hidden" name="poc_num" id="mpoc_num" value="' + poc_num + '">';
-		output += 	'<input type="hidden" name="mem_num" id="mmem_num" value="' + mem_num + '">';
 		output += '<div>';
-		output += 	'<textarea id="mpoc_content" style="resize:none; width:400px; height:100px">' + poc_content + '</textarea>';
-		output += '</div>';
-		output += '<div>';
-		output += 	'<input type="button" value="수정" id="btn_modifyOK">';
-		output += 	'<input type="button" value="취소" id="btn_modifyCancel">';
+		output += 	'<form id="form_modifyComment">';
+		output += 		'<input type="hidden" id="mpos_num" value="' + poc_num + '">';
+		output += 		'<input type="hidden" id="mmem_num" value="' + mem_num + '">';
+		output += 		'<textarea id="poc_content" style="resize:none; width:400px; height:100px"></textarea>';
+		output += 		'<div>';
+		output += 			'<input type="submit" value="수정">';
+		output += 			'<input type="button" value="취소" id="btn_modifyCancel">';		
+		output += 		'</div>';
+		output += 	'</form>';
 		output += '</div>';
 		// 이전에 이미 수정하던 댓글 폼은 삭제
 		setRemoveModifyForm();
@@ -79,17 +81,15 @@ $(document).ready(function()
 		$(this).parents("#comment").append(output);
 	});
 	
-// 댓글 수정 처리 (동적 요소 : #btn_modifyOK)
-	$(document).on("click", "#btn_modifyOK", function()
+// 댓글 수정 처리 (동적 요소 : #form_modifyComment)
+	$(document).on("submit", "#form_modifyComment", function()
 	{
-		var poc_num = $("#mpoc_num").val();
-		var mem_num = $("#mmem_num").val();
-		var poc_content = $("mpoc_content").val();
+		var data = $(this).serialize();
 		
 		$.ajax({
 			url:'modifyComment.do',
 			type:'post',
-			data:{poc_num:poc_num, mem_num:mem_num, poc_content:poc_content},
+			data:data,
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -99,7 +99,7 @@ $(document).ready(function()
 					alert("로그인이 필요한 서비스입니다");
 					// location.replace("${pageContext.request.contextPath}/WEB-INF/views/member/login.do");	
 				}
-				else if($('#mpoc_content').val() == "")
+				else if($.trim($("#mpoc_content").val()) == "")
 				{
 					alert("댓글 내용을 입력하세요");
 					$('#mpoc_content').focus();
@@ -183,7 +183,7 @@ $(document).ready(function()
 	function defaultCommentListSort()
 	{
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		selectCommentList($("#pos_num").val(), sort.RECENT, sortUrl.RECENT);
+		selectCommentList(new Request.getParameter("pos_num"), sort.RECENT, sortUrl.RECENT);
 	}
 	
 /*
@@ -218,7 +218,7 @@ $(document).ready(function()
 			timeout:30000,
 			success:function(data){
 				// 댓글 수 출력
-				$(".pos_comment").html(data.commentCount);
+				$(".commentCount").html(data.commentCount);
 				// 댓글 리스트
 				var list = data.commentList;
 				$(list).each(function(index,item){
@@ -259,7 +259,15 @@ $(document).ready(function()
 	function showWriteForm()
 	{
 		var output = '';
-		output += '<textarea id="poc_content" style="resize:none; width:400px; height:100px"></textarea>';
-		output += '<input type="button" id="btn_writeComment" value="등록">'
+		output += '<div>';
+		output += 	'<form id="form_writeComment">';
+		output += 		'<input type="hidden" id="pos_num" value="${positionVO.pos_num}">';
+		output += 		'<input type="hidden" id="mem_num" value="${user_num}">';
+		output += 		'<textarea id="poc_content" style="resize:none; width:400px; height:100px"></textarea>';
+		output += 		'<div>';
+		output += 			'<input type="submit" value="등록">';
+		output += 		'</div>';
+		output += 	'</form>';
+		output += '</div>';
 		$("#output_writeComment").append(output);
 	}
