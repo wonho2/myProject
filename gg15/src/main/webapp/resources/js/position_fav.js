@@ -3,15 +3,14 @@ $(document).ready(function()
 /*
  * 데이터 초기화
  */
-	updatePos_fav(new Request.getParameter("pos_num"));
-	
+	updatePos_fav($("#init_favCount").val());
+
 /*
  * 추천 버튼 클릭
  */
-	$("#btn_fav").click(function()
+	$('#btn_fav').click(function()
 	{
-		
-		var pos_num = new Request.getParameter("pos_num");
+		var pos_num = $("#pos_num").val();
 		
 		$.ajax({
 			type:'get',

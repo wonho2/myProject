@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 	<definition name="main" template="/WEB-INF/views/template/layout.jsp">
-		<put-attribute name="title" value="Star Hompy 회원제 서비스"/>
+		<put-attribute name="title" value="15.gg"/>
 		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
 		<put-attribute name="left" value="/WEB-INF/views/template/left.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>

@@ -53,6 +53,7 @@
 <!-- 추천 버튼 -->
 	<div class="align-center">
 		<input type="button" value="추천/비추천(원버튼)" id="btn_fav">
+		<input type="hidden" id="init_favCount" value="${init_favCount}"> <!-- 초기 추천수 가져오기 용도 -->
 		<div class="favCount"></div>
 	</div>
 </div>

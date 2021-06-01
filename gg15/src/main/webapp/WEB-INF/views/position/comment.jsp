@@ -14,10 +14,16 @@
 </p>
 
 <!-- 댓글 쓰기 -->
-<div class="align-right">
-	<input type="button" value="댓글쓰기" onclick="showWriteForm();">
+<div>
+	<form id="form_writeComment">
+		<input type="hidden" id="pos_num" value="${positionVO.pos_num}">
+		<input type="hidden" id="mem_num" value="${user_num}">
+		<textarea id="poc_content" style="resize:none; width:400px; height:100px"></textarea>
+		<div class="align-right">
+			<input type="submit" value="댓글등록">
+		</div>
+	</form>
 </div>
-<p id="output_writeComment"></p>
 
 <!-- 댓글 목록 -->
 <p id="output_commentList"></p>

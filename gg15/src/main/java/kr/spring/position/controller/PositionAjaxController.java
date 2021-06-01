@@ -78,18 +78,13 @@ public class PositionAjaxController
 		List<PositionCommentVO> commentList = Collections.emptyList();
 		if(commentCount > 0)
 		{
-			if(sort_type == 1) commentList = positionService.selectCommentList(pos_num, sort_type);
+			commentList = positionService.selectCommentList(pos_num, sort_type);
 		}
 		// ajax에 전달할 map 객체
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("commentCount", commentCount);
 		mapJson.put("commentList", commentList);
-		// 현재 로그인 되어있는 회원 번호
-		Integer mem_num = (Integer)session.getAttribute("user_num");
-		if(mem_num != null)
-		{
-			mapJson.put("mem_num", mem_num);
-		}
+		
 		return mapJson;
 	}
 

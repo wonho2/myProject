@@ -29,7 +29,6 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
-	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 상수
@@ -57,10 +56,6 @@ public class PositionController
 // 공통 (게시물 최신순, 인기순 정렬) : (현재 페이지, 정렬 방식, 게시물 포지션 타입)
 	private ModelAndView getBoardList(int currentPage, String sortAttrName, PositionType type)
 	{
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<PostionType>> : " + type.getValue());
-		}
 		
 		// 게시물 개수
 		int boardCount = positionService.selectBoardCount(type);
@@ -192,13 +187,19 @@ public class PositionController
 	@RequestMapping("/position/detail.do")
 	public ModelAndView boardDetail(@RequestParam int pos_num)
 	{
+		ModelAndView mav = new ModelAndView();
 		// 해당 글의 조회수 증가
 		positionService.updateView(pos_num);
 		// html 태그 불허
 		PositionVO positionVO = positionService.selectBoard(pos_num);
 		positionVO.setPos_title(StringUtil.useNoHtml(positionVO.getPos_title()));
 		positionVO.setPos_content(StringUtil.useBrNoHtml(positionVO.getPos_content()));
-		return new ModelAndView("position_detail", "positionVO", positionVO);
+		mav.setViewName("position_detail");
+		// 게시물 vo
+		mav.addObject("positionVO", positionVO);
+		// 추천수
+		mav.addObject("init_favCount", positionService.selectFavCount(pos_num));
+		return mav;
 	}
 	
 	// 이미지 출력
