@@ -172,7 +172,7 @@ public class PartyAjaxController {
 
 		return map;
 	}
-	  
+	   
 	//===========게시글 추천===============//
 	//추천 읽기
 	@RequestMapping("/party/getFav.do")

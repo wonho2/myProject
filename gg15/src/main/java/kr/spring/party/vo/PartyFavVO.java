@@ -33,4 +33,4 @@ public class PartyFavVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-}  
+} 

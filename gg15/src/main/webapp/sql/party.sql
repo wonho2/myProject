@@ -25,7 +25,7 @@ CREATE TABLE party_reply(
     constraint party_reply_fk2 foreign key (mem_num)
     references member (mem_num)
 );
- 
+  
 create table party_fav(
   fav_num number not null,
   fav_date date default sysdate not null,

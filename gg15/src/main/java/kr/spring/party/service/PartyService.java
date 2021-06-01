@@ -80,7 +80,7 @@ public class PartyService {
 	public void deletePartyReply(Integer pop_num) {
 		partyDAO.deletePartyReply(pop_num);
 	}
-
+  
 	//==========댓글 끝=================//
 	//==========게시글 추천 ==============//
 	public PartyFavVO selectFav(PartyFavVO fav) {
