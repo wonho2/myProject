@@ -60,8 +60,8 @@
 			<li>
 				<label>시즌 선택</label>
 				<form:select path="man_season">
-					<form:option value="S10">시즌10</form:option>
 					<form:option value="S11">시즌11</form:option>
+					<form:option value="S10">시즌10</form:option>
 				</form:select>
 			</li>
 			<li>
@@ -71,7 +71,7 @@
 			</li>
 			<li>
 				<label for="man_content">내용</label>
-				<form:textarea path="man_content"/>
+				<form:textarea cols="50" rows="20" path="man_content"/>
 				<form:errors path="man_content" cssClass="error-color"/>
 			</li>
 			<li>
@@ -84,8 +84,7 @@
 			</li>
 		</ul>    
 		<div class="align-center">
-			<input type="submit" value="전송">
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="submit" value="수정" id="btn_submit">
 		</div>                            
 	</form:form>
 </div>

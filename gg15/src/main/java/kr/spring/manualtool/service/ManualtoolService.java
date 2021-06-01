@@ -69,6 +69,8 @@ public class ManualtoolService {
 	
 	//글 삭제
 	public void deleteManualtool(Integer man_num) {
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		manualtoolDAO.deleteReplyByBoardNum(man_num);
 		manualtoolDAO.deleteManualtool(man_num);
 	}
 	

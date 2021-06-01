@@ -24,7 +24,7 @@ create table manualtool_reply(	/* 공략 게시판 댓글 */
     man_num number not null,	/* 댓글이 소속된 게시물의 고유 번호 */
     mem_num number not null,	/* 댓글 작성자 고유 회원 번호 */
     mar_content varchar2(400) not null,	/* 댓글 내용 */
-    mar_date date not null,	/* 댓글 작성일 */
+    mar_date date default sysdate not null,	/* 댓글 작성일 */
 	constraint manualtool_reply_fk1 foreign key (mem_num)
 	references member (mem_num),
     constraint manualtool_reply_fk2 foreign key (man_num)

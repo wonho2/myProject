@@ -26,7 +26,7 @@
 		</tr>
 		<c:forEach var="manualtoolVO" items="${manualtoolList}">
 		<tr>
-			<!-- <td>$manualtoolVO.man_num}</td> -->
+			<!-- <td>${manualtoolVO.man_num}</td> -->
 			<!-- 이건 임시고 원래 챔피언 이름 말고 아이콘(이미지)을 띄워야 되는데 어케,,하죠 -->
 			<td><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25"></td> 
 			<td>${manualtoolVO.man_season}</td>
@@ -35,7 +35,7 @@
 			<td>${manualtoolVO.mem_nick}</td>
 			<td>${manualtoolVO.man_update}</td>
 			<td>${manualtoolVO.man_hit}</td>
-			<!-- <td>$manualtoolVO.man_fav}</td> -->
+			<!-- <td>${manualtoolVO.man_fav}</td> -->
 		</tr>
 		</c:forEach>
 	</table>

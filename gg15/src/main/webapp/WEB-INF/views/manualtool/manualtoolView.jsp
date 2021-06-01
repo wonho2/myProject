@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/man.reply.js"></script>
 <!-- 공략 게시판 디테일 시작 -->
 <!-- 게시물 상세 -->
 <div>

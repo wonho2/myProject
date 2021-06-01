@@ -141,10 +141,10 @@ public class ManualtoolController {
 	public String submitUpdate(@Valid ManualtoolVO manualtoolVO,
 			                   BindingResult result,
 			                   HttpServletRequest request) {
-		//유효성 체크 결과 오류가 있으면 폼 호출
-		if(result.hasErrors()) {
-			return "manualtoolModify";
-		}
+//		//유효성 체크 결과 오류가 있으면 폼 호출
+//		if(result.hasErrors()) {
+//			return "manualtoolModify";
+//		}
 		
 		//글 수정
 		manualtoolService.updateManualtool(manualtoolVO);

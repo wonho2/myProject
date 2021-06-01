@@ -10,6 +10,7 @@
 		var man_content = document.getElementById("man_content");
 		var btn_submit = document.getElementById("btn_submit");
 		//등록 이벤트 처리
+		//제목이 일정 길이 이상 넘어가면 바로 500 에러페이지로 넘어가는데 그러지 말고 '제목이 너무 깁니다' 같이 경고창 띄우게끔..
 		btn_submit.onclick = function() {
 			if(man_title.value.trim() == '') {
 				alert("제목을 입력하세요");
@@ -29,7 +30,6 @@
 	<form:form action="write.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<ul>
 			<li>
-				<!-- 아이콘 선택 or 이름 선택으로,,? 이름이 나은가 ㄱㄴㄷ 순으로 정렬해서,, -->
 				<label for="man_champion">챔피언</label>
 				<form:select path="man_champion" name="챔피언 선택">
 					<option value="가렌">가렌</option>
@@ -57,8 +57,8 @@
 			 <li>
 				<label for="man_season">시즌</label>
 				<form:select path="man_season" name="시즌 선택">
-					<option value="S10">시즌10</option>
 					<option value="S11">시즌11</option>
+					<option value="S10">시즌10</option>
 				</form:select>
 			</li>
 			<li>
@@ -72,7 +72,7 @@
 			</li>
 			<li>
 				<label for="man_content">내용</label>
-				<form:textarea path="man_content"/>
+				<form:textarea cols="50" rows="20" path="man_content"/>
 				<form:errors path="man_content"/>
 			</li>
 		</ul>

@@ -31,20 +31,28 @@ public interface ManualtoolDAO {
 	//조회수 증가
 	@Update("UPDATE manualtool SET man_hit = man_hit+1 WHERE man_num = #{man_num}")
 	public void updateHit(Integer man_num);
+	
+	//해당 게시물을 추천했는지 체크
+	@Select("SELECT COUNT(*) FROM man_fav WHERE man_num=#{man_num}, mem_num=#{mem_num}")
+	public int selectClickedFav(Integer man_num, Integer mem_num);
+		
+	//해당 게시물의 추천 수
+	@Select("SELECT COUNT(*) FROM man_fav WHERE man_num=#{man_num}")
+	public int selectFavCount(Integer man_num);
 
-	//추천수 증가
+	//추천수 증가 (추천)
 	@Update("UPDATE manualtool SET man_fav = man_fav+1 WHERE man_num = #{man_num}")
 	public void updateFavUp(Integer man_num);
 
-	//추천수 감소
+	//추천수 감소 (추천 취소)
 	@Update("UPDATE manualtool SET man_fav = man_fav-1 WHERE man_num = #{man_num}")
 	public void updateFavDown(Integer man_num);
 
-	//댓글수 증가
+	//댓글수 증가 (댓글 작성)
 	@Update("UPDATE manualtool SET man_comment = man_comment+1 WHERE man_num = #{man_num}")
 	public void updateCommentUp(Integer man_num);
 
-	//댓글수 감소
+	//댓글수 감소 (댓글 삭제)
 	@Update("UPDATE manualtool SET man_comment = man_comment-1 WHERE man_num = #{man_num}")
 	public void updateCommentDown(Integer man_num);
 
@@ -65,6 +73,10 @@ public interface ManualtoolDAO {
 	public void updateReply(ManualtoolCommentVO ManualtoolReply);
 	@Delete("DELETE FROM manualtool_reply WHERE mar_num=#{mar_num}")
 	public void deleteReply(Integer mar_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제 
+	@Delete("DELETE FROM manualtool_reply WHERE man_num=#{man_num}")
+	public void deleteReplyByBoardNum(Integer man_num);
+
 
 	
 }
