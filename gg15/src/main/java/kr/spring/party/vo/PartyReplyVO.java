@@ -50,4 +50,4 @@ public class PartyReplyVO {
 		return "PartyReplyVO [pop_num=" + pop_num + ", par_num=" + par_num + ", mem_num=" + mem_num + ", mem_nick="
 				+ mem_nick + ", pop_content=" + pop_content + ", pop_date=" + pop_date + "]";
 	}
-}
+} 

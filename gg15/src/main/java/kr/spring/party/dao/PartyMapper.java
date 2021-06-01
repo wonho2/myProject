@@ -54,7 +54,7 @@ public interface PartyMapper {
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	@Delete("DELETE FROM party_reply WHERE par_num=#{par_num}")
 	public void deletePartyReplyByBoardNum(Integer par_num);
-	
+	 
 	//=========게시글 추천=============//
 	@Select("SELECT * from party_fav where par_num=#{par_num} and mem_num=#{mem_num}")
 	public PartyFavVO selectFav(PartyFavVO fav);
