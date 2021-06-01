@@ -66,7 +66,7 @@
 			<td>${board.boa_hit}</td>
 			<td>${board.bof_num}</td>
 		</tr>
-		</c:forEach>
+		</c:forEach> 
 		<c:if test="${count == 0}">
 		<div >등록된 게시물이 없습니다.</div>
 		</c:if>
