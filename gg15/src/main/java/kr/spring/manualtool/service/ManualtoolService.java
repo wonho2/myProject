@@ -42,6 +42,11 @@ public class ManualtoolService {
 		manualtoolDAO.updateHit(man_num);
 	}
 	
+	//해당 게시물의 추천 수
+	public int selectFavCount(Integer man_num) {
+		return manualtoolDAO.selectFavCount(man_num);
+	}
+	
 	//추천수 증가
 	public void updateFavUp(Integer man_num) {
 		manualtoolDAO.updateFavUp(man_num);
@@ -51,6 +56,13 @@ public class ManualtoolService {
 	public void updateFavDown(Integer man_num) {
 		manualtoolDAO.updateFavDown(man_num);
 	}
+	
+	/*
+	//댓글 개수
+	public int selectCommentCount(Integer man_num) {
+		return manualtoolDAO.selectCommentCount(man_num);
+	}
+	*/
 	
 	//댓글수 증가
 	public void updateCommentUp(Integer man_num) {
