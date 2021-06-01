@@ -50,7 +50,6 @@
 		${board.boa_content}
 	</p>
 	
-	
 	<div>  
 		<img id="output_fav" src="../resources/images/heart01.png">
 		<span id="output_fcount"></span> 
