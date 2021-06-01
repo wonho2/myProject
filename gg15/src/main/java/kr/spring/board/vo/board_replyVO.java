@@ -10,6 +10,7 @@ public class board_replyVO {
 	private String bor_content;//댓글 내용
 	private Date bor_date;//댓글 작성일
 	private String mem_nick;//사용자 아이디
+	
 	public int getMem_num() {
 		return mem_num;
 	}

@@ -1,10 +1,10 @@
-﻿<!-- <?xml version="1.0" encoding="UTF-8" ?>  
-<!DOCTYPE mapper   
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.board.dao.BoardMapper">
 
-	총 게시글 수
+	<!-- 총 게시글 수-->
 	<select id="selectRowCount" resultType="integer">
 		SELECT
 		   COUNT(*)
@@ -13,7 +13,7 @@
 		ON b.mem_num = m.mem_num
 	</select>
 	
-	글 목록
+	<!-- 글 목록 -->
 	<select id="selectList" parameterType="map"
 	                                   resultType="boardVO">
 		SELECT
@@ -36,12 +36,9 @@
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
-    	
 	</select>
 	
-	
-	
-	글 수정
+	<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="boardVO">
 		UPDATE board SET
 			<if test="filename != ''">
@@ -53,9 +50,10 @@
 			boa_mode=#{boa_mode}
 		WHERE boa_num=#{boa_num}
 	</update>
-	
-	<select id="selectListReply" parameterType="map"
- 	                     resultType="boardReplyVO">
+ 	
+	<!-- ====== 댓글 ======== 	 -->
+	<select id="selectBoardComment" parameterType="map"
+ 	                     resultType="board_replyVO">
  		SELECT
  		   *
  		FROM (SELECT 
@@ -70,33 +68,6 @@
  		                    boa_num,
  		                    mem_num
                           FROM board_reply where boa_num=#{boa_num}) r 
-                               JOIN board_detail b
-                               ON r.mem_num = b.mem_num
-                               ORDER BY ner_num DESC)b)
-                              
- 		<![CDATA[
- 		WHERE rnum >= #{start} AND rnum <= #{end}
- 		]]>                                 
- 	</select>
-	
-	
-	====== 댓글 ======== 	
-	<select id="selectListReply" parameterType="map"
- 	                     resultType="newsReplyVO">
- 		SELECT
- 		   *
- 		FROM (SELECT 
- 		        m.*, 
- 		        rownum rnum 
- 		      FROM (SELECT 
-                      *
-                    FROM (SELECT 
-                            bor_num,
- 		                    bor_content,
- 		                    TO_CHAR(ner_date,'YYYY-MM-DD HH24:MI:SS') bor_date,
- 		                    boa_num,
- 		                    mem_num
-                          FROM board_reply where boa_num=#{boa_num}) r 
                                JOIN member_detail m
                                ON r.mem_num = m.mem_num
                                ORDER BY bor_num DESC)m)
@@ -105,7 +76,5 @@
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>                                 
  	</select>
-	 
 	
 </mapper>
- -->

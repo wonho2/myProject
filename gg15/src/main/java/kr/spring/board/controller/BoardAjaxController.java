@@ -1,4 +1,4 @@
-/*package kr.spring.board.controller;
+package kr.spring.board.controller;
 
 import java.util.Collections;
 
@@ -29,19 +29,18 @@ public class BoardAjaxController{
 
 	@Resource
 	private BoardService boardService;
-
 	
 	//댓글 등록
-	@RequestMapping("/board/writeReply.do")
+	@RequestMapping("/board/writeBoardComment.do")
 	@ResponseBody
-	public Map<String,String> writeReply(
-			board_replyVO board_ReplyVO,
+	public Map<String,String> writeBoardComment(
+			board_replyVO board_replyVO,
 			HttpSession session,
 			HttpServletRequest request){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<Board_ReplyVO>> : " + 
-					board_ReplyVO);
+			log.debug("<<board_replyVO>> : " + 
+					board_replyVO);
 		}
 
 		Map<String,String> map = 
@@ -55,16 +54,17 @@ public class BoardAjaxController{
 		}else {
 
 			//댓글 등록
-			boardService.insertReply(board_ReplyVO);
+			boardService.insertBoardComment(board_replyVO);
 			map.put("result", "success");
 		}
 
 		return map;
 	}
+	
 	//댓글 목록
-	@RequestMapping("/board/listReply.do")
+	@RequestMapping("/board/listBoardComment.do")
 	@ResponseBody
-	public Map<String,Object> getList(
+	public Map<String,Object> getListBoardComment(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
 			@RequestParam("boa_num") int boa_num,
@@ -80,7 +80,7 @@ public class BoardAjaxController{
 		map.put("boa_num", boa_num);
 
 		//총 글의 갯수
-		int count = boardService.selectRowCountReply(map);
+		int count = boardService.selectBoardCommentCount(map);
 
 		PagingUtil page = new PagingUtil(currentPage,count,
 				rowCount,pageCount,null);
@@ -97,7 +97,7 @@ public class BoardAjaxController{
 		}
 		List<board_replyVO> list = null;
 		if(count > 0) {
-			list = boardService.selectListReply(map);
+			list = boardService.selectBoardComment(map);
 		}else {
 			list = Collections.emptyList();
 		}
@@ -110,16 +110,17 @@ public class BoardAjaxController{
 
 		return mapJson;
 	}
+	
 	//댓글 삭제
-	@RequestMapping("/board/deleteReply.do")
+	@RequestMapping("/board/deleteBoardComment.do")
 	@ResponseBody
-	public Map<String,String> deleteReply(
-			@RequestParam("ner_num") int ner_num,
+	public Map<String,String> deleteBoardComment(
+			@RequestParam("bor_num") int bor_num,
 			@RequestParam("mem_num") int mem_num,
 			HttpSession session){
    
 		if(log.isDebugEnabled()) {
-			log.debug("<<ner_num>> : " + ner_num);
+			log.debug("<<bor_num>> : " + bor_num);
 			log.debug("<<mem_num>> : " + mem_num);
 		}
 
@@ -133,7 +134,7 @@ public class BoardAjaxController{
 			map.put("result", "logout");
 		}else if(user_num!=null && user_num==mem_num) {
 			//로그인 되어 있고 로그인한 아이디와 작성자 아이디 일치
-			boardService.deleteReply(ner_num);
+			boardService.deleteBoardComment(bor_num);
 			map.put("result", "success");
 		}else {
 			//로그인 아이디와 작성자 아이디 불일치
@@ -142,15 +143,15 @@ public class BoardAjaxController{
 		return map;
 	}
 	//댓글 수정
-	@RequestMapping("/board/updateReply.do")
+	@RequestMapping("/board/updateBoardComment.do")
 	@ResponseBody
-	public Map<String,String> modifyReply(
+	public Map<String,String> modifyBoardComment(
 			board_replyVO board_replyVO,
 			HttpSession session,
 			HttpServletRequest request){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<Board_ReplyVO>> : " + 
+			log.debug("<<board_replyVO>> : " + 
 					board_replyVO);
 		}
 
@@ -166,7 +167,7 @@ public class BoardAjaxController{
 			//로그인 회원 번호와 작성자 회원번호 일치
 
 			//댓글 수정
-			boardService.updateReply(board_replyVO);
+			boardService.updateBoardComment(board_replyVO);
 			map.put("result", "success");
 		}else {
 			//로그인 아이디와 작성자 아이디 불일치
@@ -175,4 +176,3 @@ public class BoardAjaxController{
 		return map;
 	}
 }
-*/

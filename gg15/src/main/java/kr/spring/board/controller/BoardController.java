@@ -1,4 +1,4 @@
-/*package kr.spring.board.controller;
+package kr.spring.board.controller;
 
 import java.io.File;
 import java.util.HashMap;
@@ -158,7 +158,7 @@ public class BoardController {
 			HttpServletRequest request) {
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
-			return "baordModify";
+			return "boardModify";
 		}
 
 		//글 수정
@@ -206,4 +206,4 @@ public class BoardController {
 		return map;
 	}
 
-}*/
+}

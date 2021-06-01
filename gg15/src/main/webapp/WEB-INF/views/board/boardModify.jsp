@@ -34,7 +34,8 @@
 			<li>
 				<label for="boa_upload">첨부파일</label>
 				<input type="file" name="boa_upload" id="boa_upload"
-			accept="image/gif,image/png,image/jpeg,video/mp4,video/avi">
+			accept="image/gif,image/png,image/jpeg,
+					video/mp4,video/avi,video/MOV,video/H.264,video/WMV">
 			<c:if test="${!empty board.boa_filename}">
 					<br>
 					<span>이미 ${board.boa_filename} 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>

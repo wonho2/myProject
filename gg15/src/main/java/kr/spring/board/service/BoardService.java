@@ -1,4 +1,4 @@
-/*package kr.spring.board.service;
+package kr.spring.board.service;
 
 import java.util.List;
 import java.util.Map;
@@ -47,38 +47,35 @@ public class BoardService {
 	//글 삭제
 	public void deleteBoard(Integer boa_num) {
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
-		boardMapper.deleteReplyByBoardNum(boa_num);
-		
+		boardMapper.deleteBoardCommentByBoardNum(boa_num);
 		boardMapper.deleteBoard(boa_num);
 	}
 
 	//조회수 증가
-	//public void updateHit(Integer board_num) {
-	//	boardMapper.updateHit(board_num);
-	//}
+	public void updateHit(Integer boa_num) {
+		boardMapper.updateHit(boa_num);
+	}
 
 	//댓글
-		public List<board_replyVO> selectListReply(Map<String, Object> map) {
-			return boardMapper.selectListReply(map);
+		public List<board_replyVO> selectBoardComment(Map<String, Object> map) {
+			return boardMapper.selectBoardComment(map);
 		}
 
-		public int selectRowCountReply(Map<String, Object> map) {
-			return boardMapper.selectRowCountReply(map);
+		public int selectBoardCommentCount(Map<String, Object> map) {
+			return boardMapper.selectBoardCommentCount(map);
 		}
 
-		public void insertReply(board_replyVO board_reply) {
-			boardMapper.insertReply(board_reply);
+		public void insertBoardComment(board_replyVO board_reply) {
+			boardMapper.insertBoardComment(board_reply);
 		}
 
-		public void updateReply(board_replyVO board_reply) {
-			boardMapper.updateReply(board_reply);
+		public void updateBoardComment(board_replyVO board_reply) {
+			boardMapper.updateBoardComment(board_reply);
 		}
 
-		public void deleteReply(Integer bor_num) {
+		public void deleteBoardComment(Integer bor_num) {
 			//(*******주의)댓글 좋아요가 있을 경우
-			//newsMapper.deleteReFavByRe_num(ner_num);
-			boardMapper.deleteReply(bor_num);
+			//newsMapper.deleteReFavByRe_num(bor_num);
+			boardMapper.deleteBoardComment(bor_num);
 		}	
-	
-	
-	}*/
+	}
