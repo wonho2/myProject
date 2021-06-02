@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 
+	private int mem_auth;//회원 등급
 	private int mem_num;//회원번호
 	private int boa_num;//게시글번호
 	private String boa_cate;//카테고리
@@ -34,6 +35,16 @@ public class BoardVO {
 		//파일명 구하기
 		setBoa_filename(boa_upload.getOriginalFilename());
 	}
+
+	public int getMem_auth() {
+		return mem_auth;
+	}
+
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
+
+
 
 	public int getMem_num() {
 		return mem_num;
@@ -131,7 +142,7 @@ public class BoardVO {
 
 	@Override
 	public String toString() {
-		return "BoardVO [mem_num=" + mem_num + ", bao_num=" + boa_num + ", boa_cate=" + boa_cate + ", boa_title="
+		return "BoardVO [mem_num=" + mem_num + ", mem_auth" + mem_auth +", bao_num=" + boa_num + ", boa_cate=" + boa_cate + ", boa_title="
 				+ boa_title + ", boa_content=" + boa_content + ", boa_date=" + boa_date + ", boa_filename="
 				+ boa_filename + "]";
 	}

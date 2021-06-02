@@ -18,7 +18,6 @@
 <script type="text/javascript">
 	window.onload = function() {
 		var boa_title = document.getElementById("boa_title");
-		var boa_content = document.getElementById("boa_content");
 		var btn_save = document.getElementById("btn_save");
 		//등록 이벤트 처리
 		btn_save.onclick = function() {
@@ -98,11 +97,13 @@
 			<input type="checkbox" name="boa_mode" value="1">비밀글
 			</li>
 		</ul>
-		<div class="align-center">
+		<div>
 			<!-- 목록 -->
 			<input type="button" id="btn_list" value="목록" onclick="location.href='list.do'">
 			<!-- 미리보기 -->
 			<input type="button" id="btn_e-show" value="미리보기" >
+		</div>
+		<div class="align-right">	
 			<!-- 임시 저장 -->
 			<input type="button" id="btn_e-save" value="임시저장">
 			<!-- 저장 -->

@@ -165,6 +165,8 @@ public class BoardAjaxController{
 		}
 		return map;
 	}
+	
+	
 	//게시물 좋아요
 	@RequestMapping("/board/getFav.do")
 	@ResponseBody

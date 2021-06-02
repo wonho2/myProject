@@ -72,4 +72,11 @@ public interface BoardMapper {
 	@Delete("DELETE FROM boa_fav WHERE boa_num=#{boa_num}")
 	public void deleteFavByBoaNum(Integer boa_num);
 
+	
+	//신고
+	//글쓰기
+	@Insert("INSERT INTO boa_report (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num,boa_date) "
+			+ "VALUES (board_seq.nextval,#{boa_cate},#{boa_title},#{boa_uploadfile},#{boa_filename},#{boa_content},#{boa_mode},#{mem_num},SYSDATE)")
+	public void sendReport(BoardVO vo);
+
 }

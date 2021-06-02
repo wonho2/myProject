@@ -150,6 +150,9 @@ public class BoardController {
 
 		return mav;
 	}
+	
+	/* 다음 기약
+	
 	//동영상 출력 
 	@RequestMapping("/board/VideoView.do")
 	public ModelAndView viewVideo(@RequestParam int board_num) {
@@ -162,7 +165,7 @@ public class BoardController {
 
 		return mav;
 	}
-	
+	*/
 	
 	//=====게시판 글 수정======//
 	//수정 폼
@@ -231,7 +234,9 @@ public class BoardController {
 
 		return map;
 	}
-	//CKEditor 동영상 업로드
+	/* 다음 기약
+	  
+	  //CKEditor 동영상 업로드
 	@RequestMapping("/board/VideoUploader.do")
 	@ResponseBody
 	public Map<String,Object> uploadvideo(MultipartFile upload, HttpSession session, HttpServletResponse response,
@@ -260,6 +265,6 @@ public class BoardController {
 		map.put("url", request.getContextPath()+"/resources/image_upload/"+str_filename);
 
 		return map;
-	}
+	}*/
 
 }

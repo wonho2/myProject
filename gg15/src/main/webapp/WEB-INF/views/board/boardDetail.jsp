@@ -6,7 +6,20 @@
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
-<!-- 본문 시작 -->
+
+<script type="text/javascript">
+	function report(){
+		var report = window.prompt('신고 내용을 입력하세요 :<');
+		if(report==null){
+			alert("신고가 취소되었습니다 :) ");
+		}else{
+			alert("신고가 완료되었습니다 :( ");
+		} 
+			
+		return "/board/boardDetail.do";
+	}
+</script>
+
 <div class="page-main-style">
 	<div>${board.boa_cate}</div>
 		<h1>${board.boa_title}</h1>
@@ -53,7 +66,8 @@
 		<img id="output_fav" src="../resources/images/heart01.png">
 		<span id="output_fcount"></span> 
 		<span id="output_rcount"></span>
-		<input type="button" value="신고" id="btn_report">
+		<input type="button" value="신고" onclick='report()'>
+		
 	</div>
 	<hr size="1" width="100%" noshade="noshade">
 	
@@ -121,4 +135,4 @@
 
 	
 <!-- 댓글 끝 -->
-<!--  자유게시판 boardList 끝 -->
+<!--  자유게시판 boardList 끝 --> 
