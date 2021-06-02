@@ -31,7 +31,7 @@
 		[${positionVO.pos_type}] | ${positionVO.pos_date} | ${positionVO.mem_nick}
 	</section>
 	<section>
-		조회수 ${positionVO.pos_view} | 추천수 <span class="favCount"></span> | 댓글수 <span class="commentCount"></span>
+		조회수 ${positionVO.pos_view} | 추천수 <span class="favCount">${favCount}</span> | 댓글수 <span class="commentCount"></span>
 	</section>
 	
 	<hr size="1" noshade="noshade" width="100%">
@@ -53,8 +53,7 @@
 <!-- 추천 버튼 -->
 	<div class="align-center">
 		<input type="button" value="추천/비추천(원버튼)" id="btn_fav">
-		<input type="hidden" id="init_favCount" value="${init_favCount}"> <!-- 초기 추천수 가져오기 용도 -->
-		<div class="favCount"></div>
+		<div class="favCount">${favCount}</div>
 	</div>
 </div>
 

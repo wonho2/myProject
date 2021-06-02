@@ -198,7 +198,7 @@ public class PositionController
 		// 게시물 vo
 		mav.addObject("positionVO", positionVO);
 		// 추천수
-		mav.addObject("init_favCount", positionService.selectFavCount(pos_num));
+		mav.addObject("favCount", positionService.selectFavCount(pos_num));
 		return mav;
 	}
 	

@@ -1,11 +1,6 @@
 $(document).ready(function()
 {
 /*
- * 데이터 초기화
- */
-	updatePos_fav($("#init_favCount").val());
-
-/*
  * 추천 버튼 클릭
  */
 	$('#btn_fav').click(function()
