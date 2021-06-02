@@ -25,7 +25,7 @@ $(document).ready(function()
 	
 /*
  * 댓글 리스트 가져오기
- * 미구현 부분 : 추천, 비추천 버튼 이미지
+ * 미구현 부분 : 추천, 비추천 버튼 이미지, 추천수
  * 교훈 : 페이징 처리 하자
  */
 	function selectCommentList(pos_num, sort_type, url)
@@ -44,10 +44,10 @@ $(document).ready(function()
 				$(".commentCount").html(data.commentCount);
 				// 댓글 리스트
 				var list = data.commentList;
+				var output = '';
 				$(list).each(function(index,item){
 					// 댓글 목록 출력
-					var output = '';
-					output += '<div id="comment">';
+					output += '<div class="comment">';
 					output += 	'<span>';
 					output += 		item.mem_nick + " | " + item.poc_date;
 					output += 	'</span>';
@@ -62,6 +62,11 @@ $(document).ready(function()
 						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="삭제" id="btn_deleteComment">';
 						output += '</span>';
 					}
+					output += 	'<div>';
+					output += 		'<div><input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="추천" id="btn_commentFavUp"></div>';
+					output += 			'<span class="favCount_comment"></span>'; // 이거 어떻게 처리할까 vo 안쓰면. 써야되나?
+					output += 		'<div><input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="비추천" id="btn_commentFavDown"></div>';
+					output += 	'</div>';
 					output += '</div>';
 					output += '<hr size="1" noshade="noshade">';
 				});			
