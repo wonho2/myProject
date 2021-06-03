@@ -24,7 +24,7 @@ $(document).ready(function()
 	}
 	
 /*
- * 댓글 리스트 가져오기
+ * 댓글 리스트 가져오기 (함수 호출이 안됌 이거)
  * 미구현 부분 : 추천, 비추천 버튼 이미지, 추천수
  * 교훈 : 페이징 처리 하자
  */
@@ -63,9 +63,8 @@ $(document).ready(function()
 						output += '</span>';
 					}
 					output += 	'<div>';
-					output += 		'<div><input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="추천" id="btn_commentFavUp"></div>';
-					output += 			'<span class="favCount_comment"></span>'; // 이거 어떻게 처리할까 vo 안쓰면. 써야되나?
-					output += 		'<div><input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="비추천" id="btn_commentFavDown"></div>';
+					output += 		'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="추천/비추천" id="btn_commentFav">';
+					output += 		'<span class="favCount_comment"></span>'; // 이거 어떻게 처리할까 vo 안쓰면. 써야되나?
 					output += 	'</div>';
 					output += '</div>';
 					output += '<hr size="1" noshade="noshade">';
@@ -248,7 +247,46 @@ $(document).ready(function()
 				alert("네트워크 오류 발생");
 			}
 		});
-	});	
+	});
+	
+/*
+ * 댓글 추천/비추천
+ */
+// (동적 요소 : #commentList.#btn_commentFav)
+	$(document).on("click", "#btn_commentFav", function()
+	{
+		var poc_num = $(this).attr('data-num');
+		var mem_num = $(this).attr('data-mem');
+		
+		$.ajax({
+			type:'get',
+			url:'commentFav.do',
+			data:{poc_num:poc_num, mem_num:mem_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(){
+				if(data.result == "needLogin"){
+					alert("로그인이 필요한 서비스 입니다");
+					// 로그인 페이지로 이동
+				}
+				else if(data.result == "success - favUp"){
+					alert("댓글 추천 완료");
+					$(this).parent().find("span").html(data.commentFavCount); // 추천수 변경인데, 작동이 제대로 되는지 확인해야함
+					// 추천된 버튼으로 이미지 바꾸기
+				}
+				else if(data.result == "success - favCancel"){
+					alert("댓글 추천을 취소했습니다");
+					$(this).parent().find("span").html(data.commentFavCount);
+					// 추천되지 않은 버튼으로 이미지 바꾸기
+				}
+				else{
+					alert("댓글 추천 오류 발생");
+				}
+			},
+			error:function(){}
+		});
+	});
 });
 
 

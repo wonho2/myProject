@@ -4,6 +4,16 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.position.dao.PositionDAO">
 
+<!-- 게시물 수 -->
+	<select id="selectBoardCount" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM position 
+		<where>
+			<if test = "pos_type != '전체보기'">
+				pos_type = #{pos_type}
+			</if>
+		</where>
+	</select>
+
 <!-- 게시물 목록 -->
 	<select id="selectBoardList" parameterType="map" resultType="positionVO">
 		SELECT

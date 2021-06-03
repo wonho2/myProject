@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.position.service.PositionService;
+import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionCommentVO;
 import kr.spring.position.vo.PositionFavVO;
 
@@ -165,5 +166,47 @@ public class PositionAjaxController
 		}		
 
 		return map;
-	}	
+	}
+	
+/*
+ * 댓글 추천, 비추천 (원버튼)
+ */
+	@RequestMapping("/position/commentFav.do")
+	@ResponseBody
+	public Map<String,String> commentFav(@RequestParam int poc_num, @RequestParam int mem_num, HttpSession session)
+	{
+		Map<String,String> map = new HashMap<String,String>();
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		boolean isClicked = false;
+		// 로그인이 되어있지 않은 경우
+		if(user_num == null)
+		{
+			map.put("result", "needLogin");
+		}
+		// 추천 버튼을 이전에 눌렀었는지 확인
+		else if(isClicked = positionService.selectClickedCommentFav(poc_num, mem_num))
+		{
+			// vo 객체 생성
+			PositionCommentFavVO vo = new PositionCommentFavVO();
+			vo.setPoc_num(poc_num);
+			vo.setMem_num(mem_num);
+			// 이미 해당 게시물의 추천버튼을 누른 경우
+			if(isClicked)
+			{
+				positionService.deleteCommentFav(vo);
+				map.put("result", "success - favCancel");
+			}
+			// 추천버튼을 누르지 않은 경우
+			else
+			{
+				positionService.insertCommentFav(vo);
+				map.put("result", "success - favUp");
+			}
+			// 변경된 추천 수
+			String commentFavCount = Integer.toString(positionService.selectCommentFavCount(poc_num));
+			map.put("commentFavCount", commentFavCount);
+		}
+		
+		return map;
+	}
 }
