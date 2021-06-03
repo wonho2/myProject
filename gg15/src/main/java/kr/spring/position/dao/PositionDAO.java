@@ -97,7 +97,7 @@ public interface PositionDAO
  * 게시물의 댓글 추천
  */
 	// 이전에 해당 댓글의 추천 버튼을 눌렀었는지 확인
-	@Select("SELECT COUNT(*) FROM position_cfav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
+	@Select("SELECT COUNT(*) FROM position_cfav WHERE poc_num=#{poc_num}, mem_num=#{mem_num}")
 	public int selectClickedCommentFav(int poc_num, int mem_num);
 	
 	// 해당 댓글의 추천 수
