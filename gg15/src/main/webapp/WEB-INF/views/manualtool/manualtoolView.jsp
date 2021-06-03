@@ -68,7 +68,7 @@
 
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == manualtoolVO.mem_num}">
-	<div class="align-left">
+	<div>
 		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		<input type="button" value="삭제" onclick="man_delete();">
 		<script type="text/javascript">

@@ -20,9 +20,9 @@
 			<th width="10%">시즌</th>
 			<th width="35%">제목</th>
 			<th width="15%">작성자</th>
-			<th width="15%">갱신일</th>
-			<th width="15%">조회수</th>
-			<!-- <th>추천수</th> -->
+			<th width="10%">갱신일</th>
+			<th width="10%">조회수</th>
+			<th width="10%">추천수</th>
 		</tr>
 		<c:forEach var="manualtoolVO" items="${manualtoolList}">
 		<tr>
@@ -33,7 +33,7 @@
 			<td>${manualtoolVO.mem_nick}</td>
 			<td>${manualtoolVO.man_update}</td>
 			<td>${manualtoolVO.man_hit}</td>
-			<!-- <td>${manualtoolVO.man_fav}</td> -->
+			<td>${manualtoolVO.man_fav}</td>
 		</tr>
 		</c:forEach>
 	</table>
