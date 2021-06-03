@@ -19,7 +19,7 @@ public interface BoardMapper {
 	public int selectRowCount();
 
 	//자유게시판 글 목록
-	public List<BoardVO> selectList(Map<String,Object> map);	
+	public List<BoardVO> selectList(Map<String, Object> map);	
 
 	//글쓰기
 	@Insert("INSERT INTO board (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num,boa_date) "
@@ -43,10 +43,10 @@ public interface BoardMapper {
 
 	//=================댓글================//
 	//댓글 리스트
-	public List<BoardReplyVO> selectBoardComment(Map<String,Object> map);
+	public List<BoardReplyVO> selectBoardComment(Map<String, Object> map);
 	//댓글 갯수
 	@Select("SELECT COUNT(*) FROM board_reply WHERE boa_num=#{boa_num}")
-	public int selectBoardCommentCount(Map<String,Object> map);
+	public int selectBoardCommentCount(Map<String, Object> map);
 	//댓글 작성
 	@Insert("INSERT INTO board_reply (bor_num,bor_content,boa_num,mem_num) VALUES (board_reply_seq.nextval,#{bor_content},#{boa_num},#{mem_num})")
 	public void insertBoardComment(BoardReplyVO boardReply);
