@@ -74,8 +74,8 @@ public interface PositionDAO
 	@Select("SELECT COUNT(*) FROM position_comment WHERE pos_num=#{pos_num}")
 	public int selectCommentCount(Integer pos_num);
 	
-	// 댓글 리스트 (최신순)
-	public List<PositionCommentVO> selectCommentList_recent(Integer pos_num);
+	// 댓글 리스트
+	public List<PositionCommentVO> selectCommentList(Map<String, Object> map);
 	
 	// 댓글 쓰기
 	@Insert("INSERT INTO position_comment (poc_num, pos_num, mem_num, poc_content) VALUES (position_comment_seq.nextval, #{pos_num}, #{mem_num}, #{poc_content})")

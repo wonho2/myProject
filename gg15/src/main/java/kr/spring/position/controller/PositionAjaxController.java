@@ -17,12 +17,16 @@ import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionCommentVO;
 import kr.spring.position.vo.PositionFavVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class PositionAjaxController
 {
 	@Resource
 	private PositionService positionService;
+	
+	private static final int RowCount = 3;
+	private static final int PageCount = 3;
 	
 /*
  * 게시물 추천
@@ -64,6 +68,7 @@ public class PositionAjaxController
 		}
 
 		return map;
+		
 	}
 	
 /*
@@ -71,19 +76,32 @@ public class PositionAjaxController
  */
 	@RequestMapping("/position/commentList_recent.do")
 	@ResponseBody
-	public Map<String,Object> selectList_recent(@RequestParam int pos_num, @RequestParam int sort_type, HttpSession session)
+	public Map<String,Object> selectList_recent(@RequestParam(value="pageNum",defaultValue="1") int currentPage, @RequestParam int pos_num, @RequestParam int sort_type, HttpSession session)
 	{
-		// 해당 게시물 댓글의 갯수
+		// 페이징 처리
+		Map<String, Object> listMap = new HashMap<String, Object>();
 		int commentCount = positionService.selectCommentCount(pos_num);
+		PagingUtil page = new PagingUtil(currentPage, commentCount, RowCount, PageCount, null);
+		listMap.put("pos_num", pos_num);
+		listMap.put("sort_type", sort_type);
+		listMap.put("start", page.getStartCount());
+		listMap.put("end", page.getEndCount());
+		
+		// 현재 로그인 상태인지 세션으로 확인
+		Integer mem_num = (Integer)session.getAttribute("user_num");
+		if(mem_num != null) listMap.put("mem_num", mem_num);
+		else listMap.put("mem_num", -1);
+		
 		// 댓글 목록
 		List<PositionCommentVO> commentList = Collections.emptyList();
 		if(commentCount > 0)
 		{
-			commentList = positionService.selectCommentList(pos_num, sort_type);
+			commentList = positionService.selectCommentList(listMap);
 		}
 		// ajax에 전달할 map 객체
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("commentCount", commentCount);
+		mapJson.put("rowCount", RowCount);
 		mapJson.put("commentList", commentList);
 		
 		return mapJson;
