@@ -6,29 +6,15 @@
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
-
-<script type="text/javascript">
-	function report(){
-		var report = window.prompt('신고 내용을 입력하세요 :<');
-		if(report==null){
-			alert("신고가 취소되었습니다 :) ");
-		}else{
-			alert("신고가 완료되었습니다 :( ");
-		} 
-			
-		return "/board/boardDetail.do";
-	}
-</script>
-
+ 
 <div class="page-main-style">
 	<div>${board.boa_cate}</div>
 		<h1>${board.boa_title}</h1>
 	<div>
 	<!-- 사용자 닉네임처리 해야함 -->
-	<a href="/member/memberDetail.do?board_num=${board.boa_num}">${memberVO.mem_nick}</a> 
-	
+	<a href="/member/memberDetail.do?board_num=${board.boa_num}">${board.mem_nick}</a> 
 	</div>
-	<div>
+	<div> 
 		작성일 ${board.boa_date} 
 	</div>
 	
@@ -66,9 +52,26 @@
 		<img id="output_fav" src="../resources/images/heart01.png">
 		<span id="output_fcount"></span> 
 		<span id="output_rcount"></span>
-		<input type="button" value="신고" onclick='report()'>
-		
 	</div>
+	
+	<!-- 신고 활성화 -->
+	<div class="align-right">
+	<img id="output_Report" src="../resources/images/siren.png" width=22px onclick='report()'>	
+		<!--  <input type="button" value="신고" onclick='report()'> -->
+		<font id="send_report"> </font>
+	<script type="text/javascript">
+		function report(){
+				var reportWrite = window.prompt("신고 내용을 입력하세요 :<","");
+				if(reportWrite==null){
+					alert("신고가 취소되었습니다 :( ");
+				}else{
+					alert("신고가 완료되었습니다 :) ");
+				};
+		}
+	</script>
+	</div>
+	
+	
 	<hr size="1" width="100%" noshade="noshade">
 	
 <!-- 수정, 삭제 버튼 -->
@@ -88,12 +91,7 @@
 		</script> 
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
 
-</c:if>
-<%-- 	 
-<c:if test="${!empty user_num}">
-		<input type="button" value="좋아요" id="btn_like">
-</c:if>
-	 --%>		
+</c:if>	
 </div>
 <!-- 본문 끝 -->
 

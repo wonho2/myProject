@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
-import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -42,7 +41,11 @@ public class BoardController {
 	public BoardVO initCommand() {
 		return new BoardVO();
 	}	
+//==========================================================//
+	//----------게시판 카탈로그별 정렬---------//
 
+//==========================================================//	
+	
 	//자유게시판  목록
 	@RequestMapping("/board/list.do")
 	public ModelAndView process(
@@ -58,7 +61,7 @@ public class BoardController {
 
 		//페이징 처리
 		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
-
+		
 		//목록호출
 		List<BoardVO> list = null;
 		if(count > 0) {
@@ -83,7 +86,7 @@ public class BoardController {
 
 		return mav;  
 	}
-
+	
 	//자유게시판 게시글 쓰기
 	@RequestMapping(value="/board/boardWrite.do", method=RequestMethod.GET)
 	public String Form()

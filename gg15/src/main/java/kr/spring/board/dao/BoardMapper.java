@@ -11,7 +11,6 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.board.vo.BoardFavVO;
 import kr.spring.board.vo.BoardVO;
 import kr.spring.board.vo.BoardReplyVO;
-import kr.spring.position.vo.PositionFavVO;
 
 public interface BoardMapper {
 
@@ -19,7 +18,7 @@ public interface BoardMapper {
 	public int selectRowCount();
 
 	//자유게시판 글 목록
-	public List<BoardVO> selectList(Map<String, Object> map);	
+	public List<BoardVO> selectList(Map<String,Object> map);	
 
 	//글쓰기
 	@Insert("INSERT INTO board (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num,boa_date) "
@@ -43,10 +42,10 @@ public interface BoardMapper {
 
 	//=================댓글================//
 	//댓글 리스트
-	public List<BoardReplyVO> selectBoardComment(Map<String, Object> map);
+	public List<BoardReplyVO> selectBoardComment(Map<String,Object> map);
 	//댓글 갯수
 	@Select("SELECT COUNT(*) FROM board_reply WHERE boa_num=#{boa_num}")
-	public int selectBoardCommentCount(Map<String, Object> map);
+	public int selectBoardCommentCount(Map<String,Object> map);
 	//댓글 작성
 	@Insert("INSERT INTO board_reply (bor_num,bor_content,boa_num,mem_num) VALUES (board_reply_seq.nextval,#{bor_content},#{boa_num},#{mem_num})")
 	public void insertBoardComment(BoardReplyVO boardReply);
@@ -71,12 +70,14 @@ public interface BoardMapper {
 	public void deleteFav(Integer bof_num);
 	@Delete("DELETE FROM boa_fav WHERE boa_num=#{boa_num}")
 	public void deleteFavByBoaNum(Integer boa_num);
-
-	
-	//신고
-	//글쓰기
-	@Insert("INSERT INTO boa_report (boa_num,boa_cate,boa_title,boa_uploadfile,boa_filename,boa_content,boa_mode,mem_num,boa_date) "
-			+ "VALUES (board_seq.nextval,#{boa_cate},#{boa_title},#{boa_uploadfile},#{boa_filename},#{boa_content},#{boa_mode},#{mem_num},SYSDATE)")
-	public void sendReport(BoardVO vo);
-
+/*	
+	//=================게시글신고=================//
+	public List<BoardReportVO> selectReport(Map<String,Object> map);
+	@Insert("INSERT INTO boa_report (bop_num,bop_content,boa_num,mem_num) VALUES (boa_report_seq.nextval,#{bop_content},#{boa_num},#{mem_num})")
+	public void insertreportComment(BoardReportVO boardReport);
+	@Select("SELECT * from boa_report where boa_num=#{boa_num} and mem_num=#{mem_num}")
+	public BoardReportVO selectReport(BoardReportVO report);
+	@Insert("INSERT INTO boa_report (boa_report,boa_num,mem_num) VALUES (board_seq.nextval,#{boa_num},#{mem_num})")
+	public void insertReport(BoardReportVO boardReport);
+*/
 }

@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	function cate(){
 		alert('test');
-	}
+	} 
 </script>
 <div class="page-main-style">
 	<h2>자유게시판 목록</h2>
@@ -14,11 +14,15 @@
 		<c:if test="${!empty user_num}">
 		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
 		</c:if>
+		
+		<c:if test="${board.mem_auth == 3}">
+		<input type="button" value="관리자 PAGE" onclick="location.href='reportPage.do'">
+		</c:if>
 	</div>
 	 
 			<select name="boa_cate">
 				<optgroup label="카테고리" >
-					<option value="All">전체</option>
+					<option value="All" >전체</option>
 					<option value="gaming_machine">게이밍 기기</option>
 					<option value="game_talk">게임 이야기</option>
 					<option value="Discode">디스코드 홍보</option>
@@ -28,7 +32,7 @@
 					<option value="img_video">사진/비디오</option>
 					<option value="art">팬아트</option>
 					
-					<c:if test="board.mem_auth() == 3">
+					<c:if test="board.mem_auth == 3">
 					<option value="report">신고내용 보기</option>
 					</c:if >
 					

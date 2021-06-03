@@ -3,7 +3,7 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
- 
+  
 <tiles-definitions>
 	<definition name="boardList" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판"/>
@@ -29,6 +29,11 @@
 	<definition name="boardModify" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판 게시판 글 수정"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/boardModify.jsp"/>
+	</definition>
+	
+	<definition name="boardmanager" extends="main">
+		<put-attribute name="title" value="gg.15 - 자유게시판 신고 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/reportPage.jsp"/>
 	</definition>
 	
 </tiles-definitions>

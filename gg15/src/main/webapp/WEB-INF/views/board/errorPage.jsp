@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 자유게시판 errorPage 시작 -->
-<div>
+<div> 
 	<!-- 회원 전용 게시글 -->
 	<c:if test="${empty user_num}">
 	<section class="align-center">

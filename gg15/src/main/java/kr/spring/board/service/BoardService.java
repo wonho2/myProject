@@ -5,19 +5,18 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import kr.spring.board.dao.BoardMapper;
 import kr.spring.board.vo.BoardVO;
 import kr.spring.board.vo.BoardFavVO;
 import kr.spring.board.vo.BoardReplyVO;
+import kr.spring.board.vo.BoardReportVO;
+import kr.spring.board.vo.BoardStatusVO;
 
 @Service("boardService")
 public class BoardService {
-
+ 
 	//의존 관계 설정
 	@Resource
 	private BoardMapper boardMapper;
@@ -32,7 +31,34 @@ public class BoardService {
 	public int selectRowCount() {
 		return boardMapper.selectRowCount();
 	}
-
+	//카테고리별  게시물 수
+/*		public int selectCateCount(BoardCate cate)
+		{
+			switch(cate)
+			{
+				case All :
+					return BoardMapper.selectRowCount();
+				case gaming_machine :
+					return BoardMapper.selectCateCount("게이밍 기기");
+				case game_talk :
+					return BoardMapper.selectCateCount("게임 이야기");
+				case Discode :
+					return BoardMapper.selectCateCount("디스코드 홍보");
+				case Tier :
+					return BoardMapper.selectCateCount("티어별 게시판");
+				case Champion :
+					return BoardMapper.selectCateCount("챔피언 게시판");
+				case Humor :
+					return BoardMapper.selectCateCount("유머 게시판");
+				case img_video :
+					return BoardMapper.selectCateCount("사진/비디오");
+				case art :
+					return BoardMapper.selectCateCount("팬아트");
+				default :
+					return -1;
+			}
+		}
+	*/	
 	//글쓰기
 	public void insertBoard(BoardVO vo) {
 		boardMapper.insertBoard(vo);
@@ -62,6 +88,7 @@ public class BoardService {
 		boardMapper.updateHit(boa_num);
 	}
 
+	
 	//좋아요 증가
 	public void updateFavUp(Integer boa_num) {
 		//boardMapper.updateFavUp(boa_num);
@@ -71,24 +98,24 @@ public class BoardService {
 	public void updateFavDown(Integer boa_num) {
 		//boardMapper.updateFavDown(boa_num);
 	}
-
+	
 	//댓글
 	public List<BoardReplyVO> selectBoardComment(Map<String, Object> map) {
 		return boardMapper.selectBoardComment(map);
 	}
-
+	//댓글 갯수
 	public int selectBoardCommentCount(Map<String, Object> map) {
 		return boardMapper.selectBoardCommentCount(map);
 	}
-
+	//댓글 쓰기
 	public void insertBoardComment(BoardReplyVO board_reply) {
 		boardMapper.insertBoardComment(board_reply);
 	}
-
+	//댓글 수정
 	public void updateBoardComment(BoardReplyVO board_reply) {
 		boardMapper.updateBoardComment(board_reply);
 	}
-  
+	//댓글 삭제
 	public void deleteBoardComment(Integer bor_num) {
 		boardMapper.deleteBoardComment(bor_num);
 	}	
@@ -105,4 +132,25 @@ public class BoardService {
 	public void deleteFav(Integer bof_num) {
 		boardMapper.deleteFav(bof_num);
 	}
+
+/*
+	//=============게시글 신고==================//
+	public List<BoardReportVO> selectReport(Map<String, Object> map) {
+		return boardMapper.selectReport(map);
+	}
+	
+	public void insertReport(BoardReportVO boardReport) {
+		boardMapper.insertReport(boardReport);
+	}
+*/
+	//=============게시글 차단==================//
+/*	public BoardStatusVO selectStatus(BoardStatusVO status) {
+		return boardMapper.selectStatus(status);
+	}
+	public void insertStatus(BoardStatusVO boardStatus) {
+		boardMapper.insertStatus(boardStatus);
+	}
+	public void deleteStatus(Integer boa_status) {
+		boardMapper.deleteStatus(boa_status);
+	}*/
 }

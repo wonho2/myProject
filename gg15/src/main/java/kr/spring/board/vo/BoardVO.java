@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-
+ 
 	private int mem_auth;//회원 등급
 	private int mem_num;//회원번호
 	private int boa_num;//게시글번호
@@ -22,10 +22,11 @@ public class BoardVO {
 	private Date boa_date;//게시글 작성일
 	private byte[] boa_uploadfile;//업로드 파일
 	private String boa_filename;//업로드 파일 이름
-	private int boa_mode; //회원정용 글
+	private int boa_mode; //회원전용 글
 	private int boa_status; // 차단상태
 	private int boa_hit;	//조회수
 	private int bof_num;	//좋아요
+	private int boa_report; //신고
 	private String mem_nick;
 	 
 	//업로드 파일 처리
@@ -138,6 +139,14 @@ public class BoardVO {
 
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
+	}
+	
+	public int getBoa_report() {
+		return boa_report;
+	}
+
+	public void setBoa_report(int boa_report) {
+		this.boa_report = boa_report;
 	}
 
 	@Override

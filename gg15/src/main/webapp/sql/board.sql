@@ -8,7 +8,7 @@ CREATE TABLE board(
 	boa_report NUMBER(1) default 1 NOT NULL ,  /*신고설정 0-미신고 1- 신고*/
 	boa_uploadfile blob, /*업로드 파일*/
 	boa_filename VARCHAR2(300),/*업로드파일 이름*/
-	boa_content clob NOT NULL, /*게시글 내용*/
+	boa_content clob NOT NULL, /*게시글 내용*/ 
 	boa_date date, /*게시 날짜*/
 	boa_hit number  default 0 not null, /*조회수*/
 	constraint board_pk primary key(boa_num),
@@ -36,7 +36,23 @@ CREATE TABLE boa_fav(
 	constraint boa_fav_fk_2 FOREIGN key(mem_num) references member (mem_num)
 );
 
+CREATE TABLE boa_report(
+	boa_report NUMBER(1) default 1 NOT NULL,  /*신고설정 0-미신고 1- 신고*/
+	bop_num number not null,/*신고 번호*/
+	boa_num number not null,/*게시글 번호*/
+	bop_content varchar2(400), /*신고 내용*/
+	bop_date date default sysdate not null,/*신고 날짜*/
+	mem_num number,/*사용자 번호*/
+	constraint bop_num_pk primary key(bop_num),
+	constraint boa_report_fk_1 FOREIGN key(boa_num) references board (boa_num),
+	constraint boa_report_fk_3 FOREIGN key(mem_num) references member (mem_num)
+	
+);
+
  
 create sequence board_seq;
 create sequence board_reply_seq;
 create sequence board_fav_seq;
+
+
+create sequence board_report_seq;

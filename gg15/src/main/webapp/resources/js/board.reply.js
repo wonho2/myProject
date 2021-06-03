@@ -3,6 +3,7 @@ $(document).ready(function(){
 	var currentPage;
 	var count;
 	var rowCount;
+	 
 	//댓글 목록
 	function selectData(pageNum,boa_num){
 		currentPage = pageNum;
@@ -354,4 +355,122 @@ $(document).ready(function(){
 	//초기 데이터(목록) 호출
 	selectFav($('#boa_num').val());
 	//===========게시글 추천 끝 ==============//
+	
+/*	
+	
+	//===========게시글 신고 시작=============//
+	var ssiren;
+	
+	//신고 등록
+	$('#output_report').click(function(){	
+		$.ajax({
+			type:'post',
+			data:{boa_num:$('#boa_num').val()},
+			url:'writeReport.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result=='logout'){
+					alert('로그인 후 신고해주세요!');
+				}else if(data.result=='success'){
+					displayㄲeport(data);
+				}else{
+					alert('등록시 오류 발생!');
+				} 
+			},
+			error:function(){
+				alert('네트워크 오류!');
+			}
+		});
+	});
+	
+	//신고 표시
+	function displayReport(data){
+		status = data.status;
+		var count = data.count;
+		var output;
+		if(status=='noReport'){
+			output = "'../resources/images/siren.png'" ;
+		}else{
+			output = "'../resources/images/siren2.png'";
+		}			
+		//문서 객체에 추가
+		$('#output_Report').attr('src',output);
+		$('#output_Rcount').text(count);
+	} 
+	
+	
+	//초기 데이터(목록) 호출
+	selectReport($('#boa_num').val());
+	//===========게시글 신고 끝 ==============//
+	
+*/
+/*	
+	//===========게시글 차단 시작 ==============//
+	var status;
+	//차단 수 
+	function selectStatus(boa_Status){
+		$.ajax({
+			type:'post',
+			data:{boa_num:boa_num},
+			url:'getStatus.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result=='success'){
+					displayStatus(data);
+				}else{
+					alert('게시글 차단 읽기 오류');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류');
+			}
+		});
+	}
+	
+	//차단 등록
+	$('#output_Status').click(function(){	
+		$.ajax({
+			type:'post',
+			data:{boa_num:$('#boa_num').val()},
+			url:'writeStatus.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result=='logout'){
+					alert('로그인 후 좋아요를 눌러주세요!');
+				}else if(data.result=='success'){
+					displayStatus(data);
+				}else{
+					alert('등록시 오류 발생!');
+				} 
+			},
+			error:function(){
+				alert('네트워크 오류!');
+			}
+		});
+	});
+	
+	//차단 표시
+	function displayStatus(data){
+		status = data.status;
+		var output;
+		if(status=='noFav'){
+			output = '../resources/images/heart01.png';
+		}else{
+			output = '../resources/images/heart02.png';
+		}			
+		//문서 객체에 추가
+		$('#output_Status').attr('src',output);
+	} 
+	
+	
+	//초기 데이터(목록) 호출
+	selectStatus($('#boa_num').val());
+	//===========게시글 차단 끝 ==============//
+	*/
 });

@@ -1,7 +1,7 @@
 package kr.spring.board.vo;
 
 public class BoardReplyVO {
-	
+	 
 	private int mem_num;//회원번호
 	private int boa_num;//게시글번호
 	private int bor_num;//댓글번호

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardFavVO;
 import kr.spring.board.vo.BoardReplyVO;
+import kr.spring.board.vo.BoardReportVO;
+import kr.spring.board.vo.BoardStatusVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -209,7 +211,7 @@ public class BoardAjaxController{
 	public Map<String,Object> writeFav(BoardFavVO fav,HttpSession session){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<부모글 좋아용 등록>> : " + fav);
+			log.debug("<<부모글 좋아요 등록>> : " + fav);
 		}
 
 		Map<String,Object> map = 
@@ -223,7 +225,7 @@ public class BoardAjaxController{
 			fav.setMem_num(user_num);
 
 			if(log.isDebugEnabled()) {
-				log.debug("<<부모글 좋아용 등록>> : " + fav);
+				log.debug("<<부모글 좋아요 등록>> : " + fav);
 			}
 			
 			BoardFavVO boardFav = boardService.selectFav(fav);
@@ -244,4 +246,141 @@ public class BoardAjaxController{
 		}
 		return map;
 	}
+	
+	//================================================================//	
+	//게시물 신고 목록
+/*
+  	@RequestMapping("/board/getReport.do")
+	@ResponseBody
+	public Map<String,Object> getReport(BoardReportVO report,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<게시판 신고>> : " + report);
+		}
+
+		Map<String,Object> mapJson = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			mapJson.put("result", "success");
+			mapJson.put("siren", "noReport");
+		}else {
+			//로그인된 아이디 셋팅
+			report.setMem_num(user_num);
+
+			BoardReportVO boardReport = boardService.selectReport(report);
+
+			if(boardReport!=null) {
+				mapJson.put("result", "success");
+				mapJson.put("siren", "yesReport");
+			}else {
+				mapJson.put("result", "success");
+				mapJson.put("siren", "noReport");
+			}
+		}
+ 
+		return mapJson;
+	}
+	// 신고 등록
+	@RequestMapping("/board/writeReport.do")
+	@ResponseBody
+	public Map<String,Object> writeReport(BoardReportVO report,HttpSession session,
+										  HttpServletRequest request){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<부모글 신고 등록>> : " + report);
+		}
+
+		Map<String,Object> map = 
+				new HashMap<String,String>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+
+			//댓글 등록
+			boardService.insertReport(BoardReportVO);
+			map.put("result", "success");
+		}
+
+		return map;
+	}
+*/
+	//================================================================//
+	
+	//게시물 차단
+	/*@RequestMapping("/board/getStatus.do")
+	@ResponseBody
+	public Map<String,Object> getStatus(BoardStatusVO cate,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<게시판 차단>> : " + status);
+		}
+
+		Map<String,Object> mapJson = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			mapJson.put("result", "success");
+			mapJson.put("status", "noStatus");
+		}else {
+			//로그인된 아이디 셋팅
+			status.setMem_num(user_num);
+
+			BoardStatusVO boardStatus = boardService.selectStatus(status);
+
+			if(boardStatus!=null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesStatus");
+			}else {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noStatus");
+			}
+		}
+ 
+		return mapJson;
+	}
+	//부모글 좋아요 등록
+	@RequestMapping("/board/writeStatus.do")
+	@ResponseBody
+	public Map<String,Object> writeStatus(BoardStatusVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<부모글 차단 등록>> : " + Status);
+		}
+
+		Map<String,Object> map = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+			//로그인된 회원번호 셋팅
+			fav.setMem_num(user_num);
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<부모글 차단 등록>> : " + status);
+			}
+			
+			BoardStatusVO boardStatus = boardService.selectStatus(Status);
+
+			if(boardStatus!=null) {
+				boardService.deleteStatus(boardStatus.getBoa_status());
+
+				map.put("result", "success");
+				map.put("status", "noStatus");
+			}else {
+				boardService.insertStatus(status);
+
+				map.put("result", "success");
+				map.put("status", "yesStatus");
+			}
+		}
+		return map;
+	}
+	*/
 }

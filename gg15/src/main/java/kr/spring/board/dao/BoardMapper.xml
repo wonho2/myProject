@@ -77,5 +77,29 @@
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>                                 
  	</select>
-	
+	<!-- ====== 신고 ======== -->
+<!-- 
+	<select id="selectReport" parameterType="map"
+								resultType="boardReportVO">
+	SELECT*FROM (
+			SELECT
+			  m.*,
+			  rownum rnum
+			 FROM (SELECT
+			 		*
+			 	   FROM (SELECT
+			 	   			bop_num,
+			 	   			bop_content,
+			 	   			TO_CHAR(bop_date,'YYYY-MM-DD HH24:MI:SS') bop_date,
+			 	   			boa_num,
+			 	   			mem_num
+			 	   		FROM boa_report where boa_num=#{boa_num}) r
+			 	   		JOIN member_detail m
+			 	   		ON r.mem_num = m.mem_num
+			 	   		ORDER BY bop_num DESC)m)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}]
+		]>
+	</select>
+-->
 </mapper>
