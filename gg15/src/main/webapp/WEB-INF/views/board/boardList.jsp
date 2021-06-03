@@ -27,7 +27,7 @@
 					<option value="game_talk">게임 이야기</option>
 					<option value="Discode">디스코드 홍보</option>
 					<option value="Tier">티어별 게시판</option>
-					<option value="Champion">챔피언 게시판</option>
+					<option value="Champion">챔피언별 게시판</option>
 					<option value="Humor">유머 게시판</option>
 					<option value="img_video">사진/비디오</option>
 					<option value="art">팬아트</option>

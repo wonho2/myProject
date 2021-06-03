@@ -33,7 +33,11 @@
 		              b.boa_cate,
 		              b.boa_mode
 		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num ORDER BY b.boa_num DESC)a)
-		            
+		             <where>
+		              	<if test = "typeValue != '전체보기'">
+		              		b.bao_cate = #{typeValue}
+		              	</if>
+	              	</where>
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>

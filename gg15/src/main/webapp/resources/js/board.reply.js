@@ -406,7 +406,7 @@ $(document).ready(function(){
 	//===========게시글 신고 끝 ==============//
 	
 */
-/*	
+	
 	//===========게시글 차단 시작 ==============//
 	var status;
 	//차단 수 
@@ -441,9 +441,7 @@ $(document).ready(function(){
 			cache:false,
 			timeout:30000,
 			success:function(data){
-				if(data.result=='logout'){
-					alert('로그인 후 좋아요를 눌러주세요!');
-				}else if(data.result=='success'){
+				if(data.result=='success'){
 					displayStatus(data);
 				}else{
 					alert('등록시 오류 발생!');
@@ -460,9 +458,9 @@ $(document).ready(function(){
 		status = data.status;
 		var output;
 		if(status=='noFav'){
-			output = '../resources/images/heart01.png';
+			output = '../resources/images/siren2.png';
 		}else{
-			output = '../resources/images/heart02.png';
+			output = '../resources/images/siren1.png';
 		}			
 		//문서 객체에 추가
 		$('#output_Status').attr('src',output);
@@ -471,6 +469,7 @@ $(document).ready(function(){
 	
 	//초기 데이터(목록) 호출
 	selectStatus($('#boa_num').val());
+	
 	//===========게시글 차단 끝 ==============//
-	*/
+	
 });

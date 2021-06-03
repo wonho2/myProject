@@ -35,6 +35,5 @@
 	<div>  
 		<input type="button" id="output_status" value="게시물 차단 하기"/> 
 	</div>
-		
 </div>
 <!-- 자유게시판 reportPage 끝 -->

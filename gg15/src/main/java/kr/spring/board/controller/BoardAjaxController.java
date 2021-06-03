@@ -309,9 +309,9 @@ public class BoardAjaxController{
 	}
 */
 	//================================================================//
-	
+/*	
 	//게시물 차단
-	/*@RequestMapping("/board/getStatus.do")
+	@RequestMapping("/board/getStatus.do")
 	@ResponseBody
 	public Map<String,Object> getStatus(BoardStatusVO cate,HttpSession session){
 
@@ -343,7 +343,7 @@ public class BoardAjaxController{
  
 		return mapJson;
 	}
-	//부모글 좋아요 등록
+	//부모글 차단 등록
 	@RequestMapping("/board/writeStatus.do")
 	@ResponseBody
 	public Map<String,Object> writeStatus(BoardStatusVO fav,HttpSession session){
@@ -382,5 +382,5 @@ public class BoardAjaxController{
 		}
 		return map;
 	}
-	*/
+*/
 }

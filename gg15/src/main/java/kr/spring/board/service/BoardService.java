@@ -152,5 +152,6 @@ public class BoardService {
 	}
 	public void deleteStatus(Integer boa_status) {
 		boardMapper.deleteStatus(boa_status);
-	}*/
+	
+}*/
 }

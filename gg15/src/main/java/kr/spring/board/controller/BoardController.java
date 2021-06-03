@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardVO;
+import kr.spring.position.etc.PositionType;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -43,7 +44,13 @@ public class BoardController {
 	}	
 //==========================================================//
 	//----------게시판 카탈로그별 정렬---------//
-
+/*	private ModelAndView getBoardList(int currentPage, String sortAttrName, BoardCate type)
+	{
+	@RequestMapping("/position/list_All.do")
+	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
+	{
+		return getBoardList(currentPage, CateType.RECENT, BoardType.SUPPORT);
+	}*/
 //==========================================================//	
 	
 	//자유게시판  목록
