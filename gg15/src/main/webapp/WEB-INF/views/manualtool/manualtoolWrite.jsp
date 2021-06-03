@@ -10,11 +10,6 @@
 		var man_content = document.getElementById("man_content");
 		var btn_submit = document.getElementById("btn_submit");
 		//등록 이벤트 처리
-		
-		/* 
-		제목이 일정 길이 이상 넘어가면 바로 500 에러페이지로 넘어가는데 그러지 말고 '제목이 너무 깁니다' 같이 경고창 띄우게끔..
-		*/
-		
 		btn_submit.onclick = function() {
 			if(man_title.value.trim() == '') {
 				alert("제목을 입력하세요");
@@ -76,7 +71,7 @@
 			</li>
 			<li>
 				<label for="man_content">내용</label>
-				<form:textarea cols="50" rows="20" path="man_content"/>
+				<form:textarea cols="40" rows="20" path="man_content"/>
 				<form:errors path="man_content"/>
 			</li>
 		</ul>

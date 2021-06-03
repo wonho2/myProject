@@ -6,7 +6,31 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/man.reply.js"></script>
 <!-- 공략 게시판 디테일 시작 -->
 <!-- 게시물 상세 -->
-<div>
+
+<div class="page-main-style">
+	<div>[${manualtoolVO.man_champion}] | ${manualtoolVO.man_season}</div>
+		<h1>${manualtoolVO.man_title}</h1>
+	<div>
+	<!-- 사용자 닉네임처리 해야함 -->
+	<!-- <a href="/member/memberDetail.do?man_num=${manualtoolVO.man_num}">${memberVO.mem_nick}</a>  -->
+	${manualtoolVO.mem_nick}
+	</div>
+	<div>
+		${manualtoolVO.man_update}
+	</div>
+	<hr size="1" noshade="noshade" width="100%">
+	<c:if test="${fn:endsWith(manualtoolVO.man_filename,'.jpg') || 
+	              fn:endsWith(manualtoolVO.man_filename,'.JPG') ||
+	              fn:endsWith(manualtoolVO.man_filename,'.gif') ||
+	              fn:endsWith(manualtoolVO.man_filename,'.GIF') ||
+	              fn:endsWith(manualtoolVO.man_filename,'.png') ||
+	              fn:endsWith(manualtoolVO.man_filename,'.PNG')}">
+	<div>
+		<img src="imageView.do?man_num=${manualtoolVO.man_num}" style="max-width:500px">
+	</div>
+	</c:if>
+	
+<!-- <div>
 	<h1>${manualtoolVO.man_title}</h1>
 	<section>
 		[${manualtoolVO.man_champion}] | ${manualtoolVO.man_season} | ${manualtoolVO.man_update} | ${manualtoolVO.mem_nick}
@@ -27,12 +51,24 @@
 			<img src="imageView.do?man_num=${manualtoolVO.man_num}">
 		</div>
 	</c:if>
+ -->
+	<hr size="1" noshade="noshade" width="100%">
 	<p>
 		${manualtoolVO.man_content}
 	</p>
+	<hr size="1" noshade="noshade" width="100%">
+	 <!-- 추천 버튼 -->
+	<div>  
+		<img id="output_fav" src="../resources/images/heart01.png">
+		<span id="output_fcount"></span> 
+		<span id="output_rcount"></span>
+	</div>
+	<hr size="1" width="100%" noshade="noshade">
+</div>
+
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == manualtoolVO.mem_num}">
-	<div class="align-right">
+	<div class="align-left">
 		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		<input type="button" value="삭제" onclick="man_delete();">
 		<script type="text/javascript">
@@ -45,11 +81,7 @@
 		</script>
 	</div>
 </c:if>
-	 <!-- 추천 버튼 -->
-	<p class="align-center">
-		<input type="button" value="추천" id="btn_fav">
-	</p>
-</div>
+
 <!--  댓글 시작 -->
 <hr size="1" width="100%">
 	<div id="reply_div">

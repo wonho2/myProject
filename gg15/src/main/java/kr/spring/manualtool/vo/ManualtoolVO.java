@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +15,10 @@ public class ManualtoolVO {
 	private String man_champion;
 	private String man_season;
 	@NotEmpty
-	private String man_title, man_content;
+	@Size(max=15)
+	private String man_title;
+	@NotEmpty
+	private String man_content;
 	private byte[] man_uploadfile;
 	private String man_filename;
 	private Date man_date, man_update;

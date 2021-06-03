@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.manualtool.vo.ManualtoolVO;
+import kr.spring.manualtool.vo.ManualtoolFavVO;
 import kr.spring.manualtool.vo.ManualtoolCommentVO;
 
 public interface ManualtoolDAO {
@@ -35,18 +36,6 @@ public interface ManualtoolDAO {
 	//해당 게시물을 추천했는지 체크
 	@Select("SELECT COUNT(*) FROM man_fav WHERE man_num=#{man_num}, mem_num=#{mem_num}")
 	public int selectClickedFav(Integer man_num, Integer mem_num);
-		
-	//해당 게시물의 추천 수
-	@Select("SELECT COUNT(*) FROM man_fav WHERE man_num=#{man_num}")
-	public int selectFavCount(Integer man_num);
-
-	//추천수 증가 (추천)
-	@Update("UPDATE manualtool SET man_fav = man_fav+1 WHERE man_num = #{man_num}")
-	public void updateFavUp(Integer man_num);
-
-	//추천수 감소 (추천 취소)
-	@Update("UPDATE manualtool SET man_fav = man_fav-1 WHERE man_num = #{man_num}")
-	public void updateFavDown(Integer man_num);
 
 	//댓글수 증가 (댓글 작성)
 	@Update("UPDATE manualtool SET man_comment = man_comment+1 WHERE man_num = #{man_num}")
@@ -77,6 +66,17 @@ public interface ManualtoolDAO {
 	@Delete("DELETE FROM manualtool_reply WHERE man_num=#{man_num}")
 	public void deleteReplyByBoardNum(Integer man_num);
 
+	//=================게시글 좋아요=================//
+	@Select("SELECT * from manualtool_fav where man_num=#{man_num} and mem_num=#{mem_num}")
+	public ManualtoolFavVO selectFav(ManualtoolFavVO fav);
+	@Select("SELECT COUNT(*) from manualtool_fav where man_num=#{man_num}")
+	public int selectFavCount(Integer man_num);
+	@Insert("INSERT INTO manualtool_fav (maf_num,man_num,mem_num) VALUES (manualtool_fav_seq.nextval,#{man_num},#{mem_num})")
+	public void insertFav(ManualtoolFavVO manualtoolFav);
+	@Delete("DELETE FROM manualtool_fav WHERE maf_num=#{maf_num}")
+	public void deleteFav(Integer maf_num);
+	@Delete("DELETE FROM manualtool_fav WHERE man_num=#{man_num}")
+	public void deleteFavByManNum(Integer man_num);
 
 	
 }

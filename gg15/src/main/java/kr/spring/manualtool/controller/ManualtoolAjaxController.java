@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.spring.manualtool.vo.ManualtoolFavVO;
+import kr.spring.board.vo.BoardFavVO;
 import kr.spring.manualtool.service.ManualtoolService;
 import kr.spring.manualtool.vo.ManualtoolCommentVO;
 import kr.spring.util.PagingUtil;
@@ -146,5 +148,83 @@ public class ManualtoolAjaxController {
 
 		return map;
 	}
+	
+	//게시물 좋아요
+		@RequestMapping("/manualTool/getFav.do")
+		@ResponseBody
+		public Map<String,Object> getFav(ManualtoolFavVO fav, HttpSession session){
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<게시물 좋아요>> : " + fav);
+			}
+
+			Map<String,Object> mapJson = 
+					new HashMap<String,Object>();
+
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			if(user_num==null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", manualtoolService.selectFavCount(fav.getMan_num()));
+			}else {
+				//로그인된 아이디 셋팅
+				fav.setMem_num(user_num);
+
+				ManualtoolFavVO manualtoolFav = manualtoolService.selectFav(fav);
+
+				if(manualtoolFav!=null) {
+					mapJson.put("result", "success");
+					mapJson.put("status", "yesFav");
+					mapJson.put("count", manualtoolService.selectFavCount(fav.getMan_num()));
+				}else {
+					mapJson.put("result", "success");
+					mapJson.put("status", "noFav");
+					mapJson.put("count", manualtoolService.selectFavCount(fav.getMan_num()));
+				}
+			}
+	 
+			return mapJson;
+		}
+		//부모글 좋아요 등록
+		@RequestMapping("/manualTool/writeFav.do")
+		@ResponseBody
+		public Map<String,Object> writeFav(ManualtoolFavVO fav,HttpSession session){
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<부모글 좋아용 등록>> : " + fav);
+			}
+
+			Map<String,Object> map = 
+					new HashMap<String,Object>();
+
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			if(user_num==null) {
+				map.put("result", "logout");
+			}else {
+				//로그인된 회원번호 셋팅
+				fav.setMem_num(user_num);
+
+				if(log.isDebugEnabled()) {
+					log.debug("<<부모글 좋아용 등록>> : " + fav);
+				}
+				
+				ManualtoolFavVO boardFav = manualtoolService.selectFav(fav);
+
+				if(boardFav!=null) {
+					manualtoolService.deleteFav(boardFav.getMaf_num());
+
+					map.put("result", "success");
+					map.put("status", "noFav");
+					map.put("count", manualtoolService.selectFavCount(fav.getMan_num()));
+				}else {
+					manualtoolService.insertFav(fav);
+
+					map.put("result", "success");
+					map.put("status", "yesFav");
+					map.put("count", manualtoolService.selectFavCount(fav.getMan_num()));
+				}
+			}
+			return map;
+		}
 
 }

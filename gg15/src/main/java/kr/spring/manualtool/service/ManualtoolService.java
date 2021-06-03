@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.manualtool.dao.ManualtoolDAO;
 import kr.spring.manualtool.vo.ManualtoolVO;
+import kr.spring.manualtool.vo.ManualtoolFavVO;
 import kr.spring.manualtool.vo.ManualtoolCommentVO;
 
 @Service("manualtoolService")
@@ -16,6 +17,11 @@ public class ManualtoolService {
 	//의존 관계 설정
 	@Resource
 	private ManualtoolDAO manualtoolDAO;
+	
+	//글 목록
+	public List<ManualtoolVO> selectList(Map<String, Object> map){
+		return manualtoolDAO.selectList(map);
+	}
 	
 	//글쓰기
 	public void insertManualtool(ManualtoolVO vo) {
@@ -25,11 +31,6 @@ public class ManualtoolService {
 	//총 레코드 수
 	public int selectManualtoolCount() {
 		return manualtoolDAO.selectManualtoolCount();
-	}
-	
-	//글 목록
-	public List<ManualtoolVO> selectList(Map<String, Object> map){
-		return manualtoolDAO.selectList(map);
 	}
 	
 	//글 상세 페이지
@@ -42,19 +43,18 @@ public class ManualtoolService {
 		manualtoolDAO.updateHit(man_num);
 	}
 	
-	//해당 게시물의 추천 수
+	//=============게시글 좋아요==================//
+	public ManualtoolFavVO selectFav(ManualtoolFavVO fav) {
+		return manualtoolDAO.selectFav(fav);
+	}
 	public int selectFavCount(Integer man_num) {
 		return manualtoolDAO.selectFavCount(man_num);
 	}
-	
-	//추천수 증가
-	public void updateFavUp(Integer man_num) {
-		manualtoolDAO.updateFavUp(man_num);
+	public void insertFav(ManualtoolFavVO manualtoolFav) {
+		manualtoolDAO.insertFav(manualtoolFav);
 	}
-	
-	//추천수 감소
-	public void updateFavDown(Integer man_num) {
-		manualtoolDAO.updateFavDown(man_num);
+	public void deleteFav(Integer maf_num) {
+		manualtoolDAO.deleteFav(maf_num);
 	}
 	
 	/*
@@ -81,6 +81,8 @@ public class ManualtoolService {
 	
 	//글 삭제
 	public void deleteManualtool(Integer man_num) {
+		//게시글 좋아요를 먼저 삭제
+		manualtoolDAO.deleteFavByManNum(man_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
 		manualtoolDAO.deleteReplyByBoardNum(man_num);
 		manualtoolDAO.deleteManualtool(man_num);

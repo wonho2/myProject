@@ -4,6 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.manualtool.dao.ManualtoolDAO">
 
+<!-- 총 게시글 수-->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM manualtool mt
+		JOIN member m
+		ON mt.mem_num = m.mem_num
+	</select>
+
 <!-- 글 목록 -->
 	<select id="selectList" parameterType="map" resultType="manualtoolVO">
 		SELECT
