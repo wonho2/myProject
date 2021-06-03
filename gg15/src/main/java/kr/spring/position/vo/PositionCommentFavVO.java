@@ -2,9 +2,9 @@ package kr.spring.position.vo;
 
 public class PositionCommentFavVO 
 {
-	private int pocf_num;
-	private int poc_num;
-	private int mem_num;
+	private int pocf_num; // 댓글 추천 번호
+	private int poc_num; // 댓글 번호
+	private int mem_num; // 추천을 누른 회원 번호
 	
 	public int getPocf_num() {
 		return pocf_num;

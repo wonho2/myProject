@@ -4,7 +4,9 @@ $(document).ready(function()
 /*
  * 전역변수, 초기화
  */
-	var count; // 댓글 수
+	var currentPage;
+	var pageCount;
+	var rowCount;
 	defaultCommentListSort();
 	
 /*
@@ -18,9 +20,8 @@ $(document).ready(function()
  */
 	function defaultCommentListSort()
 	{
-		alert("defaultCommentListSort"); // 여기까진 출력됨
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		selectCommentList($("#pos_num").val(), sort.RECENT, sortUrl.RECENT);
+		selectCommentList(1, $("#pos_num").val(), sort.RECENT, sortUrl.RECENT);
 	}
 	
 /*
@@ -28,13 +29,17 @@ $(document).ready(function()
  * 미구현 부분 : 추천, 비추천 버튼 이미지, 추천수
  * 교훈 : 페이징 처리 하자
  */
-	function selectCommentList(pos_num, sort_type, url)
+	function selectCommentList(pageNum, pos_num, sort_type, url)
 	{
-		alert("selectCommentList"); // 출력안됨
+		currentPage = pageNum;
+		if(pageNum == 1)
+		{
+			$("#output_commentList").empty();
+		}
 		
 		$.ajax({
 			type:'get',
-			data:{pos_num:pos_num, sort_type:sort_type},
+			data:{pageNum:pageNum, pos_num:pos_num, sort_type:sort_type},
 			url:url,
 			dataType:'json',
 			cache:false,
@@ -42,12 +47,13 @@ $(document).ready(function()
 			success:function(data){
 				// 댓글 수 출력
 				$(".commentCount").html(data.commentCount);
+				// 한 페이지에 보여질 댓글 수 출력
+				rowCount = data.rowCount;
 				// 댓글 리스트
 				var list = data.commentList;
-				var output = '';
 				$(list).each(function(index,item){
 					// 댓글 목록 출력
-					output += '<div class="comment">';
+					var output = '<div class="comment">';
 					output += 	'<span>';
 					output += 		item.mem_nick + " | " + item.poc_date;
 					output += 	'</span>';
@@ -64,15 +70,14 @@ $(document).ready(function()
 					}
 					output += 	'<div>';
 					output += 		'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="추천/비추천" id="btn_commentFav">';
-					output += 		'<span class="favCount_comment"></span>'; // 이거 어떻게 처리할까 vo 안쓰면. 써야되나?
+					output += 		'<span class="favCount_comment">' + item.poc_fav + '</span>';
 					output += 	'</div>';
 					output += '</div>';
 					output += '<hr size="1" noshade="noshade">';
+					// 댓글 리스트 불러와서 html에 표시
+					$('#output_commentList').append(output);
 				});			
-				// 기존의 댓글 리스트 html 삭제 (댓글이 많아지면 처리해야 할 게 많아지므로, 다른 방법 찾아보기)
-				$('#output_commentList').empty();
-				// 댓글 리스트 불러와서 html에 표시
-				$('#output_commentList').append(output);
+				
 			},
 			error:function(){
 				alert("네트워크 오류");

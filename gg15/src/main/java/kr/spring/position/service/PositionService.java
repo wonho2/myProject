@@ -67,6 +67,7 @@ public class PositionService
 	{
 		positionDAO.updateView(boardNum);
 	}
+	
 /*
  * 게시물 추천
  */
@@ -105,10 +106,9 @@ public class PositionService
 	}
 	
 	// 댓글 리스트
-	public List<PositionCommentVO> selectCommentList(int pos_num, int sort_type)
+	public List<PositionCommentVO> selectCommentList(Map<String, Object> map)
 	{
-		if(sort_type == 1) return positionDAO.selectCommentList_recent(pos_num);
-		else return null;
+		return positionDAO.selectCommentList(map);
 	}
 	
 	//  댓글 작성
