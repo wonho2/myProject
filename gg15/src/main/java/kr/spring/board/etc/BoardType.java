@@ -1,4 +1,4 @@
-package kr.spring.board.etc;
+/*package kr.spring.board.etc;
 
 public enum BoardType
 {
@@ -17,3 +17,4 @@ public enum BoardType
 		return value;
 	}
 }
+*/

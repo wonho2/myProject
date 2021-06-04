@@ -30,7 +30,7 @@ public interface BoardMapper {
 	public void updateHit(int boa_num);
 
 	//글 상세 페이지
-	@Select("SELECT * FROM board b JOIN member m ON b.mem_num=m.mem_num WHERE b.boa_num=#{boa_num}")
+	@Select("SELECT * FROM board b JOIN member_detail m ON b.mem_num=m.mem_num WHERE b.boa_num=#{boa_num}")
 	public BoardVO selectBoard(Integer boardNum);
 
 	//글 수정

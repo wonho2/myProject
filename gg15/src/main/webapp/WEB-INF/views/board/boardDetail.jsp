@@ -61,6 +61,7 @@
 		<font id="send_report"> </font>
 	<script type="text/javascript">
 		function report(){
+			 //document.getElementById("report()").onclick = function() { makeRequest('reportPage.jsp'); };
 				var reportWrite = window.prompt("신고 내용을 입력하세요 :<","");
 				if(reportWrite==null){
 					alert("신고가 취소되었습니다 :( ");

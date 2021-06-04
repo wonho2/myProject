@@ -408,7 +408,7 @@ $(document).ready(function(){
 */
 	
 	//===========게시글 차단 시작 ==============//
-	var status;
+/*	var status;
 	//차단 수 
 	function selectStatus(boa_Status){
 		$.ajax({
@@ -465,11 +465,8 @@ $(document).ready(function(){
 		//문서 객체에 추가
 		$('#output_Status').attr('src',output);
 	} 
-	
-	
-	//초기 데이터(목록) 호출
 	selectStatus($('#boa_num').val());
-	
+	*/
 	//===========게시글 차단 끝 ==============//
 	
 });
