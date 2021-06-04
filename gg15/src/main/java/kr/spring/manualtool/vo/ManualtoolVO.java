@@ -21,8 +21,11 @@ public class ManualtoolVO {
 	private String man_content;
 	private byte[] man_uploadfile;
 	private String man_filename;
-	private Date man_date, man_update;
-	private int man_hit, man_fav, man_comment;
+	private Date man_date;
+	private Date man_update;
+	private int man_hit; 
+	private int man_fav;
+	private int man_comment;
 	private String mem_nick;
 	
 	//업로드 파일 처리

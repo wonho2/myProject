@@ -5,12 +5,17 @@
 <mapper namespace="kr.spring.manualtool.dao.ManualtoolDAO">
 
 <!-- 총 게시글 수-->
-	<select id="selectRowCount" resultType="integer">
+	<select id="selectManualtoolCount" resultType="integer">
 		SELECT
 		   COUNT(*)
 		FROM manualtool mt
 		JOIN member m
 		ON mt.mem_num = m.mem_num
+		<where>
+			<if test="keyword != ''">
+				mt.man_champion = #{keyword}
+			</if>
+		</where>
 	</select>
 
 <!-- 글 목록 -->
@@ -29,11 +34,21 @@
 		              ]]>
 		              m.mem_nick,
 		              mt.man_update,
-		              mt.man_hit
-		              <!-- man_fav 추가 -->
+		              mt.man_hit,
+		              f.man_fav,
+		              r.man_comment
 		           FROM manualtool mt
+		           LEFT OUTER JOIN (SELECT man_num, COUNT(*) man_fav FROM manualtool_fav GROUP BY man_num) f
+		           ON mt.man_num = f.man_num
+		           LEFT OUTER JOIN (SELECT man_num, COUNT(*) man_comment FROM manualtool_reply GROUP BY man_num) r
+		           ON mt.man_num = r.man_num
 		           JOIN member_detail m
 		           ON mt.mem_num = m.mem_num
+		           <where>
+						<if test="keyword != ''">
+							mt.man_champion = #{keyword}
+						</if>
+				   </where>
 		           ORDER BY mt.man_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}

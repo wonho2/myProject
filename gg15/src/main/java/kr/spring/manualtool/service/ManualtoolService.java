@@ -29,8 +29,8 @@ public class ManualtoolService {
 	}
 	
 	//총 레코드 수
-	public int selectManualtoolCount() {
-		return manualtoolDAO.selectManualtoolCount();
+	public int selectManualtoolCount(Map<String, Object> map) {
+		return manualtoolDAO.selectManualtoolCount(map);
 	}
 	
 	//글 상세 페이지

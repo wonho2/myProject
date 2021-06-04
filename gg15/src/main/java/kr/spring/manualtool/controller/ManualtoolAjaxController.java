@@ -61,7 +61,7 @@ public class ManualtoolAjaxController {
 	@RequestMapping("/manualTool/listReply.do")
 	@ResponseBody
 	public Map<String, Object> getList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam("man_num") int man_num) {
+			                           @RequestParam("man_num") int man_num) {
 		if (log.isDebugEnabled()) {
 			log.debug("<<currentPage>> : " + currentPage);
 			log.debug("<<man_num>> : " + man_num);

@@ -19,8 +19,7 @@ public interface ManualtoolDAO {
 	public void insertManualtool(ManualtoolVO vo);
 
 	//총 레코드 수
-	@Select("SELECT COUNT(*) FROM manualtool")
-	public int selectManualtoolCount();
+	public int selectManualtoolCount(Map<String, Object> map);
 
 	//글 목록
 	public List<ManualtoolVO> selectList(Map<String, Object> map);
