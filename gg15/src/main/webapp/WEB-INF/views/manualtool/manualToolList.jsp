@@ -55,7 +55,7 @@
 		<tr>
 			<td><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25"></td> 
 			<td>${manualtoolVO.man_season}</td>
-			<td align="left">&nbsp;&nbsp;<a href="detail.do?man_num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a> <span style="color:orange;font-size:13px;">[${manualtoolVO.man_comment}]</span></td>
+			<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;<a href="detail.do?man_num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a> <span style="color:orange;font-size:13px;">[${manualtoolVO.man_comment}]</span></td>
 			<td>${manualtoolVO.mem_nick}</td>
 			<td>${manualtoolVO.man_update}</td>
 			<td>${manualtoolVO.man_hit}</td>
