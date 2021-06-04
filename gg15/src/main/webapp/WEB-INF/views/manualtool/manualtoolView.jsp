@@ -9,7 +9,7 @@
 
 <div class="page-main-style">
 <hr size="1" noshade="noshade" width="100%">
-	<div><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="35" height="35">&nbsp;&nbsp;[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
+	<div><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="30" height="30">&nbsp;&nbsp;[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
 		<h1>${manualtoolVO.man_title}</h1>
 	<div>
 	${manualtoolVO.mem_nick} &nbsp; | &nbsp; ${manualtoolVO.man_update}

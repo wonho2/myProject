@@ -32,7 +32,8 @@
 	</ul>
 </div>
 <p class="align-right">
-	<input type="button" value="글쓰기" onclick="location.href='write.do'">
+	<!-- <input type="button" value="글쓰기" onclick="location.href='write.do'"> -->
+	<a href="write.do"><img src="${pageContext.request.contextPath}/resources/images/write.png" width="50" height="50"></a>
 </p>
 
 <c:if test="${count == 0}">
@@ -55,7 +56,16 @@
 		<tr>
 			<td><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25"></td> 
 			<td>${manualtoolVO.man_season}</td>
-			<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;<a href="detail.do?man_num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a> <span style="color:orange;font-size:13px;">[${manualtoolVO.man_comment}]</span></td>
+			<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;<a href="detail.do?man_num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a> <span style="color:orange;font-size:13px;">[${manualtoolVO.man_comment}]</span>
+			<!--
+			첨부파일 있으면 제목 옆에 표시? 하지 말까 그냥
+			<c:choose>
+				<c:when test="${!empty manualtoolVO.man_filename}">
+					<img src="${pageContext.request.contextPath}/resources/images/icon.png" width="50">
+				</c:when>
+			</c:choose>
+			-->
+			</td>
 			<td>${manualtoolVO.mem_nick}</td>
 			<td>${manualtoolVO.man_update}</td>
 			<td>${manualtoolVO.man_hit}</td>
