@@ -15,7 +15,7 @@
 		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
 		</c:if>
 		
-		<c:if test="${board.mem_auth == 3}">
+		<c:if test="${user_auth == 3}">
 		<input type="button" value="관리자 PAGE" onclick="location.href='reportPage.do'">
 		</c:if>
 	</div>
