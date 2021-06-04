@@ -8,11 +8,9 @@
 <!-- 게시물 상세 -->
 
 <div class="page-main-style">
-	<div>[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
+	<div><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25">&nbsp;&nbsp;[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
 		<h1>${manualtoolVO.man_title}</h1>
 	<div>
-	<!-- 사용자 닉네임처리 해야함 -->
-	<!-- <a href="/member/memberDetail.do?man_num=${manualtoolVO.man_num}">${memberVO.mem_nick}</a>  -->
 	${manualtoolVO.mem_nick} &nbsp; | &nbsp; ${manualtoolVO.man_update}
 	</div>
 		
@@ -28,28 +26,6 @@
 	</div>
 	</c:if>
 	
-<!-- <div>
-	<h1>${manualtoolVO.man_title}</h1>
-	<section>
-		[${manualtoolVO.man_champion}] | ${manualtoolVO.man_season} | ${manualtoolVO.man_update} | ${manualtoolVO.mem_nick}
-	</section>
-	<section>
-		조회수 ${manualtoolVO.man_hit} | 추천수 ${manualtoolVO.man_fav} | 댓글수 ${manualtoolVO.man_comment}
-	</section>
-	
-	<hr size="1" noshade="noshade" width="100%">
-	
-	<c:if test="${fn:endsWith(manualtoolVO.man_filename,'.jpg') || 
-	              fn:endsWith(manualtoolVO.man_filename,'.JPG') ||
-	              fn:endsWith(manualtoolVO.man_filename,'.gif') ||
-	              fn:endsWith(manualtoolVO.man_filename,'.GIF') ||
-	              fn:endsWith(manualtoolVO.man_filename,'.png') ||
-	              fn:endsWith(manualtoolVO.man_filename,'.PNG')}">
-		<div>
-			<img src="imageView.do?man_num=${manualtoolVO.man_num}">
-		</div>
-	</c:if>
- -->
 	<hr size="1" noshade="noshade" width="100%">
 	<p>
 		${manualtoolVO.man_content}
@@ -113,5 +89,6 @@
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 	</div>
+	<hr size="1" noshade="noshade" width="100%">
 <!-- 댓글 끝 -->
 <!-- 공략 게시판 디테일 끝 -->

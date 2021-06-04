@@ -38,7 +38,7 @@ div#main_menu ul li{
 
 /*==========페이지 기본 스타일======*/
 .page-main-style{
-	width:98%;
+	width:96%;
 	margin:30px auto;
 }
 .one-page{
@@ -99,65 +99,72 @@ div#main_menu ul li{
 	padding:5px;
 }
 /*글상세*/
-.page-main-style .detail-img{
+.detail-img{
 	max-width: 500px;
 }
-.page-main-style div#reply_div{
+div#reply_div{
 	padding:5px 10px 40px 10px;
 	margin-top:10px;
+	margin-left:30px;
 	background-color:#eeeeee;
+	width:670px;
 }
-.page-main-style #output_fav, .output_rfav{
+div#output{
+	padding:5px 10px 40px 10px;
+	margin-top:10px;
+	margin-left:30px;
+}
+#output_fav, .output_rfav{
 	cursor : pointer;
 }
-.page-main-style #output_fcount{
+#output_fcount{
 	width:50px;
 	display:inline-block;
 }
-.page-main-style form#re_form{
+form#re_form{
 	width:650px;
 	border:none;
 }
-.page-main-style span.re-title{
+span.re-title{
 	color:#000;
 	font-size:12pt;
 	line-height:200%;
 }
-.page-main-style span.letter-count{
+span.letter-count{
 	font-size:10pt;
 	color:#999;
 }
-.page-main-style span.form-id{
+span.form-id{
 	padding-left:93px;
 	color:#000;
 }
-.page-main-style textarea.rep-content{
+textarea.rep-content{
 	width:90%;
 	height:50px;
 	margin:10px 10px;
 }
-.page-main-style div#re_first{
+div#re_first{
 	float:left;
 	width:70%;
 	padding-left:15px;
 	margin-bottom:10px;
 }
-.page-main-style div#re_second{
+div#re_second{
 	float:left;
 	width:19%;
 	margin-bottom:10px;
 }
-.page-main-style div#loading{
+div#loading{
 	width:100px;
 	margin:0 auto;
 }
-.page-main-style div.paging-button{
+div.paging-button{
 	text-align:right;
 }
-.page-main-style div#output{
+div#output{
 	clear:both;
 }
-.page-main-style form#mre_form{
+form#mre_form{
 	border:none;
 	margin:5px;
 }
@@ -198,15 +205,23 @@ div#main_menu ul li{
 	list-style:none;
 	padding:10px;
 }
-a:link{
+.page-main-style ul.icon{
+	overflow:hidden;
+}
+.page-main-style ul li.item{
+	float:left;
+	list-style:none;
+	padding:10px;
+}
+.page-main-style a:link{
 	text-decoration: none;
 	color:#666;
 }
-a:hover{
+.page-main-style a:hover{
 	text-decoration: underline;
 	color:#000;
 }
-a:visited{
+.page-main-style a:visited{
 	text-decoration: none;
 	color:#666;
 }

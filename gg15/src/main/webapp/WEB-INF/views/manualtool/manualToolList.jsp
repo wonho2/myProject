@@ -3,22 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!-- 공략 게시판 메인화면 시작 -->
 <div class="page-main-style">
-<h2>공략 게시판</h2>
+<h2>LoL 챔피언 공략 게시판</h2>
 <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
 </p>
-
-<!-- 
-???????????? ㅠㅠㅠ?????????
 <div>
-	<ul>
-		<li>
-			<a href="list.do?keyword=람머스><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25"></a>
-		</li>
+	<ul class="icon">
+		<li class="item"><a href="list.do?keyword=가렌"><img src="${pageContext.request.contextPath}/resources/images/가렌.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=갈리오"><img src="${pageContext.request.contextPath}/resources/images/갈리오.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=갱플랭크"><img src="${pageContext.request.contextPath}/resources/images/갱플랭크.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=그라가스"><img src="${pageContext.request.contextPath}/resources/images/그라가스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=그레이브즈"><img src="${pageContext.request.contextPath}/resources/images/그레이브즈.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=그웬"><img src="${pageContext.request.contextPath}/resources/images/그웬.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=나르"><img src="${pageContext.request.contextPath}/resources/images/나르.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=나미"><img src="${pageContext.request.contextPath}/resources/images/나미.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=나서스"><img src="${pageContext.request.contextPath}/resources/images/나서스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=노틸러스"><img src="${pageContext.request.contextPath}/resources/images/노틸러스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=녹턴"><img src="${pageContext.request.contextPath}/resources/images/녹턴.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=누누와 윌럼프"><img src="${pageContext.request.contextPath}/resources/images/누누와 윌럼프.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=니달리"><img src="${pageContext.request.contextPath}/resources/images/니달리.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=니코"><img src="${pageContext.request.contextPath}/resources/images/니코.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=다리우스"><img src="${pageContext.request.contextPath}/resources/images/다리우스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=다이애나"><img src="${pageContext.request.contextPath}/resources/images/다이애나.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=드레이븐"><img src="${pageContext.request.contextPath}/resources/images/드레이븐.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=라이즈"><img src="${pageContext.request.contextPath}/resources/images/라이즈.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=라칸"><img src="${pageContext.request.contextPath}/resources/images/라칸.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyword=람머스"><img src="${pageContext.request.contextPath}/resources/images/람머스.png" width="100" height="100"></a></li>
 	</ul>
 </div>
- -->
- 
+
 
 <c:if test="${count == 0}">
 	게시물이 없습니다.
