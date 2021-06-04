@@ -66,7 +66,7 @@
 					alert("신고가 취소되었습니다 :( ");
 				}else{
 					alert("신고가 완료되었습니다 :) ");
-				};
+				}; 
 		}
 	</script>
 	</div>
@@ -86,7 +86,7 @@
 				var choice = window.confirm('삭제하시겠습니까?');
 				if(choice){
 					location.replace('delete.do?boa_num=${board.boa_num}');
-				}
+				} 
 			};
 		</script> 
 		<input type="button" value="목록" onclick="location.href='list.do'"  id="btn_list">
