@@ -88,16 +88,15 @@ public class BoardService {
 		boardMapper.updateHit(boa_num);
 	}
 
-	
 	//좋아요 증가
-	public void updateFavUp(Integer boa_num) {
-		//boardMapper.updateFavUp(boa_num);
-	}
+	//public void updateFavUp(Integer boa_num) {
+	//	//boardMapper.updateFavUp(boa_num);
+	//}
 
 	//좋아요 감소
-	public void updateFavDown(Integer boa_num) {
-		//boardMapper.updateFavDown(boa_num);
-	}
+	//public void updateFavDown(Integer boa_num) {
+	//	//boardMapper.updateFavDown(boa_num);
+	//}
 	
 	//댓글
 	public List<BoardReplyVO> selectBoardComment(Map<String, Object> map) {
@@ -142,16 +141,17 @@ public class BoardService {
 	public void insertReport(BoardReportVO boardReport) {
 		boardMapper.insertReport(boardReport);
 	}
-*/
+
 	//=============게시글 차단==================//
-/*	public BoardStatusVO selectStatus(BoardStatusVO status) {
-		return boardMapper.selectStatus(status);
+	public BoardStatusVO selectSta(BoardStatusVO Sta) {
+		return boardMapper.selectSta(Sta);
 	}
-	public void insertStatus(BoardStatusVO boardStatus) {
-		boardMapper.insertStatus(boardStatus);
+	public void insertSta(BoardStatusVO boardSta) {
+		boardMapper.insertSta(boardSta);
 	}
-	public void deleteStatus(Integer boa_status) {
-		boardMapper.deleteStatus(boa_status);
+	public void deleteSta(Integer boa_status) {
+		boardMapper.deleteSta(boa_status);
+	}
+	*/
 	
-}*/
 }

@@ -1,16 +1,16 @@
 package kr.spring.board.vo;
  
 public class BoardStatusVO {
-	private int boa_status;
+	private int bos_num;
 	private int boa_num;
 	private int mem_num;
 	
 	 
-	public int getBoa_status() {
-		return boa_status;
+	public int getBos_num() {
+		return bos_num;
 	}
-	public void setBoa_status(int boa_status) {
-		this.boa_status = boa_status;
+	public void setBos_num(int bos_num) {
+		this.bos_num = bos_num;
 	}
 	public int getBoa_num() {
 		return boa_num;

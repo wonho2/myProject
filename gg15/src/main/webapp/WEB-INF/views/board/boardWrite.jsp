@@ -100,12 +100,10 @@
 		<div>
 			<!-- 목록 -->
 			<input type="button" id="btn_list" value="목록" onclick="location.href='list.do'">
-			<!-- 미리보기 -->
-			<input type="button" id="btn_e-show" value="미리보기" >
+			
 		</div>
 		<div class="align-right">	
-			<!-- 임시 저장 -->
-			<input type="button" id="btn_e-save" value="임시저장">
+			
 			<!-- 저장 -->
 			<input type="submit" id="btn_save" value="등록">
 		</div>

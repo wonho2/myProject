@@ -309,14 +309,14 @@ public class BoardAjaxController{
 	}
 */
 	//================================================================//
-/*	
-	//게시물 차단
-	@RequestMapping("/board/getStatus.do")
+/*
+	//게시물 차단 해보자
+	@RequestMapping("/board/getSta.do")
 	@ResponseBody
-	public Map<String,Object> getStatus(BoardStatusVO cate,HttpSession session){
+	public Map<String,Object> getSta(BoardStatusVO Sta,HttpSession session){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<게시판 차단>> : " + status);
+			log.debug("<<게시판 좋아요>> : " + Sta);
 		}
 
 		Map<String,Object> mapJson = 
@@ -325,31 +325,31 @@ public class BoardAjaxController{
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		if(user_num==null) {
 			mapJson.put("result", "success");
-			mapJson.put("status", "noStatus");
+			mapJson.put("status", "noSta");
 		}else {
 			//로그인된 아이디 셋팅
-			status.setMem_num(user_num);
+			Sta.setMem_num(user_num);
 
-			BoardStatusVO boardStatus = boardService.selectStatus(status);
+			BoardStatusVO boardSta = boardService.selectSta(Sta);
 
-			if(boardStatus!=null) {
+			if(boardSta!=null) {
 				mapJson.put("result", "success");
-				mapJson.put("status", "yesStatus");
+				mapJson.put("status", "yesSta");
 			}else {
 				mapJson.put("result", "success");
-				mapJson.put("status", "noStatus");
+				mapJson.put("status", "noFav");
 			}
 		}
  
 		return mapJson;
 	}
-	//부모글 차단 등록
-	@RequestMapping("/board/writeStatus.do")
+	//부모글 좋아요 차단
+	@RequestMapping("/board/writeSta.do")
 	@ResponseBody
-	public Map<String,Object> writeStatus(BoardStatusVO fav,HttpSession session){
+	public Map<String,Object> writeSta(BoardStatusVO fav,HttpSession session){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<부모글 차단 등록>> : " + Status);
+			log.debug("<<부모글 신고 등록>> : " + Sta);
 		}
 
 		Map<String,Object> map = 
@@ -363,24 +363,25 @@ public class BoardAjaxController{
 			fav.setMem_num(user_num);
 
 			if(log.isDebugEnabled()) {
-				log.debug("<<부모글 차단 등록>> : " + status);
+				log.debug("<<부모글 신고 등록>> : " + Sta);
 			}
 			
-			BoardStatusVO boardStatus = boardService.selectStatus(Status);
+			BoardStatusVO boardSta = boardService.selectSta(Sta);
 
-			if(boardStatus!=null) {
-				boardService.deleteStatus(boardStatus.getBoa_status());
+			if(boardSta!=null) {
+				boardService.deleteSta(BoardStatusVO.getBos_num());
 
 				map.put("result", "success");
-				map.put("status", "noStatus");
+				map.put("status", "noSta");
 			}else {
-				boardService.insertStatus(status);
+				boardService.insertSta(Sta);
 
 				map.put("result", "success");
-				map.put("status", "yesStatus");
+				map.put("status", "yesSta");
 			}
 		}
 		return map;
 	}
-*/
+	
+	*/
 }

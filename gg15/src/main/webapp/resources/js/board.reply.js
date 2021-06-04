@@ -355,74 +355,146 @@ $(document).ready(function(){
 	//초기 데이터(목록) 호출
 	selectFav($('#boa_num').val());
 	//===========게시글 추천 끝 ==============//
+
 	
-/*	
 	
-	//===========게시글 신고 시작=============//
-	var ssiren;
 	
-	//신고 등록
-	$('#output_report').click(function(){	
+	
+	//===========게시글 신고 시작 ==============//
+/*	function selectData(pageNum,boa_num){
+		currentPage = pageNum;
+		
+		if(pageNum == 1){
+			//처음 호출시는 해당 ID의 div의 내부 내용물을 제거
+			$('#output').empty();
+		}
+		//로딩 이미지 노출
+		$('#loading').show();
+		
 		$.ajax({
 			type:'post',
-			data:{boa_num:$('#boa_num').val()},
-			url:'writeReport.do',
+			data:{pageNum:pageNum,boa_num:boa_num},
+			url:'listReport.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				//로딩 이미지 감추기
+				$('#loading').hide();
+				count = data.count;
+				rowCount = data.rowCount;
+				var list = data.list;
+				
+				if(count < 0 || list == null){
+					alert('목록 호출 오류 발생!');
+				}else{
+					//댓글수 읽어 오기
+					displayReportCount(data);
+					//댓글 목록 작업
+					$(list).each(function(index,item){
+						var output = '<div class="item">';
+						output += '  <h4>' + item.mem_nick + '</h4>';
+						output += '  <div class="sub-item">';
+						//output += '    <p>' + item.bor_content.replace(/\n/g,'<br>') + '</p>';
+						output += '    <p>' + item.bor_content.replace(/</gi,'&lt;').replace(/>/gi,'&gt;') + '</p>';
+						output += item.bor_date;
+						if($('#mem_num').val()==item.mem_num){
+							//로그인 한 회원 번호가 댓글 작성자 번호와 같으면
+							output += '  <input type="button" data-num="'+item.bor_num+'" data-mem="'+item.mem_num+'" value="수정" class="modify-btn">';
+							output += '  <input type="button" data-num="'+item.bor_num+'" data-mem="'+item.mem_num+'" value="삭제" class="delete-btn">';
+						}
+						output += '      <hr size="1" noshade>';
+						output += '  </div>';
+						output += '</div>';
+												
+						//문서 객체에 추가
+						$('#output').append(output);
+					});
+					
+					//paging button 처리
+					if(currentPage>=Math.ceil(count/rowCount)){
+						//다음 페이지가 없음
+						$('.paging-button').hide();
+					}else{
+						//다음 페이지가 존재
+						$('.paging-button').show();
+					}
+				}
+			},
+			error:function(){
+				//로딩 이미지 감추기
+				$('#loading').hide();
+				alert('네트워크 오류');
+			}
+		});
+	}
+	
+	//다음 댓글 보기 버튼 클릭시 데이터 추가
+	$('.paging-button input').click(function(){
+		var pageNum = currentPage + 1;
+		selectData(pageNum,$('#boa_num').val());
+	});
+	
+	//댓글 등록
+	$('#re_form').submit(function(event){
+		if($('#bor_content').val()==''){
+			alert('내용을 입력하세요');
+			$('#bor_content').focus();
+			return false;
+		}
+		
+		var data = $(this).serialize();
+		
+		//등록
+		$.ajax({
+			type:'post',
+			data:data,
+			url:'writeReply.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
 				if(data.result=='logout'){
-					alert('로그인 후 신고해주세요!');
+					alert('로그인해야 작성할 수 있습니다.');
 				}else if(data.result=='success'){
-					displayㄲeport(data);
+					//폼초기화
+					initForm();
+					//댓글 작성이 성공하면 새로 삽입한 글을
+					//포함해서 첫번째 페이지의 게시글들을 다시
+					//호출함
+					selectData(1,$('#boa_num').val());
 				}else{
 					alert('등록시 오류 발생!');
-				} 
+				}
 			},
 			error:function(){
 				alert('네트워크 오류!');
 			}
 		});
+		//기본 이벤트 제거
+		event.preventDefault();
 	});
-	
-	//신고 표시
-	function displayReport(data){
-		status = data.status;
-		var count = data.count;
-		var output;
-		if(status=='noReport'){
-			output = "'../resources/images/siren.png'" ;
-		}else{
-			output = "'../resources/images/siren2.png'";
-		}			
-		//문서 객체에 추가
-		$('#output_Report').attr('src',output);
-		$('#output_Rcount').text(count);
-	} 
-	
-	
-	//초기 데이터(목록) 호출
-	selectReport($('#boa_num').val());
+*/	
 	//===========게시글 신고 끝 ==============//
 	
-*/
 	
-	//===========게시글 차단 시작 ==============//
+	
+	//===========게시글 차단 시작=============//
 /*	var status;
-	//차단 수 
-	function selectStatus(boa_Status){
+	//좋아요 수 
+	function selectSta(boa_num){
 		$.ajax({
 			type:'post',
 			data:{boa_num:boa_num},
-			url:'getStatus.do',
+			url:'getSta.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
 				if(data.result=='success'){
-					displayStatus(data);
+					displaySta(data);
 				}else{
-					alert('게시글 차단 읽기 오류');
+					alert('차단상태 읽기 오류');
 				}
 			},
 			error:function(){
@@ -431,18 +503,20 @@ $(document).ready(function(){
 		});
 	}
 	
-	//차단 등록
-	$('#output_Status').click(function(){	
+	//좋아요 등록
+	$('#output_Sta').click(function(){	
 		$.ajax({
 			type:'post',
 			data:{boa_num:$('#boa_num').val()},
-			url:'writeStatus.do',
+			url:'writeSta.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
-				if(data.result=='success'){
-					displayStatus(data);
+				if(data.result=='logout'){
+					alert('로그인 후 좋아요를 눌러주세요!');
+				}else if(data.result=='success'){
+					displaySta(data);
 				}else{
 					alert('등록시 오류 발생!');
 				} 
@@ -454,19 +528,20 @@ $(document).ready(function(){
 	});
 	
 	//차단 표시
-	function displayStatus(data){
+	function displaySta(data){
 		status = data.status;
+		var count = data.count;
 		var output;
-		if(status=='noFav'){
-			output = '../resources/images/siren2.png';
+		if(status=='noSta'){
+			output = '../resources/images/heart01.png';
 		}else{
-			output = '../resources/images/siren1.png';
+			output = '../resources/images/heart02.png';
 		}			
 		//문서 객체에 추가
-		$('#output_Status').attr('src',output);
+		$('#output_Sta').attr('src',output);
 	} 
-	selectStatus($('#boa_num').val());
-	*/
+	//초기 데이터(목록) 호출
+	selectSta($('#boa_num').val());
+*/	
 	//===========게시글 차단 끝 ==============//
-	
 });

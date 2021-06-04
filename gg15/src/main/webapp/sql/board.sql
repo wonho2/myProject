@@ -49,6 +49,15 @@ CREATE TABLE boa_report(
 	
 );
 
+
+CREATE TABLE boa_Sta(
+	bos_num number not null,/*차단 번호*/
+	boa_num number not null,/*게시글 번호*/
+	mem_num number,/*사용자 번호*/
+	constraint bos_num_pk primary key(bos_num),
+	constraint boa_sta_fk_1 FOREIGN key(boa_num) references board (boa_num),
+	constraint boa_sta_fk_2 FOREIGN key(mem_num) references member (mem_num)
+);
  
 create sequence board_seq;
 create sequence board_reply_seq;
@@ -56,3 +65,4 @@ create sequence board_fav_seq;
 
 
 create sequence board_report_seq;
+create sequence board_sta_seq;

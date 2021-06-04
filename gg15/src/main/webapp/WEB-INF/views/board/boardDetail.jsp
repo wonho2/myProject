@@ -6,7 +6,31 @@
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
- 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#siren_btn').click(function(){
+			var boa_num = $('#boa_num').val();
+			var reportWrite = window.prompt("신고 내용을 입력하세요 :<","");
+			// document.write(reportWrite);
+
+			//AJAX 통신
+			$.ajax({
+				url:'ReportPage.do',
+				type:'post',
+				data:{num:$('#mem_num').val()},
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(boa_num){
+	                $('#mem_num').text(boa_num);
+	            },
+	            error: function(){
+	                alert("네트워크 에러");
+				}
+			});
+		});	
+	});		
+</script> 
 <div class="page-main-style">
 	<div>			
 			<c:if test="${board.boa_cate == 'freeTalk'}">자유토론</c:if>
@@ -66,21 +90,7 @@
 	
 	<!-- 신고 활성화 -->
 	<div class="align-right">
-	<img id="output_Report" src="../resources/images/siren.png" width=22px onclick='report()'>	
-		<!--  <input type="button" value="신고" onclick='report()'> -->
-		<font id="send_report"> </font>
-	<script type="text/javascript">
-		function report(){
-			 //document.getElementById("report()").onclick = function() { makeRequest('reportPage.jsp'); };
-				var reportWrite = window.prompt("신고 내용을 입력하세요 :<","");
-				if(reportWrite==null){
-					alert("신고가 취소되었습니다 :( ");
-				}else{
-					alert("신고가 완료되었습니다 :) ");
-				}; 
-				inputBoa_report.bop_content();
-		}
-	</script>
+	<img src="../resources/images/siren.png" width=22px id="siren_btn" style="cursor:pointer;">	
 	</div>
 	
 	
@@ -106,7 +116,6 @@
 </c:if>	
 </div>
 <!-- 본문 끝 -->
-
 
 <!--  댓글 시작 -->
 <hr size="1" width="100%">

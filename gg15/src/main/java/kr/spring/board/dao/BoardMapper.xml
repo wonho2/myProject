@@ -87,8 +87,9 @@
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>                                 
  	</select>
-	<!-- ====== 신고 ======== -->
-<!-- 
+ 	
+ 	
+	<!-- ====== 신고 ========  댓글 따라하는 중-->
 	<select id="selectReport" parameterType="map"
 								resultType="boardReportVO">
 	SELECT*FROM (
@@ -109,7 +110,7 @@
 			 	   		ORDER BY bop_num DESC)m)
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}]
-		]>
+		]]>
 	</select>
--->
+
 </mapper>
