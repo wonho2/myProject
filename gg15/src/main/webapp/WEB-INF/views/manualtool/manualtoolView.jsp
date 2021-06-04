@@ -45,6 +45,7 @@
 	<div>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		&nbsp;&nbsp;<input type="button" value="삭제" onclick="man_delete();">
+		&nbsp;&nbsp;<input type="button" value="목록" onclick="location.href='list.do'">
 		<script type="text/javascript">
 			function man_delete(){
 				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");

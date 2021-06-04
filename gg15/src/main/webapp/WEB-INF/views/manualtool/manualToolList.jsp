@@ -4,7 +4,7 @@
 <!-- 공략 게시판 메인화면 시작 -->
 <div class="page-main-style">
 <hr size="1" noshade="noshade" width="100%">
-<h2>LoL 챔피언 공략 게시판</h2>
+<h2 onclick="location.href='list.do'">LoL 챔피언 공략 게시판</h2>
 <hr size="1" noshade="noshade" width="100%">
 <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/resources/images/rift.png" width="25" height="25">&nbsp;&nbsp;챔피언 선택</h6>
 <div style="overflow:auto;height:260px;">
