@@ -199,15 +199,15 @@ div#main_menu ul li{
 	padding:10px;
 }
 a:link{
-	text-decoration: underline;
+	text-decoration: none;
 	color:#666;
 }
 a:hover{
 	text-decoration: underline;
-	color:#666;
+	color:#000;
 }
 a:visited{
-	text-decoration: underline;
+	text-decoration: none;
 	color:#666;
 }
 
