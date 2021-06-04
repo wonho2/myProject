@@ -8,7 +8,8 @@
 <!-- 게시물 상세 -->
 
 <div class="page-main-style">
-	<div><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25">&nbsp;&nbsp;[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
+<hr size="1" noshade="noshade" width="100%">
+	<div><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="35" height="35">&nbsp;&nbsp;[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
 		<h1>${manualtoolVO.man_title}</h1>
 	<div>
 	${manualtoolVO.mem_nick} &nbsp; | &nbsp; ${manualtoolVO.man_update}
@@ -42,7 +43,7 @@
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == manualtoolVO.mem_num}">
 	<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
 		&nbsp;&nbsp;<input type="button" value="삭제" onclick="man_delete();">
 		<script type="text/javascript">
 			function man_delete(){
@@ -74,7 +75,7 @@
 				&nbsp;&nbsp;&nbsp;<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-left">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="전송">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="전송">
 			</div>
 			</c:if>
 		</form>

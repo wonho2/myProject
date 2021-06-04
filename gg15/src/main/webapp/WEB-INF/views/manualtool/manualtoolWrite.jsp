@@ -4,6 +4,8 @@
 
 <!-- 공략 게시판 글쓰기 시작 -->
 <div class="page-main-style">
+<hr size="1" width="100%" noshade="noshade">
+<h2>글 작성</h2>
 <!-- js -->
 <script type="text/javascript">
 	window.onload = function() {
@@ -82,5 +84,6 @@
 			<hr size="1" width="100%" noshade="noshade">
 		</div>
 	</form:form>
+	<hr size="1" width="100%" noshade="noshade">
 </div>
 <!-- 공략 게시판 글쓰기  끝-->  

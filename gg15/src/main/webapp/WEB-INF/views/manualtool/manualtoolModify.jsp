@@ -27,6 +27,7 @@
 </script>
 
 <div class="page-main-style">
+<hr size="1" noshade="noshade" width="100%">
 	<h2>글 수정</h2>
 	<form:form action="update.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<form:hidden path="man_num"/>
@@ -89,6 +90,7 @@
 			<hr size="1" width="100%" noshade="noshade">
 		</div>                            
 	</form:form>
+	<hr size="1" noshade="noshade" width="100%">
 </div>
 <!-- 공략 게시판 글 수정 끝 -->
 
