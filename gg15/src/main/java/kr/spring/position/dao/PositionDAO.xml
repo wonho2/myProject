@@ -5,11 +5,11 @@
 <mapper namespace="kr.spring.position.dao.PositionDAO">
 
 <!-- 게시물 수 -->
-	<select id="selectBoardCount" parameterType="String" resultType="Integer">
+	<select id="selectBoardCount" parameterType="string" resultType="integer">
 		SELECT COUNT(*) FROM position 
 		<where>
-			<if test = "pos_type != '전체보기'">
-				pos_type = #{pos_type}
+			<if test = "posType != '전체보기'">
+				pos_type = #{posType}
 			</if>
 		</where>
 	</select>

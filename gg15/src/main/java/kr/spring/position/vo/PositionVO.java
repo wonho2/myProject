@@ -15,7 +15,8 @@ public class PositionVO
 	private byte[] pos_uploadfile;
 	private String pos_filename;
 	private Date pos_date;
-	private int pos_view, pos_fav;
+	private int pos_view;
+	private int pos_fav;
 	
 	//업로드 파일 처리
 	public void setPos_upload(MultipartFile pos_upload)throws IOException

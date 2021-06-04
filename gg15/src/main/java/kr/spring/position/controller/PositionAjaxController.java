@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.spring.member.vo.MemberVO;
 import kr.spring.position.service.PositionService;
 import kr.spring.position.vo.PositionCommentFavVO;
 import kr.spring.position.vo.PositionCommentVO;

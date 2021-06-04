@@ -12,19 +12,22 @@ $(document).ready(function()
 	defaultCommentListSort();
 	
 /*
- * 댓글 정렬 enum (0:인기순, 1:최신순)
+ * 상수
  */
-	var sort = Object.freeze({POPULAR:0, RECENT:1});
-	var sortUrl = Object.freeze({POPULAR:'commentList_popular.do', RECENT:'commentList_recent.do'}); 
+	const sort_POPULAR = 0;
+	const sort_RECENT = 1;
+	const sortUrl_POPULAR = 'commentList_popular.do';
+	const sortUrl_RECENT = 'commentList_recent.do';
 	
 /*
  * default로 설정한 댓글 리스트 호출 방법
  */
 	function defaultCommentListSort()
 	{
+		alert("default CommentListSort 호출됨");
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		sort_type = sort.RECENT;
-		sort_url = sortUrL.RECENT;
+		sort_type = sort_RECENT;
+		sort_url = sortUrl_RECENT;
 		selectCommentList(1, $("#pos_num").val(), sort_type, sort_url);
 	}
 	
@@ -35,6 +38,7 @@ $(document).ready(function()
  */
 	function selectCommentList(pageNum, pos_num, sort_type, sort_url)
 	{
+		alert("select CommentListSort 호출됨");
 		// 현재 페이지 저장
 		currentPage = pageNum;
 		// 1페이지 호출 시, 해당 id 내부 내용물 제거
@@ -143,6 +147,7 @@ $(document).ready(function()
 				else if(data.result == "success"){
 					alert("댓글 입력 성공");
 					defaultCommentListSort();
+					// 최신순으로 보여주기로 고치기
 					$("#poc_content").val("");
 				}
 				else{
@@ -272,6 +277,7 @@ $(document).ready(function()
 				{
 					alert("댓글 삭제 완료");
 					defaultCommentListSort();
+					// 최신순으로 보여주는걸로 고치기
 				}
 				else if(data.result == "notMatchUser")
 				{

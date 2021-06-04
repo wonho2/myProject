@@ -19,14 +19,14 @@ public class PositionService
 {
 	@Resource
 	private PositionDAO positionDAO;
-	
+	 
 /*
  * 게시물
  */
 	// 게시물 수
-	public int selectBoardCount(PositionType type)
+	public int selectBoardCount(String posType)
 	{
-		return positionDAO.selectBoardCount(type.getValue());
+		return positionDAO.selectBoardCount(posType);
 	}
 	
 	// 게시물 리스트 가져오기

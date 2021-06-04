@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -19,7 +20,7 @@ public interface PositionDAO
  * 게시물
  */
 	// 게시물 수
-	public Integer selectBoardCount(String pos_type);
+	public Integer selectBoardCount(@Param(value="posType") String posType);
 
 	// 게시물 목록
 	public List<PositionVO> selectBoardList(Map<String, Object> map);
@@ -48,7 +49,7 @@ public interface PositionDAO
  */
 	// 해당 게시물을 추천했는지 체크
 	@Select("SELECT COUNT(*) FROM position_fav WHERE pos_num=#{pos_num}, mem_num=#{mem_num}")
-	public int selectClickedFav(int pos_num, int mem_num);
+	public int selectClickedFav(@Param(value = "pos_num") int pos_num, @Param(value="mem_num") int mem_num);
 	
 	// 해당 게시물의 추천 수
 	@Select("SELECT COUNT(*) FROM position_fav WHERE pos_num=#{pos_num}")
@@ -98,7 +99,7 @@ public interface PositionDAO
  */
 	// 이전에 해당 댓글의 추천 버튼을 눌렀었는지 확인
 	@Select("SELECT COUNT(*) FROM position_cfav WHERE poc_num=#{poc_num}, mem_num=#{mem_num}")
-	public int selectClickedCommentFav(int poc_num, int mem_num);
+	public int selectClickedCommentFav(@Param(value = "poc_num") int poc_num, @Param(value = "mem_num") int mem_num);
 	
 	// 해당 댓글의 추천 수
 	@Select("SELECT COUNT(*) FROM position_cfav WHERE poc_num=#{poc_num}")

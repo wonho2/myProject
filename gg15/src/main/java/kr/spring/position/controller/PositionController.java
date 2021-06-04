@@ -29,6 +29,7 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
+	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 상수
@@ -57,20 +58,36 @@ public class PositionController
 	private ModelAndView getBoardList(int currentPage, String sortAttrName, PositionType type)
 	{
 		
+		if(log.isDebugEnabled()) {
+			log.debug("<<pos_type>> : " + type.getValue());
+		}
+		
 		// 게시물 개수
-		int boardCount = positionService.selectBoardCount(type);
+		int boardCount = positionService.selectBoardCount(type.getValue());
 		// 페이징 처리 정보 저장
 		PagingUtil page = new PagingUtil(currentPage, boardCount, 3, 3, "list.do");
+		if(log.isDebugEnabled()) {
+			log.debug("<<~~~~1>>");
+		}
 		List<PositionVO> boardList = null;
 		if(boardCount > 0)
 		{
+			if(log.isDebugEnabled()) {
+				log.debug("<<~~~~2>>");
+			}
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			// DAO에 넘길 정렬방식, 포지션타입 저장
 			map.put("sortAttr", sortAttrName);
 			map.put("typeValue", type.getValue());
+			if(log.isDebugEnabled()) {
+				log.debug("<<~~~~3>>");
+			}
 			boardList = positionService.selectBoardList(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<~~~~4>>");
+			}
 		}
 		// 모델, 뷰 정보 저장
 		ModelAndView mav = new ModelAndView();
