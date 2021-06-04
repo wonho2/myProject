@@ -8,16 +8,14 @@
 <!-- 게시물 상세 -->
 
 <div class="page-main-style">
-	<div>[${manualtoolVO.man_champion}] | ${manualtoolVO.man_season}</div>
+	<div>[${manualtoolVO.man_champion}] &nbsp; | &nbsp; ${manualtoolVO.man_season}</div>
 		<h1>${manualtoolVO.man_title}</h1>
 	<div>
 	<!-- 사용자 닉네임처리 해야함 -->
 	<!-- <a href="/member/memberDetail.do?man_num=${manualtoolVO.man_num}">${memberVO.mem_nick}</a>  -->
-	${manualtoolVO.mem_nick}
+	${manualtoolVO.mem_nick} &nbsp; | &nbsp; ${manualtoolVO.man_update}
 	</div>
-	<div>
-		${manualtoolVO.man_update}
-	</div>
+		
 	<hr size="1" noshade="noshade" width="100%">
 	<c:if test="${fn:endsWith(manualtoolVO.man_filename,'.jpg') || 
 	              fn:endsWith(manualtoolVO.man_filename,'.JPG') ||
@@ -69,8 +67,8 @@
 <!-- 수정, 삭제 버튼 -->
 <c:if test="${user_num == manualtoolVO.mem_num}">
 	<div>
-		<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
-		<input type="button" value="삭제" onclick="man_delete();">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="수정" onclick="location.href='update.do?man_num=${manualtoolVO.man_num}'">
+		&nbsp;&nbsp;<input type="button" value="삭제" onclick="man_delete();">
 		<script type="text/javascript">
 			function man_delete(){
 				var choice = window.confirm("해당 게시물을 삭제하시겠습니까?");
@@ -85,24 +83,25 @@
 <!--  댓글 시작 -->
 <hr size="1" width="100%">
 	<div id="reply_div">
-		<span class="reply-title">댓글 달기</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="reply-title">댓글 달기</span>
 		<form id="re_form">
 			<input type="hidden" name="man_num"
 			       value="${manualtoolVO.man_num}" id="man_num">
 			<input type="hidden" name="mem_num"
 			       value="${user_num}" id="mem_num">
-			<textarea rows="3" cols="50"
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows="3" cols="50"
 			  name="mar_content" id="mar_content"
 			  class="rep-content"
 			  <c:if test="${empty user_num}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
 			<c:if test="${!empty user_num}">
 			<div id="re_first">
-				<span class="letter-count">300/300</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letter-count">300/300</span>
 			</div>
-			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
+			<div id="re_second" class="align-left">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="전송">
 			</div>
+			<hr size="1" noshade="noshade" width="100%">
 			</c:if>
 		</form>
 	</div>
