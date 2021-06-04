@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!-- 자유게시판 boardMain 시작 -->
-<script type="text/javascript">
-	function cate(){
-		alert('test');
-	} 
-</script>
 <div class="page-main-style">
 	<h2>자유게시판 목록</h2>
 	<div class="align-right">
@@ -19,30 +13,27 @@
 		<input type="button" value="관리자 PAGE" onclick="location.href='reportPage.do'">
 		</c:if>
 	</div>
-	 
+	 		<form action="list.do" id="choice_cate" method="get" style="border:none;margin-left:-28px;">
 			<select name="boa_cate">
 				<optgroup label="카테고리" >
-					<option value="All" >전체</option>
+					<option value="freeTalk" >자유토론</option>
 					<option value="gaming_machine">게이밍 기기</option>
 					<option value="game_talk">게임 이야기</option>
 					<option value="Discode">디스코드 홍보</option>
 					<option value="Tier">티어별 게시판</option>
 					<option value="Champion">챔피언별 게시판</option>
 					<option value="Humor">유머 게시판</option>
-					<option value="img_video">사진/비디오</option>
+					<option value="img/video">사진/비디오</option>
 					<option value="art">팬아트</option>
-					
-					<c:if test="board.mem_auth == 3">
-					<option value="report">신고내용 보기</option>
-					</c:if >
-					
 				</optgroup>
 			</select>
-	 	<input type="button" value="조회" onclick='cate()'>
-		 
+	 	<input type="submit" value="조회">
+	 	<input type="button" value="게시판 목록" onclick="location.href='list.do'">
+		</form> 
 	<table>	
 		<tr>
 			<th>번호</th>
+			<th>카테고리</th>
 			<th>첨부파일</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
@@ -54,6 +45,17 @@
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.boa_num}</td>
+			<td>
+			<c:if test="${board.boa_cate == 'freeTalk'}">자유토론</c:if>
+			<c:if test="${board.boa_cate == 'gaming_machine'}">게이밍 기기</c:if>
+			<c:if test="${board.boa_cate == 'game_talk'}">게임 이야기</c:if>
+			<c:if test="${board.boa_cate == 'Discode'}">디스코드 홍보</c:if>
+			<c:if test="${board.boa_cate == 'Tier'}">티어별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Champion'}">챔피언별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Humor'}">유머 게시판</c:if>
+			<c:if test="${board.boa_cate == 'img/video'}">사진/비디오</c:if>
+			<c:if test="${board.boa_cate == 'art'}">팬아트</c:if>
+			</td>
 			 
 			<!-- 첨부파일 첨부 시 아이콘 표시 if문 시작-->
 			<td>

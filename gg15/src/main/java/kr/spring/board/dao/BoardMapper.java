@@ -15,7 +15,7 @@ import kr.spring.board.vo.BoardReplyVO;
 public interface BoardMapper {
 
 	//총 게시물 수
-	public int selectRowCount();
+	public int selectRowCount(Map<String,Object> map);
 
 	//자유게시판 글 목록
 	public List<BoardVO> selectList(Map<String,Object> map);	

@@ -8,7 +8,17 @@
 <!-- 게시물 상세 -->
  
 <div class="page-main-style">
-	<div>${board.boa_cate}</div>
+	<div>			
+			<c:if test="${board.boa_cate == 'freeTalk'}">자유토론</c:if>
+			<c:if test="${board.boa_cate == 'gaming_machine'}">게이밍 기기</c:if>
+			<c:if test="${board.boa_cate == 'game_talk'}">게임 이야기</c:if>
+			<c:if test="${board.boa_cate == 'Discode'}">디스코드 홍보</c:if>
+			<c:if test="${board.boa_cate == 'Tier'}">티어별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Champion'}">챔피언별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Humor'}">유머 게시판</c:if>
+			<c:if test="${board.boa_cate == 'img/video'}">사진/비디오</c:if>
+			<c:if test="${board.boa_cate == 'art'}">팬아트</c:if>
+	</div>
 		<h1>${board.boa_title}</h1>
 	<div>
 	<!-- 사용자 닉네임처리 해야함 -->
@@ -68,6 +78,7 @@
 				}else{
 					alert("신고가 완료되었습니다 :) ");
 				}; 
+				inputBoa_report.bop_content();
 		}
 	</script>
 	</div>

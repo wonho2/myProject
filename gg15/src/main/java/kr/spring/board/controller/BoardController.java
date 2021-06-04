@@ -42,24 +42,17 @@ public class BoardController {
 	public BoardVO initCommand() {
 		return new BoardVO();
 	}	
-//==========================================================//
-	//----------게시판 카탈로그별 정렬---------//
-/*	private ModelAndView getBoardList(int currentPage, String sortAttrName, BoardCate type)
-	{
-	@RequestMapping("/position/list_All.do")
-	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
-	{
-		return getBoardList(currentPage, CateType.RECENT, BoardType.SUPPORT);
-	}*/
-//==========================================================//	
-	
 	//자유게시판  목록
 	@RequestMapping("/board/list.do")
 	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="boa_cate",defaultValue="") String boa_cate) {
 
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("boa_cate", boa_cate);
+		
 		//총 게시글 수
-		int count = boardService.selectRowCount();
+		int count = boardService.selectRowCount(map);
 
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
@@ -67,12 +60,11 @@ public class BoardController {
 		}
 
 		//페이징 처리
-		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do","&boa_cate="+boa_cate);
 		
 		//목록호출
 		List<BoardVO> list = null;
 		if(count > 0) {
-			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 

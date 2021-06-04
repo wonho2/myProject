@@ -81,7 +81,7 @@
 			<label for="boa_cate">카테고리</label>
 			<select name="boa_cate">
 			<optgroup label="카테고리">
-				<option value="All">전체</option>
+				<option value="freeTalk">자유토론</option>
 				<option value="gaming_machine">게이밍 기기</option>
 				<option value="game_talk">게임 이야기</option>
 				<option value="Discode">디스코드 홍보</option>
@@ -93,8 +93,8 @@
 			</optgroup>
 			</select>
 			<!-- 공개범위 설정 -->
-			<span style="margin-left:220px;"><b>비밀글 설정</b></span>
-			<input type="checkbox" name="boa_mode" value="1">비밀글
+			<span style="margin-left:220px;"><b>회원전용 보기 설정</b></span>
+			<input type="checkbox" name="boa_mode" value="1">회원전용
 			</li>
 		</ul>
 		<div>

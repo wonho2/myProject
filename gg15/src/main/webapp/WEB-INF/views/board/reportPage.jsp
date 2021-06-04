@@ -5,11 +5,21 @@
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 reportPage 시작 -->
 <div class="page-main-style"> 
-	<div>${board.boa_cate}</div>
+		<div>			
+			<c:if test="${board.boa_cate == 'freeTalk'}">자유토론</c:if>
+			<c:if test="${board.boa_cate == 'gaming_machine'}">게이밍 기기</c:if>
+			<c:if test="${board.boa_cate == 'game_talk'}">게임 이야기</c:if>
+			<c:if test="${board.boa_cate == 'Discode'}">디스코드 홍보</c:if>
+			<c:if test="${board.boa_cate == 'Tier'}">티어별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Champion'}">챔피언별 게시판</c:if>
+			<c:if test="${board.boa_cate == 'Humor'}">유머 게시판</c:if>
+			<c:if test="${board.boa_cate == 'img/video'}">사진/비디오</c:if>
+			<c:if test="${board.boa_cate == 'art'}">팬아트</c:if>
+	</div>
 	<h1>${board.boa_title}</h1>
-	<div>작성자 : ${board.mem_nick}</div>
+	<div><a href="/member/memberDetail.do?board_num=${board.boa_num}">${board.mem_nick}</a> </div>
 	<div>신고자 : ${board_report.mem_nick}</div>
-	<div>신고일 ${boa_report.bop_date} </div>
+	<div>신고일 ${board_report.bop_date} </div>
 	
 	<div>
 		<p>	${board_report.bop_content} </p>

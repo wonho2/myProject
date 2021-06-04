@@ -11,6 +11,11 @@
 		FROM board b
 		JOIN member m
 		ON b.mem_num = m.mem_num
+		<where>
+			<if test="boa_cate != ''">
+			boa_cate = #{boa_cate}
+			</if>
+		</where>
 	</select>
 	
 	<!-- 글 목록 -->
@@ -32,12 +37,13 @@
 		              b.boa_filename,
 		              b.boa_cate,
 		              b.boa_mode
-		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num ORDER BY b.boa_num DESC)a)
-		      <!--        <where>
-		              	<if test = "typeValue != '전체보기'">
-		              		b.bao_cate = #{typeValue}
-		              	</if>
-	              	</where> -->
+		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num 
+		              <where>
+						<if test="boa_cate != ''">
+							b.boa_cate = #{boa_cate}
+						</if>
+					  </where>
+		              ORDER BY b.boa_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>

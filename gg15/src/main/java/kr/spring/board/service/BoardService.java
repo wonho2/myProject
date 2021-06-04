@@ -28,8 +28,8 @@ public class BoardService {
 	}
 
 	//총 게시물 수
-	public int selectRowCount() {
-		return boardMapper.selectRowCount();
+	public int selectRowCount(Map<String,Object> map) {
+		return boardMapper.selectRowCount(map);
 	}
 	//카테고리별  게시물 수
 /*		public int selectCateCount(BoardCate cate)
