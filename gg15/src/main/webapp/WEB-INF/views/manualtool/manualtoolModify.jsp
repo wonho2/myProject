@@ -32,6 +32,7 @@
 		<form:hidden path="man_num"/>
 		<ul>
 			<li>
+			<hr size="1" width="100%" noshade="noshade">
 				<label>챔피언 선택</label>
 				<form:select path="man_champion">
 					<!-- 아이콘 선택이 아니라 글자로 선택하는 경우 (몇개나 넣을지 모르겠어요 다 넣으면 너무 많기도 하고) -->
@@ -71,7 +72,7 @@
 			</li>
 			<li>
 				<label for="man_content">내용</label>
-				<form:textarea cols="50" rows="20" path="man_content"/>
+				<form:textarea cols="40" rows="15" path="man_content"/>
 				<form:errors path="man_content" cssClass="error-color"/>
 			</li>
 			<li>
@@ -85,6 +86,7 @@
 		</ul>    
 		<div class="align-center">
 			<input type="submit" value="수정" id="btn_submit">
+			<hr size="1" width="100%" noshade="noshade">
 		</div>                            
 	</form:form>
 </div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- 공략 게시판 글쓰기 시작 -->
+<div class="page-main-style">
 <!-- js -->
 <script type="text/javascript">
 	window.onload = function() {
@@ -29,6 +30,7 @@
 	<form:form action="write.do" commandName="manualtoolVO" enctype="multipart/form-data">
 		<ul>
 			<li>
+			<hr size="1" width="100%" noshade="noshade">
 				<label for="man_champion">챔피언</label>
 				<form:select path="man_champion" name="챔피언 선택">
 					<option value="가렌">가렌</option>
@@ -71,12 +73,14 @@
 			</li>
 			<li>
 				<label for="man_content">내용</label>
-				<form:textarea cols="40" rows="20" path="man_content"/>
+				<form:textarea cols="40" rows="15" path="man_content"/>
 				<form:errors path="man_content"/>
 			</li>
 		</ul>
-		<div>
+		<div class="align-center">
 			<input type="submit" value="등록" id="btn_submit">
+			<hr size="1" width="100%" noshade="noshade">
 		</div>
 	</form:form>
+</div>
 <!-- 공략 게시판 글쓰기  끝-->  
