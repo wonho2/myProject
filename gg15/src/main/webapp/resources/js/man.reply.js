@@ -36,8 +36,8 @@ $(document).ready(function(){
 					//댓글 목록 작업
 					$(list).each(function(index,item){
 						var output = '<div class="item">';
-						output += '  <h4>' + item.mem_nick + '</h4>';
-						output += '  <div class="sub-item">';
+						output += '  <h4 style="font-size:18px;">' + item.mem_nick + '</h4>';
+						output += '  <div class="sub-item" style="font-size:14px;">';
 						//output += '    <p>' + item.mar_content.replace(/\n/g,'<br>') + '</p>';
 						output += '    <p>' + item.mar_content.replace(/</gi,'&lt;').replace(/>/gi,'&gt;') + '</p>';
 						output += item.mar_date;

@@ -4,10 +4,7 @@
 <!-- 공략 게시판 메인화면 시작 -->
 <div class="page-main-style">
 <h2>LoL 챔피언 공략 게시판</h2>
-<p class="align-right">
-	<input type="button" value="글쓰기" onclick="location.href='write.do'">
-</p>
-<div>
+<div style="overflow:auto;height:260px;">
 	<ul class="icon">
 		<li class="item"><a href="list.do?keyword=가렌"><img src="${pageContext.request.contextPath}/resources/images/가렌.png" width="100" height="100"></a></li>
 		<li class="item"><a href="list.do?keyword=갈리오"><img src="${pageContext.request.contextPath}/resources/images/갈리오.png" width="100" height="100"></a></li>
@@ -31,7 +28,9 @@
 		<li class="item"><a href="list.do?keyword=람머스"><img src="${pageContext.request.contextPath}/resources/images/람머스.png" width="100" height="100"></a></li>
 	</ul>
 </div>
-
+<p class="align-right">
+	<input type="button" value="글쓰기" onclick="location.href='write.do'">
+</p>
 
 <c:if test="${count == 0}">
 	게시물이 없습니다.
