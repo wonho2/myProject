@@ -5,8 +5,10 @@ $(document).ready(function()
  * 전역변수, 초기화
  */
 	var currentPage;
-	var pageCount;
+	var count;
 	var rowCount;
+	var sort_type;
+	var sort_url;
 	defaultCommentListSort();
 	
 /*
@@ -21,7 +23,9 @@ $(document).ready(function()
 	function defaultCommentListSort()
 	{
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
-		selectCommentList(1, $("#pos_num").val(), sort.RECENT, sortUrl.RECENT);
+		sort_type = sort.RECENT;
+		sort_url = sortUrL.RECENT;
+		selectCommentList(1, $("#pos_num").val(), sort_type, sort_url);
 	}
 	
 /*
@@ -29,9 +33,11 @@ $(document).ready(function()
  * 미구현 부분 : 추천, 비추천 버튼 이미지, 추천수
  * 교훈 : 페이징 처리 하자
  */
-	function selectCommentList(pageNum, pos_num, sort_type, url)
+	function selectCommentList(pageNum, pos_num, sort_type, sort_url)
 	{
+		// 현재 페이지 저장
 		currentPage = pageNum;
+		// 1페이지 호출 시, 해당 id 내부 내용물 제거
 		if(pageNum == 1)
 		{
 			$("#output_commentList").empty();
@@ -40,7 +46,7 @@ $(document).ready(function()
 		$.ajax({
 			type:'get',
 			data:{pageNum:pageNum, pos_num:pos_num, sort_type:sort_type},
-			url:url,
+			url:sort_url,
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -68,15 +74,31 @@ $(document).ready(function()
 						output += 	'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="삭제" id="btn_deleteComment">';
 						output += '</span>';
 					}
+					// 추천 버튼과 추천 수
 					output += 	'<div>';
-					output += 		'<input type="button" data-num="' + item.poc_num + '" data-mem="' + item.mem_num + '" value="추천/비추천" id="btn_commentFav">';
-					output += 		'<span class="favCount_comment">' + item.poc_fav + '</span>';
+					if(item.click_num==0 || $("#mem_num").val()!=item.click_num)
+					{
+						output += ' <img class="btn_commentFav" src="../resources/images/heart01.png" data-num="'+item.poc_num+'"> <span class="commentFavCount">'+poc_fav+'</span>';
+					}
+					else
+					{
+						output += ' <img class="btn_commentFav" src="../resources/images/heart02.png" data-num="'+item.poc_num+'"> <span class="commentFavCount">'+poc_fav+'</span>';
+					}
 					output += 	'</div>';
 					output += '</div>';
 					output += '<hr size="1" noshade="noshade">';
 					// 댓글 리스트 불러와서 html에 표시
 					$('#output_commentList').append(output);
-				});			
+				});
+				// paging Button 처리
+				if(currentPage >= Math.ceil(count/rowCount))
+				{
+					$("#btn_paging").hide();
+				}
+				else
+				{
+					$("#btn_paging").show();
+				}
 				
 			},
 			error:function(){
@@ -84,7 +106,15 @@ $(document).ready(function()
 			}
 		});
 	}
-
+	
+/*
+ * 다음 댓글 보기 버튼 클릭시 데이터 추가
+ */
+	$("#btn_paging input").click(function(){
+		var pageNum = currentPage + 1;
+		selectCommentList(pageNum, $("#pos_num").val(), sort_type, sort_url);
+	});
+	
 /*
  * 댓글 쓰기 제출 (동적 요소 : #form_writeComment)
  * 동적 요소일 때 써야하는 함수 : $(document).on(이벤트종류, 속성의 아이디 또는 클래스명, 함수)
@@ -113,6 +143,7 @@ $(document).ready(function()
 				else if(data.result == "success"){
 					alert("댓글 입력 성공");
 					defaultCommentListSort();
+					$("#poc_content").val("");
 				}
 				else{
 					alert("댓글 등록 오류 발생");
@@ -122,6 +153,8 @@ $(document).ready(function()
 				alert("네트워크 오류 발생");
 			}
 		});
+		// 기본 이벤트 제거
+		event.preventDefault();
 	});	
 
 /*
@@ -136,8 +169,7 @@ $(document).ready(function()
 		var poc_content = $(this).parent().parent().find('p').html().replace(/<br>/gi,'\n'); //g:지정문자열 모두, i:대소문자 무시
 		
 		// 댓글 수정폼 UI
-		var output = '';
-		output += '<div>';
+		var output = '<div>';
 		output += 	'<form id="form_modifyComment">';
 		output += 		'<input type="hidden" id="mpos_num" value="' + poc_num + '">';
 		output += 		'<input type="hidden" id="mmem_num" value="' + mem_num + '">';
@@ -155,7 +187,7 @@ $(document).ready(function()
 	});
 	
 // 댓글 수정 처리 (동적 요소 : #form_modifyComment)
-	$(document).on("submit", "#form_modifyComment", function()
+	$(document).on("submit", "#form_modifyComment", function(event)
 	{
 		var data = $(this).serialize();
 		
@@ -197,6 +229,8 @@ $(document).ready(function()
 				alert("네트워크 오류 발생");
 			}
 		});
+		// 기본 이벤트 제거
+		event.preventDefault();
 	});
 	
 // 댓글 수정 취소 (동적 요소 : #btn_modifyCancel)
@@ -257,16 +291,15 @@ $(document).ready(function()
 /*
  * 댓글 추천/비추천
  */
-// (동적 요소 : #commentList.#btn_commentFav)
-	$(document).on("click", "#btn_commentFav", function()
+// (동적 요소 : #commentList..btn_commentFav)
+	$(document).on("click", ".btn_commentFav", function()
 	{
-		var poc_num = $(this).attr('data-num');
-		var mem_num = $(this).attr('data-mem');
+		var btn_fav = $(this);
 		
 		$.ajax({
 			type:'get',
 			url:'commentFav.do',
-			data:{poc_num:poc_num, mem_num:mem_num},
+			data:{poc_num:btn_fav.attr("data-num")},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -275,23 +308,37 @@ $(document).ready(function()
 					alert("로그인이 필요한 서비스 입니다");
 					// 로그인 페이지로 이동
 				}
-				else if(data.result == "success - favUp"){
+				else if(data.result == "success"){
 					alert("댓글 추천 완료");
-					$(this).parent().find("span").html(data.commentFavCount); // 추천수 변경인데, 작동이 제대로 되는지 확인해야함
-					// 추천된 버튼으로 이미지 바꾸기
-				}
-				else if(data.result == "success - favCancel"){
-					alert("댓글 추천을 취소했습니다");
-					$(this).parent().find("span").html(data.commentFavCount);
-					// 추천되지 않은 버튼으로 이미지 바꾸기
+					displayFav(data, btn_fav);
 				}
 				else{
 					alert("댓글 추천 오류 발생");
 				}
 			},
-			error:function(){}
+			error:function(){
+				alert("네트워크 오류 발생");
+			}
 		});
 	});
+	
+	// 추천 버튼 아이콘 표시
+	function displayFav(data, btn_fav)
+	{
+		var status = data.status;
+		var count = data.count;
+		var output;
+		if(status == "noFav")
+		{
+			output = "../resources/images/heart01.png";
+		}
+		else
+		{
+			output = "../resources/images/heart02.png";
+		}
+		btn_fav.attr("src", output);
+		btn_fav.parent().find(".commentFavCount").text(count);
+	}
 });
 
 

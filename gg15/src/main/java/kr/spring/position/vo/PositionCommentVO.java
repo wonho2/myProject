@@ -10,7 +10,8 @@ public class PositionCommentVO
 	private String mem_nick; // 회원 닉네임
 	private String poc_content; // 댓글 내용
 	private String poc_date; // 댓글 작성 날짜
-	private int poc_fav; // 댓글 추천수. position_cfav 테이블과 조인해서 값 얻기
+	private int poc_fav; // 댓글 추천수 (position_cfav 테이블 그룹핑해서 가상 속성으로 가져옴)
+	private int click_num; // 댓글 추천을 누른 회원 번호 (각 세션에 저장)
 	
 	public int getPoc_num() {
 		return poc_num;
@@ -55,5 +56,11 @@ public class PositionCommentVO
 	}
 	public void setPoc_fav(int poc_fav) {
 		this.poc_fav = poc_fav;
+	}
+	public int getClick_num() {
+		return click_num;
+	}
+	public void setClick_num(int click_num) {
+		this.click_num = click_num;
 	}
 }

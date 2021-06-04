@@ -27,5 +27,8 @@
 
 <!-- 댓글 목록 -->
 <p id="output_commentList"></p>
+<div id="btn_paging" style="display:none;">
+	<input type="button" value="다음">
+</div>
 
 <!-- 포지션게시판 : 게시물 디테일 댓글 끝 -->

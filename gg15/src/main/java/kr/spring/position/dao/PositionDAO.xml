@@ -71,25 +71,32 @@
 	
 <!-- 게시물 댓글 리스트 -->
 	<select id="selectCommentList" parameterType="map" resultType="positionCommentVO">
-		SELECT
+ 		SELECT
  		   *
  		FROM (SELECT 
- 		        a.*, 
+ 		        m.*, 
  		        rownum rnum 
  		      FROM (SELECT 
                       *
                     FROM (SELECT 
-                    		p.*,
-                    		m.mem_nick 
-                          FROM position_comment where pos_num=#{pos_num}) p
-                               JOIN member_detail m
-                               USING(mem_num)
-                               <if test = "sort_type == 0">
-                        		<!-- 인기순 정렬 -->
-                               </if>
-                               <if test = "sort_type == 1">
-                               	ORDER BY p.poc_num DESC)a)
-                               </if>
+                            p.*,
+                            md.mem_nick 
+                            FROM position_comment where pos_num=#{pos_num}) p 
+                               JOIN member_detail md
+                               ON p.mem_num = md.mem_num
+                               LEFT OUTER JOIN 
+                               <if test = "mem_num != null">
+                               (SELECT * FROM (SELECT poc_num, count(*) poc_fav 
+                                                FROM position_cfav group by poc_num)a 
+                                                     LEFT OUTER JOIN 
+                                                     (SELECT pocf_num,poc_num,mem_num,click_num FROM position_cfav where mem_num=#{mem_num})b 
+                                                     USING(poc_num))f 
+                              </if>
+                              <if test = "mem_num == null">
+                               (SELECT poc_num, count(*) poc_fav from position_cfav group by poc_num)f
+                              </if>                       
+                              USING(poc_num) ORDER BY poc_num DESC)m)
+                              
  		<![CDATA[
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>   
