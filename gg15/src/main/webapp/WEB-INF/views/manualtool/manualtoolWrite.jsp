@@ -55,6 +55,28 @@
 					<option value="라이즈">라이즈</option>
 					<option value="라칸">라칸</option>
 					<option value="람머스">람머스</option>
+					<option value="럭스">럭스</option>
+					<option value="럼블">럼블</option>
+					<option value="레넥톤">레넥톤</option>
+					<option value="레오나">레오나</option>
+					<option value="렉사이">렉사이</option>
+					<option value="렐">렐</option>
+					<option value="렝가">렝가</option>
+					<option value="루시안">루시안</option>
+					<option value="룰루">룰루</option>
+					<option value="르블랑">르블랑</option>
+					<option value="리븐">리븐</option>
+					<option value="리산드라">리산드라</option>
+					<option value="리 신">리 신</option>
+					<option value="릴리아">릴리아</option>
+					<option value="마스터 이">마스터 이</option>
+					<option value="마오카이">마오카이</option>
+					<option value="말자하">말자하</option>
+					<option value="말파이트">말파이트</option>
+					<option value="모데카이저">모데카이저</option>
+					<option value="모르가나">모르가나</option>
+					<option value="문도 박사">문도 박사</option>
+					<option value="미스 포츈">미스 포츈</option>
 				</form:select>
 			</li>
 			 <li>

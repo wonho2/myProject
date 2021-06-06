@@ -36,7 +36,6 @@
 			<hr size="1" width="100%" noshade="noshade">
 				<label>챔피언 선택</label>
 				<form:select path="man_champion">
-					<!-- 아이콘 선택이 아니라 글자로 선택하는 경우 (몇개나 넣을지 모르겠어요 다 넣으면 너무 많기도 하고) -->
 					<form:option value="가렌">가렌</form:option>
 					<form:option value="갈리오">갈리오</form:option>
 					<form:option value="갱플랭크">갱플랭크</form:option>
@@ -57,6 +56,28 @@
 					<form:option value="라이즈">라이즈</form:option>
 					<form:option value="라칸">라칸</form:option>
 					<form:option value="람머스">람머스</form:option>
+					<form:option value="럭스">럭스</form:option>
+					<form:option value="럼블">럼블</form:option>
+					<form:option value="레넥톤">레넥톤</form:option>
+					<form:option value="레오나">레오나</form:option>
+					<form:option value="렉사이">렉사이</form:option>
+					<form:option value="렐">렐</form:option>
+					<form:option value="렝가">렝가</form:option>
+					<form:option value="루시안">루시안</form:option>
+					<form:option value="룰루">룰루</form:option>
+					<form:option value="르블랑">르블랑</form:option>
+					<form:option value="리븐">리븐</form:option>
+					<form:option value="리산드라">리산드라</form:option>
+					<form:option value="리 신">리 신</form:option>
+					<form:option value="릴리아">릴리아</form:option>
+					<form:option value="마스터 이">마스터 이</form:option>
+					<form:option value="마오카이">마오카이</form:option>
+					<form:option value="말자하">말자하</form:option>
+					<form:option value="말파이트">말파이트</form:option>
+					<form:option value="모데카이저">모데카이저</form:option>
+					<form:option value="모르가나">모르가나</form:option>
+					<form:option value="문도 박사">문도 박사</form:option>
+					<form:option value="미스 포츈">미스 포츈</form:option>
 				</form:select>
 			</li>
 			<li>
