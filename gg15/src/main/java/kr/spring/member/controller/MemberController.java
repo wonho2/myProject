@@ -1,10 +1,12 @@
 package kr.spring.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -17,16 +19,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.board.vo.BoardVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.party.service.PartyService;
+import kr.spring.party.vo.PartyVO;
 import kr.spring.util.AuthCheckException;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class MemberController {
 
 	private Logger log = Logger.getLogger(this.getClass());
-
+	
 	//의존 관계 설정
 	@Resource
 	private MemberService memberService;
@@ -35,6 +42,12 @@ public class MemberController {
 	@ModelAttribute
 	public MemberVO initCommand() {
 		return new MemberVO();
+	}
+	
+	//자바빈 초기화
+	@ModelAttribute
+	public PartyVO initCommand2() {
+		return new PartyVO();
 	}
 
 	//========회원가입=========//
@@ -119,10 +132,6 @@ public class MemberController {
 					memberVO.getMem_id());
 			boolean check = false;
 
-			if(log.isDebugEnabled()) {
-				log.debug("<<회원 아이디>> : " + member.getMem_id());
-			}
-
 			if(member!=null) {
 				//비밀번호 일치 여부 체크
 				check = member.isCheckedPassword(
@@ -181,10 +190,6 @@ public class MemberController {
 				MemberVO member = memberService.selectCheckMember(
 						memberVO.getMem_id());
 				boolean check = false;
-
-				if(log.isDebugEnabled()) {
-					log.debug("<<회원 아이디>> : " + member.getMem_id());
-				}
 
 				if(member!=null) {
 					//비밀번호 일치 여부 체크
@@ -362,4 +367,32 @@ public class MemberController {
 			return formDelete();
 		}
 	}	
+	//===내 게시글 목록===/
+		@RequestMapping("/party/myList.do")
+		public ModelAndView myBoardList(@RequestParam(value="page", defaultValue="1") int currentPage,PartyVO partyVO, BindingResult result, HttpServletRequest request, HttpSession session)
+		{
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			partyVO.setMem_num(user_num);
+			
+			//페이징 처리
+			int count = memberService.selectMyPartyCount(user_num);
+			PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "myList.do");
+			List<PartyVO> myPartyList = null;
+			if(count > 0)
+			{
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("start", page.getStartCount());
+				map.put("end", page.getEndCount());
+				map.put("user_num", user_num);
+				myPartyList = memberService.selectMyPartyList(map);
+			}
+			//데이터 저장 및 반환
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("myPartyList");
+			mav.addObject("count", count);
+			mav.addObject("myPartyList", myPartyList);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			return mav;
+		}
+
 }

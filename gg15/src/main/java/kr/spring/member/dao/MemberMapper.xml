@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.member.dao.MemberMapper">
+
+<!-- 내 게시물 목록 -->	
+	<select id="selectMyPartyList" parameterType="map" resultType="partyVO">
+			SELECT
+			   *
+			FROM (SELECT 
+			        a.*,
+			        rownum rnum
+			      FROM(SELECT
+			              p.par_num,
+			              p.par_type,
+			              <![CDATA[
+			              REPLACE(REPLACE(p.par_title,'<','&lt;'),'>','&gt;') par_title,
+			              ]]>
+			              m.mem_nick,
+			              p.par_date,
+			              p.par_hit
+			              FROM party p JOIN member_detail m ON p.mem_num = m.mem_num WHERE p.mem_num=#{user_num} ORDER BY p.par_num DESC)a)
+	    	<![CDATA[
+	    	WHERE rnum >= #{start} AND rnum <= #{end}
+	    	]]>
+		</select>
+
+</mapper>

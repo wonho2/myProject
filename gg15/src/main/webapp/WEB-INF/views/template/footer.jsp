@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- 하단 시작 -->
 <!-- Contact-->
-        <section class="page-section" id="contact">
+       <!--  <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contact Us</h2>
@@ -37,7 +37,7 @@
                     </div>
                 </form>
             </div>
-        </section>
+        </section> -->
  <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">

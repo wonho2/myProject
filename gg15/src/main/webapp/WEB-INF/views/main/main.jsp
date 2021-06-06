@@ -5,14 +5,14 @@
 < <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <h2 class="section-heading text-uppercase">Services</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
+                </div> -->
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-square fa-stack-2x text-muted"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">E-Commerce</h4>
@@ -38,7 +38,7 @@
             </div>
         </section>
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+       <%--  <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Portfolio</h2>
@@ -137,9 +137,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --%>
         <!-- About-->
-        <section class="page-section" id="about">
+      <%--   <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">About</h2>
@@ -199,9 +199,9 @@
                     </li>
                 </ul>
             </div>
-        </section>
+        </section> --%>
         <!-- Team-->
-        <section class="page-section bg-light" id="team">
+        <%-- <section class="page-section bg-light" id="team">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
@@ -243,9 +243,9 @@
                     <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
                 </div>
             </div>
-        </section>
+        </section> --%>
         <!-- Clients-->
-        <div class="py-5">
+        <%-- <div class="py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-3 col-sm-6 my-3">
@@ -262,4 +262,4 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --%>

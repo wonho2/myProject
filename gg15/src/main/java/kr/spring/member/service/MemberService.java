@@ -1,11 +1,15 @@
 package kr.spring.member.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.party.vo.PartyVO;
 
 @Service("memberService")
 public class MemberService {
@@ -55,5 +59,15 @@ public class MemberService {
 	public void deleteMember(Integer mem_num) {
 		memberMapper.deleteMember(mem_num);
 		memberMapper.deleteMember_detail(mem_num);
+	}
+	
+	//총 내 파티 게시판 게시글 수
+	public int selectMyPartyCount(int mem_num) {
+		return memberMapper.selectMyPartyCount(mem_num);
+	}
+
+	//내 파티 게시물 리스트 불러오기
+	public List<PartyVO> selectMyPartyList(Map<String, Object> map) {
+		return memberMapper.selectMyPartyList(map);
 	}
 }

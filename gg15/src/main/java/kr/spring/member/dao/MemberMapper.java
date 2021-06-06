@@ -1,11 +1,15 @@
 package kr.spring.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.party.vo.PartyVO;
 
 public interface MemberMapper {
 	//회원관리
@@ -51,4 +55,12 @@ public interface MemberMapper {
 	public void deleteMember(Integer mem_num);
 	@Delete("DELETE FROM member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);	
+
+
+	//총 내 파티 게시글 목록	
+	public List<PartyVO> selectMyPartyList(Map<String, Object> map);
+
+	//총 내 파티 게시물 수
+	@Select("SELECT COUNT(*) FROM party")
+	public int selectMyPartyCount(int mem_num);
 }	

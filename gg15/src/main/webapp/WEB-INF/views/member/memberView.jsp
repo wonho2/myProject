@@ -20,6 +20,14 @@
 		       onclick="location.href='delete.do'">            
 	</p>
 </div>
+	<hr size="1" width="100%">
+<div class="page-main-style">
+	<h2>내가 쓴글 보기</h2>
+	<ul>
+		<li><a href="${pageContext.request.contextPath}/party/myList.do">파티게시판</a></li>
+	</ul>
+</div>	
+
 <!-- 중앙 컨텐츠 끝 -->
 
 

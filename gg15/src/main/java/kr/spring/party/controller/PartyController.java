@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.party.service.PartyService;
 import kr.spring.party.vo.PartyVO;
 import kr.spring.util.PagingUtil;
@@ -59,7 +60,7 @@ public class PartyController {
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		return mav;
 	}
-	
+
 	//===게시판 글쓰기===/
 	@RequestMapping(value="/party/write.do", method=RequestMethod.GET)
 	public String writeForm()
