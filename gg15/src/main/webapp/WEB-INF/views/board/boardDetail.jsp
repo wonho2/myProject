@@ -6,6 +6,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <!-- 자유게시판 boardList 시작 -->
 <!-- 게시물 상세 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#siren_btn').click(function(){
@@ -15,18 +16,18 @@
 
 			//AJAX 통신
 			$.ajax({
-				url:'ReportPage.do',
-				type:'post',
-				data:{num:$('#mem_num').val()},
-				dataType:'json',
+				url:"/views/board/reportPage",//전송할 주소
+				type:'get',//전송방식
+				data:$('reportWrite'), //전송할 데이터
+				dataType:'json',//데이터 받을 형식
 				cache:false,
 				timeout:30000,
 				success:function(boa_num){
-	                $('#mem_num').text(boa_num);
-	            },
+					alert("신고가 완료되었습니다 :) ");
+	            },//성공시
 	            error: function(){
-	                alert("네트워크 에러");
-				}
+	                alert("네트워크 에러 :( ");
+				}//실패시
 			});
 		});	
 	});		
