@@ -6,7 +6,7 @@
 <!-- 포지션게시판 : boardList 시작 -->
 <!-- 게시물 카테고리 -->
 <div id="pos_type">
-	<header>포지션 선택</header>
+	<div class="title">포지션 선택</div>
 	<ul>
 		<li>
 			<a href="list.do">전체보기</a> <!-- default -->
@@ -94,6 +94,11 @@
 		</c:if>
 	</ul>
 </div>
+
+<!-- 페이징 처리 -->
+<div id="pos_paging">
+	${pagingHtml}
+</div>
 	
 <!-- 글쓰기 버튼 -->
 <span id="pos_btnWrite">
@@ -129,10 +134,5 @@
 			</c:forEach>
 		</table>
 	</div>
-			
-	<!-- 페이징 처리 -->
-	<div id="pos_paging">
-		${pagingHtml}
-	</div>	
 </c:if>
 <!-- 포지션게시판 : boardList 끝 -->

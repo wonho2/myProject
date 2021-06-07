@@ -11,12 +11,7 @@
 		font-weight:bold;
 		width:100px;
 	}
-	
-	select#pos_type
-	{
-		width:150px; height:40px;
-	}
-	
+		
 	form ul
 	{
 		padding-left:450px;
@@ -62,112 +57,109 @@
 	
 	.title
 	{
-		color:#b3bcbd;
+		background-color:#34ebc3; color:white;
+		font-weight:bold;
+		font-family:sans-serif;
 	}
 
 /*
 	포지션 카테고리
 */
-#pos_type
-{
-	width:13%; height:20%;
-	margin:3%;
-	border:1px solid #b3bcbd;
-}
+	#pos_type
+	{
+		width:13%; height:20%;
+		margin:3%;
+		border:1px solid #b3bcbd;
+	}
 
-#pos_type header
-{
-	background-color:#34ebc3; color:white;
-	height:25%;
-	font-weight:bold;
-	font-family:sans-serif;
-	padding-left:75px;
-	padding-top:10px;
-}
-
-#pos_type ul li a
-{
-	text-decoration:none;
-	color:#b3bcbd;
-	font-family:sans-serif;
-	padding-top:10px;
-	display: block;
-}
+	#pos_type ul li a
+	{
+		text-decoration:none;
+		color:#b3bcbd;
+		font-family:sans-serif;
+		padding-top:10px;
+		display: block;
+	}
 
 /*
 	게시물 정렬
 */
-#pos_sort
-{
-	position:absolute;
-	width:30%; height:10%;
-	top:60%; left:18%;
-}
-
-#pos_sort ul li
-{
-	font-family:sans-serif;
-	float:left;
-	font-weight:bold;
-	padding-top:10px;
-	padding-right:30px;
-}
-
-#pos_sort ul li a
-{
-	color:#34ebc3;
-	text-decoration:none;
-}
+	#pos_sort
+	{
+		position:absolute;
+		width:30%; height:10%;
+		top:55%; left:18%;
+	}
+	
+	#pos_sort ul li
+	{
+		font-family:sans-serif;
+		float:left;
+		font-weight:bold;
+		padding-top:10px;
+		padding-right:30px;
+	}
+	
+	#pos_sort ul li a
+	{
+		color:#34ebc3;
+		text-decoration:none;
+	}
 
 /*
 	글쓰기 버튼
 */
-#pos_btnWrite
-{
-	position:absolute;
-	top:60%; left:93%;
-}
+	#pos_btnWrite
+	{
+		position:absolute;
+		top:56%; left:93%;
+	}
 
 /*
 	게시물 없습니다 표시
 */
-#pos_noBoard
-{
-	position:absolute;
-	top:70%; left:22%;
-}
-
+	#pos_noBoard
+	{
+		position:absolute;
+		top:67%; left:22%;
+	}
 
 /*
 	게시판 목록
 */
-#pos_boardList
-{
-	position:absolute;
-	top:67%; left:19%;
-}
+	#pos_boardList
+	{
+		position:absolute;
+		top:63%; left:17%;
+	}
 
 /*
 	게시물 페이징
 */
-#pos_paging
-{
-	padding-left:20%;
-}
+	#pos_paging
+	{
+		position:absolute;
+		top:57%; right:10%;
+	}
 
 /*
 	form
 */
-#pos_title
-{
-	width:800px;
-}
+	#pos_title
+	{
+		width:800px;
+	}
+	
+	select#pos_type
+	{
+		width:150px; height:40px;
+	}
 
 /*
 	게시판 디테일
 */
-#pos_detail
-{
-	padding-left:450px;
-	padding-top:50px;
-}
+	#pos_detail
+	{
+		padding-left:450px;
+		padding-top:50px;
+	}
