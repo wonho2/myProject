@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mymy.css">    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>회원 상세 정보</h2>
@@ -20,11 +21,14 @@
 		       onclick="location.href='delete.do'">            
 	</p>
 </div>
-	<hr size="1" width="100%">
-<div class="page-main-style">
-	<h2>내가 쓴글 보기</h2>
+<div id="candy" class="page-main-style close">
+	<h2>내가 쓴 글</h2>
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/party/myList.do">파티게시판</a></li>
+		<li><a href="${pageContext.request.contextPath}/party/myList.do">파티모집</a></li>
+		<li><a href="${pageContext.request.contextPath}/member/myBoard.do">자유게시판</a></li>
+		<li><a href="${pageContext.request.contextPath}/member/myManual.do">챔피언공략</a></li>
+		<li><a href="${pageContext.request.contextPath}/member/myNews.do">유저뉴스</a></li>
+		<li><a id="rodi" href="${pageContext.request.contextPath}/member/myPosition.do">포지션정보</a></li>
 	</ul>
 </div>	
 

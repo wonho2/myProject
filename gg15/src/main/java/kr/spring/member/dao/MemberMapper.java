@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.board.vo.BoardVO;
+import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.party.vo.PartyVO;
 
@@ -63,4 +65,16 @@ public interface MemberMapper {
 	//총 내 파티 게시물 수
 	@Select("SELECT COUNT(*) FROM party")
 	public int selectMyPartyCount(int mem_num);
+	
+	//총 내 자유 게시물 수
+	public int selectMyRowCount(Map<String,Object> map);
+
+	//자유게시판 내 글 목록
+	public List<BoardVO> selectMyList(Map<String,Object> map);
+	
+	//내 포지션공략 총 레코드 수
+	public int selectMyManualCount(Map<String, Object> map);
+
+	//내 포지션공략 글 목록
+	public List<ManualtoolVO> selectMyManualList(Map<String, Object> map);
 }	

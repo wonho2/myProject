@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.spring.board.vo.BoardVO;
+import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.party.vo.PartyVO;
@@ -69,5 +71,23 @@ public class MemberService {
 	//내 파티 게시물 리스트 불러오기
 	public List<PartyVO> selectMyPartyList(Map<String, Object> map) {
 		return memberMapper.selectMyPartyList(map);
+	}
+	//내 자유 게시판 글 목록
+	public List<BoardVO> selectMyList(Map<String,Object> map){
+		return memberMapper.selectMyList(map);
+	}
+
+	//내 자유 게시판 총 게시물 수
+	public int selectMyRowCount(Map<String,Object> map) {
+		return memberMapper.selectMyRowCount(map);
+	}
+	//내 포지션공략 글 목록
+	public List<ManualtoolVO> selectMyManualList(Map<String, Object> map){
+		return memberMapper.selectMyManualList(map);
+	}
+
+	//내 포지션공략 총 레코드 수
+	public int selectMyManualCount(Map<String, Object> map) {
+		return memberMapper.selectMyManualCount(map);
 	}
 }

@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 파티게시판 목록 시작 -->   
-<p class="align-right">
+<!-- <p class="align-right">
 	<input type="button" value="글쓰기" onclick="location.href='write.do'">
-</p>
+</p> -->
 
 <!-- 중앙 켄텐츠 시작 -->
 <div class="page-main-style">
-	<h2>게시판 목록</h2>
+	<h2>내 파티모집 글 목록</h2>
 	<div class="align-right">
 		<c:if test="${!empty par_num}">
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">

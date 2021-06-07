@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.vo.BoardVO;
+import kr.spring.manualtool.vo.ManualtoolVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.party.service.PartyService;
@@ -38,16 +39,27 @@ public class MemberController {
 	@Resource
 	private MemberService memberService;
 
-	//자바빈(VO)초기화
+	//멤버 자바빈(VO)초기화
 	@ModelAttribute
 	public MemberVO initCommand() {
 		return new MemberVO();
 	}
 	
-	//자바빈 초기화
+	//파티게시판 자바빈 초기화
 	@ModelAttribute
 	public PartyVO initCommand2() {
 		return new PartyVO();
+	}
+
+	//자유게시판 자바빈 초기화
+	@ModelAttribute
+	public BoardVO initCommand3() {
+		return new BoardVO();
+	}	
+	//챔피언공략 자바빈(VO) 초기화
+	@ModelAttribute("manualtoolVO")
+	public ManualtoolVO initCommand4() {
+		return new ManualtoolVO();
 	}
 
 	//========회원가입=========//
@@ -390,5 +402,96 @@ public class MemberController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			return mav;
 		}
+		//내 자유게시판  목록
+		@RequestMapping("/member/myBoard.do")
+		public ModelAndView process(
+				@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+				@RequestParam(value="boa_cate",defaultValue="") String boa_cate,
+				BoardVO boardVO, HttpSession session) {
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			boardVO.setMem_num(user_num);
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("boa_cate", boa_cate);
+			
+			//총 게시글 수
+			int count = memberService.selectMyRowCount(map);
 
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+				log.debug("<<pageNum>> : " + currentPage);
+			}
+
+			//페이징 처리
+			PagingUtil page = new PagingUtil(currentPage,count,10,10,"myBoard.do","&boa_cate="+boa_cate);
+			
+			//목록호출
+			List<BoardVO> list = null;
+			if(count > 0) {
+				map.put("start", page.getStartCount());
+				map.put("end", page.getEndCount());
+				map.put("user_num", user_num);
+				list = memberService.selectMyList(map);
+			}
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<list>> : " + list);
+			}
+
+			ModelAndView mav = new ModelAndView();
+			//뷰 이름 설정
+			mav.setViewName("myBoardList");
+			//데이터 저장
+			mav.addObject("count", count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml",page.getPagingHtml());
+
+			return mav;  
+		}
+		//=====내 챔피언공략 글 목록=====//
+		@RequestMapping("/member/myManual.do")
+		public ModelAndView ManualtoolList(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+				                           @RequestParam(value="keyfield", defaultValue="") String keyfield,
+				                           @RequestParam(value="keyword", defaultValue="") String keyword,
+				                           @RequestParam(value="keyuser", defaultValue="") String keyuser,
+				                           ManualtoolVO manualtoolVO, HttpSession session) {
+			
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			manualtoolVO.setMem_num(user_num);
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			map.put("keyuser", keyuser);
+			//총 레코드 수
+			int count = memberService.selectMyManualCount(map);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<pageNum>> : " + currentPage);
+				log.debug("<<count>> : " + count);
+				log.debug("<<keyfield>> : " + keyfield);
+				log.debug("<<keyword>> : " + keyword);
+			}
+			
+			//페이징 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,currentPage, count, 10, 10, "myManual.do","&keyuser="+keyuser);
+			
+			List<ManualtoolVO> myManualList = null;
+			if(count > 0) {
+				map.put("start", page.getStartCount());
+				map.put("end", page.getEndCount());
+				map.put("user_num", user_num);
+
+				myManualList = memberService.selectMyManualList(map);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("myManualList");
+			mav.addObject("count", count);
+			mav.addObject("myManualList", myManualList);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			
+			return mav;
+		}
 }

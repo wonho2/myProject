@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.member.dao.MemberMapper">
 
-<!-- 내 게시물 목록 -->	
+<!-- 내 파티게시판 게시물 목록 -->	
 	<select id="selectMyPartyList" parameterType="map" resultType="partyVO">
 			SELECT
 			   *
@@ -25,5 +25,119 @@
 	    	WHERE rnum >= #{start} AND rnum <= #{end}
 	    	]]>
 		</select>
+	<!-- 나의 자유게시판 총 게시글 수-->
+	<select id="selectMyRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM board b
+		JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="boa_cate != ''">
+			boa_cate = #{boa_cate}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 나의 자유게시판 글 목록 -->
+	<select id="selectMyList" parameterType="map"
+	                                   resultType="boardVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.boa_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.boa_title,'<','&lt;'),'>','&gt;') boa_title,
+		              ]]>
+		              m.mem_nick,
+		              b.boa_date,
+		              b.boa_hit,
+		              b.boa_filename,
+		              b.boa_cate,
+		              b.boa_mode
+		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num 
+		              <where>
+						<if test="boa_cate != ''">
+							b.boa_cate = #{boa_cate}
+						</if>
+					  </where> 
+					  AND b.mem_num=#{user_num}
+		              ORDER BY b.boa_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	<!-- 내 챔피언공략 총 게시글 수-->
+	<select id="selectMyManualCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM manualtool mt
+		JOIN member_detail m
+		ON mt.mem_num = m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'man_title'">
+				mt.man_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'man_content'">
+				mt.man_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_nick'">
+				m.mem_nick = #{keyword}
+			</if>
+			<if test="keyuser != ''">
+				mt.man_champion = #{keyuser}
+			</if>
+		</where>
+	</select>
 
+<!-- 내 챔피언공략 글 목록 -->
+	<select id="selectMyManualList" parameterType="map" resultType="manualtoolVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		      		  mt.man_num,
+		              mt.man_champion,
+		              mt.man_season,
+		              <![CDATA[
+		              REPLACE(REPLACE(mt.man_title, '<', '&lt;'), '>', '&gt;') man_title,
+		              ]]>
+		              m.mem_nick,
+		              mt.man_update,
+		              mt.man_hit,
+		              mt.man_filename,
+		              f.man_fav,
+		              r.man_comment
+		           FROM manualtool mt
+		           LEFT OUTER JOIN (SELECT man_num, COUNT(*) man_fav FROM manualtool_fav GROUP BY man_num) f
+		           ON mt.man_num = f.man_num
+		           LEFT OUTER JOIN (SELECT man_num, COUNT(*) man_comment FROM manualtool_reply GROUP BY man_num) r
+		           ON mt.man_num = r.man_num
+		           JOIN member_detail m
+		           ON mt.mem_num = m.mem_num
+		           <where>
+						<if test="keyword != '' and keyfield == 'man_title'">
+							mt.man_title LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'man_content'">
+							mt.man_content LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'mem_nick'">
+							m.mem_nick = #{keyword}
+						</if>
+						<if test="keyuser != ''">
+							mt.man_champion = #{keyuser}
+						</if>
+						AND mt.mem_num=#{user_num}
+					</where>
+		           ORDER BY mt.man_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
 </mapper>

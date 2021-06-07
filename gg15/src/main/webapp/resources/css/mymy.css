@@ -1,9 +1,22 @@
 @charset "UTF-8";
 
-.canto{
-	background-color:#34ebc3
-}
 
-.cast{
-	font-color:#ff0000
+/* ul{
+	list-style:none;
+}
+li{
+	float:left;
+	margin-left:20px;
+} */
+#candy{
+	margin-bottom:50px;
+}
+.close ul li{
+	list-style:none;
+	float:left;
+	margin-left:30px;
+	font-size:20px;
+}
+#rodi{
+	color:#ff0000;
 }

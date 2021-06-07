@@ -41,8 +41,16 @@
 		          value="/WEB-INF/views/member/memberDelete.jsp"/>
 	</definition>
 	<definition name="myPartyList" extends="main">
-		<put-attribute name="title" value="15 gg - 내 파티 게시판 목록"/>
+		<put-attribute name="title" value="15 gg - 내 파티모집 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/myPartyList.jsp"/>
+	</definition>
+	<definition name="myBoardList" extends="main">
+		<put-attribute name="title" value="15 gg - 내  자유게시판 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/myBoardList.jsp"/>
+	</definition>
+	<definition name="myManualList" extends="main">
+		<put-attribute name="title" value="15 gg - 내 챔피언공략 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/myManualList.jsp"/>
 	</definition>
 </tiles-definitions>
 
