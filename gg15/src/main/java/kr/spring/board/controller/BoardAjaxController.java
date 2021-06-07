@@ -297,10 +297,9 @@ public BoardReportVO initCommand() {
 	public ModelAndView process(
 		@RequestParam(value="pageNum",defaultValue="1") int currentPage)  {
 
-	Map<String,Object> map = new HashMap<String,Object>();
-
+	
 	//총 게시글 수
-	int count = boardService.selectRowCount(map);
+	int count = boardService.selectRowreport();
 
 	if(log.isDebugEnabled()) {
 		log.debug("<<count>> : " + count);
@@ -313,9 +312,10 @@ public BoardReportVO initCommand() {
 	//목록호출
 	List<BoardReportVO> list = null;
 	if(count > 0) {
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		//list = boardService.reportList(map);
+		list = boardService.reportList(map);
 	}
 
 	if(log.isDebugEnabled()) {

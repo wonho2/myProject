@@ -88,8 +88,16 @@
  		]]>                                 
  	</select>
  	
+ 	<select id="selectRowreport" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM boa_report r
+		JOIN board b
+		ON r.boa_num = b.boa_num
+	</select>
+ 	
 	<!-- 신고글 목록 -->
-	<select id="ReportList" parameterType="map"
+	<select id="reportList" parameterType="map"
 	                                   resultType="boardReportVO">
 		SELECT
 		   *
@@ -101,11 +109,12 @@
 		              <![CDATA[
 		              REPLACE(REPLACE(b.boa_title,'<','&lt;'),'>','&gt;') boa_title,
 		              ]]>
-		              b.bop_date
-		              FROM boa_report r JOIN board b ON r.boa_num = b.boa_num 
-		              <where>
-					  </where>
-		              ORDER BY b.bor_num DESC)a)
+		              r.bop_date,
+		              m.mem_nick
+		              FROM boa_report r 
+		              JOIN board b ON r.boa_num = b.boa_num 
+		              JOIN member_detail m ON r.mem_num = m.mem_num
+		              ORDER BY r.bop_num DESC)a)
 		              
 		              
     	<![CDATA[

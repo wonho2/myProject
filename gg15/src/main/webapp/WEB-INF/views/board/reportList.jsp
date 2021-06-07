@@ -14,14 +14,22 @@
 			<th>작성자</th>
 			<th>작성일</th>
 		</tr>
-				
+		<c:forEach var="boa_report" items="${list}">	
 		<tr>
-		
-			<td><a href="reportPage.do?bop_num=${boa_report.bop_num}">${board.boa_title}</a></td>
+			<td>${boa_report.bop_num}</td>
+			<td><a href="reportPage.do?bop_num=${boa_report.bop_num}">${boa_report.boa_title}</a></td>
 			<td>${boa_report.mem_nick}</td>
 			<td>${boa_report.bop_date}</td>
 		</tr>
-	</table>
+		</c:forEach>	
+	</table>	
+	
+	<c:if test="${count == 0}"> 
+		<section class="align-center">등록된 게시물이 없습니다.</section>
+		</c:if>		
+	<c:if test="${count ne 0}"> 
+	<div class="align-center">${pagingHtml}</div>
+	</c:if>
 	
 </div>			
 	

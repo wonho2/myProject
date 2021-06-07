@@ -82,7 +82,10 @@ public interface BoardMapper {
 	public void insertReport(BoardReportVO vo);
 	
 	//신고 글 목록
-	public List<BoardReportVO> ReportList(Map<String,Object> map);	
+	public List<BoardReportVO> reportList(Map<String,Object> map);	
+	
+	//신고 글 갯수
+	public int selectRowreport();
 	
 	//글 상세 페이지
 	@Select("SELECT * FROM boa_report r JOIN board b ON r.boa_num=b.boa_num WHERE b.boa_num=#{boa_num}")
