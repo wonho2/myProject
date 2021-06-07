@@ -13,7 +13,7 @@ public class NewsFavVO {
 		this.nef_num = nef_num;
 	}
 	public int getNew_num() {
-		return new_num;
+		return new_num; 
 	}
 	public void setNew_num(int new_num) {
 		this.new_num = new_num;

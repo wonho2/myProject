@@ -11,7 +11,7 @@ public class Summoner {
 	private String accountId;
 	
 	public Summoner() {
-		
+		 
 	}
 	
 	public Summoner(int profileIconId, String name, String puuid, long summonerLevel, long revisionDate, String id,

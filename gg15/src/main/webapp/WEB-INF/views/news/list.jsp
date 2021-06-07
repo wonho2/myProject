@@ -20,7 +20,7 @@
 			<th width="200px">작성자</th>
 			<th width="320px">작성일</th>
 			<th width="150px">조회수</th> 
-		</tr> 
+		</tr>  
 		<c:forEach var="news" items="${newsList}" >
 		<tr>
 		<td align="center">

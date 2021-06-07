@@ -4,7 +4,7 @@ package kr.spring.gg15.dto;
 public class LeagueEntryDTO {
 	private String queueType;
 	private String summonerId;
-	private String summonerName;
+	private String summonerName; 
 	private int wins;
 	private int losses;
 	private String leagueId;

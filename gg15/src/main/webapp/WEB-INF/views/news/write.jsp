@@ -21,7 +21,7 @@
 				<label for="new_upload">이미지 파일 업로드</label>
 				<input type="file" name="new_upload" id="new_upload"
 				                  accept="image/gif,image/png,image/jpeg">
-			</li>
+			</li> 
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="작성">

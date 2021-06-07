@@ -9,7 +9,7 @@
 		<put-attribute name="title" value="소환사 검색"/>
 		<put-attribute name="body" value="/WEB-INF/views/search/searchResult.jsp"/>
 	</definition>
-</tiles-definitions>
+</tiles-definitions> 
 
 
 

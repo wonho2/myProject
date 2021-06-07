@@ -18,7 +18,7 @@
 				<label for="new_content">내용</label>
 				<form:textarea path="new_content"/>
 				<form:errors path="new_content" cssClass="error-color"/>
-			</li>
+			</li> 
 			<li>
 				<label for="new_upload">파일 업로드</label>
 				<input type="file" name="new_upload" id="new_upload">

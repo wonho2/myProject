@@ -22,7 +22,7 @@
 		<li>작성자 : ${news.mem_nick}</li>
 		<li>조회수 : ${news.new_hit}</li>
 		<li>작성일 : ${news.new_date}</li>
-		    
+		     
 	</ul>
 	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(news.new_filename,'.jpg') || 

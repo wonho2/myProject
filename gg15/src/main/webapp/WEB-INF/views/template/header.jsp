@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/main/main.do">홈으로</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </nav>
  		<!-- Masthead-->
         <header class="masthead">

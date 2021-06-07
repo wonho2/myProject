@@ -11,7 +11,7 @@ new_filename varchar2(100),
 constraint news_pk primary key (new_num),
  constraint news_fk foreign key (mem_num) 
                   references member (mem_num)
-);
+); 
 
 create table news_reply(
 ner_num number not null,			--댓글 식별 번호 (PK)

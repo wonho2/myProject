@@ -17,7 +17,7 @@ public class NewsReplyVO
 	private int ner_fav; // 댓글의 추천 수
 	private int click_favUp; // 추천을 누른 회원 번호
 	private int click_favDown; // 비추천을 누른 회원 번호
-	
+	 
 	
 	public int getNer_fav() {
 		return ner_fav;

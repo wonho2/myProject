@@ -18,7 +18,7 @@ public interface NewsMapper {
 	@Insert("INSERT INTO news(new_num, mem_num, new_title, new_content, new_uploadfile, new_filename)"
 			+ " VALUES (news_seq.nextval, #{mem_num}, #{new_title}, #{new_content}, #{new_uploadfile}, #{new_filename})")
 	public void insertNews(NewsVO news);
-	     
+	      
 	//총 레코드 수
 	@Select("SELECT COUNT(*) FROM news")
 	public int selectNewsCount();

@@ -18,7 +18,7 @@ public class NewsService {
 	//의존 관계 설정
 	@Resource
 	private NewsMapper newsMapper;
-	
+	 
 	//글쓰기
 	public void insertNews(NewsVO news) {
 		newsMapper.insertNews(news);

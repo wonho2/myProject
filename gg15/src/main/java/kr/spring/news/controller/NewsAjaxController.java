@@ -27,7 +27,7 @@ public class NewsAjaxController{
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;
-
+ 
 	@Resource
 	private NewsService newsService;
 

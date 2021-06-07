@@ -46,7 +46,7 @@
 						pattern="0.00%" />
 					<span style="color: #6c757d; font-size: 18px;"> (${percent})
 					</span>
-					<h3>당신의 티어는?</h3>
+					<h3>당신의 티어는?</h3> 
 					<p>현재  ${leagueInfo.getTier()}
 						${leagueInfo.getRank()} 단계 입니다.</p>
 				</div>

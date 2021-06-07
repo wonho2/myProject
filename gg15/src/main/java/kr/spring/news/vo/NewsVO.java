@@ -19,7 +19,7 @@ public class NewsVO {
 	private String new_filename;
 	
 	@NotEmpty
-	private String new_title;
+	private String new_title; 
 	private String new_content;
 	
 	//업로드 파일 처리
