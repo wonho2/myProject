@@ -5,7 +5,7 @@
 <!-- 중앙 켄텐츠 시작 -->
 <!-- 파티게시판 목록 시작 -->   
 <div class="page-main-style">
-	<h2>게시판 목록</h2>
+	<h2>파티 모집</h2> 
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
 		<span id="pos_btnWrite">
