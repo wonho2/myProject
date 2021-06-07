@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>뉴스</h2>
+	<h2>유저뉴스</h2>
 	<div class="align-right">
 	 <c:if test="${!empty user_num}"> 
 		<span id="pos_btnWrite">
@@ -16,7 +16,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 	<table  style="width:80%">
-		<tr class="align-center">
+		<tr class="align-center onew">
 			<th width="250px">이미지</th>
 			<th width="900px">뉴스</th>
 			<th width="200px">작성자</th>

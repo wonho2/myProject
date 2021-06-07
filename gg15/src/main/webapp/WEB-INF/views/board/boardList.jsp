@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 자유게시판 boardMain 시작 -->
 <div class="page-main-style">
-	<h2>자유게시판 목록</h2>
+	<h2>자유게시판</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
-		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
+		<span id="pos_btnWrite">
+	<img src="../resources/images/icon_write.png" onclick="location.href='boardWrite.do'">
+</span>
 		</c:if>
 		
  		<c:if test="${user_auth == 3}">
@@ -36,7 +38,7 @@
 	 	<input type="button" value="게시판 목록" onclick="location.href='list.do'">
 		</form> 
 	<table>	
-		<tr>
+		<tr class="onew">
 			<th>번호</th>
 			<th>카테고리</th>
 			<th>첨부파일</th>
