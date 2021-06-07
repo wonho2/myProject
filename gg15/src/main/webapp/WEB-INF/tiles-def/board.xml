@@ -32,8 +32,8 @@
 	</definition>
 	
 	<definition name="ReportList" extends="main">
-		<put-attribute name="title" value="gg.15 - 자유게시판"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/reportlist.jsp"/>
+		<put-attribute name="title" value="gg.15 - 자유게시판 신고 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/reportList.jsp"/>
 	</definition>
 	
 	<definition name="boardReport" extends="main">

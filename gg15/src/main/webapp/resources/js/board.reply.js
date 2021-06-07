@@ -361,6 +361,7 @@ $(document).ready(function(){
 	
 	
 	//===========게시글 신고 시작 ==============//
+	/*
 	function selectData(pageNum,boa_num){
 	currentPage = pageNum;
 		
@@ -374,7 +375,7 @@ $(document).ready(function(){
 	$.ajax({
 		type:'post',
 		data:{pageNum:pageNum,boa_num:boa_num},
-		url:'reportlist.do',
+		url:'reportList.do',
 		dataType:'json',
 		cache:false,
 		timeout:30000,
@@ -421,7 +422,7 @@ $(document).ready(function(){
 		}
 		});
 	}
-	
+	*/
 	//다음 신고 보기 버튼 클릭시 데이터 추가
 	$('.paging-button input').click(function(){
 		var pageNum = currentPage + 1;
@@ -470,7 +471,7 @@ $(document).ready(function(){
 		$('#output_Sta').attr('src',output);
 	} 
 	//초기 데이터(목록) 호출
-	selectSta($('#boa_num').val());
+	//selectSta($('#boa_num').val());
 	
 	//===========게시글 차단 끝 ==============//
 	

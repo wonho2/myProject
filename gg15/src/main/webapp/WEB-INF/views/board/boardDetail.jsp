@@ -19,12 +19,18 @@
 				url:'reportWrite.do',
 				type:'post',//전송방식
 				//data:$('reportWrite'), //전송할 데이터
-				data:{mem_num:$('#user_num').val(),boa_num:$('#boa_num').val(),bos_content:reportWrite},
+				data:{mem_num:$('#mem_num').val(),boa_num:$('#boa_num').val(),bop_content:reportWrite},
 				dataType:'json',//데이터 받을 형식
 				cache:false,
 				timeout:30000,
-				success:function(boa_num){
-					alert("신고가 완료되었습니다 :) ");
+				success:function(data){
+					if(data.result=='logout'){
+						alert('로그인해야 작성할 수 있습니다.');
+					}else if(data.result=='success'){
+						alert('신고가 완료되었습니다.');
+					}else{
+						alert('등록시 오류 발생!');
+					}
 	            },//성공시
 	            error: function(){
 	                alert("네트워크 에러 :( ");

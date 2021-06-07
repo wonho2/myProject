@@ -8,6 +8,7 @@ public class BoardReportVO {
 	private String bop_content;//신고내용
 	private String bop_date;//신고일
 	private String mem_nick;//사용자 아이디
+	private String boa_title;
 	
 	public int getMem_num() {
 		return mem_num;
@@ -45,4 +46,16 @@ public class BoardReportVO {
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
 	}
+	public String getBoa_title() {
+		return boa_title;
+	}
+	public void setBoa_title(String boa_title) {
+		this.boa_title = boa_title;
+	}
+	@Override
+	public String toString() {
+		return "BoardReportVO [mem_num=" + mem_num + ", boa_num=" + boa_num + ", bop_num=" + bop_num + ", bop_content="
+				+ bop_content + ", bop_date=" + bop_date + ", mem_nick=" + mem_nick + ", boa_title=" + boa_title + "]";
+	}
+	
 }

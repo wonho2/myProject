@@ -132,14 +132,18 @@ public class BoardService {
 		boardMapper.deleteFav(bof_num);
 	}
 
-/*	//신고글 목록
+	//신고글 목록
 	public List<BoardReportVO> ReportList(Map<String,Object> map){
 			return boardMapper.ReportList(map);
 	}
+	
+	/*
 	//신고 상세 페이지
 	public BoardReportVO selectReport(Integer boardReport) {
 		return boardMapper.selectReport(boardReport);
-	}*/
+	}
+	*/
+	
 	//신고글 쓰기
 	public void insertreport(BoardReportVO Report) {
 		boardMapper.insertReport(Report);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -254,6 +255,7 @@ public class BoardAjaxController{
 	
 	//신고글 등록
 	@RequestMapping("/board/reportWrite.do")
+	@ResponseBody
 	public Map<String,String> writeReport(
 			BoardReportVO boardReportVO,
 			HttpSession session,
@@ -277,15 +279,22 @@ public class BoardAjaxController{
 			//신고 등록
 			boardService.insertreport(boardReportVO);
 			map.put("result", "success");
+			
 		}
 
 		return map;
 	}
 
+//자바빈 초기화
+@ModelAttribute
+public BoardReportVO initCommand() {
+	return new BoardReportVO();
+}	
 
 //자유게시판 신고  목록
-@RequestMapping("/board/reportList.do")
-public ModelAndView process(
+	@RequestMapping("/board/reportList.do")
+	@ResponseBody
+	public ModelAndView process(
 		@RequestParam(value="pageNum",defaultValue="1") int currentPage)  {
 
 	Map<String,Object> map = new HashMap<String,Object>();
@@ -326,13 +335,11 @@ public ModelAndView process(
 
 
 //====신고 글 상세======//
-@RequestMapping("/board/boardReport.do")
-public ModelAndView boardReport(@RequestParam int boa_num,
-		HttpSession session) {
-	//조회수 증가
-	boardService.updateHit(boa_num);
+@RequestMapping("/board/reportPage.do")
+@ResponseBody
+public ModelAndView reportPage(@RequestParam int boa_num,HttpSession session) {
 
-	Integer user_num = (Integer)session.getAttribute("user_num");
+	Integer mem_nick = (Integer)session.getAttribute("mem_nick");
 
 	BoardVO board = boardService.selectBoard(boa_num);
 
@@ -344,6 +351,7 @@ public ModelAndView boardReport(@RequestParam int boa_num,
 	//HTML 태그 불허
 	board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
 	//HTML 태그 불허 및 줄바꿈 처리
+	//BoardReportVO.setBop_content(BoardReportVO.getBop_content());
 	board.setBoa_content(board.getBoa_content());
 
 	return new ModelAndView("boardDetail","board",board);
@@ -352,7 +360,7 @@ public ModelAndView boardReport(@RequestParam int boa_num,
 //================================================================//
 
 //게시물 차단 해보자
-
+/*
 @RequestMapping("/board/getSta.do")
 @ResponseBody
 public Map<String,Object> getSta(BoardStatusVO Sta,HttpSession session){
@@ -424,4 +432,5 @@ public Map<String,Object> writeSta(BoardStatusVO fav,HttpSession session){
 	}
 	return map;
 }
+*/
 }

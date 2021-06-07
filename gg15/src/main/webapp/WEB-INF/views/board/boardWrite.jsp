@@ -93,7 +93,7 @@
 			</optgroup>
 			</select>
 			<!-- 공개범위 설정 -->
-			<span style="margin-left:220px;"><b>회원전용 보기 설정</b></span>
+			<span style="margin-left:220px;"><b>회원전용</b></span>
 			<input type="checkbox" name="boa_mode" value="1">회원전용
 			</li>
 		</ul>

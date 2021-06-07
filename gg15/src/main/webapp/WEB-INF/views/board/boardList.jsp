@@ -10,7 +10,7 @@
 		</c:if>
 		
  		<c:if test="${user_auth == 3}">
-		<input type="button" value="신고 글 보기" onclick="location.href='reportlist.do'">
+		<input type="button" value="신고 글 보기" onclick="location.href='reportList.do'">
 			<script type="text/javascript">
 			
 			</script>
