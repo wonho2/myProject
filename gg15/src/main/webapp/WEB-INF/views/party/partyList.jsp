@@ -17,7 +17,7 @@
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
+	<table class="div1">
 		<tr class="onew">
 			<th>번호</th>
 			<th>카테고리</th>

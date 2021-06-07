@@ -74,6 +74,13 @@ div#main_menu ul li{
 	background-color:#34ebc3;
 }
 
+.div1{
+   width: 100px;
+   height: 50px;
+   border: 1px solid red;
+   border-radius: 10px;
+}
+
 /*목록*/
 .page-main-style form#search_form{
 	border: none;

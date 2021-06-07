@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>회원 로그인</h2>
+	<h2 class="align-center">회원 로그인</h2>
 	<form:form action="login.do" commandName="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
