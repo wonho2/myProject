@@ -9,48 +9,48 @@
 <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/resources/images/rift.png" width="25" height="25">&nbsp;&nbsp;챔피언 선택</h6>
 <div style="overflow:auto;height:260px;">
 	<ul class="icon">
-		<li class="item"><a href="list.do?keyword=가렌"><img src="${pageContext.request.contextPath}/resources/images/가렌.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=갈리오"><img src="${pageContext.request.contextPath}/resources/images/갈리오.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=갱플랭크"><img src="${pageContext.request.contextPath}/resources/images/갱플랭크.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=그라가스"><img src="${pageContext.request.contextPath}/resources/images/그라가스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=그레이브즈"><img src="${pageContext.request.contextPath}/resources/images/그레이브즈.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=그웬"><img src="${pageContext.request.contextPath}/resources/images/그웬.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=나르"><img src="${pageContext.request.contextPath}/resources/images/나르.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=나미"><img src="${pageContext.request.contextPath}/resources/images/나미.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=나서스"><img src="${pageContext.request.contextPath}/resources/images/나서스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=노틸러스"><img src="${pageContext.request.contextPath}/resources/images/노틸러스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=녹턴"><img src="${pageContext.request.contextPath}/resources/images/녹턴.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=누누와 윌럼프"><img src="${pageContext.request.contextPath}/resources/images/누누와 윌럼프.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=니달리"><img src="${pageContext.request.contextPath}/resources/images/니달리.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=니코"><img src="${pageContext.request.contextPath}/resources/images/니코.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=다리우스"><img src="${pageContext.request.contextPath}/resources/images/다리우스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=다이애나"><img src="${pageContext.request.contextPath}/resources/images/다이애나.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=드레이븐"><img src="${pageContext.request.contextPath}/resources/images/드레이븐.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=라이즈"><img src="${pageContext.request.contextPath}/resources/images/라이즈.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=라칸"><img src="${pageContext.request.contextPath}/resources/images/라칸.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=람머스"><img src="${pageContext.request.contextPath}/resources/images/람머스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=럭스"><img src="${pageContext.request.contextPath}/resources/images/럭스.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=럼블"><img src="${pageContext.request.contextPath}/resources/images/럼블.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=레넥톤"><img src="${pageContext.request.contextPath}/resources/images/레넥톤.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=레오나"><img src="${pageContext.request.contextPath}/resources/images/레오나.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=렉사이"><img src="${pageContext.request.contextPath}/resources/images/렉사이.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=렐"><img src="${pageContext.request.contextPath}/resources/images/렐.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=렝가"><img src="${pageContext.request.contextPath}/resources/images/렝가.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=루시안"><img src="${pageContext.request.contextPath}/resources/images/루시안.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=룰루"><img src="${pageContext.request.contextPath}/resources/images/룰루.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=르블랑"><img src="${pageContext.request.contextPath}/resources/images/르블랑.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=리븐"><img src="${pageContext.request.contextPath}/resources/images/리븐.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=리산드라"><img src="${pageContext.request.contextPath}/resources/images/리산드라.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=리 신"><img src="${pageContext.request.contextPath}/resources/images/리 신.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=릴리아"><img src="${pageContext.request.contextPath}/resources/images/릴리아.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=마스터 이"><img src="${pageContext.request.contextPath}/resources/images/마스터 이.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=마오카이"><img src="${pageContext.request.contextPath}/resources/images/마오카이.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=말자하"><img src="${pageContext.request.contextPath}/resources/images/말자하.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=말파이트"><img src="${pageContext.request.contextPath}/resources/images/말파이트.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=모데카이저"><img src="${pageContext.request.contextPath}/resources/images/모데카이저.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=모르가나"><img src="${pageContext.request.contextPath}/resources/images/모르가나.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=문도 박사"><img src="${pageContext.request.contextPath}/resources/images/문도 박사.png" width="100" height="100"></a></li>
-		<li class="item"><a href="list.do?keyword=미스 포츈"><img src="${pageContext.request.contextPath}/resources/images/미스 포츈.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=가렌"><img src="${pageContext.request.contextPath}/resources/images/가렌.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=갈리오"><img src="${pageContext.request.contextPath}/resources/images/갈리오.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=갱플랭크"><img src="${pageContext.request.contextPath}/resources/images/갱플랭크.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=그라가스"><img src="${pageContext.request.contextPath}/resources/images/그라가스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=그레이브즈"><img src="${pageContext.request.contextPath}/resources/images/그레이브즈.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=그웬"><img src="${pageContext.request.contextPath}/resources/images/그웬.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=나르"><img src="${pageContext.request.contextPath}/resources/images/나르.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=나미"><img src="${pageContext.request.contextPath}/resources/images/나미.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=나서스"><img src="${pageContext.request.contextPath}/resources/images/나서스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=노틸러스"><img src="${pageContext.request.contextPath}/resources/images/노틸러스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=녹턴"><img src="${pageContext.request.contextPath}/resources/images/녹턴.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=누누와 윌럼프"><img src="${pageContext.request.contextPath}/resources/images/누누와 윌럼프.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=니달리"><img src="${pageContext.request.contextPath}/resources/images/니달리.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=니코"><img src="${pageContext.request.contextPath}/resources/images/니코.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=다리우스"><img src="${pageContext.request.contextPath}/resources/images/다리우스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=다이애나"><img src="${pageContext.request.contextPath}/resources/images/다이애나.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=드레이븐"><img src="${pageContext.request.contextPath}/resources/images/드레이븐.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=라이즈"><img src="${pageContext.request.contextPath}/resources/images/라이즈.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=라칸"><img src="${pageContext.request.contextPath}/resources/images/라칸.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=람머스"><img src="${pageContext.request.contextPath}/resources/images/람머스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=럭스"><img src="${pageContext.request.contextPath}/resources/images/럭스.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=럼블"><img src="${pageContext.request.contextPath}/resources/images/럼블.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=레넥톤"><img src="${pageContext.request.contextPath}/resources/images/레넥톤.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=레오나"><img src="${pageContext.request.contextPath}/resources/images/레오나.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=렉사이"><img src="${pageContext.request.contextPath}/resources/images/렉사이.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=렐"><img src="${pageContext.request.contextPath}/resources/images/렐.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=렝가"><img src="${pageContext.request.contextPath}/resources/images/렝가.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=루시안"><img src="${pageContext.request.contextPath}/resources/images/루시안.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=룰루"><img src="${pageContext.request.contextPath}/resources/images/룰루.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=르블랑"><img src="${pageContext.request.contextPath}/resources/images/르블랑.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=리븐"><img src="${pageContext.request.contextPath}/resources/images/리븐.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=리산드라"><img src="${pageContext.request.contextPath}/resources/images/리산드라.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=리 신"><img src="${pageContext.request.contextPath}/resources/images/리 신.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=릴리아"><img src="${pageContext.request.contextPath}/resources/images/릴리아.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=마스터 이"><img src="${pageContext.request.contextPath}/resources/images/마스터 이.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=마오카이"><img src="${pageContext.request.contextPath}/resources/images/마오카이.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=말자하"><img src="${pageContext.request.contextPath}/resources/images/말자하.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=말파이트"><img src="${pageContext.request.contextPath}/resources/images/말파이트.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=모데카이저"><img src="${pageContext.request.contextPath}/resources/images/모데카이저.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=모르가나"><img src="${pageContext.request.contextPath}/resources/images/모르가나.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=문도 박사"><img src="${pageContext.request.contextPath}/resources/images/문도 박사.png" width="100" height="100"></a></li>
+		<li class="item"><a href="list.do?keyuser=미스 포츈"><img src="${pageContext.request.contextPath}/resources/images/미스 포츈.png" width="100" height="100"></a></li>
 	</ul>
 </div>
 <hr size="1" noshade="noshade" width="100%">

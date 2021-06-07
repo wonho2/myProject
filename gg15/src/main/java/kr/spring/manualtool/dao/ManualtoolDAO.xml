@@ -21,6 +21,9 @@
 			<if test="keyword != '' and keyfield == 'mem_nick'">
 				m.mem_nick = #{keyword}
 			</if>
+			<if test="keyuser != ''">
+				mt.man_champion = #{keyuser}
+			</if>
 		</where>
 	</select>
 
@@ -60,6 +63,9 @@
 						</if>
 						<if test="keyword != '' and keyfield == 'mem_nick'">
 							m.mem_nick = #{keyword}
+						</if>
+						<if test="keyuser != ''">
+							mt.man_champion = #{keyuser}
 						</if>
 					</where>
 		           ORDER BY mt.man_num DESC)a)
