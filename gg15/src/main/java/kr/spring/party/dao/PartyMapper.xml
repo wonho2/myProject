@@ -24,7 +24,7 @@
     	WHERE rnum >= #{start} AND rnum <= #{end}
     	]]>
 	</select>
-
+	
 	<!-- 게시물 상세 페이지 -->
 	<!-- <select id="selectBoard" parameterType="Integer" resultType="partyVO">
 		SELECT 
@@ -62,7 +62,7 @@
  		                    par_num,
  		                    mem_num
                           FROM party_reply where par_num=#{par_num}) r 
-                               JOIN member m
+                               JOIN member_detail m
                                ON r.mem_num = m.mem_num
                                ORDER BY pop_num DESC)m)
                               
