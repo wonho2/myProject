@@ -92,6 +92,7 @@
  	                          resultType="boardReportVO">
 		SELECT 
 		   b.boa_title,
+		   b.boa_num,
 		   b.boa_cate, 
 		   b.boa_content, 
 		   b.boa_uploadfile, 

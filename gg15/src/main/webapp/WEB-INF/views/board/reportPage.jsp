@@ -40,12 +40,15 @@
 			                           style="max-width:500px">
 		</div>
 		</c:if>
-		<p>	${report.boa_content}</p>
+		<a href="boardDetail.do?boa_num=${report.boa_num}"> 본문가기</a>
+		<p>${report.boa_content}</p>
 	</div>
 	
 	<!-- 차단 게시물 설정 버튼 -->
 	<div>  
-		<input type="button" id="output_status" value="게시물 차단 하기"/> 
+		<input type="button" id="output_status" value="게시물 차단 하기"/>
+	
+		
 	</div>
 </div>
 <!-- 자유게시판 reportPage 끝 -->
