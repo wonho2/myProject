@@ -24,7 +24,7 @@
                         <c:if test="${empty user_num}">
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/adLogin.do">관리자로그인</a></li>
+                        <%-- <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/adLogin.do">관리자로그인</a></li> --%>
                         </c:if>
                         <c:if test="${!empty user_num && user_auth == 3}">
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
