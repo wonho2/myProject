@@ -144,12 +144,10 @@ public class BoardService {
 		return boardMapper.selectRowreport();
 	}
 	
-	/*
 	//신고 상세 페이지
-	public BoardReportVO selectReport(Integer boardReport) {
-		return boardMapper.selectReport(boardReport);
+	public BoardReportVO selectReport(Integer report) {
+		return boardMapper.selectReport(report);
 	}
-	*/
 	
 	//신고글 쓰기
 	public void insertreport(BoardReportVO Report) {

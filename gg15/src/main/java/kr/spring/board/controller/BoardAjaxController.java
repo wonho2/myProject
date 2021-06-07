@@ -333,28 +333,26 @@ public BoardReportVO initCommand() {
 	return mav;  
 }
 
-
 //====신고 글 상세======//
 @RequestMapping("/board/reportPage.do")
 @ResponseBody
-public ModelAndView reportPage(@RequestParam int boa_num,HttpSession session) {
+public ModelAndView selectReport(@RequestParam int bop_num,HttpSession session) {
 
-	Integer mem_nick = (Integer)session.getAttribute("mem_nick");
+	Integer user_num = (Integer)session.getAttribute("user_num");
 
-	BoardVO board = boardService.selectBoard(boa_num);
+	BoardReportVO report = boardService.selectReport(bop_num);
 
 	//관리자 전용 게시글
-	if(board.getUser_auth() != 3) {
-		return new ModelAndView("boardModeError","user_auth",board.getUser_auth());
+/*	if(report.getUser_auth() != 3) {
+		return new ModelAndView("boardModeError","user_auth",report.getUser_auth());
 	}
-
+*/
 	//HTML 태그 불허
-	board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
+	report.setBoa_title(StringUtil.useNoHtml(report.getBoa_title()));
 	//HTML 태그 불허 및 줄바꿈 처리
-	//BoardReportVO.setBop_content(BoardReportVO.getBop_content());
-	board.setBoa_content(board.getBoa_content());
+	report.setBop_content(report.getBop_content());
 
-	return new ModelAndView("boardDetail","board",board);
+	return new ModelAndView("reportPage","report",report);
 }
 
 //================================================================//

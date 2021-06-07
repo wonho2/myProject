@@ -35,6 +35,11 @@
 		<put-attribute name="title" value="gg.15 - 자유게시판 신고 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/reportList.jsp"/>
 	</definition>
+		
+	<definition name="reportPage" extends="main">
+		<put-attribute name="title" value="gg.15 - 자유게시판 신고 내용"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/reportPage.jsp"/>
+	</definition>
 	
 	<definition name="boardReport" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판 신고 페이지"/>

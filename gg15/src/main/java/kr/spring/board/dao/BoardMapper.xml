@@ -88,6 +88,24 @@
  		]]>                                 
  	</select>
  	
+ 	<select id="selectReport" parameterType="integer"
+ 	                          resultType="boardReportVO">
+		SELECT 
+		   b.boa_title,
+		   b.boa_cate, 
+		   b.boa_content, 
+		   b.boa_uploadfile, 
+		   b.boa_filename, 
+		   r.bop_content, 
+		   r.bop_num, 
+		   m.mem_nick 
+		FROM boa_report r 
+		JOIN board b ON r.boa_num=b.boa_num
+		JOIN member_detail m ON r.mem_num=m.mem_num
+		WHERE r.bop_num=#{bop_num}
+	</select>
+ 	
+ 	
  	<select id="selectRowreport" resultType="integer">
 		SELECT
 		   COUNT(*)

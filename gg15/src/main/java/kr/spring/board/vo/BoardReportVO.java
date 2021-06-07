@@ -9,6 +9,11 @@ public class BoardReportVO {
 	private String bop_date;//신고일
 	private String mem_nick;//사용자 아이디
 	private String boa_title;
+	private int User_auth;
+	private String boa_cate;
+	private String boa_content;
+	private byte[] boa_uploadfile; 
+	private String boa_filename;
 	
 	public int getMem_num() {
 		return mem_num;
@@ -51,6 +56,41 @@ public class BoardReportVO {
 	}
 	public void setBoa_title(String boa_title) {
 		this.boa_title = boa_title;
+	}
+	
+	
+	
+	public int getUser_auth() {
+		return User_auth;
+	}
+	public void setUser_auth(int user_auth) {
+		User_auth = user_auth;
+	}
+	
+	public String getBoa_cate() {
+		return boa_cate;
+	}
+	public void setBoa_cate(String boa_cate) {
+		this.boa_cate = boa_cate;
+	}
+	
+	public String getBoa_content() {
+		return boa_content;
+	}
+	public void setBoa_content(String boa_content) {
+		this.boa_content = boa_content;
+	}
+	public byte[] getBoa_uploadfile() {
+		return boa_uploadfile;
+	}
+	public void setBoa_uploadfile(byte[] boa_uploadfile) {
+		this.boa_uploadfile = boa_uploadfile;
+	}
+	public String getBoa_filename() {
+		return boa_filename;
+	}
+	public void setBoa_filename(String boa_filename) {
+		this.boa_filename = boa_filename;
 	}
 	@Override
 	public String toString() {

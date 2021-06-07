@@ -86,10 +86,9 @@ public interface BoardMapper {
 	
 	//신고 글 갯수
 	public int selectRowreport();
-	
+
 	//글 상세 페이지
-	@Select("SELECT * FROM boa_report r JOIN board b ON r.boa_num=b.boa_num WHERE b.boa_num=#{boa_num}")
-	public BoardVO selectReport(Integer boardReport);
+	public BoardReportVO selectReport(Integer report);
 	
 	//부모글 삭제시 신고글이 존재하면 부모글 삭제전 신고글 삭제 
 	@Delete("DELETE FROM boa_report WHERE boa_num=#{boa_num}")

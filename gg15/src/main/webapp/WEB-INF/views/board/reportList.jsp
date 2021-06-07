@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 자유게시판 boardMain 시작 -->
 <div class="page-main-style">
-	<h2>자유게시판 목록</h2>
-		<div>
-				<input type="button" value="일반 글 보기" onclick="location.href='boardList.do'">
+	<h2>자유게시판 신고 목록</h2>
+		<div class="align-right">
+			<input type="button" value="게시판 목록" onclick="location.href='list.do'">
 		</div>	
 	<table>	
 		<tr>
