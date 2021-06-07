@@ -4,7 +4,8 @@
 
 <!-- 포지션게시판 : boardList 시작 -->
 <!-- 게시물 카테고리 -->
-<div>
+<div id="pos_type">
+	<header>포지션 선택</header>
 	<ul>
 		<li>
 			<a href="list.do">전체보기</a> <!-- default -->
@@ -26,15 +27,17 @@
 		</li>
 	</ul>
 </div>
-
+	
 <!-- 게시물 정렬 방법 -->
-<div>
+<div id="pos_sort">
 	<ul>
 		<c:if test = "${pos_type == '전체보기'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_popular.do">인기순</a>
 			</li>
 		</c:if>
@@ -80,15 +83,15 @@
 		</c:if>
 	</ul>
 </div>
-
+	
 <!-- 글쓰기 버튼 -->
-<p class="align-right">
-	<input type="button" value="글쓰기" onclick="location.href='write.do'">
-</p>
-
+<span id="pos_btnWrite">
+	<img src="../resources/images/icon_write.png" onclick="location.href='write.do'">
+</span>
+	
 <!-- 게시물 목록 -->
 <c:if test="${boardCount == 0}">
-	게시물이 없습니다.
+	<p id="pos_noBoard">게시물이 없습니다.</p>
 </c:if>
 <c:if test="${boardCount > 0}">
 	<table>
@@ -113,13 +116,13 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
-<!-- 페이징 처리 -->
+			
+	<!-- 페이징 처리 -->
 	<div>
 		${pagingHtml}
 	</div>
-	
-<!-- 미구현 : 게시물 검색창 -->
+		
+	<!-- 미구현 : 게시물 검색창 -->
 	<p class="align-right">
 		<select name="pos_searchOption">
 			<option value="pos_title">제목</option>
@@ -128,7 +131,6 @@
 		</select>
 		<input type="text" id="pos_search">
 		<input type="button" value="검색">
-	</p>
-	
+	</p>	
 </c:if>
 <!-- 포지션게시판 : boardList 끝 -->

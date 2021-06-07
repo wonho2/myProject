@@ -2,6 +2,7 @@ package kr.spring.position.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -94,5 +95,13 @@ public class PositionVO
 
 	public void setPos_fav(int pos_fav) {
 		this.pos_fav = pos_fav;
+	}
+
+	@Override
+	public String toString() {
+		return "PositionVO [pos_num=" + pos_num + ", pos_type=" + pos_type + ", mem_num=" + mem_num + ", mem_nick="
+				+ mem_nick + ", pos_title=" + pos_title + ", pos_content=" + pos_content + ", pos_uploadfile="
+				+ Arrays.toString(pos_uploadfile) + ", pos_filename=" + pos_filename + ", pos_date=" + pos_date
+				+ ", pos_view=" + pos_view + ", pos_fav=" + pos_fav + "]";
 	}
 }

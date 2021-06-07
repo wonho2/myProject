@@ -19,6 +19,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="${pageContext.request.contextPath}/resources/template_res/css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/position.css">
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
     </head>
     <body id="page-top">

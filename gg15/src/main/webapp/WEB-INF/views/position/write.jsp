@@ -28,8 +28,9 @@
 
 <!-- 로그인 상태는 LoginInterceptor 클래스에서 처리 -->
 <!-- 글쓰기 폼 -->
+<div>
 <form:form action="write.do" commandName="positionVO" enctype="multipart/form-data">
-	<ul>
+	<ul id="pos_boardDetail">
 		<li>
 			<label>포지션</label>
 			<form:select path="pos_type">
@@ -56,5 +57,6 @@
 	<div>
 		<input type="submit" value="등록" id="btn_submit">
 	</div>
-	</form:form>
+</form:form>
+</div>
 <!-- 포지션게시판 : 글쓰기  끝-->
