@@ -20,7 +20,7 @@
 		
 
 		<c:forEach var="leagueInfo" items="${leagueInfo}" varStatus="s">
-				<div class="col-md-5">
+				<div class="col-md-5"> 
 					<img alt="랭크 엠블램" 		
 						src=<c:out value="../resources/images/Emblem_${leagueInfo.getTier()}.png" />
 						class="mx-auto d-block" style="max-width: 40%;">

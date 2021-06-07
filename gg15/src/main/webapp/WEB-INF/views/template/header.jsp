@@ -26,7 +26,7 @@
   height:2px;
   width:0;
   background: #1AAB8A;
-  transition:400ms ease all;
+  transition:400ms ease all; 
 }
 #button1:after{
   right:inherit;
