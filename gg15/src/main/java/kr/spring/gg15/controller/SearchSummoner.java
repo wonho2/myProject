@@ -19,7 +19,7 @@ import kr.spring.gg15.dto.Summoner;
 
 @Controller
 public class SearchSummoner {
-
+	 final String apiKey = "RGAPI-6491fe52-a13a-459c-9a9d-0ff47fc3956e";
 	@RequestMapping("/search/searchResult.do")
 	   public String summoner(@RequestParam String userName,Model model) {
 	     
