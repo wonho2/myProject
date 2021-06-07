@@ -8,7 +8,9 @@
 	<h2>게시판 목록</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
+		<span id="pos_btnWrite">
+	<img src="../resources/images/icon_write.png" onclick="location.href='write.do'">
+</span>
 		</c:if>
 	</div>
 	<c:if test="${count == 0}">
@@ -16,7 +18,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 	<table>
-		<tr>
+		<tr class="onew">
 			<th>번호</th>
 			<th>카테고리</th>
 			<th width="400">제목</th>

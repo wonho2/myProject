@@ -6,7 +6,9 @@
 	<h2>뉴스</h2>
 	<div class="align-right">
 	 <c:if test="${!empty user_num}"> 
-		<input type="button" value="작성" onclick="location.href='write.do'">
+		<span id="pos_btnWrite">
+	<img src="../resources/images/icon_write.png" onclick="location.href='write.do'">
+</span>
 	</c:if> 
 	</div>
 	<c:if test="${count == 0}">

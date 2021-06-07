@@ -69,6 +69,11 @@ div#main_menu ul li{
 	padding:5px;
 }
 
+/* 게시판 통일 */
+.onew{
+	background-color:#34ebc3;
+}
+
 /*목록*/
 .page-main-style form#search_form{
 	border: none;
