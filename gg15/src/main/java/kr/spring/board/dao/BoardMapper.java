@@ -94,6 +94,17 @@ public interface BoardMapper {
 	@Delete("DELETE FROM boa_report WHERE boa_num=#{boa_num}")
 	public void deleteReportByBoardNum(Integer boa_num);
 	
+//==================================================================//
+	
+	//게시글 상태 값 보통
+	@Update("UPDATE board SET boa_status=1 WHERE boa_num=#{boa_num}")
+	public void updateState1(Integer boa_num);
+	//게시글 상태 값 차단
+	@Update("UPDATE board SET boa_status=2 WHERE boa_num=#{boa_num}")
+	public void updateState2(Integer boa_num);
+	
+	
+/*	
 	//=================게시글 차단=================// 좋아요 따라해보자
 	@Select("SELECT * from boa_sta where boa_num=#{boa_num} and mem_num=#{mem_num}")
 	public BoardStatusVO selectSta(BoardStatusVO sta);
@@ -103,14 +114,8 @@ public interface BoardMapper {
 	public void deleteSta(Integer bos_num);
 	@Delete("DELETE FROM boa_sta WHERE boa_num=#{boa_num}")
 	public void deleteStaByBoaNum(Integer boa_num);
-	
-	
-	
-	
-	
-	
-	
-	
+	*/
+
 	
 	/*
 	//=================신고글================// 댓글 따라 해보자

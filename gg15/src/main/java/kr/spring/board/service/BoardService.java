@@ -155,7 +155,18 @@ public class BoardService {
 	}
 
 	//=============게시글 차단==================//
-	public BoardStatusVO selectSta(BoardStatusVO Sta) {
+	//보통 게시글
+	public void updateState1(Integer boa_num) {
+		boardMapper.updateState1(boa_num);
+	}
+	//차단 게시글
+	public void updateState2(Integer boa_num) {
+		boardMapper.updateState2(boa_num);
+	}
+	
+	
+	
+/*	public BoardStatusVO selectSta(BoardStatusVO Sta) {
 		return boardMapper.selectSta(Sta);
 	}
 	public void insertSta(BoardStatusVO boardSta) {
@@ -164,5 +175,5 @@ public class BoardService {
 	public void deleteSta(Integer boa_num) {
 		boardMapper.deleteSta(boa_num);
 	}
-	
+	*/
 }

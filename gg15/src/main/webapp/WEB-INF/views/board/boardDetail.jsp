@@ -60,21 +60,6 @@
 		작성일 ${board.boa_date} 
 	</div>
 
-
-<!-- 신고내용 시작 -->
-	<c:if test="${user_auth == 3}">
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
-	</div>
-	
-	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-	</div>
-	</c:if>
-<!-- 신고 내용 끝 -->
-
-
 	
 	<!-- 이미지 오찌하지 ?? -->
 	<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
@@ -121,7 +106,7 @@
 	<hr size="1" width="100%" noshade="noshade">
 	
 <!-- 수정, 삭제 버튼 -->
-<c:if test="${user_num == board.mem_num}">
+<c:if test="${user_num == board.mem_num || user_auth eq 3}">
 	
 		<input type="button" value="수정" onclick="location.href='boardModify.do?boa_num=${board.boa_num}'" id="btn_modify">
 		<input type="button" value="삭제" onclick="location.href='boardDelete.do?boa_num=${board.boa_num}'" id="btn_delete">

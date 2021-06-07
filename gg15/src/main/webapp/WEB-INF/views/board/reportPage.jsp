@@ -45,19 +45,25 @@
 	</div>
 	
 	<!-- 차단 게시물 설정 버튼 -->
-<!-- 	<div>  
-		<input type="button" id="output_status" value="게시물 차단 하기"/>
-		<script type="text/javascript">
-			var output_status = document.getElementById('output_status');
-			//이벤트 연결
-			output_status.onclick = function(){
-				var choice = window.confirm('차단하시겠습니까?');
-				if(choice){
-					location.replace('Sta.do?boa_num=${board.boa_num}');
-				} 
-			};
-		</script> 
+s 	<div>  
+	<!-- <input type="button" id="output_status" value="게시물 차단 하기"/> -->
+	<!--<a href="Sta2.do?boa_num=${report.boa_num}" id="btn_State2"> 차단 선택  v</a>-->
+	<input type="button" value="차단" onclick="location.href='Sta2.do?boa_num=${report.boa_num}'" id="btn_Sta2">
+	<script type="text/javascript">
+		var btn_Sta2 = document.getElementById('btn_Sta2');
+		//이벤트 연결
+		btn_Sta2 = function(){
+			alert("차단되었습니다.");
+		/* 	var choice = window.confirm('차단하시겠습니까?');
+			if(choice){
+				alert("차단되었습니다.");
+				location.replace('Sta2.do?boa_num=${report.boa_num}');
+			}*/ 
+		}; 
+	</script> 
+		
+		
+	<a href="Sta1.do?boa_num=${report.boa_num}" id="updateState1"> 차단 해제  v</a>	
 	</div>
--->
 </div>
 <!-- 자유게시판 reportPage 끝 -->
