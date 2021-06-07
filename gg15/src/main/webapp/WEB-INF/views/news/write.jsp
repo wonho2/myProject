@@ -25,7 +25,7 @@
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="작성">
-			<input type="button" value="목록"
+			<input type="button" value="취소"
 			               onclick="location.href='list.do'">
 		</div>
 	</form:form>

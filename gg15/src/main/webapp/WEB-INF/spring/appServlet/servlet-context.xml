@@ -45,6 +45,7 @@
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/search.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/board.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/manualtool.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>

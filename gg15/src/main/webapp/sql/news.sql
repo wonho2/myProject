@@ -2,7 +2,7 @@
 create table news(
 new_num number not null,			--게시글 번호 (PK)
 mem_num number not null,			--회원 번호 (FK : member)
-new_title varchar2(30) not null,	--게시글 제목
+new_title varchar2(60) not null,	--게시글 제목
 new_content clob not null,			--게시글 내용
 new_date date DEFAULT SYSDATE NOT NULL,--게시글 작성일
 new_hit number DEFAULT 0,			--조회수
@@ -26,17 +26,14 @@ constraint news_reply_pk primary key (ner_num),
                   references member (mem_num)
 );
 
-create table news_rfav(
-	nerf_num number NOT NULL,   -- 댓글 추천 고유번호 지정
-	mem_num number NOT NULL,    --회원번호
-	ner_num number,             --뉴스게시판 댓글번호
-	constraint news_fav_pk primary key (nerf_num),
-	constraint news_fav_fk1 foreign key (mem_num) 
-							references member (mem_num),
-	constraint news_fav_fk2 foreign key (ner_num)
-    references news_reply (ner_num)
-	);
-	
+CREATE TABLE news_fav(
+    nef_num NUMBER PRIMARY KEY, 
+    new_num NUMBER NOT NULL, 
+    mem_num NUMBER NOT NULL,
+    FOREIGN KEY (new_num) REFERENCES news(new_num),
+    FOREIGN KEY (mem_num) REFERENCES member(mem_num)
+);
+
 CREATE SEQUENCE news_seq;
 CREATE SEQUENCE news_reply_seq;
-CREATE SEQUENCE news_rfav_seq;
+CREATE SEQUENCE news_fav_seq;

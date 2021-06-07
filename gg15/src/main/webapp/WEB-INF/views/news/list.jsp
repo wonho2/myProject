@@ -13,24 +13,24 @@
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
-		<tr>
-			<th>썸네일</th>
-			<th width="400">뉴스</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>  
+	<table  style="width:80%">
+		<tr class="align-center">
+			<th width="250px">이미지</th>
+			<th width="900px">뉴스</th>
+			<th width="200px">작성자</th>
+			<th width="320px">작성일</th>
+			<th width="150px">조회수</th> 
 		</tr> 
-		<c:forEach var="news" items="${newsList}">
+		<c:forEach var="news" items="${newsList}" >
 		<tr>
 		<td align="center">
 		<img src="imageView.do?new_num=${news.new_num}"
-		                           style="width:75px;height:50px">
+		                           style="width:70%;height:50px">
 		</td>
-			<td><a href="detail.do?new_num=${news.new_num}">${news.new_title}</a></td>
-			 <td>${news.mem_nick}</td>
-			<td>${news.new_date}</td>
-			<td>${news.new_hit}</td>
+			<td align="center"><a href="detail.do?new_num=${news.new_num}">${news.new_title}</a></td>
+			 <td align="center">${news.mem_nick}</td>
+			<td align="center">${news.new_date}</td>
+			<td align="center" style="width:70px">${news.new_hit}</td>
 		</tr>
 		</c:forEach> 
 	</table>

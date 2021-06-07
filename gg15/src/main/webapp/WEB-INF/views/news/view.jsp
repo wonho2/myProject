@@ -39,7 +39,15 @@
 	<p>
 		${news.new_content}
 	</p>
+	
 	<hr size="1" width="100%">
+		 <!-- 추천 버튼 -->
+	<div>  
+		<img id="output_fav" src="../resources/images/heart01.png">
+		<span id="output_fcount"></span> 
+		<span id="output_rcount"></span>
+	</div>
+	
 	<div class="align-right">
 	 <c:if test="${!empty user_num && user_num == news.mem_num}"> 
 		<input type="button" value="수정"
@@ -69,7 +77,7 @@
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
+				<input type="submit" value="작성">
 			</div>
 			</c:if>
 		</form>

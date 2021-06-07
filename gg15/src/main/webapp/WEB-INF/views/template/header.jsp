@@ -37,13 +37,19 @@
         </nav>
  		<!-- Masthead-->
         <header class="masthead">
-            <!-- <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+            <div class="container">
+            <!--     <div class="masthead-subheading">Welcome To Our Studio!</div> -->
+               <form action="${pageContext.request.contextPath}/search/searchResult.do" method="GET" style="border:none;width:1400px; text-align:center;">
+			<div class="masthead-subheading">
+				<input type="text" placeholder="소환사명을 입력하세요" name="userName">
+				<button type="submit">검색</button>
+			</div>
+		</form>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div> -->
+            </div> 
         </header>
 <!-- 상단 끝 -->
+
 
 
 

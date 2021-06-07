@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.news.vo.NewsVO;
+import kr.spring.news.vo.NewsFavVO;
 import kr.spring.news.vo.NewsReplyVO;
 
 
@@ -40,13 +41,6 @@ public interface NewsMapper {
 	@Delete("DELETE FROM news WHERE new_num=#{new_num}")
 	public void deleteNews(Integer new_num);
 	
-	//게시글 추천수 증가
-	@Update("UPDATE news SET new_fav =new_fav+1 WHERE new_num=#{new_num}")
-	public void updateFavUp(Integer new_num);
-	   
-	//게시물 추천수 감소
-	@Update("UPDATE news SET new_fav = new_fav-1 WHERE new_num = #{new_num}")
-	public void updateFavDown(Integer new_num);
 	
 	//=================댓글================//
 		public List<NewsReplyVO> selectListReply(Map<String,Object> map);
@@ -60,7 +54,18 @@ public interface NewsMapper {
 		public void deleteReply(Integer ner_num);
 		//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제 
 		@Delete("DELETE FROM news_reply WHERE new_num=#{new_num}")
-		public void deleteReplyByBoardNum(Integer new_num);
+		public void deleteReplyByNewNum(Integer new_num);
 
+		//=========게시글 추천=============//
+		@Select("SELECT * from news_fav where new_num=#{new_num} and mem_num=#{mem_num}")
+		public NewsFavVO selectFav(NewsFavVO fav);
+		@Select("SELECT COUNT(*) from news_fav where new_num=#{new_num}")
+		public int selectFavCount(Integer new_num);
+		@Insert("INSERT INTO news_fav (nef_num,new_num,mem_num) VALUES (news_fav_seq.nextval,#{new_num},#{mem_num})")
+		public void insertFav(NewsFavVO fav);
+		@Delete("DELETE FROM news_fav WHERE nef_num=#{nef_num}")
+		public void deleteFav(Integer nef_num);
+		@Delete("DELETE FROM news_fav WHERE new_num=#{new_num}")
+		public void deleteFavByNewNum(Integer new_num);
 	
 }

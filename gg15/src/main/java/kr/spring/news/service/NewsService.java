@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.news.dao.NewsMapper;
 import kr.spring.news.vo.NewsVO;
+import kr.spring.news.vo.NewsFavVO;
 import kr.spring.news.vo.NewsReplyVO;
 
 @Service("newsService")
@@ -50,8 +51,10 @@ public class NewsService {
 	
 	//게시물 삭제
 		public void deleteNews(Integer new_num) {
+		//게시글 추천 먼저 삭제
+		newsMapper.deleteFavByNewNum(new_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
-		newsMapper.deleteReplyByBoardNum(new_num);
+		newsMapper.deleteReplyByNewNum(new_num);
 	    newsMapper.deleteNews(new_num);
 		   } 
 		   
@@ -77,6 +80,20 @@ public class NewsService {
 		//(*******주의)댓글 좋아요가 있을 경우
 		//newsMapper.deleteReFavByRe_num(ner_num);
 		newsMapper.deleteReply(ner_num);
+	}
+	
+	//==========게시글 추천 ==============//
+	public NewsFavVO selectFav(NewsFavVO fav) {
+		return newsMapper.selectFav(fav);
+	}
+	public int selectFavCount(Integer ner_num) {
+		return newsMapper.selectFavCount(ner_num);
+	}
+	public void insertFav(NewsFavVO fav) {
+		newsMapper.insertFav(fav);
+	}
+	public void deleteFav(Integer nef_num) {
+		newsMapper.deleteFav(nef_num);
 	}
 	
 }

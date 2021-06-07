@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.news.service.NewsService;
+import kr.spring.news.vo.NewsFavVO;
 import kr.spring.news.vo.NewsReplyVO;
+
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -169,6 +171,85 @@ public class NewsAjaxController{
 		}else {
 			//로그인 아이디와 작성자 아이디 불일치
 			map.put("result", "wrongAccess");
+		}
+		return map;
+	}
+
+//===========게시글 추천===============//
+	//추천 읽기
+	@RequestMapping("/news/getFav.do")
+	@ResponseBody
+	public Map<String,Object> getFav(NewsFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<게시판 좋아요>> : " + fav);
+		}
+
+		Map<String,Object> mapJson = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			mapJson.put("result", "success");
+			mapJson.put("status", "noFav");
+			mapJson.put("count", newsService.selectFavCount(fav.getNew_num()));
+		}else {
+			//로그인된 아이디 셋팅
+			fav.setMem_num(user_num);
+
+			NewsFavVO newsFav = newsService.selectFav(fav);
+
+			if(newsFav!=null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesFav");
+				mapJson.put("count", newsService.selectFavCount(fav.getNew_num()));
+			}else {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", newsService.selectFavCount(fav.getNew_num()));
+			}
+		}
+
+		return mapJson;
+	}
+	//추천 등록
+	@RequestMapping("/news/writeFav.do")
+	@ResponseBody
+	public Map<String,Object> writeFav(NewsFavVO fav,HttpSession session){
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<부모글 좋아용 등록>> : " + fav);
+		}
+
+		Map<String,Object> map = 
+				new HashMap<String,Object>();
+
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {
+			map.put("result", "logout");
+		}else {
+			//로그인된 회원번호 셋팅
+			fav.setMem_num(user_num);
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<부모글 좋아용 등록>> : " + fav);
+			}
+			
+			NewsFavVO newsFav = newsService.selectFav(fav);
+
+			if(newsFav!=null) {
+				newsService.deleteFav(newsFav.getNew_num());
+
+				map.put("result", "success");
+				map.put("status", "noFav");
+				map.put("count", newsService.selectFavCount(fav.getNew_num()));
+			}else {
+				newsService.insertFav(fav);
+
+				map.put("result", "success");
+				map.put("status", "yesFav");
+				map.put("count", newsService.selectFavCount(fav.getNew_num()));
+			}
 		}
 		return map;
 	}
