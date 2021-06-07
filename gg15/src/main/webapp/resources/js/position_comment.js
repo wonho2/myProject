@@ -24,7 +24,6 @@ $(document).ready(function()
  */
 	function defaultCommentListSort()
 	{
-		alert("default CommentListSort 호출됨");
 		// 임시 : 나중에 데이터베이스 수정하고 SORT.POPULAR로 바꿔줄 것
 		sort_type = sort_RECENT;
 		sort_url = sortUrl_RECENT;
@@ -38,7 +37,6 @@ $(document).ready(function()
  */
 	function selectCommentList(pageNum, pos_num, sort_type, sort_url)
 	{
-		alert("select CommentListSort 호출됨");
 		// 현재 페이지 저장
 		currentPage = pageNum;
 		// 1페이지 호출 시, 해당 id 내부 내용물 제거

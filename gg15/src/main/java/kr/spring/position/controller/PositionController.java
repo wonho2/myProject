@@ -53,6 +53,7 @@ public class PositionController
 	
 /*
  * 게시물 목록
+ * 오류 : 페이징처리 제대로 동작 안하네
  */
 // 공통 (게시물 최신순, 인기순 정렬) : (현재 페이지, 정렬 방식, 게시물 포지션 타입)
 	private ModelAndView getBoardList(int currentPage, String sortAttrName, PositionType type)

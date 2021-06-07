@@ -36,7 +36,7 @@
 	
 	table
 	{
-		width:1500px;
+		width:280%;
 		border:1px solid #b3bcbd;
 	}
 	
@@ -58,6 +58,11 @@
 		font-weight:bold;
 		color:#b3bcbd;
 		text-decoration:none;
+	}
+	
+	.title
+	{
+		color:#b3bcbd;
 	}
 
 /*
@@ -120,7 +125,7 @@
 #pos_btnWrite
 {
 	position:absolute;
-	top:650px; left:1800px;
+	top:660px; left:93%;
 }
 
 /*
@@ -147,4 +152,19 @@
 {
 	position:absolute;
 	top:750px; left:350px;
+}
+
+#pos_paging
+{
+	position:absolute;
+	left:350px;
+}
+
+/*
+	게시판 디테일
+*/
+#pos_detail
+{
+	padding-left:450px;
+	padding-top:50px;
 }

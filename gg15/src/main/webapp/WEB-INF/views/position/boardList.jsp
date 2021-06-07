@@ -121,19 +121,8 @@
 	</div>
 			
 	<!-- 페이징 처리 -->
-	<div>
+	<div id="pos_paging">
 		${pagingHtml}
-	</div>
-		
-	<!-- 미구현 : 게시물 검색창 -->
-	<p class="align-right">
-		<select name="pos_searchOption">
-			<option value="pos_title">제목</option>
-			<option value="pos_content">내용</option>
-			<option value="mem_nick">작성자</option>
-		</select>
-		<input type="text" id="pos_search">
-		<input type="button" value="검색">
-	</p>	
+	</div>	
 </c:if>
 <!-- 포지션게시판 : boardList 끝 -->
