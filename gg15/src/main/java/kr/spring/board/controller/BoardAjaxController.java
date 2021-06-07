@@ -341,9 +341,9 @@ public ModelAndView selectReport(@RequestParam int bop_num,HttpSession session) 
 	Integer user_num = (Integer)session.getAttribute("user_num");
 
 	BoardReportVO report = boardService.selectReport(bop_num);
-
+/*
 	//관리자 전용 게시글
-/*	if(report.getUser_auth() != 3) {
+	if(report.getUser_auth() != 3) {
 		return new ModelAndView("boardModeError","user_auth",report.getUser_auth());
 	}
 */

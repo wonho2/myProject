@@ -18,30 +18,29 @@
 			<c:if test="${report.boa_cate == 'art'}">팬아트</c:if>
 	</div>
 	
-	<h1> 게시물 [" ${report.boa_title} "] 신고 </h1>
-	<div><a href="/member/memberDetail.do?board_num=${board.boa_num}">${board.mem_nick}</a> </div>
-	<div>신고자 : ${report.mem_nick}</div>
-	<div>신고일 ${report.bop_date} </div>
+	<h3> 게시물 [" ${report.boa_title} "] 신고 </h3>
+	<div>신고자 : <a href="/member/memberDetail.do?board_num=${board.boa_num}">${report.mem_nick}</a> </div>
+	<div>신고일 : ${report.bop_date} </div>
 	
 	<div>
 		<h4>신고 내용</h4>
-		<p>	${board_report.bop_content} </p>
+		<p>	${report.bop_content} </p>
 	</div>
 	
 	<h2> 본문 게시글 </h2>
 	<div style="border:1px solid black;">
-		<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
-		              fn:endsWith(board.boa_filename,'.JPG') ||
-		              fn:endsWith(board.boa_filename,'.gif') ||
-		              fn:endsWith(board.boa_filename,'.GIF') ||
-		              fn:endsWith(board.boa_filename,'.png') ||
-		              fn:endsWith(board.boa_filename,'.PNG')}"> 
+		<c:if test="${fn:endsWith(report.boa_filename,'.jpg') || 
+		              fn:endsWith(report.boa_filename,'.JPG') ||
+		              fn:endsWith(report.boa_filename,'.gif') ||
+		              fn:endsWith(report.boa_filename,'.GIF') ||
+		              fn:endsWith(report.boa_filename,'.png') ||
+		              fn:endsWith(report.boa_filename,'.PNG')}"> 
 		<div class="align-center">
-			<img src="imageView.do?board_num=${board.boa_num}"
+			<img src="imageView.do?board_num=${report.boa_num}"
 			                           style="max-width:500px">
 		</div>
 		</c:if>
-		<p>	${board.boa_content}</p>
+		<p>	${report.boa_content}</p>
 	</div>
 	
 	<!-- 차단 게시물 설정 버튼 -->

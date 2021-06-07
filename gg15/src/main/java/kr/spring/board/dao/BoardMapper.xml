@@ -98,6 +98,7 @@
 		   b.boa_filename, 
 		   r.bop_content, 
 		   r.bop_num, 
+		   r.bop_date,
 		   m.mem_nick 
 		FROM boa_report r 
 		JOIN board b ON r.boa_num=b.boa_num
