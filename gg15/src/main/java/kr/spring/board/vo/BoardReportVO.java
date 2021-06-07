@@ -4,18 +4,11 @@ public class BoardReportVO {
 	
 	private int mem_num;//회원 번호
 	private int boa_num;//게시글 번호
-	private int boa_report;//신고상태 
 	private int bop_num;//신고 번호
 	private String bop_content;//신고내용
 	private String bop_date;//신고일
 	private String mem_nick;//사용자 아이디
 	
-	public int getBoa_report() {
-		return boa_report;
-	}
-	public void setBoa_report(int boa_report) {
-		this.boa_report = boa_report;
-	}
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -52,5 +45,4 @@ public class BoardReportVO {
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
 	}
-	
 }

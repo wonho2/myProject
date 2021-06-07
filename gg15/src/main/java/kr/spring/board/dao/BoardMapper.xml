@@ -88,7 +88,32 @@
  		]]>                                 
  	</select>
  	
- 	
+	<!-- 신고글 목록 -->
+	<select id="reportlist" parameterType="map"
+	                                   resultType="boardReportVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.boa_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.boa_title,'<','&lt;'),'>','&gt;') boa_title,
+		              ]]>
+		              m.mem_nick,
+		              b.bor_date,
+		              b.boa_filename,
+		              b.boa_mode
+		              FROM boa_report b JOIN member_detail m ON b.mem_num = m.mem_num 
+		              <where>
+					  </where>
+		              ORDER BY b.bor_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	
 	<!-- ====== 신고 ========  댓글 따라하는 중-->
 	<select id="selectReport" parameterType="map"
 								resultType="boardReportVO">

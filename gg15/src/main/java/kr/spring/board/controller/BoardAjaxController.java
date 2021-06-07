@@ -15,24 +15,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.service.BoardService;
 import kr.spring.board.vo.BoardFavVO;
 import kr.spring.board.vo.BoardReplyVO;
 import kr.spring.board.vo.BoardReportVO;
 import kr.spring.board.vo.BoardStatusVO;
+import kr.spring.board.vo.BoardVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class BoardAjaxController{
-	
+
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;
 
 	@Resource
 	private BoardService boardService;
-	
+
 	//댓글 등록
 	@RequestMapping("/board/writeReply.do")
 	@ResponseBody
@@ -48,7 +51,7 @@ public class BoardAjaxController{
 
 		Map<String,String> map = 
 				new HashMap<String,String>();
-		
+
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
 		if(user_num==null) {
@@ -63,7 +66,7 @@ public class BoardAjaxController{
 
 		return map;
 	}
-	
+
 	//댓글 목록
 	@RequestMapping("/board/listReply.do")
 	@ResponseBody
@@ -102,7 +105,7 @@ public class BoardAjaxController{
 
 		return mapJson;
 	}
-	
+
 	//댓글 삭제
 	@RequestMapping("/board/deleteReply.do")
 	@ResponseBody
@@ -110,7 +113,7 @@ public class BoardAjaxController{
 			@RequestParam("bor_num") int bor_num,
 			@RequestParam("mem_num") int mem_num,
 			HttpSession session){
-   
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<bor_num>> : " + bor_num);
 			log.debug("<<mem_num>> : " + mem_num);
@@ -167,8 +170,8 @@ public class BoardAjaxController{
 		}
 		return map;
 	}
-	
-	
+
+
 	//게시물 좋아요
 	@RequestMapping("/board/getFav.do")
 	@ResponseBody
@@ -202,7 +205,7 @@ public class BoardAjaxController{
 				mapJson.put("count", boardService.selectFavCount(fav.getBoa_num()));
 			}
 		}
- 
+
 		return mapJson;
 	}
 	//부모글 좋아요 등록
@@ -227,7 +230,7 @@ public class BoardAjaxController{
 			if(log.isDebugEnabled()) {
 				log.debug("<<부모글 좋아요 등록>> : " + fav);
 			}
-			
+
 			BoardFavVO boardFav = boardService.selectFav(fav);
 
 			if(boardFav!=null) {
@@ -246,142 +249,179 @@ public class BoardAjaxController{
 		}
 		return map;
 	}
-	
+
 	//================================================================//	
-	//게시물 신고 목록
-/*
-  	@RequestMapping("/board/getReport.do")
-	@ResponseBody
-	public Map<String,Object> getReport(BoardReportVO report,HttpSession session){
+	
+	//신고글 등록
+	@RequestMapping("/board/reportWrite.do")
+	public Map<String,String> writeReport(
+			BoardReportVO boardReportVO,
+			HttpSession session,
+			HttpServletRequest request){
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<게시판 신고>> : " + report);
+			log.debug("<<BoardReportVO>> : " + 
+					boardReportVO);
 		}
 
-		Map<String,Object> mapJson = 
-				new HashMap<String,Object>();
-
-		Integer user_num = (Integer)session.getAttribute("user_num");
-		if(user_num==null) {
-			mapJson.put("result", "success");
-			mapJson.put("siren", "noReport");
-		}else {
-			//로그인된 아이디 셋팅
-			report.setMem_num(user_num);
-
-			BoardReportVO boardReport = boardService.selectReport(report);
-
-			if(boardReport!=null) {
-				mapJson.put("result", "success");
-				mapJson.put("siren", "yesReport");
-			}else {
-				mapJson.put("result", "success");
-				mapJson.put("siren", "noReport");
-			}
-		}
- 
-		return mapJson;
-	}
-	// 신고 등록
-	@RequestMapping("/board/writeReport.do")
-	@ResponseBody
-	public Map<String,Object> writeReport(BoardReportVO report,HttpSession session,
-										  HttpServletRequest request){
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<부모글 신고 등록>> : " + report);
-		}
-
-		Map<String,Object> map = 
+		Map<String,String> map = 
 				new HashMap<String,String>();
 
-		Integer user_num = (Integer)session.getAttribute("user_num");
+		Integer user_num = 
+				(Integer)session.getAttribute("user_num");
 		if(user_num==null) {
+			//로그인 안 됨
 			map.put("result", "logout");
 		}else {
 
-			//댓글 등록
-			boardService.insertReport(BoardReportVO);
+			//신고 등록
+			boardService.insertreport(boardReportVO);
 			map.put("result", "success");
 		}
 
 		return map;
 	}
-*/
-	//================================================================//
-/*
-	//게시물 차단 해보자
-	@RequestMapping("/board/getSta.do")
-	@ResponseBody
-	public Map<String,Object> getSta(BoardStatusVO Sta,HttpSession session){
+
+
+//자유게시판 신고  목록
+@RequestMapping("/board/reportList.do")
+public ModelAndView process(
+		@RequestParam(value="pageNum",defaultValue="1") int currentPage)  {
+
+	Map<String,Object> map = new HashMap<String,Object>();
+
+	//총 게시글 수
+	int count = boardService.selectRowCount(map);
+
+	if(log.isDebugEnabled()) {
+		log.debug("<<count>> : " + count);
+		log.debug("<<pageNum>> : " + currentPage);
+	}
+
+	//페이징 처리
+	PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+
+	//목록호출
+	List<BoardReportVO> list = null;
+	if(count > 0) {
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		//list = boardService.reportList(map);
+	}
+
+	if(log.isDebugEnabled()) {
+		log.debug("<<list>> : " + list);
+	}
+
+	ModelAndView mav = new ModelAndView();
+	//뷰 이름 설정
+	mav.setViewName("ReportList");
+	//데이터 저장
+	mav.addObject("count", count);
+	mav.addObject("list",list);
+	mav.addObject("pagingHtml",page.getPagingHtml());
+
+	return mav;  
+}
+
+
+//====신고 글 상세======//
+@RequestMapping("/board/boardReport.do")
+public ModelAndView boardReport(@RequestParam int boa_num,
+		HttpSession session) {
+	//조회수 증가
+	boardService.updateHit(boa_num);
+
+	Integer user_num = (Integer)session.getAttribute("user_num");
+
+	BoardVO board = boardService.selectBoard(boa_num);
+
+	//관리자 전용 게시글
+	if(board.getUser_auth() != 3) {
+		return new ModelAndView("boardModeError","user_auth",board.getUser_auth());
+	}
+
+	//HTML 태그 불허
+	board.setBoa_title(StringUtil.useNoHtml(board.getBoa_title()));
+	//HTML 태그 불허 및 줄바꿈 처리
+	board.setBoa_content(board.getBoa_content());
+
+	return new ModelAndView("boardDetail","board",board);
+}
+
+//================================================================//
+
+//게시물 차단 해보자
+
+@RequestMapping("/board/getSta.do")
+@ResponseBody
+public Map<String,Object> getSta(BoardStatusVO Sta,HttpSession session){
+
+	if(log.isDebugEnabled()) {
+		log.debug("<<게시판 좋아요>> : " + Sta);
+	}
+
+	Map<String,Object> mapJson = 
+			new HashMap<String,Object>();
+
+	Integer user_num = (Integer)session.getAttribute("user_num");
+	if(user_num==null) {
+		mapJson.put("result", "success");
+		mapJson.put("status", "noSta");
+	}else {
+		//로그인된 아이디 셋팅
+		Sta.setMem_num(user_num);
+
+		//BoardStatusVO boardSta = boardService.selectSta(Sta);
+
+		//if(boardSta!=null) {
+		mapJson.put("result", "success");
+		mapJson.put("status", "yesSta");
+		//}else {
+		mapJson.put("result", "success");
+		mapJson.put("status", "noFav");
+		//}
+	}
+
+	return mapJson;
+}
+//부모글  차단
+@RequestMapping("/board/writeSta.do")
+@ResponseBody
+public Map<String,Object> writeSta(BoardStatusVO fav,HttpSession session){
+
+	if(log.isDebugEnabled()) {
+		log.debug("<<부모글 신고 등록>> : ");
+	}
+
+	Map<String,Object> map = 
+			new HashMap<String,Object>();
+
+	Integer user_num = (Integer)session.getAttribute("user_num");
+	if(user_num==null) {
+		map.put("result", "logout");
+	}else {
+		//로그인된 회원번호 셋팅
+		fav.setMem_num(user_num);
 
 		if(log.isDebugEnabled()) {
-			log.debug("<<게시판 좋아요>> : " + Sta);
+			log.debug("<<부모글 신고 등록>> : ");
 		}
 
-		Map<String,Object> mapJson = 
-				new HashMap<String,Object>();
+		//BoardStatusVO boardSta = boardService.selectSta(Sta);
 
-		Integer user_num = (Integer)session.getAttribute("user_num");
-		if(user_num==null) {
-			mapJson.put("result", "success");
-			mapJson.put("status", "noSta");
-		}else {
-			//로그인된 아이디 셋팅
-			Sta.setMem_num(user_num);
+		//if(boardSta!=null) {
+		//boardService.deleteSta(BoardStatusVO.getBos_num());
 
-			BoardStatusVO boardSta = boardService.selectSta(Sta);
+		map.put("result", "success");
+		map.put("status", "noSta");
+		//}else {
+		//boardService.insertSta(Sta);
 
-			if(boardSta!=null) {
-				mapJson.put("result", "success");
-				mapJson.put("status", "yesSta");
-			}else {
-				mapJson.put("result", "success");
-				mapJson.put("status", "noFav");
-			}
-		}
- 
-		return mapJson;
+		map.put("result", "success");
+		map.put("status", "yesSta");
+		//}
 	}
-	//부모글 좋아요 차단
-	@RequestMapping("/board/writeSta.do")
-	@ResponseBody
-	public Map<String,Object> writeSta(BoardStatusVO fav,HttpSession session){
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<부모글 신고 등록>> : " + Sta);
-		}
-
-		Map<String,Object> map = 
-				new HashMap<String,Object>();
-
-		Integer user_num = (Integer)session.getAttribute("user_num");
-		if(user_num==null) {
-			map.put("result", "logout");
-		}else {
-			//로그인된 회원번호 셋팅
-			fav.setMem_num(user_num);
-
-			if(log.isDebugEnabled()) {
-				log.debug("<<부모글 신고 등록>> : " + Sta);
-			}
-			
-			BoardStatusVO boardSta = boardService.selectSta(Sta);
-
-			if(boardSta!=null) {
-				boardService.deleteSta(BoardStatusVO.getBos_num());
-
-				map.put("result", "success");
-				map.put("status", "noSta");
-			}else {
-				boardService.insertSta(Sta);
-
-				map.put("result", "success");
-				map.put("status", "yesSta");
-			}
-		}
-		return map;
-	}
-	
-	*/
+	return map;
+}
 }

@@ -12,13 +12,14 @@
 		$('#siren_btn').click(function(){
 			var boa_num = $('#boa_num').val();
 			var reportWrite = window.prompt("신고 내용을 입력하세요 :<","");
-			// document.write(reportWrite);
-
+			
 			//AJAX 통신
 			$.ajax({
-				url:"/views/board/reportPage",//전송할 주소
-				type:'get',//전송방식
-				data:$('reportWrite'), //전송할 데이터
+				//url:"/views/board/reportPage",//전송할 주소
+				url:'reportWrite.do',
+				type:'post',//전송방식
+				//data:$('reportWrite'), //전송할 데이터
+				data:{mem_num:$('#user_num').val(),boa_num:$('#boa_num').val(),bos_content:reportWrite},
 				dataType:'json',//데이터 받을 형식
 				cache:false,
 				timeout:30000,
@@ -52,6 +53,22 @@
 	<div> 
 		작성일 ${board.boa_date} 
 	</div>
+
+
+<!-- 신고내용 시작 -->
+	<c:if test="${user_auth == 3}">
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+	</div>
+	</c:if>
+<!-- 신고 내용 끝 -->
+
+
 	
 	<!-- 이미지 오찌하지 ?? -->
 	<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
@@ -60,7 +77,7 @@
 	              fn:endsWith(board.boa_filename,'.GIF') ||
 	              fn:endsWith(board.boa_filename,'.png') ||
 	              fn:endsWith(board.boa_filename,'.PNG')}"> 
-	<div class="align-center">
+	<div >
 		<img src="imageView.do?board_num=${board.boa_num}"
 		                           style="max-width:500px">
 	</div>

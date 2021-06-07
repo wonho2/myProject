@@ -21,34 +21,24 @@
 		<put-attribute name="body" value="/WEB-INF/views/board/boardDetail.jsp"/>
 	</definition>
 	
-	<definition name="boardModeError" extends="main">
-		<put-attribute name="title" value="gg.15 - 자유게시판  글 상태 "/>
-		<put-attribute name="body" value="/WEB-INF/views/board/errorPage.jsp"/>
-	</definition>
-	
 	<definition name="boardModify" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판 게시판 글 수정"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/boardModify.jsp"/>
 	</definition>
 	
-	<definition name="boardmanager" extends="main">
+	<definition name="boardModeError" extends="main">
+		<put-attribute name="title" value="gg.15 - 자유게시판  글 상태 "/>
+		<put-attribute name="body" value="/WEB-INF/views/board/errorPage.jsp"/>
+	</definition>
+	
+	<definition name="ReportList" extends="main">
+		<put-attribute name="title" value="gg.15 - 자유게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/reportlist.jsp"/>
+	</definition>
+	
+	<definition name="boardReport" extends="main">
 		<put-attribute name="title" value="gg.15 - 자유게시판 신고 페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/reportPage.jsp"/>
 	</definition>
 	
 </tiles-definitions>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

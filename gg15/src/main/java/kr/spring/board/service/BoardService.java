@@ -132,26 +132,28 @@ public class BoardService {
 		boardMapper.deleteFav(bof_num);
 	}
 
-/*
-	//=============게시글 신고==================//
-	public List<BoardReportVO> selectReport(Map<String, Object> map) {
-		return boardMapper.selectReport(map);
+/*	//신고글 목록
+	public List<BoardReportVO> ReportList(Map<String,Object> map){
+			return boardMapper.ReportList(map);
 	}
-	
-	public void insertReport(BoardReportVO boardReport) {
-		boardMapper.insertReport(boardReport);
+	//신고 상세 페이지
+	public BoardReportVO selectReport(Integer boardReport) {
+		return boardMapper.selectReport(boardReport);
+	}*/
+	//신고글 쓰기
+	public void insertreport(BoardReportVO Report) {
+		boardMapper.insertReport(Report);
 	}
 
 	//=============게시글 차단==================//
-	public BoardStatusVO selectSta(BoardStatusVO Sta) {
+/*	public BoardStatusVO selectSta(BoardStatusVO Sta) {
 		return boardMapper.selectSta(Sta);
 	}
 	public void insertSta(BoardStatusVO boardSta) {
 		boardMapper.insertSta(boardSta);
 	}
-	public void deleteSta(Integer boa_status) {
-		boardMapper.deleteSta(boa_status);
-	}
-	*/
+	public void deleteSta(Integer boa_num) {
+		boardMapper.deleteSta(boa_num);
+	}*/
 	
 }

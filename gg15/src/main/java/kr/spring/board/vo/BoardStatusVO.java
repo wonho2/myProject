@@ -4,6 +4,7 @@ public class BoardStatusVO {
 	private int bos_num;
 	private int boa_num;
 	private int mem_num;
+	private int bor_content;
 	
 	 
 	public int getBos_num() {

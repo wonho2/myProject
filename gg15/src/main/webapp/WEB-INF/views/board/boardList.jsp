@@ -9,10 +9,15 @@
 		<input type="button" value="글쓰기" onclick="location.href='boardWrite.do'">
 		</c:if>
 		
-		<c:if test="${user_auth == 3}">
-		<input type="button" value="관리자 PAGE" onclick="location.href='reportPage.do'">
-		</c:if>
+ 		<c:if test="${user_auth == 3}">
+		<input type="button" value="신고 글 보기" onclick="location.href='reportlist.do'">
+			<script type="text/javascript">
+			
+			</script>
+		</c:if> 
+
 	</div>
+	
 	 		<form action="list.do" id="choice_cate" method="get" style="border:none;margin-left:-28px;">
 			<select name="boa_cate">
 				<optgroup label="카테고리" >
@@ -41,7 +46,7 @@
 			<th>조회수</th>
 		</tr>
 				
-		
+		<!-- 목록별 보기 -->
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.boa_num}</td>

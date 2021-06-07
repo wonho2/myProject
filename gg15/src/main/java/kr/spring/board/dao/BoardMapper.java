@@ -73,6 +73,38 @@ public interface BoardMapper {
 	@Delete("DELETE FROM boa_fav WHERE boa_num=#{boa_num}")
 	public void deleteFavByBoaNum(Integer boa_num);
 	
+	//=================신고글================//
+	//신고 글 목록
+	public List<BoardReportVO> reportList(Map<String,Object> map);	
+	//글 상세 페이지
+	//@Select("SELECT * FROM boa_report r JOIN board b ON r.mem_num=b.mem_num WHERE b.boa_num=#{boa_num}")
+	public BoardVO selectReport(Integer boardReport);
+	//글쓰기
+	@Insert("INSERT INTO boa_report (bop_num,boa_title,boa_uploadfile,boa_filename,bop_content,boa_content,boa_mode,mem_num,bop_date) "
+			+ "VALUES (boa_report_seq.nextval,#{boa_title},#{boa_uploadfile},#{boa_filename},#{bop_content},#{boa_content},#{boa_mode},#{mem_num},SYSDATE)")
+	public void insertReport(BoardReportVO vo);
+	//부모글 삭제시 신고글이 존재하면 부모글 삭제전 신고글 삭제 
+	@Delete("DELETE FROM boa_report WHERE boa_num=#{boa_num}")
+	public void deleteReportByBoardNum(Integer boa_num);
+	
+	//=================게시글 차단=================// 좋아요 따라해보자
+	@Select("SELECT * from boa_sta where boa_num=#{boa_num} and mem_num=#{mem_num}")
+	public BoardStatusVO selectSta(BoardStatusVO sta);
+	@Insert("INSERT INTO boa_sta (bos_num,boa_num,mem_num) VALUES (board_sta_seq.nextval,#{boa_num},#{mem_num})")
+	public void insertSta(BoardStatusVO boardSta);
+	@Delete("DELETE FROM boa_sta WHERE bos_num=#{bos_num}")
+	public void deleteSta(Integer bos_num);
+	@Delete("DELETE FROM boa_sta WHERE boa_num=#{boa_num}")
+	public void deleteStaByBoaNum(Integer boa_num);
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	//=================신고글================// 댓글 따라 해보자
 	//신고 리스트

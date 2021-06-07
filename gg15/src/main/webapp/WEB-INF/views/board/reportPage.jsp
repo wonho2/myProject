@@ -2,10 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+
 <!-- 자유게시판 reportPage 시작 -->
+
 <div class="page-main-style"> 
-		<div>			
+	<div>			
 			<c:if test="${board.boa_cate == 'freeTalk'}">자유토론</c:if>
 			<c:if test="${board.boa_cate == 'gaming_machine'}">게이밍 기기</c:if>
 			<c:if test="${board.boa_cate == 'game_talk'}">게임 이야기</c:if>
@@ -16,16 +20,18 @@
 			<c:if test="${board.boa_cate == 'img/video'}">사진/비디오</c:if>
 			<c:if test="${board.boa_cate == 'art'}">팬아트</c:if>
 	</div>
-	<h1>${board.boa_title}</h1>
+	
+	<h1> 게시물 [" ${board.boa_title} "] 신고 </h1>
 	<div><a href="/member/memberDetail.do?board_num=${board.boa_num}">${board.mem_nick}</a> </div>
 	<div>신고자 : ${board_report.mem_nick}</div>
 	<div>신고일 ${board_report.bop_date} </div>
 	
 	<div>
+		<h4>신고 내용</h4>
 		<p>	${board_report.bop_content} </p>
 	</div>
 	
-	본문 게시글
+	<h2> 본문 게시글 </h2>
 	<div style="border:1px solid black;">
 		<c:if test="${fn:endsWith(board.boa_filename,'.jpg') || 
 		              fn:endsWith(board.boa_filename,'.JPG') ||
