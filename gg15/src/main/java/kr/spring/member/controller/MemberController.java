@@ -148,8 +148,6 @@ public class MemberController {
 				session.setAttribute("user_point",member.getPoi_point());
 				
 				memberService.updatePoint(member.getMem_num());
-
-				memberService.updateMemAuth(member.getMem_num());
 				
 				return "redirect:/main/main.do";
 
@@ -201,8 +199,6 @@ public class MemberController {
 					session.setAttribute("user_num", member.getMem_num());
 					//회원 아이디 저장
 					session.setAttribute("user_id", member.getMem_id());
-					
-					memberService.updateAdAuth(member.getMem_num());
 					
 					session.setAttribute("user_auth",member.getMem_auth());
 
