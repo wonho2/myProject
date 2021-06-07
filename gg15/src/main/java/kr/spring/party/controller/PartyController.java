@@ -38,15 +38,14 @@ public class PartyController {
 	
 	//===게시글 목록===/
 	@RequestMapping("/party/list.do")
-	public ModelAndView boardList(@RequestParam(value="page", defaultValue="1") int currentPage)
-	{
+	public ModelAndView boardList( 
+	@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
 		//페이징 처리
 		int count = partyService.selectPartyCount();
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
+		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
 		List<PartyVO> partyList = null;
-		if(count > 0)
-		{
-			Map<String, Object> map = new HashMap<String, Object>();
+		if(count > 0) {
+			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			partyList = partyService.selectPartyList(map);
@@ -57,6 +56,7 @@ public class PartyController {
 		mav.addObject("count", count);
 		mav.addObject("partyList", partyList);
 		mav.addObject("pagingHtml", page.getPagingHtml());
+		
 		return mav;
 	}
 	
