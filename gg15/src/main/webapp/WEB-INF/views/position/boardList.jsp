@@ -95,28 +95,30 @@
 	<p id="pos_noBoard">게시물이 없습니다.</p>
 </c:if>
 <c:if test="${boardCount > 0}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>포지션</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-			<th>추천수</th>
-		</tr>
-		<c:forEach var="positionVO" items="${boardList}">
+	<div id="pos_boardList">
+		<table>
 			<tr>
-				<td>${positionVO.pos_num}</td>
-				<td>${positionVO.pos_type}</td>
-				<td><a href="detail.do?pos_num=${positionVO.pos_num}">${positionVO.pos_title}</a></td>
-				<td>${positionVO.mem_nick}</td>
-				<td>${positionVO.pos_date}</td>
-				<td>${positionVO.pos_view}</td>
-				<td>${positionVO.pos_fav}</td>
+				<th>번호</th>
+				<th>포지션</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+				<th>추천수</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach var="positionVO" items="${boardList}">
+				<tr>
+					<td>${positionVO.pos_num}</td>
+					<td>${positionVO.pos_type}</td>
+					<td><a href="detail.do?pos_num=${positionVO.pos_num}">${positionVO.pos_title}</a></td>
+					<td>${positionVO.mem_nick}</td>
+					<td>${positionVO.pos_date}</td>
+					<td>${positionVO.pos_view}</td>
+					<td>${positionVO.pos_fav}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 			
 	<!-- 페이징 처리 -->
 	<div>

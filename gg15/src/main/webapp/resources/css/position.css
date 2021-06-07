@@ -12,10 +12,9 @@
 		width:100px;
 	}
 	
-	select
+	select#pos_type
 	{
-		/*외않됨*/
-		width:150px; height:50px;
+		width:150px; height:40px;
 	}
 	
 	form ul
@@ -32,8 +31,26 @@
 	textarea
 	{
 		resize:none;
-		width:1000px;
-		height:500px;
+		width:1000px; height:500px;
+	}
+	
+	table
+	{
+		width:1500px;
+		border:2px solid #b3bcbd;
+	}
+	
+	table th
+	{
+		text-align:center;
+		border:2px solid #b3bcbd;
+		border-collapse:collapse;
+	}
+	
+	table td
+	{
+		text-align:center;
+		color:#b3bcbd;
 	}
 
 /*
@@ -63,7 +80,6 @@
 	font-family:sans-serif;
 	padding-top:10px;
 	display: block;
-	/* 글씨 정렬 외않됨 */
 }
 
 /*
@@ -115,4 +131,13 @@
 #pos_title
 {
 	width:800px;
+}
+
+/*
+	게시판 목록
+*/
+#pos_boardList
+{
+	position:absolute;
+	top:750px; left:350px;
 }

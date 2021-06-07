@@ -44,14 +44,14 @@
 		</li>
 		<li>
 			<label>제목</label>
-			<form:input path="pos_title" id="pos_title"/>
+			<form:input path="pos_title"/>
 		</li>
 		<li>
 			<label for="pos_upload">파일 업로드</label>
-			<input type="file" name="pos_upload" id="pos_upload" accept="image/gif, image/png, image/jpeg">
+			<input type="file" name="pos_upload"accept="image/gif, image/png, image/jpeg">
 		</li>
 		<li>
-			<form:textarea path="pos_content" id="pos_content"/>
+			<form:textarea path="pos_content"/>
 		</li>
 	</ul>	
 	<p class="align-center">
