@@ -61,7 +61,7 @@ public class PositionController
 		int boardCount = positionService.selectBoardCount(type.getValue());
 		log.debug("게시물 개수 : " + boardCount);
 		// 페이징 처리 정보 저장
-		PagingUtil page = new PagingUtil(currentPage, boardCount, 3, 3, "list.do");
+		PagingUtil page = new PagingUtil(currentPage, boardCount, 10, 10, "list.do");
 		List<PositionVO> boardList = null;
 		if(boardCount > 0)
 		{

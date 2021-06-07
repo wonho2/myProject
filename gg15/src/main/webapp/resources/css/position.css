@@ -37,13 +37,13 @@
 	table
 	{
 		width:1500px;
-		border:2px solid #b3bcbd;
+		border:1px solid #b3bcbd;
 	}
 	
 	table th
 	{
 		text-align:center;
-		border:2px solid #b3bcbd;
+		border:1px solid #b3bcbd;
 		border-collapse:collapse;
 	}
 	
@@ -51,6 +51,13 @@
 	{
 		text-align:center;
 		color:#b3bcbd;
+	}
+	
+	table td a
+	{
+		font-weight:bold;
+		color:#b3bcbd;
+		text-decoration:none;
 	}
 
 /*
