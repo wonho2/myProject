@@ -73,7 +73,7 @@
 			btn_Sta1.onclick = function(){
 				//onclick="location.href='Sta1.do?boa_num=${report.boa_num}'"
 				 
-				var choice = window.confirm('차단해제?');
+				var choice = window.confirm('차단해제하시겠습니까?');
 				if(choice){
 					location.replace('Sta1.do?boa_num=${report.boa_num}');
 					alert('해제 완료');

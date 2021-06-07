@@ -368,6 +368,7 @@ public ModelAndView selectReport(@RequestParam int bop_num,HttpSession session) 
 	public String updateState2(@RequestParam int boa_num) {
 		boardService.updateState2(boa_num);
 		return "redirect:/board/reportList.do";
+		//return "redirect:/board/reportPage.do?bop_num=${bop_num}";
 	}
 
 //게시물 차단 해보자
