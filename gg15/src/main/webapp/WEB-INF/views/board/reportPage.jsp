@@ -45,10 +45,19 @@
 	</div>
 	
 	<!-- 차단 게시물 설정 버튼 -->
-	<div>  
+<!-- 	<div>  
 		<input type="button" id="output_status" value="게시물 차단 하기"/>
-	
-		
+		<script type="text/javascript">
+			var output_status = document.getElementById('output_status');
+			//이벤트 연결
+			output_status.onclick = function(){
+				var choice = window.confirm('차단하시겠습니까?');
+				if(choice){
+					location.replace('Sta.do?boa_num=${board.boa_num}');
+				} 
+			};
+		</script> 
 	</div>
+-->
 </div>
 <!-- 자유게시판 reportPage 끝 -->

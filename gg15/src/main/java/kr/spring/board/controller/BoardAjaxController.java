@@ -358,13 +358,13 @@ public ModelAndView selectReport(@RequestParam int bop_num,HttpSession session) 
 //================================================================//
 
 //게시물 차단 해보자
-/*
-@RequestMapping("/board/getSta.do")
+
+@RequestMapping("/board/Sta.do")
 @ResponseBody
 public Map<String,Object> getSta(BoardStatusVO Sta,HttpSession session){
 
 	if(log.isDebugEnabled()) {
-		log.debug("<<게시판 좋아요>> : " + Sta);
+		log.debug("<<게시판 차단>> : " + Sta);
 	}
 
 	Map<String,Object> mapJson = 
@@ -430,5 +430,4 @@ public Map<String,Object> writeSta(BoardStatusVO fav,HttpSession session){
 	}
 	return map;
 }
-*/
 }

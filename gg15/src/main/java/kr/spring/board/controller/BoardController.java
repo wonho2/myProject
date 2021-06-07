@@ -236,6 +236,7 @@ public class BoardController {
 
 		return map;
 	}
+	
 	/* 다음 기약
 	  
 	  //CKEditor 동영상 업로드

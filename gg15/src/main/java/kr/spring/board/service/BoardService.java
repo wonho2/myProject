@@ -155,7 +155,7 @@ public class BoardService {
 	}
 
 	//=============게시글 차단==================//
-/*	public BoardStatusVO selectSta(BoardStatusVO Sta) {
+	public BoardStatusVO selectSta(BoardStatusVO Sta) {
 		return boardMapper.selectSta(Sta);
 	}
 	public void insertSta(BoardStatusVO boardSta) {
@@ -163,6 +163,6 @@ public class BoardService {
 	}
 	public void deleteSta(Integer boa_num) {
 		boardMapper.deleteSta(boa_num);
-	}*/
+	}
 	
 }
