@@ -99,7 +99,7 @@
 	
 	<!-- 신고 활성화 -->
 	<div class="align-right">
-	<img src="../resources/images/siren.png" width=22px id="siren_btn" style="cursor:pointer;">	
+	<img src="../resources/images/siren.png" width=40px id="siren_btn" style="cursor:pointer;">	
 	</div>
 	
 	
