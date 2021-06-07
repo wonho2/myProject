@@ -28,6 +28,7 @@ create table member_detail(
 /*
  * 회원 포인트
  */
+
 create table point(
 	poi_num number not null, /*포인트 식별번호*/
 	mem_num number not null, /*회원 식별번호*/
