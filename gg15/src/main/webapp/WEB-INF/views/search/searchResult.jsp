@@ -46,7 +46,7 @@
 						src=<c:out value="../resources/images/Emblem_${leagueInfo.getTier()}.png" />
 						class="mx-auto d-block" style="max-width: 70%; margin:20%">
 				</div>
-				<div>
+				<div align="center">
 					<c:choose>
 						<c:when test="${leagueInfo.getQueueType()== 'RANKED_SOLO_5x5'}">
 							<h2>솔로 랭크</h2>
@@ -70,7 +70,7 @@
 					</span>
 					<h3>당신의 티어는?</h3> 
 					<p>현재  ${leagueInfo.getTier()}
-						${leagueInfo.getRank()} 단계 입니다.</p>
+						${leagueInfo.getRank()}           단계 입니다.</p>
 				</div>
 		</c:forEach>
 	</div>
