@@ -9,13 +9,13 @@
 </head>
 <body>
 
-			<div class="col-sm-4">
-			<img alt="아이콘" src="http://ddragon.leagueoflegends.com/cdn/11.11.1/img/profileicon/${summoner.profileIconId}.png"   style="width:300px;height:300px">
+			<div >
+			<img alt="아이콘" src="http://ddragon.leagueoflegends.com/cdn/11.11.1/img/profileicon/${summoner.profileIconId}.png"   style="width:300px;height:300px;margin:20px">
 	
 	
 		
-				<h3>${summoner.name}</h3>
-				<p>Lv. ${summoner.getSummonerLevel()}</p>
+				<h3 style="margin:20px">소환사 : ${summoner.name}</h3>
+				<h5 style="margin:25px">Lv : ${summoner.getSummonerLevel()}</h5>
 			</div>
 		
 

@@ -1,6 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+#button1 {
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  padding:0 0.5em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  befor:
+}
+#button1:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+#button1:before,#button1:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+#button1:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#button1:hover:before,#button1:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
 <!-- 상단 시작 -->
 <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -31,7 +69,7 @@
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/adLogin.do">회원관리</a></li>
                         </c:if>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/main/main.do">홈으로</a></li>
+                      
                     </ul>
                 </div>
             </div> 
@@ -43,7 +81,7 @@
                <form action="${pageContext.request.contextPath}/search/searchResult.do" method="GET" style="border:none;width:1400px; text-align:center;">
 			<div class="masthead-subheading">
 				<input type="text" placeholder="소환사명을 입력하세요" name="userName">
-				<button type="submit">검색</button>
+				<button id="button1" type="submit">검색</button>
 			</div>
 		</form>
                <!--  <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>  -->
