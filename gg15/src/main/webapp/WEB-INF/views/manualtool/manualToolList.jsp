@@ -53,6 +53,7 @@
 		<li class="item"><a href="list.do?keyword=미스 포츈"><img src="${pageContext.request.contextPath}/resources/images/미스 포츈.png" width="100" height="100"></a></li>
 	</ul>
 </div>
+<hr size="1" noshade="noshade" width="100%">
 <p class="align-right">
 	<!-- <input type="button" value="글쓰기" onclick="location.href='write.do'"> -->
 	<a href="write.do"><img src="${pageContext.request.contextPath}/resources/images/write.png" width="50" height="50"></a>
@@ -93,7 +94,7 @@
 	<div class="align-center">${pagingHtml}</div>
 </c:if>
 
-<!-- 일단 넣어둔 검색창 ... (가짜) -->
+<!-- 검색창 -->
 	<p>
 	    <form action="list.do" method="get" style="margin:0;border:none;">
 		<select name="keyfield">
