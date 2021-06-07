@@ -12,7 +12,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manualTool/list.do">챔피온분석</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manualTool/list.do">챔피언공략</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/position/list.do">포지션정보</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/party/list.do">파티모집</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list.do">자유게시판</a></li>

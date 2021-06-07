@@ -79,14 +79,9 @@
 			<td><img src="${pageContext.request.contextPath}/resources/images/${manualtoolVO.man_champion}.png" width="25" height="25"></td> 
 			<td>${manualtoolVO.man_season}</td>
 			<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;<a href="detail.do?man_num=${manualtoolVO.man_num}">${manualtoolVO.man_title}</a> <span style="color:orange;font-size:13px;">[${manualtoolVO.man_comment}]</span>
-			<!--
-			첨부파일 있으면 제목 옆에 표시? 하지 말까 그냥
-			<c:choose>
-				<c:when test="${!empty manualtoolVO.man_filename}">
-					<img src="${pageContext.request.contextPath}/resources/images/icon.png" width="50">
-				</c:when>
-			</c:choose>
-			-->
+			<c:if test="${!empty manualtoolVO.man_filename}">
+				<img src="${pageContext.request.contextPath}/resources/images/icon.png" width="50">
+			</c:if>
 			</td>
 			<td>${manualtoolVO.mem_nick}</td>
 			<td>${manualtoolVO.man_update}</td>
@@ -99,14 +94,16 @@
 </c:if>
 
 <!-- 일단 넣어둔 검색창 ... (가짜) -->
-	<p class="align-right">
-		<select name="man_searchOption">
+	<p>
+	    <form action="list.do" method="get" style="margin:0;border:none;">
+		<select name="keyfield">
 			<option value="man_title">제목</option>
 			<option value="man_content">내용</option>
 			<option value="mem_nick">작성자</option>
 		</select>
-		<input type="text" id="man_search">
-		<input type="button" value="검색">
+		<input type="text" id="keyword" name="keyword">
+		<input type="submit" value="검색">
+		</form>
 	</p>
 	<hr size="1" noshade="noshade" width="100%">
 </div>

@@ -9,11 +9,17 @@
 		SELECT
 		   COUNT(*)
 		FROM manualtool mt
-		JOIN member m
+		JOIN member_detail m
 		ON mt.mem_num = m.mem_num
 		<where>
-			<if test="keyword != ''">
-				mt.man_champion = #{keyword}
+			<if test="keyword != '' and keyfield == 'man_title'">
+				mt.man_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'man_content'">
+				mt.man_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_nick'">
+				m.mem_nick = #{keyword}
 			</if>
 		</where>
 	</select>
@@ -35,6 +41,7 @@
 		              m.mem_nick,
 		              mt.man_update,
 		              mt.man_hit,
+		              mt.man_filename,
 		              f.man_fav,
 		              r.man_comment
 		           FROM manualtool mt
@@ -45,10 +52,16 @@
 		           JOIN member_detail m
 		           ON mt.mem_num = m.mem_num
 		           <where>
-						<if test="keyword != ''">
-							mt.man_champion = #{keyword}
+						<if test="keyword != '' and keyfield == 'man_title'">
+							mt.man_title LIKE '%' || #{keyword} || '%'
 						</if>
-				   </where>
+						<if test="keyword != '' and keyfield == 'man_content'">
+							mt.man_content LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'mem_nick'">
+							m.mem_nick = #{keyword}
+						</if>
+					</where>
 		           ORDER BY mt.man_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}

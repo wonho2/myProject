@@ -66,19 +66,23 @@ public class ManualtoolController {
 	//=====게시판 글 목록=====//
 	@RequestMapping("/manualTool/list.do")
 	public ModelAndView ManualtoolList(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
-			                           @RequestParam(value="keyword", defaultValue="") String man_champion) {
+			                           @RequestParam(value="keyfield", defaultValue="") String keyfield,
+			                           @RequestParam(value="keyword", defaultValue="") String keyword) {
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("keyword", man_champion);
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		//총 레코드 수
 		int count = manualtoolService.selectManualtoolCount(map);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
 			log.debug("<<count>> : " + count);
+			log.debug("<<keyfield>> : " + keyfield);
+			log.debug("<<keyword>> : " + keyword);
 		}
 		
 		//페이징 처리
-		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage, count, 10, 10, "list.do");
 		
 		List<ManualtoolVO> manualtoolList = null;
 		if(count > 0) {
