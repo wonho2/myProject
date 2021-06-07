@@ -15,7 +15,7 @@ public class ManualtoolVO {
 	private String man_champion;
 	private String man_season;
 	@NotEmpty
-	@Size(max=15)
+	@Size(max=20)
 	private String man_title;
 	@NotEmpty
 	private String man_content;
