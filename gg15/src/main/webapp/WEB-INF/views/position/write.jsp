@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/position.css">
 
 <!-- 포지션게시판 : 글쓰기 시작 -->
 <!-- 자바스크립트 -->
@@ -30,7 +31,7 @@
 <!-- 글쓰기 폼 -->
 <div>
 <form:form action="write.do" commandName="positionVO" enctype="multipart/form-data">
-	<ul id="pos_boardDetail">
+	<ul>
 		<li>
 			<label>포지션</label>
 			<form:select path="pos_type">
@@ -50,13 +51,12 @@
 			<input type="file" name="pos_upload" id="pos_upload" accept="image/gif, image/png, image/jpeg">
 		</li>
 		<li>
-			<label>내용</label>
 			<form:textarea path="pos_content" id="pos_content"/>
 		</li>
 	</ul>	
-	<div>
+	<p class="align-center">
 		<input type="submit" value="등록" id="btn_submit">
-	</div>
+	</p>
 </form:form>
 </div>
 <!-- 포지션게시판 : 글쓰기  끝-->
