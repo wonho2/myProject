@@ -70,15 +70,15 @@
 */
 #pos_type
 {
-	width:250px; height:300px;
-	margin:30px;
+	width:13%; height:20%;
+	margin:3%;
 	border:1px solid #b3bcbd;
 }
 
 #pos_type header
 {
 	background-color:#34ebc3; color:white;
-	height:50px;
+	height:25%;
 	font-weight:bold;
 	font-family:sans-serif;
 	padding-left:75px;
@@ -100,8 +100,8 @@
 #pos_sort
 {
 	position:absolute;
-	width:600px; height:75px;
-	top:650px; left:350px;
+	width:30%; height:10%;
+	top:60%; left:18%;
 }
 
 #pos_sort ul li
@@ -125,7 +125,7 @@
 #pos_btnWrite
 {
 	position:absolute;
-	top:660px; left:93%;
+	top:60%; left:93%;
 }
 
 /*
@@ -134,7 +134,25 @@
 #pos_noBoard
 {
 	position:absolute;
-	top:750px; left:400px;
+	top:70%; left:22%;
+}
+
+
+/*
+	게시판 목록
+*/
+#pos_boardList
+{
+	position:absolute;
+	top:67%; left:19%;
+}
+
+/*
+	게시물 페이징
+*/
+#pos_paging
+{
+	padding-left:20%;
 }
 
 /*
@@ -143,21 +161,6 @@
 #pos_title
 {
 	width:800px;
-}
-
-/*
-	게시판 목록
-*/
-#pos_boardList
-{
-	position:absolute;
-	top:750px; left:350px;
-}
-
-#pos_paging
-{
-	position:absolute;
-	left:350px;
 }
 
 /*

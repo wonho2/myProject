@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +28,6 @@ public class PositionController
 {
 	@Resource
 	private PositionService positionService;
-	private Logger log = Logger.getLogger(this.getClass());
 	
 /*
  * 상수
@@ -60,7 +58,6 @@ public class PositionController
 	{
 		// 게시물 개수
 		int boardCount = positionService.selectBoardCount(type.getValue());
-		log.debug("게시물 개수 : " + boardCount);
 		// 페이징 처리 정보 저장
 		PagingUtil page = new PagingUtil(currentPage, boardCount, 10, 10, "list.do");
 		List<PositionVO> boardList = null;
@@ -73,7 +70,6 @@ public class PositionController
 			map.put("sortAttr", sortAttrName);
 			map.put("typeValue", type.getValue());
 			boardList = positionService.selectBoardList(map);
-			log.debug("게시물 목록 : " + boardList);
 		}
 		// 모델, 뷰 정보 저장
 		ModelAndView mav = new ModelAndView();
@@ -87,78 +83,78 @@ public class PositionController
 	
 // 게시물 리스트 : 전체보기 (default)
 	@RequestMapping("/position/list.do")
-	public ModelAndView boardList_all(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_all(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.ALL);
 	}
 	
 	@RequestMapping("/position/list_popular.do")
-	public ModelAndView boardList_all_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_all_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.ALL);
 	}
 	
 // 게시물 리스트 : 탑
 	@RequestMapping("/position/list_top.do")
-	public ModelAndView boardList_top(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_top(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.TOP);
 	}
 	
 	@RequestMapping("/position/list_top_popular.do")
-	public ModelAndView boardList_top_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_top_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.TOP);
 	}
 	
 // 게시물 리스트 : 정글
 	@RequestMapping("/position/list_jungle.do")
-	public ModelAndView boardList_jungle(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_jungle(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.JUNGLE);
 	}
 	
 	@RequestMapping("/position/list_jungle_popular.do")
-	public ModelAndView boardList_jungle_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_jungle_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.JUNGLE);
 	}
 	
 // 게시물 리스트 : 미드
 	@RequestMapping("/position/list_mid.do")
-	public ModelAndView boardList_mid(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_mid(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.MID);
 	}
 	
 	@RequestMapping("/position/list_mid_popular.do")
-	public ModelAndView boardList_mid_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_mid_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.MID);
 	}
 	
 // 게시물 리스트 : 원딜
 	@RequestMapping("/position/list_ad.do")
-	public ModelAndView boardList_ad(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_ad(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.AD);
 	}
 	
 	@RequestMapping("/position/list_ad_popular.do")
-	public ModelAndView boardList_ad_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_ad_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.AD);
 	}
 	
 // 게시물 리스트 : 서포터
 	@RequestMapping("/position/list_support.do")
-	public ModelAndView boardList_support(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_support(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.RECENT, PositionType.SUPPORT);
 	}
 	
 	@RequestMapping("/position/list_support_popular.do")
-	public ModelAndView boardList_support_pop(@RequestParam(value="page", defaultValue="1") int currentPage)
+	public ModelAndView boardList_support_pop(@RequestParam(value="pageNum", defaultValue="1") int currentPage)
 	{
 		return getBoardList(currentPage, SortType.POPULAR, PositionType.SUPPORT);
 	}

@@ -44,41 +44,51 @@
 		</c:if>
 		<c:if test = "${pos_type == '탑'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list_top.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_top_popular.do">인기순</a>
 			</li>
 		</c:if>
 		<c:if test = "${pos_type == '정글'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list_jungle.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_jungle_popular.do">인기순</a>
 			</li>
 		</c:if>
 		<c:if test = "${pos_type == '미드'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list_mid.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_mid_popular.do">인기순</a>
 			</li>
 		</c:if>
 		<c:if test = "${pos_type == '원딜'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list_ad.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_ad_popular.do">인기순</a>
 			</li>
 		</c:if>
 		<c:if test = "${pos_type == '서포터'}">
 			<li>
+				<img src="../resources/images/icon_recent.png">
 				<a href="list_support.do">최신순</a> <!-- default -->
 			</li>
 			<li>
+				<img src="../resources/images/icon_popular.png">
 				<a href="list_support_popular.do">인기순</a>
 			</li>
 		</c:if>
