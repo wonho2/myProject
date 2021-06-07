@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <style>
+     .cast2{
+     color:white}
+    </style>
 <!-- 하단 시작 -->
 <!-- Contact-->
        <!--  <section class="page-section" id="contact">
@@ -39,17 +43,17 @@
             </div>
         </section> -->
  <!-- Footer-->
-        <footer class="footer py-4">
+        <footer class="footer py-4 canto">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">
-                        Copyright &copy; 15gg 
+                        <span class="cast2">Copyright &copy; 15gg
                         <!-- This script automatically adds the current year to your website footer-->
                         <!-- (credit: https://updateyourfooter.com/)-->
                         <script>
                             document.write(new Date().getFullYear()); 
                         </script>
-                        
+                         </span>
                     </div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>

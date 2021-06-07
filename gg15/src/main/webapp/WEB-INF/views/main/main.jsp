@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-< <!-- Services-->
+ <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
                 <!-- <div class="text-center">
@@ -11,28 +11,31 @@
                 </div> -->
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
+                       <!--  <span class="fa-stack fa-4x">
                             <i class="fas fa-square fa-stack-2x text-muted"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        </span> -->
+                        <a href="https://kr.leagueoflegends.com/ko-kr/news/tags/patch-notes"><img id="max-small" src="${pageContext.request.contextPath}/resources/template_res/assets/img/lol.png" alt="..." /></a>
+                        <h4 class="my-3">패치노트</h4>
+                        <!-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> -->
                     </div>
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
+                        <!-- <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        </span> -->
+                         <a href="https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EB%A3%AC"><img src="${pageContext.request.contextPath}/resources/template_res/assets/img/jm.png" alt="..." /></a>
+                        <h4 class="my-3">룬 정보</h4>
+                       <!--  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> -->
                     </div>
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
+                        <!-- <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        </span> -->
+                         <a href="https://lol.inven.co.kr/dataninfo/item/list.php"><img src="${pageContext.request.contextPath}/resources/template_res/assets/img/trinity.png" alt="..." /></a>
+                        <h4 class="my-3">아이템 정보</h4>
+                        <!-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> -->
                     </div>
                 </div>
             </div>
