@@ -4,13 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- 파티게시판 : 글쓰기 시작 -->
-<c:if test="${empty mem_num}">
-	<%
-		// 로그인 페이지로 이동
-	%>
-	<h1></h1>
-</c:if>
-
+<div class="page-main-style">
 	<form:form action="write.do" commandName="partyVO" enctype="multipart/form-data">
 		<ul>
 			<li>
@@ -32,7 +26,7 @@
 			</li>
 			<li>
 				<label for="par_content">내용</label>
-				<form:textarea path="par_content" cols="50" rows="20" placeholder="여기에 내용을 입력하세요"/>
+				<form:textarea path="par_content" cols="40" rows="10" placeholder="여기에 내용을 입력하세요"/>
 				<form:errors path="par_content"/>
 			</li>
 		</ul>
@@ -41,4 +35,5 @@
 			<input type="submit" value="등록">
 		</div>
 	</form:form>
+</div>	
 <!-- 파티게시판 : 글쓰기  끝-->  
