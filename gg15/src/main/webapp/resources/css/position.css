@@ -1,8 +1,44 @@
-ul
-{
-	list-style:none;
-}
+/*
+	공통
+*/
+	ul
+	{
+		list-style:none;
+	}
+	
+	label
+	{
+		font-weight:bold;
+		width:100px;
+	}
+	
+	select
+	{
+		/*외않됨*/
+		width:150px; height:50px;
+	}
+	
+	form ul
+	{
+		padding-left:450px;
+		padding-top:50px;
+	}
+	
+	form ul li
+	{
+		padding-bottom:10px;
+	}
+	
+	textarea
+	{
+		resize:none;
+		width:1000px;
+		height:500px;
+	}
 
+/*
+	포지션 카테고리
+*/
 #pos_type
 {
 	width:250px; height:300px;
@@ -25,15 +61,19 @@ ul
 	text-decoration:none;
 	color:#b3bcbd;
 	font-family:sans-serif;
-	padding-top:20px;
+	padding-top:10px;
+	display: block;
 	/* 글씨 정렬 외않됨 */
 }
 
+/*
+	게시물 정렬
+*/
 #pos_sort
 {
 	position:absolute;
 	width:600px; height:75px;
-	top:485px; left:350px;
+	top:650px; left:350px;
 }
 
 #pos_sort ul li
@@ -51,20 +91,28 @@ ul
 	text-decoration:none;
 }
 
+/*
+	글쓰기 버튼
+*/
 #pos_btnWrite
 {
 	position:absolute;
-	top:500px; left:1800px;
+	top:650px; left:1800px;
 }
 
+/*
+	게시물 없습니다 표시
+*/
 #pos_noBoard
 {
 	position:absolute;
-	top:600px; left:400px;
+	top:750px; left:400px;
 }
 
-#pos_boardDetail li label
+/*
+	form
+*/
+#pos_title
 {
-	font-weight:bold;
-	width:200px;
+	width:800px;
 }
