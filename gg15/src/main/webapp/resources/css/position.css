@@ -164,3 +164,13 @@
 	{
 		margin-left:0%;
 	}
+	
+/*
+	게시물 디테일
+*/
+	#pos_boardDetail
+	{
+		border:1px solid black;
+		padding-left:30%;
+		padding-top:3%; padding-bottom:3%;
+	}
