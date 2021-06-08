@@ -6,7 +6,9 @@
 <!-- 포지션게시판 : boardList 시작 -->
 <!-- 게시물 카테고리 -->
 <div id="pos_type">
-	<div class="title">포지션 선택</div>
+	<div class="title">
+		<span>포지션 선택</span>
+	</div>
 	<ul>
 		<li>
 			<a href="list.do">전체보기</a> <!-- default -->
@@ -94,11 +96,6 @@
 		</c:if>
 	</ul>
 </div>
-
-<!-- 페이징 처리 -->
-<div id="pos_paging">
-	${pagingHtml}
-</div>
 	
 <!-- 글쓰기 버튼 -->
 <span id="pos_btnWrite">
@@ -107,8 +104,11 @@
 	
 <!-- 게시물 목록 -->
 <c:if test="${boardCount == 0}">
-	<p id="pos_noBoard">게시물이 없습니다.</p>
+	<div id="pos_noBoard">
+		게시물이 없습니다.
+	</div>
 </c:if>
+
 <c:if test="${boardCount > 0}">
 	<div id="pos_boardList">
 		<table>
@@ -135,4 +135,9 @@
 		</table>
 	</div>
 </c:if>
+	
+<!-- 페이징 처리 -->
+<div id="pos_paging">
+	${pagingHtml}
+</div>
 <!-- 포지션게시판 : boardList 끝 -->
