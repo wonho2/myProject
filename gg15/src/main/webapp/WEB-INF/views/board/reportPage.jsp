@@ -45,11 +45,12 @@
 	</div>
 	
 	<!-- 차단 게시물 설정 버튼 -->
- 	<div>  
+ 	<div> 
 	<!-- <input type="button" id="output_status" value="게시물 차단 하기"/> -->
 	<!--<a href="Sta2.do?boa_num=${report.boa_num}" id="btn_State2"> 차단 선택  v</a>
 		<a href="Sta1.do?boa_num=${report.boa_num}" id="updateState1"> 차단 해제  v</a>	
 	-->
+	<c:if test="${report.boa_status != 2}">
 	<input type="button" value="차단"  id="btn_Sta2">
 	<script type="text/javascript">
 			var btn_Sta2 = document.getElementById('btn_Sta2');
@@ -59,13 +60,14 @@
 				 
 				var choice = window.confirm('차단하시겠습니까');
 				if(choice){
-					location.replace('Sta2.do?boa_num=${report.boa_num}');
+					location.replace('Sta2.do?boa_num=${report.boa_num}&bop_num=${report.bop_num}');
 					alert('차단 완료');
 					//location.replace('Sta2.do?boa_num=${board.boa_num}'); 
 				} 
 			};
 		</script>
-	
+	</c:if>
+	<c:if test="${report.boa_status == 2}">
 	<input type="button" value="차단해제"  id="btn_Sta1">
 	<script type="text/javascript">
 			var btn_Sta1 = document.getElementById('btn_Sta1');
@@ -75,13 +77,13 @@
 				 
 				var choice = window.confirm('차단해제하시겠습니까?');
 				if(choice){
-					location.replace('Sta1.do?boa_num=${report.boa_num}');
+					location.replace('Sta1.do?boa_num=${report.boa_num}&bop_num=${report.bop_num}');
 					alert('해제 완료');
 					//location.replace('Sta2.do?boa_num=${board.boa_num}'); 
 				} 
 			};
 		</script>	
-		
+	</c:if>	
 	</div>
 </div>
 <!-- 자유게시판 reportPage 끝 -->

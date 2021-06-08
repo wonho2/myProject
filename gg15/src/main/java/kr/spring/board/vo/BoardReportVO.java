@@ -14,6 +14,7 @@ public class BoardReportVO {
 	private String boa_content;
 	private byte[] boa_uploadfile; 
 	private String boa_filename;
+	private int boa_status;
 	
 	public int getMem_num() {
 		return mem_num;
@@ -91,6 +92,13 @@ public class BoardReportVO {
 	}
 	public void setBoa_filename(String boa_filename) {
 		this.boa_filename = boa_filename;
+	}
+	
+	public int getBoa_status() {
+		return boa_status;
+	}
+	public void setBoa_status(int boa_status) {
+		this.boa_status = boa_status;
 	}
 	@Override
 	public String toString() {

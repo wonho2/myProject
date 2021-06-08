@@ -359,15 +359,17 @@ public ModelAndView selectReport(@RequestParam int bop_num,HttpSession session) 
 
 	//일반 게시물
 	@RequestMapping("/board/Sta1.do")
-	public String updateState1(@RequestParam int boa_num) {
+	public String updateState1(@RequestParam int boa_num,
+			                   @RequestParam int bop_num) {
 		boardService.updateState1(boa_num);
-		return "redirect:/board/reportList.do";
+		return "redirect:/board/reportPage.do?bop_num="+bop_num;
 	}
 	//차단 게시물
 	@RequestMapping("/board/Sta2.do")
-	public String updateState2(@RequestParam int boa_num) {
+	public String updateState2(@RequestParam int boa_num,
+                              @RequestParam int bop_num) {
 		boardService.updateState2(boa_num);
-		return "redirect:/board/reportList.do";
+		return "redirect:/board/reportPage.do?bop_num="+bop_num;
 		//return "redirect:/board/reportPage.do?bop_num=${bop_num}";
 	}
 
