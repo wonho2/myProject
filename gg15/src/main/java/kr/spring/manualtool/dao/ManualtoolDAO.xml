@@ -93,7 +93,9 @@
 				man_filename = #{man_filename},
 			</if>
 			man_title = #{man_title},
-			man_content = #{man_content} 
+			man_content = #{man_content} ,
+			man_champion = #{man_champion},
+			man_season = #{man_season}
 			WHERE man_num = #{man_num}
 	</update>
 	
