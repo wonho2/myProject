@@ -22,6 +22,7 @@
 				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li> 
 		</ul>
+		
 		<br>
 		<div>
 			15gg가 처음이신가요? <span><a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a></span><br>
