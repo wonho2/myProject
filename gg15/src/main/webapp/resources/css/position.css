@@ -44,9 +44,13 @@
 		padding-left:30%;
 	}
 	
-	.pos_bodyWrapper
+	.pos_button
 	{
-		height:500%;
+		background-color:#34ebc3;
+		color:white;
+		font-weight:bold;
+		border:1px solid #34ebc3;
+		border-radius:5px;
 	}
 
 /*
@@ -123,4 +127,40 @@
 	#pos_paging
 	{
 		padding-left:17%;
+	}
+	
+/*
+	form
+*/
+	form ul
+	{
+		padding-left:30%;
+		padding-top:3%; padding-bottom:3%;
+	}
+	
+	form ul li
+	{
+		margin-bottom:1%;
+	}
+	
+	label
+	{
+		width:150px;
+		font-weight:bold;
+	}
+	
+	textarea
+	{
+		resize:none;
+		width:62%; height:300px;
+	}
+	
+	#pos_title
+	{
+		width:50%;
+	}
+	
+	#pos_type
+	{
+		margin-left:0%;
 	}
