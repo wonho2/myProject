@@ -56,7 +56,7 @@
 <hr size="1" noshade="noshade" width="100%">
 <p class="align-right">
 	<!-- <input type="button" value="글쓰기" onclick="location.href='write.do'"> -->
-	<a href="write.do"><img src="${pageContext.request.contextPath}/resources/images/write.png" width="50" height="50"></a>
+	<a href="write.do"><img src="${pageContext.request.contextPath}/resources/images/icon_write.png" width="50" height="50"></a>
 </p>
 
 <c:if test="${count == 0}">
