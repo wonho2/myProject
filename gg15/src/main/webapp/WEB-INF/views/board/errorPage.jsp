@@ -26,13 +26,13 @@
 	</c:if>
 
 	<!-- 관리자 권한 게시글 -->
-	<c:if test="${mem_auth != 3}">
+<!-- 	<c:if test="${mem_auth != 3}">
 	<section class="align-center">
 		<h4> BLOCK </h4><br>
 		<a>관리자 전용 게시글 입니다.</a><br><br>
 	<input type="button" id="list" value="목록" onclick="location.href='list.do'">			
 	</section>
 	</c:if>
-	
+ -->	
 </div>
 <!-- 자유게시판 errorPage 끝 -->
