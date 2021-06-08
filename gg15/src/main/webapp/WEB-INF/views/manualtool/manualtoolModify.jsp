@@ -98,8 +98,8 @@
 				<form:errors path="man_content" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="man_uploadfile">파일 업로드</label>
-				<input type="file" name="man_uploadfile" id="man_uploadfile" accept="image/gif, image/png, image/jpeg">
+				<label for="man_upload">파일 업로드</label>
+				<input type="file" name="man_upload" id="man_upload" accept="image/gif, image/png, image/jpeg">
 				<c:if test="${!empty manualtoolVO.man_filename}">
 					<br>
 					<span>이미 ${manualtoolVO.man_filename} 파일이 등록되어 있습니다. 다시 업로드하면 기존 파일은 삭제됩니다.</span>

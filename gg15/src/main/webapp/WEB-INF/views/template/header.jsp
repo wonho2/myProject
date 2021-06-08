@@ -7,12 +7,12 @@
   color:#fff;
   border:none;
   position:relative;
-  height:60px;
+  height:50px;
   padding:0 0.5em;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  befor:
+  font-size:20px;
 }
 #button1:hover{
   background:#fff;
@@ -37,6 +37,11 @@
 #button1:hover:before,#button1:hover:after{
   width:100%;
   transition:800ms ease all;
+}
+#user_name{
+	font-size:20px;
+	height:50px;
+	width:400px;
 }
 </style>
 <!-- 상단 시작 -->
@@ -80,7 +85,7 @@
             <!--     <div class="masthead-subheading">Welcome To Our Studio!</div> -->
                <form action="${pageContext.request.contextPath}/search/searchResult.do" method="GET" style="border:none;width:1400px; text-align:center;">
 			<div class="masthead-subheading">
-				<input type="text" placeholder="소환사명을 입력하세요" name="userName">
+				<input type="text" placeholder="소환사명을 입력하세요" name="userName" id="user_name">
 				<button id="button1" type="submit">검색</button>
 			</div>
 		</form>
